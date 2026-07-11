@@ -1,0 +1,35 @@
+~ start_shop
+Shopkeeper: Looking for crops to plant? I only carry the finest seeds. What do you need?
+- Buy Corn Seeds (25 Gold each)
+	Shopkeeper: How many Corn Seeds would you like?
+	- Buy 1 Corn Seed (25 Gold)
+		if Engine.get_main_loop().current_scene.get_node("Chest").buy_seeds("corn_seeds", DataTypes.Tools.PlantCorn, 25, 1):
+			Shopkeeper: Excellent! Added to your tool panel.
+		else:
+			Shopkeeper: You don't have enough gold!
+	- Buy 10 Corn Seeds (250 Gold)
+		if Engine.get_main_loop().current_scene.get_node("Chest").buy_seeds("corn_seeds", DataTypes.Tools.PlantCorn, 25, 10):
+			Shopkeeper: Splendid! 10 Corn Seeds added to your tool panel.
+		else:
+			Shopkeeper: You don't have enough gold!
+	- Go Back
+		=> start_shop
+
+- Buy Tomato Seeds (30 Gold each)
+	Shopkeeper: How many Tomato Seeds would you like?
+	- Buy 1 Tomato Seed (30 Gold)
+		if Engine.get_main_loop().current_scene.get_node("Chest").buy_seeds("tomato_seeds", DataTypes.Tools.PlantTomato, 30, 1):
+			Shopkeeper: There you go! Ready for tilling.
+		else:
+			Shopkeeper: You don't have enough gold!
+	- Buy 10 Tomato Seeds (300 Gold)
+		if Engine.get_main_loop().current_scene.get_node("Chest").buy_seeds("tomato_seeds", DataTypes.Tools.PlantTomato, 30, 10):
+			Shopkeeper: Double checks out! 10 Tomato Seeds added.
+		else:
+			Shopkeeper: You don't have enough gold!
+	- Go Back
+		=> start_shop
+
+- Leave
+	Shopkeeper: Happy farming!
+=> END

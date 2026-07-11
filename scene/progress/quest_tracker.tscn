@@ -1,0 +1,36 @@
+[gd_scene load_steps=2 format=3 uid="uid://buvrbla3ymun3"]
+
+[ext_resource type="Script" uid="uid://blng3tqmyea6v" path="res://scene/progress/quest_tracker.gd" id="1_2gnot"]
+
+[node name="QuestTracker" type="CanvasLayer"]
+script = ExtResource("1_2gnot")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -218.0
+offset_bottom = 104.0
+grow_horizontal = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "📜 Current Quest"
+
+[node name="QuestNameLabel" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "First Harvest"
+
+[node name="DescriptionLabel" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Collect 5 Corn for the Guide."
+
+[node name="ProgressLabel" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "🌽 0 / 5"

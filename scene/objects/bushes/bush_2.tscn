@@ -1,0 +1,38 @@
+[gd_scene load_steps=8 format=3 uid="uid://dwcsuac6r1xsk"]
+
+[ext_resource type="Texture2D" uid="uid://bqxd5sggbmhft" path="res://assets/game/Objects/Bushe3.png" id="1_aenal"]
+[ext_resource type="Script" uid="uid://c2nphxykqex24" path="res://scene/objects/bushes/bush_1.gd" id="2_nn0hp"]
+[ext_resource type="PackedScene" uid="uid://dg8e005hj8y6k" path="res://scene/components/hurt_component.tscn" id="3_3jk5x"]
+[ext_resource type="PackedScene" uid="uid://bclpvokyn22rq" path="res://scene/components/damage_component.tscn" id="4_1tcjo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nn0hp"]
+atlas = ExtResource("1_aenal")
+region = Rect2(407, 25, 78, 59)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_euhmd"]
+radius = 24.674097
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qankg"]
+radius = 30.54388
+
+[node name="Bush" type="Sprite2D"]
+position = Vector2(0.24999845, -3.5000005)
+scale = Vector2(0.2014926, 0.19565216)
+texture = SubResource("AtlasTexture_nn0hp")
+script = ExtResource("2_nn0hp")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("CircleShape2D_euhmd")
+
+[node name="HurtComponent" parent="." instance=ExtResource("3_3jk5x")]
+tool = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtComponent"]
+position = Vector2(1.0151591, 3.1335017e-06)
+shape = SubResource("CircleShape2D_qankg")
+debug_color = Color(0.78248864, 0.23241031, 0.902805, 0.41960785)
+
+[node name="DamageComponent" parent="." instance=ExtResource("4_1tcjo")]
+max_damage = 2

@@ -1,0 +1,37 @@
+[gd_scene load_steps=8 format=3 uid="uid://b2muggmejlwxp"]
+
+[ext_resource type="PackedScene" uid="uid://drd8k2inanni1" path="res://scene/test/test_tilemap_1.tscn" id="1_7ii46"]
+[ext_resource type="PackedScene" uid="uid://b6dt06p3lh2cs" path="res://scene/components/day_and_night_cycle_component.tscn" id="1_jwgbj"]
+[ext_resource type="PackedScene" uid="uid://baobhkkvmt1nd" path="res://scene/characters/player/player.tscn" id="2_7ii46"]
+[ext_resource type="PackedScene" uid="uid://dqkphh5iahe3s" path="res://scene/ui/game_screen.tscn" id="3_dfs20"]
+[ext_resource type="PackedScene" uid="uid://bajv637y4ujir" path="res://scene/objects/trees/tree_1.tscn" id="5_sjh6q"]
+[ext_resource type="Shader" uid="uid://ogdy8gnqtapr" path="res://scene/objects/trees/tree_shake.gdshader" id="6_e12je"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8np4a"]
+resource_local_to_scene = true
+shader = ExtResource("6_e12je")
+shader_parameter/shake_intensity = 0.0
+shader_parameter/shake_speed = 20.0
+
+[node name="testscenetilemaps" type="Node2D"]
+y_sort_enabled = true
+
+[node name="DayAndNightCycleComponent" parent="." instance=ExtResource("1_jwgbj")]
+initial_hour = 8
+initial_minute = 0
+
+[node name="gametilemap1" parent="." instance=ExtResource("1_7ii46")]
+y_sort_enabled = true
+position = Vector2(-142, -31)
+
+[node name="Tree1" parent="gametilemap1" instance=ExtResource("5_sjh6q")]
+material = SubResource("ShaderMaterial_8np4a")
+position = Vector2(183.25, 135)
+
+[node name="Player" parent="." instance=ExtResource("2_7ii46")]
+position = Vector2(224, 169)
+current_tool = 0
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+
+[node name="GameScreen" parent="." instance=ExtResource("3_dfs20")]

@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://dnd41d0l7r5bq"]
+
+[ext_resource type="Script" uid="uid://bcw232icav847" path="res://scripts/ui/game_notification.gd" id="1_tw2u2"]
+
+[node name="GameNotification" type="CanvasLayer"]
+visible = false
+script = ExtResource("1_tw2u2")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="MessageLabel" type="Label" parent="CenterContainer/PanelContainer"]
+layout_mode = 2
+text = "Notification"

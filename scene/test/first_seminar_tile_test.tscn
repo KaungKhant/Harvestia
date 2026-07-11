@@ -1,0 +1,119 @@
+[gd_scene load_steps=16 format=3 uid="uid://bjs7ccd5d4vie"]
+
+[ext_resource type="PackedScene" uid="uid://b6dt06p3lh2cs" path="res://scene/components/day_and_night_cycle_component.tscn" id="1_2m6x3"]
+[ext_resource type="PackedScene" uid="uid://drd8k2inanni1" path="res://scene/test/test_tilemap_1.tscn" id="2_pv7r2"]
+[ext_resource type="PackedScene" uid="uid://cvfugxxni6yaj" path="res://scene/components/field_cursor_component.tscn" id="5_a5h7a"]
+[ext_resource type="Script" uid="uid://encln1my7qx3" path="res://scene/components/crop_cursor_component.gd" id="5_a36wj"]
+[ext_resource type="TileSet" uid="uid://dhheyesq1lvuw" path="res://tilesets/gametilesets.tres" id="5_fg760"]
+[ext_resource type="PackedScene" uid="uid://baobhkkvmt1nd" path="res://scene/characters/player/player.tscn" id="5_ftski"]
+[ext_resource type="PackedScene" uid="uid://dqkphh5iahe3s" path="res://scene/ui/game_screen.tscn" id="6_a36wj"]
+[ext_resource type="Script" uid="uid://dmr175av1oqch" path="res://scene/components/field_cursor_component.gd" id="6_fg760"]
+[ext_resource type="PackedScene" uid="uid://4u1ibhxk6vgd" path="res://scene/components/crop_cursor_component.tscn" id="6_m4p2l"]
+[ext_resource type="PackedScene" uid="uid://bucojib7x2bvp" path="res://scene/objects/plants/tomato.tscn" id="7_netqu"]
+[ext_resource type="PackedScene" uid="uid://b8alupsunti5" path="res://scene/objects/plants/corn.tscn" id="8_cl6sg"]
+[ext_resource type="PackedScene" uid="uid://1dkjt1xi1b1k" path="res://scene/characters/cow/cow.tscn" id="9_cl6sg"]
+[ext_resource type="PackedScene" uid="uid://230kmok5s7ft" path="res://scene/characters/chicken/chicken.tscn" id="10_ftski"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_a36wj"]
+vertices = PackedVector2Array(531, 159.844, 531, 203, 424, 203, 424, 158.156)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(414, 148, 541, 150, 541, 213, 414, 213)])
+source_geometry_mode = 2
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_ftski"]
+vertices = PackedVector2Array(436.844, 115.844, 436.148, 160.07, 329.852, 160.922, 329.148, 114.156)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(447, 106, 446, 170, 320, 171, 319, 104)])
+source_geometry_mode = 2
+
+[node name="testscenetilemaps" type="Node2D"]
+y_sort_enabled = true
+
+[node name="DayAndNightCycleComponent" parent="." instance=ExtResource("1_2m6x3")]
+initial_hour = 8
+initial_minute = 0
+
+[node name="gametilemap1" parent="." instance=ExtResource("2_pv7r2")]
+y_sort_enabled = true
+position = Vector2(-142, -35)
+
+[node name="Grass" type="TileMapLayer" parent="."]
+position = Vector2(-142, -35)
+tile_map_data = PackedByteArray(0, 0, 5, 0, 1, 0, 0, 0, 6, 0, 1, 0, 0, 0)
+tile_set = ExtResource("5_fg760")
+
+[node name="TilledSoil" type="TileMapLayer" parent="."]
+position = Vector2(-142, -35)
+tile_set = ExtResource("5_fg760")
+
+[node name="CropFields" type="Node2D" parent="."]
+
+[node name="FieldCursorComponent" parent="." node_paths=PackedStringArray("grass_tilemap_layer", "tilled_soil_tilemap_layer") instance=ExtResource("5_a5h7a")]
+script = ExtResource("6_fg760")
+grass_tilemap_layer = NodePath("../Grass")
+tilled_soil_tilemap_layer = NodePath("../TilledSoil")
+terrain = 2
+
+[node name="CropCursorComponent" parent="." node_paths=PackedStringArray("tilled_soil_tilemap_layer") instance=ExtResource("6_m4p2l")]
+script = ExtResource("5_a36wj")
+tilled_soil_tilemap_layer = NodePath("../Grass")
+
+[node name="Player" parent="." instance=ExtResource("5_ftski")]
+visible = false
+position = Vector2(224, 169)
+current_tool = 0
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+
+[node name="GameScreen" parent="." instance=ExtResource("6_a36wj")]
+
+[node name="Tomato" parent="." instance=ExtResource("7_netqu")]
+position = Vector2(189, 36)
+
+[node name="Tomato2" parent="." instance=ExtResource("7_netqu")]
+position = Vector2(221, 37)
+
+[node name="Corn" parent="." instance=ExtResource("8_cl6sg")]
+position = Vector2(190, 72)
+
+[node name="Corn2" parent="." instance=ExtResource("8_cl6sg")]
+position = Vector2(224, 71)
+
+[node name="Chickens" type="Node2D" parent="."]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="Chickens"]
+position = Vector2(-162, 14)
+navigation_polygon = SubResource("NavigationPolygon_a36wj")
+
+[node name="Chicken" parent="Chickens" instance=ExtResource("10_ftski")]
+y_sort_enabled = true
+position = Vector2(319, 194)
+
+[node name="Chicken2" parent="Chickens" instance=ExtResource("10_ftski")]
+position = Vector2(291, 211)
+
+[node name="Chicken3" parent="Chickens" instance=ExtResource("10_ftski")]
+position = Vector2(278, 196)
+
+[node name="Chicken4" parent="Chickens" instance=ExtResource("10_ftski")]
+position = Vector2(357, 197)
+
+[node name="Cows" type="Node2D" parent="."]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="Cows"]
+position = Vector2(-67, 121)
+navigation_polygon = SubResource("NavigationPolygon_ftski")
+navigation_layers = 2
+
+[node name="Cow" parent="Cows" instance=ExtResource("9_cl6sg")]
+y_sort_enabled = true
+position = Vector2(345, 254)
+
+[node name="Cow2" parent="Cows" instance=ExtResource("9_cl6sg")]
+position = Vector2(309, 256)
+
+[node name="Cow3" parent="Cows" instance=ExtResource("9_cl6sg")]
+position = Vector2(306, 272)
+
+[node name="Cow4" parent="Cows" instance=ExtResource("9_cl6sg")]
+position = Vector2(280, 260)

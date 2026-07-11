@@ -1,0 +1,51 @@
+[gd_scene load_steps=10 format=3 uid="uid://bkn8e0bqqbi4n"]
+
+[ext_resource type="Shader" uid="uid://ogdy8gnqtapr" path="res://scene/objects/trees/tree_shake.gdshader" id="1_tv6fg"]
+[ext_resource type="Texture2D" uid="uid://d31yuhb1dbkja" path="res://assets/game/Objects/Tree4.png" id="2_tv6fg"]
+[ext_resource type="Script" uid="uid://dhtfdvc3uo6yv" path="res://scene/objects/trees/small_tree.gd" id="3_ku6fs"]
+[ext_resource type="PackedScene" uid="uid://dg8e005hj8y6k" path="res://scene/components/hurt_component.tscn" id="4_06605"]
+[ext_resource type="PackedScene" uid="uid://bclpvokyn22rq" path="res://scene/components/damage_component.tscn" id="5_wykki"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tq6rr"]
+resource_local_to_scene = true
+shader = ExtResource("1_tv6fg")
+shader_parameter/shake_intensity = 0.0
+shader_parameter/shake_speed = 20.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5kgsc"]
+atlas = ExtResource("2_tv6fg")
+region = Rect2(825, 46, 80, 122)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y385u"]
+radius = 22.127989
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7oi7y"]
+size = Vector2(88.26491, 114.29351)
+
+[node name="Tree3" type="Sprite2D"]
+material = SubResource("ShaderMaterial_tq6rr")
+position = Vector2(-0.016806724, -12.223689)
+scale = Vector2(0.20262486, 0.21760428)
+texture = SubResource("AtlasTexture_5kgsc")
+region_rect = Rect2(0, 0, 16, 32)
+script = ExtResource("3_ku6fs")
+log_drop_amount = 3
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-0.39403534, 52.196472)
+shape = SubResource("CircleShape2D_y385u")
+
+[node name="HurtComponent" parent="." instance=ExtResource("4_06605")]
+tool = 1
+
+[node name="HurtComponentClisionShape2D" type="CollisionShape2D" parent="HurtComponent"]
+position = Vector2(-0.7168703, 8.707554)
+scale = Vector2(0.9999999, 1)
+shape = SubResource("RectangleShape2D_7oi7y")
+debug_color = Color(0.08849581, 0.62167996, 0.5319849, 0.41960785)
+
+[node name="DamageComponent" parent="." instance=ExtResource("5_wykki")]
+position = Vector2(-249.42714, 32.217392)
+max_damage = 3

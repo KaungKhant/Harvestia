@@ -1,0 +1,45 @@
+~ start
+
+Nyan: [[Hi|Hello|Howdy]], nice to meet you.
+Nyan: Welcome to your new farm.
+Nyan: As you can see, the cows and chickens are hungry.
+Nyan: We need to grow some crops before we can help the village.
+
+- Take crop seeds
+    Teemo: I'm ready to help.
+    do GameDialogueManager.action_give_crop_seeds()
+    do QuestManager.start_quest("first_harvest")
+
+- Maybe later
+    Teemo: I'll come back when I'm ready.
+
+=> END
+
+
+~ progress
+
+Nyan: Keep growing Corn.
+Nyan: Bring me 5 Corn when you're finished.
+
+=> END
+
+
+~ turn_in
+
+Nyan: Wonderful!
+Nyan: These crops will help feed our animals.
+
+do QuestManager.try_complete_quest()
+
+Nyan: Thank you.
+Nyan: Please accept this reward.
+
+=> END
+
+
+~ completed
+
+Nyan: Thanks again for your help.
+Nyan: Let's continue restoring Harvestia together.
+
+=> END

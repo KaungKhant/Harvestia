@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=3 uid="uid://j824fxn1cohe"]
+
+[ext_resource type="Script" uid="uid://dx23lb7rrfe75" path="res://scene/characters/guide/guide.gd" id="1_7khqe"]
+[ext_resource type="PackedScene" uid="uid://cv3tlgmwisqki" path="res://scene/components/interactable_component.tscn" id="2_7fbcc"]
+[ext_resource type="Texture2D" uid="uid://b6mnlup2hepd6" path="res://assets/game/Characters/npc1.png" id="2_7khqe"]
+[ext_resource type="PackedScene" uid="uid://dtg2w66i1vtib" path="res://scene/components/interactable_label_component.tscn" id="4_oback"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1uvtl"]
+atlas = ExtResource("2_7khqe")
+region = Rect2(198, 16, 99, 183)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oback"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1uvtl")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 4.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_svabx"]
+radius = 13.0
+
+[node name="guide" type="Node2D"]
+script = ExtResource("1_7khqe")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -7.0000005)
+scale = Vector2(0.15731421, 0.112045825)
+sprite_frames = SubResource("SpriteFrames_oback")
+animation = &"idle"
+frame_progress = 0.9856554
+
+[node name="InteractableComponent" parent="." instance=ExtResource("2_7fbcc")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableComponent"]
+position = Vector2(0, -9)
+shape = SubResource("CircleShape2D_svabx")
+
+[node name="InteractableLabelComponent" parent="." instance=ExtResource("4_oback")]
+offset_left = -24.0
+offset_top = -29.0
+offset_right = -10.0
+offset_bottom = -15.0

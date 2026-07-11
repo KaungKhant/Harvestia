@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cv3tlgmwisqki"]
+
+[ext_resource type="Script" uid="uid://n3fh2ecx8oeg" path="res://scene/components/interactable_component.gd" id="1_1nwi1"]
+
+[node name="InteractableComponent" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_1nwi1")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

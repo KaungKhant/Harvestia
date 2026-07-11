@@ -1,0 +1,48 @@
+[gd_scene load_steps=10 format=3 uid="uid://buv337t37jnf"]
+
+[ext_resource type="Shader" uid="uid://ogdy8gnqtapr" path="res://scene/objects/trees/tree_shake.gdshader" id="1_f4pa5"]
+[ext_resource type="Texture2D" uid="uid://d4l8egee36lli" path="res://assets/game/Objects/Basic_Grass_Biom_things.png" id="1_ikprh"]
+[ext_resource type="PackedScene" uid="uid://dg8e005hj8y6k" path="res://scene/components/hurt_component.tscn" id="2_8srlo"]
+[ext_resource type="Script" uid="uid://dhtfdvc3uo6yv" path="res://scene/objects/trees/small_tree.gd" id="2_ouqst"]
+[ext_resource type="PackedScene" uid="uid://bclpvokyn22rq" path="res://scene/components/damage_component.tscn" id="4_f4pa5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tq6rr"]
+resource_local_to_scene = true
+shader = ExtResource("1_f4pa5")
+shader_parameter/shake_intensity = 0.0
+shader_parameter/shake_speed = 20.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ouqst"]
+atlas = ExtResource("1_ikprh")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ikprh"]
+radius = 5.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7oi7y"]
+size = Vector2(11, 21)
+
+[node name="SmallTree" type="Sprite2D"]
+material = SubResource("ShaderMaterial_tq6rr")
+position = Vector2(0, -11)
+texture = SubResource("AtlasTexture_ouqst")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 32)
+script = ExtResource("2_ouqst")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 7)
+shape = SubResource("CircleShape2D_ikprh")
+
+[node name="HurtComponent" parent="." instance=ExtResource("2_8srlo")]
+tool = 1
+
+[node name="HurtComponentClisionShape2D" type="CollisionShape2D" parent="HurtComponent"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_7oi7y")
+debug_color = Color(0.08849581, 0.62167996, 0.5319849, 0.41960785)
+
+[node name="DamageComponent" parent="." instance=ExtResource("4_f4pa5")]
+max_damage = 3

@@ -1,0 +1,53 @@
+[gd_scene load_steps=5 format=3 uid="uid://4sfjx6p0sxj8"]
+
+[ext_resource type="FontFile" uid="uid://cwc2vg6qvhch7" path="res://assets/ui/fonts/Changa_One/ChangaOne-Italic.ttf" id="1_7vrkn"]
+[ext_resource type="Script" uid="uid://bncubbdgq23ly" path="res://main_menu.gd" id="1_fu7sn"]
+[ext_resource type="FontVariation" uid="uid://dtkipuriu336c" path="res://assets/ui/fonts/zx_palm_variation.tres" id="2_fu7sn"]
+[ext_resource type="Texture2D" uid="uid://cf1n8m3dccw1o" path="res://assets/game/mainmenu.png" id="4_jix8l"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fu7sn")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 812.0
+offset_bottom = 495.0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -13.0
+offset_top = 1.0
+offset_right = 1907.0
+offset_bottom = 1081.0
+scale = Vector2(0.43, 0.45)
+texture = ExtResource("4_jix8l")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = -1.0
+offset_top = 2.0
+offset_right = 799.0
+offset_bottom = 373.0
+theme_override_fonts/font = ExtResource("1_7vrkn")
+theme_override_font_sizes/font_size = 42
+text = "Welcome to Harvestia"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Play" type="Button" parent="."]
+layout_mode = 0
+offset_left = 321.0
+offset_top = 302.0
+offset_right = 470.0
+offset_bottom = 359.0
+theme_override_fonts/font = ExtResource("2_fu7sn")
+text = "Play"
+
+[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]

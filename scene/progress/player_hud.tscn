@@ -1,0 +1,42 @@
+[gd_scene load_steps=2 format=3 uid="uid://cg5jte5gcuvim"]
+
+[ext_resource type="Script" uid="uid://bx6k8tqasd0op" path="res://scripts/ui/player_hud.gd" id="1_p7awb"]
+
+[node name="PlayerHUD" type="CanvasLayer"]
+script = ExtResource("1_p7awb")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="LevelLabel" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Level: 1"
+
+[node name="ExpBar" type="ProgressBar" parent="MarginContainer/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(180, 14)
+layout_mode = 2
+show_percentage = false
+
+[node name="ExpLabel" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "EXP: 0/'100"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="GoldText" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Gold:"
+
+[node name="GoldLabel" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "0"

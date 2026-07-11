@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://b2kgbb33mb67v"]
+
+[ext_resource type="Script" uid="uid://cvrf63qrjxmk4" path="res://scripts/ui/level_up_popup.gd" id="1_ir7yj"]
+
+[node name="LevelUpPopup" type="CanvasLayer"]
+visible = false
+script = ExtResource("1_ir7yj")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "LEVEL UP!"
+
+[node name="LevelLabel" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Level 2"

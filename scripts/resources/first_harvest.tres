@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="QuestData" load_steps=2 format=3 uid="uid://q832bun14t47"]
+
+[ext_resource type="Script" uid="uid://6n4u527vyey0" path="res://scripts/resources/quest_data..gd" id="1_w3gla"]
+
+[resource]
+script = ExtResource("1_w3gla")
+quest_id = "first_harvest"
+quest_name = "First Harvest"
+description = "Collect 5 Corn for the Guide."
+target_item = "corn"
+target_amount = 5
+reward_exp = 50
+reward_gold = 100
+start_dialogue = "start"
+progress_dialogue = "progress"
+complete_dialogue = "complete"
+next_quest = "feeding_animals"
+metadata/_custom_type_script = "uid://6n4u527vyey0"
