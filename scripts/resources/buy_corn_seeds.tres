@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="QuestData" load_steps=3 format=3 uid="uid://rbsenf44mllf"]
+
+[ext_resource type="Script" uid="uid://6n4u527vyey0" path="res://scripts/resources/quest_data..gd" id="1_31ry2"]
+[ext_resource type="Resource" uid="uid://cecb5oie6mkum" path="res://Dialog/Guide/buy_corn_seeds.dialogue" id="1_dlp62"]
+
+[resource]
+script = ExtResource("1_31ry2")
+quest_id = "buy_corn_seeds"
+quest_name = "A New Beginning"
+description = "Buy 5 Corn Seeds ."
+target_item = "corn"
+target_amount = 5
+reward_exp = 20
+dialogue_file = ExtResource("1_dlp62")
+next_quest = "first_harvest"
+consume_items = false
+metadata/_custom_type_script = "uid://6n4u527vyey0"

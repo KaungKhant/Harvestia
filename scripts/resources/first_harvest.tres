@@ -1,18 +1,17 @@
-[gd_resource type="Resource" script_class="QuestData" load_steps=2 format=3 uid="uid://q832bun14t47"]
+[gd_resource type="Resource" script_class="QuestData" load_steps=3 format=3 uid="uid://q832bun14t47"]
 
+[ext_resource type="Resource" uid="uid://bcq2gf5ibv6qk" path="res://Dialog/Guide/first_harvest.dialogue" id="1_ulmtk"]
 [ext_resource type="Script" uid="uid://6n4u527vyey0" path="res://scripts/resources/quest_data..gd" id="1_w3gla"]
 
 [resource]
 script = ExtResource("1_w3gla")
 quest_id = "first_harvest"
-quest_name = "First Harvest"
-description = "Collect 5 Corn for the Guide."
+quest_name = "The First Harvest"
+description = "Harvest 5 Corn."
 target_item = "corn"
 target_amount = 5
 reward_exp = 50
 reward_gold = 100
-start_dialogue = "start"
-progress_dialogue = "progress"
-complete_dialogue = "complete"
-next_quest = "feeding_animals"
+dialogue_file = ExtResource("1_ulmtk")
+next_quest = "fresh_opportunities"
 metadata/_custom_type_script = "uid://6n4u527vyey0"

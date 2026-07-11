@@ -1,0 +1,35 @@
+~ start
+
+Nyan: It's time to grow your first crop.
+Nyan: Harvest 5 Corn and bring them back to me.
+
+=> END
+
+
+~ progress
+
+Nyan: Keep going!
+Nyan: I need 5 Corn before we can continue restoring Harvestia.
+
+=> END
+
+
+~ turn_in
+
+Nyan: Wonderful work!
+
+do QuestManager.try_complete_quest()
+
+Nyan: These Corn will keep our animals fed.
+
+Nyan: Here is your reward.
+
+=> END
+
+
+~ completed
+
+Nyan: Thanks again.
+Nyan: We can now move on to the next task.
+
+=> END

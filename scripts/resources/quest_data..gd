@@ -11,8 +11,8 @@ extends Resource
 @export var reward_exp : int
 @export var reward_gold : int
 
-@export var start_dialogue : String
-@export var progress_dialogue : String
-@export var complete_dialogue : String
+@export var dialogue_file : DialogueResource
 
 @export var next_quest : String
+
+@export var consume_items : bool = true

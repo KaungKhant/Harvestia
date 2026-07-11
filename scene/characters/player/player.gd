@@ -10,7 +10,7 @@ var player_direction: Vector2
 func _ready() -> void:
 	# Listen to the global ToolManager's signal
 	ToolManager.tool_selected.connect(_on_tool_selected)
-	PlayerProgressManager.add_gold(250)
+	#PlayerProgressManager.add_gold(250)
 	
 	await get_tree().create_timer(1.0).timeout
 	NotificationManager.show("Welcome to Harvestia!")

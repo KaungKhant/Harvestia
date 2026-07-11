@@ -20,6 +20,9 @@ func _ready() -> void:
 	InventoryManager.inventory_changed.connect(on_inventory_changed)
 	
 	# Initial lock states for progression tools
+	# Axe starts locked
+	tool_axe.disabled = true
+	tool_axe.focus_mode = Control.FOCUS_NONE
 	tool_tilling.disabled = true
 	tool_tilling.focus_mode = Control.FOCUS_NONE
 	tool_watering.disabled = true
@@ -117,6 +120,9 @@ func _unhandled_input(event: InputEvent) -> void:
 			if btn: btn.release_focus()
 
 func on_enable_tool_button(tool: DataTypes.Tools) -> void:
+	if tool == DataTypes.Tools.AxeWood:
+		tool_axe.disabled = false
+		tool_axe.focus_mode = Control.FOCUS_ALL
 	if tool == DataTypes.Tools.TillGround:
 		tool_tilling.disabled = false
 		tool_tilling.focus_mode = Control.FOCUS_ALL

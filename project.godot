@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="2d farming "
+config/name="2d farming"
 run/main_scene="res://scene/test/test_tilemap.tscn"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
@@ -25,7 +25,6 @@ GameDialogueManager="*res://scripts/globals/game_dialogue_manager.gd"
 PlayerProgressManager="*res://scripts/globals/player_progress_manager.gd"
 NotificationManager="*res://scripts/globals/notification_manager.gd"
 QuestManager="*res://scripts/globals/quest_manager.gd"
-StageManager="*res://stage_manager.tscn"
 
 [display]
 
@@ -107,7 +106,7 @@ show_dialogue={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://Dialog/Conversation/guide.dialogue", "res://Dialog/Conversation/chest.dialogue", "res://Dialog/Conversation/seedshop.dialogue")
+locale/translations_pot_files=PackedStringArray("res://Dialog/Conversation/guide.dialogue", "res://Dialog/Conversation/chest.dialogue", "res://Dialog/Conversation/seedshop.dialogue", "res://Dialog/Guide/intro.dialogue", "res://Dialog/Guide/buy_corn_seeds.dialogue", "res://Dialog/Guide/first_harvest.dialogue")
 
 [layer_names]
 

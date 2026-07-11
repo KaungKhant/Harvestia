@@ -27,8 +27,8 @@ func on_quest_started(quest: QuestData) -> void:
 		"stone":
 			icon = "🪨"
 
-	quest_name.text = icon + " " + quest.quest_name
-	description.text = quest.description
+	quest_name.text = icon + " " + quest.description
+	description.text = quest.quest_name
 
 	update_progress(0, quest.target_amount)
 

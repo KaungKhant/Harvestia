@@ -1,0 +1,41 @@
+~ start
+
+Nyan: Welcome back.
+Nyan: You should visit the Seed Shop and buy 5 Corn Seeds.
+
+=> END
+
+
+~ progress
+
+Nyan: The Seed Shop is nearby.
+Nyan: Buy 5 Corn Seeds and come back to me.
+
+=> END
+
+
+~ turn_in
+
+Nyan: Excellent!
+Nyan: You bought the Corn Seeds.
+
+do QuestManager.try_complete_quest()
+
+Nyan: Now I'll teach you how to farm.
+
+do GameDialogueManager.action_teach_farming()
+
+Nyan: First, till the soil.
+Nyan: Then plant the Corn Seeds.
+Nyan: Finally, water them every day.
+
+do QuestManager.start_quest("first_harvest")
+
+=> END
+
+
+~ completed
+
+Nyan: Good luck with your first harvest!
+
+=> END

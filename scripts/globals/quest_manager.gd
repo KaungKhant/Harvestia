@@ -60,18 +60,17 @@ func get_dialogue_label() -> String:
 		return "start"
 
 	match current_state:
-
 		QuestState.NOT_STARTED:
-			return current_quest.start_dialogue
+			return "start"
 
 		QuestState.IN_PROGRESS:
-			return current_quest.progress_dialogue
+			return "progress"
 
 		QuestState.READY_TO_TURN_IN:
 			return "turn_in"
 
 		QuestState.COMPLETED:
-			return current_quest.complete_dialogue
+			return "completed"
 
 	return "start"
 	
@@ -108,8 +107,9 @@ func try_complete_quest() -> bool:
 	if !InventoryManager.has_item(current_quest.target_item, current_quest.target_amount):
 		return true
 
-	# Remove items from inventory
-	InventoryManager.remove_item_stack(
+	# Remove items only if this quest consumes them
+	if current_quest.consume_items:
+		InventoryManager.remove_item_stack(
 		current_quest.target_item,
 		current_quest.target_amount
 	)
@@ -122,12 +122,15 @@ func try_complete_quest() -> bool:
 	PlayerProgressManager.add_exp(current_quest.reward_exp)
 	PlayerProgressManager.add_gold(current_quest.reward_gold)
 
+	# Keep a reference before changing anything
+	var finished_quest := current_quest
+
 	# Finish quest
 	current_state = QuestState.COMPLETED
 
 	NotificationManager.show("Quest Complete!")
 
-	quest_completed.emit(current_quest)
+	quest_completed.emit(finished_quest)
 
 	return true
 
