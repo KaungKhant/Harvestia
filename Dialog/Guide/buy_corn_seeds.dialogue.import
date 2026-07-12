@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://b8puoafpaynyf"
+path="res://.godot/imported/buy_corn_seeds.dialogue-e46f7721b78df230d24c38c2919060ef.tres"
+
+[deps]
+
+source_file="res://Dialog/Guide/buy_corn_seeds.dialogue"
+dest_files=["res://.godot/imported/buy_corn_seeds.dialogue-e46f7721b78df230d24c38c2919060ef.tres"]
+
+[params]
+
+defaults=true
