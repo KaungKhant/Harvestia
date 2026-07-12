@@ -1111,7 +1111,6 @@ position = Vector2(405, 108)
 dialogue_start_command = "start_shop"
 
 [node name="GameNotification" parent="." instance=ExtResource("37_5furt")]
-visible = true
 
 [node name="ChickenBox" parent="." instance=ExtResource("38_hrbdo")]
 position = Vector2(379, 209)
