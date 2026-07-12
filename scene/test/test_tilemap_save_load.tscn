@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=4 uid="uid://bvkwg4jgnkmuf"]
+[gd_scene load_steps=87 format=4 uid="uid://bvkwg4jgnkmuf"]
 
 [ext_resource type="Texture2D" uid="uid://dibl8w1txfm4" path="res://assets/game/Tilesets/Water.png" id="1_hjlx7"]
 [ext_resource type="PackedScene" uid="uid://cugdxyqvq2u2o" path="res://scene/components/test_scene_save_data_manager_component.tscn" id="1_ht70e"]
@@ -33,8 +33,17 @@
 [ext_resource type="PackedScene" uid="uid://230kmok5s7ft" path="res://scene/characters/chicken/chicken.tscn" id="28_lpkav"]
 [ext_resource type="PackedScene" uid="uid://1dkjt1xi1b1k" path="res://scene/characters/cow/cow.tscn" id="29_d304y"]
 [ext_resource type="PackedScene" uid="uid://cg5jte5gcuvim" path="res://scene/progress/player_hud.tscn" id="30_r6jhn"]
+[ext_resource type="PackedScene" uid="uid://buvrbla3ymun3" path="res://scene/progress/quest_tracker.tscn" id="31_hrbdo"]
 [ext_resource type="PackedScene" uid="uid://dfi5u2g400moa" path="res://scene/components/save_level_data_component.tscn" id="31_iv8qn"]
 [ext_resource type="Script" uid="uid://cag743qkp4uoh" path="res://scene/components/save_level_data_component.gd" id="32_4ftf6"]
+[ext_resource type="PackedScene" uid="uid://b7hedi0atmi4m" path="res://scene/objects/chest/seedshop.tscn" id="36_1gdod"]
+[ext_resource type="PackedScene" uid="uid://dnd41d0l7r5bq" path="res://scene/progress/game_notification.tscn" id="37_5furt"]
+[ext_resource type="PackedScene" uid="uid://bwxy2wsdkyde5" path="res://scene/objects/chest/chest.tscn" id="38_hrbdo"]
+[ext_resource type="PackedScene" uid="uid://dcpi0nt4wtc6y" path="res://scene/objects/chest/chest_cow.tscn" id="39_ace3k"]
+[ext_resource type="Script" uid="uid://caso18utihc3a" path="res://scene/ui/forest_blocker.gd" id="40_8iacd"]
+[ext_resource type="PackedScene" uid="uid://s758njtqgm8f" path="res://scene/characters/guide/forest_ranger.tscn" id="41_uhfq1"]
+[ext_resource type="PackedScene" uid="uid://gtlq08uu7q4e" path="res://audio/music/on_the_farm_music.tscn" id="42_7hcqr"]
+[ext_resource type="Script" uid="uid://cd8nou7v238tu" path="res://scene/test/canvas_layer.gd" id="43_wk4d7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fimq1"]
 texture = ExtResource("1_hjlx7")
@@ -897,6 +906,9 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(447, 106, 447, 172, 325, 166, 324, 103)])
 source_geometry_mode = 2
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a38x2"]
+size = Vector2(80, 25)
+
 [node name="Game" type="Node2D"]
 
 [node name="TestSceneSaveDataManagerComponent" parent="." instance=ExtResource("1_ht70e")]
@@ -1045,6 +1057,8 @@ position = Vector2(304, 206)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 
+[node name="QuestTracker" parent="Player" instance=ExtResource("31_hrbdo")]
+
 [node name="GameScreen" parent="." instance=ExtResource("26_6gotg")]
 
 [node name="DayAndNightCycleComponent" parent="." instance=ExtResource("27_k3d65")]
@@ -1091,3 +1105,48 @@ position = Vector2(487, 284)
 position = Vector2(472, 312)
 
 [node name="PlayerHUD" parent="." instance=ExtResource("30_r6jhn")]
+
+[node name="SeedShop" parent="." instance=ExtResource("36_1gdod")]
+position = Vector2(405, 108)
+dialogue_start_command = "start_shop"
+
+[node name="GameNotification" parent="." instance=ExtResource("37_5furt")]
+visible = true
+
+[node name="ChickenBox" parent="." instance=ExtResource("38_hrbdo")]
+position = Vector2(379, 209)
+dialogue_start_command = "start_chicken_pasture_box"
+
+[node name="ChestCow" parent="." instance=ExtResource("39_ace3k")]
+position = Vector2(380, 266)
+dialogue_start_command = "start_cow_pasture_box"
+
+[node name="ForestBlocker" type="StaticBody2D" parent="."]
+script = ExtResource("40_8iacd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ForestBlocker"]
+position = Vector2(134, 189)
+shape = SubResource("RectangleShape2D_a38x2")
+
+[node name="forest_ranger" parent="." instance=ExtResource("41_uhfq1")]
+position = Vector2(181, 174)
+
+[node name="OnTheFarmMusic" parent="." instance=ExtResource("42_7hcqr")]
+autoplay = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("43_wk4d7")
+
+[node name="HSlider" type="HSlider" parent="CanvasLayer"]
+custom_minimum_size = Vector2(80, 40)
+offset_left = 10.0
+offset_top = 450.0
+offset_right = 90.0
+offset_bottom = 490.0
+value = 100.0
+metadata/_edit_use_anchors_ = true
+
+[node name="OnTheFarmMusic" parent="CanvasLayer" instance=ExtResource("42_7hcqr")]
+autoplay = true
+
+[connection signal="value_changed" from="CanvasLayer/HSlider" to="CanvasLayer" method="_on_h_slider_value_changed"]
