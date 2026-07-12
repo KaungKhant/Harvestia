@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=4 uid="uid://ct6eqbnlcxdqv"]
+[gd_scene load_steps=72 format=4 uid="uid://ct6eqbnlcxdqv"]
 
 [ext_resource type="Texture2D" uid="uid://dibl8w1txfm4" path="res://assets/game/Tilesets/Water.png" id="1_1x4tc"]
 [ext_resource type="Texture2D" uid="uid://cqe2tosf7emuo" path="res://assets/game/Tilesets/Water Foam.png" id="2_w6rtm"]
@@ -30,7 +30,6 @@
 [ext_resource type="PackedScene" uid="uid://230kmok5s7ft" path="res://scene/characters/chicken/chicken.tscn" id="27_5mpgy"]
 [ext_resource type="PackedScene" uid="uid://1dkjt1xi1b1k" path="res://scene/characters/cow/cow.tscn" id="28_x68d0"]
 [ext_resource type="PackedScene" uid="uid://cg5jte5gcuvim" path="res://scene/progress/player_hud.tscn" id="30_qq4tq"]
-[ext_resource type="PackedScene" uid="uid://b2kgbb33mb67v" path="res://scene/progress/level_up_popup.tscn" id="31_uf8jx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fimq1"]
 texture = ExtResource("1_1x4tc")
@@ -1079,5 +1078,3 @@ position = Vector2(487, 284)
 position = Vector2(472, 312)
 
 [node name="PlayerHUD" parent="." instance=ExtResource("30_qq4tq")]
-
-[node name="LevelUpPopup" parent="." instance=ExtResource("31_uf8jx")]

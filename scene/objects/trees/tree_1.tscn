@@ -1,10 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://bajv637y4ujir"]
+[gd_scene load_steps=12 format=3 uid="uid://bajv637y4ujir"]
 
 [ext_resource type="Shader" uid="uid://ogdy8gnqtapr" path="res://scene/objects/trees/tree_shake.gdshader" id="1_y385u"]
 [ext_resource type="Texture2D" uid="uid://d5kgh3akq7f4" path="res://assets/game/Objects/Tree1.png" id="2_y385u"]
 [ext_resource type="Script" uid="uid://dhtfdvc3uo6yv" path="res://scene/objects/trees/small_tree.gd" id="3_4teta"]
 [ext_resource type="PackedScene" uid="uid://dg8e005hj8y6k" path="res://scene/components/hurt_component.tscn" id="4_pvi0p"]
 [ext_resource type="PackedScene" uid="uid://bclpvokyn22rq" path="res://scene/components/damage_component.tscn" id="5_3v5bt"]
+[ext_resource type="PackedScene" uid="uid://bitwqob65vm4g" path="res://scene/components/save_data_component.tscn" id="6_4teta"]
+[ext_resource type="Resource" uid="uid://cugtp1ypwv0jc" path="res://resources/tree_data _resource.tres" id="7_pvi0p"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tq6rr"]
 resource_local_to_scene = true
@@ -32,6 +34,7 @@ script = ExtResource("3_4teta")
 log_drop_amount = 10
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+scale = Vector2(1.0000001, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(-0.39403582, 75.17391)
@@ -49,3 +52,6 @@ debug_color = Color(0.08849581, 0.62167996, 0.5319849, 0.41960785)
 [node name="DamageComponent" parent="." instance=ExtResource("5_3v5bt")]
 position = Vector2(-249.42714, 32.217392)
 max_damage = 5
+
+[node name="SaveDataComponent" parent="." instance=ExtResource("6_4teta")]
+save_data_resource = ExtResource("7_pvi0p")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bucojib7x2bvp"]
+[gd_scene load_steps=10 format=3 uid="uid://bucojib7x2bvp"]
 
 [ext_resource type="Script" uid="uid://um3lfvxf1tg3" path="res://scene/objects/plants/tomato.gd" id="1_bp8oh"]
 [ext_resource type="Texture2D" uid="uid://drp8itt24qjoj" path="res://assets/game/Objects/Basic Plants.png" id="2_n86x2"]
@@ -6,12 +6,17 @@
 [ext_resource type="PackedScene" uid="uid://bq7ugm3u8d875" path="res://scene/objects/plants/flowering_particles.tscn" id="4_s4cof"]
 [ext_resource type="PackedScene" uid="uid://bgm11vdxjvqrt" path="res://scene/objects/plants/growth_cycle_components.tscn" id="5_whogs"]
 [ext_resource type="PackedScene" uid="uid://dg8e005hj8y6k" path="res://scene/components/hurt_component.tscn" id="6_syd7w"]
+[ext_resource type="PackedScene" uid="uid://bitwqob65vm4g" path="res://scene/components/save_data_component.tscn" id="7_fmd12"]
+[ext_resource type="Resource" uid="uid://c2e2l031uqq8e" path="res://resources/crop_data_resource.tres" id="8_fmd12"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2y6ov"]
 size = Vector2(14, 7)
 
 [node name="Tomato" type="Node2D"]
 script = ExtResource("1_bp8oh")
+
+[node name="SaveDataComponent" parent="." instance=ExtResource("7_fmd12")]
+save_data_resource = ExtResource("8_fmd12")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -4)

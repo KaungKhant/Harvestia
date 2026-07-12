@@ -201,6 +201,3 @@ ToolButton/styles/focus = SubResource("StyleBoxTexture_h70mn")
 ToolButton/styles/hover = SubResource("StyleBoxTexture_7bnte")
 ToolButton/styles/normal = SubResource("StyleBoxTexture_h45om")
 ToolButton/styles/pressed = SubResource("StyleBoxTexture_6h4aa")
-ToolLabel/base_type = &"Label"
-ToolLabel/font_sizes/font_size = 10
-ToolLabel/fonts/font = ExtResource("2_c52pb")

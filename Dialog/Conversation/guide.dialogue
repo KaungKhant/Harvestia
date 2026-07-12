@@ -1,50 +1,13 @@
 ~ start
-
 Nyan: [[Hi|Hello|Howdy]], nice to meet you.
 Nyan: Welcome to your new farm.
-Nyan: As you can see, the cows and chickens are hungry.
-Nyan: We need to grow some crops before we can feed them again.
-Nyan: But first, you'll need some Corn Seeds.
-Nyan: The Seed Shop nearby still has some in stock.
-
-- Take 125 Gold
-    Teemo: Thank you! I'll buy some Corn Seeds.
-    do PlayerProgressManager.add_gold(125)
-    do QuestManager.start_quest("buy_corn_seeds")
-
-- Maybe later
-    Teemo: I'll come back when I'm ready.
-
-=> END
-~ progress
-
-Nyan: The Seed Shop is nearby.
-Nyan: Buy 5 Corn Seeds and come back to me.
-
-=> END
-
-
-~ turn_in
-
-Nyan: Excellent!
-Nyan: You bought everything you need.
-
-do QuestManager.try_complete_quest()
-
-Nyan: Now I'll teach you the basics of farming.
-
-do GameDialogueManager.action_teach_farming()
-
-do QuestManager.start_quest("first_harvest")
-
-Nyan: Your first task is simple.
-Nyan: Harvest 5 Corn and bring them to me.
-
-=> END
-
-
-~ completed
-
-Nyan: Good work, farmer.
+Nyan: As you can see the cows and chickens are hungry.
+Nyan: You need to grow some crops to feed them.
+Nyan: Here are some seeds to grow some crops.
+- Take crop seeds
+	Teemo: Yeah I can grow crops.
+	do GameDialogueManager.action_give_crop_seeds()
+- No, I don't want them
+	Teemo: I'm not ready to grow my farm yet.
 
 => END

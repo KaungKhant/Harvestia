@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=3 uid="uid://baobhkkvmt1nd"]
+[gd_scene load_steps=92 format=3 uid="uid://baobhkkvmt1nd"]
 
 [ext_resource type="Script" uid="uid://uyqo7sfb2quo" path="res://scene/characters/player/player.gd" id="1_v7krq"]
 [ext_resource type="Texture2D" uid="uid://cdoabfgwo328b" path="res://assets/game/Characters/axev3.png" id="2_bx1cu"]
@@ -25,7 +25,8 @@
 [ext_resource type="Texture2D" uid="uid://c7y153kdf4ogc" path="res://assets/game/Characters/44.png" id="14_w36fw"]
 [ext_resource type="Script" uid="uid://cc6kdljo1ch1j" path="res://scene/characters/player/mining_state.gd" id="18_or6p2"]
 [ext_resource type="Script" uid="uid://deioab4bkxcyw" path="res://scene/characters/player/cutting_state.gd" id="19_ojgml"]
-[ext_resource type="AudioStream" uid="uid://dxfeqmv47qj0c" path="res://audio/sfx/footstep02.ogg" id="26_w5oub"]
+[ext_resource type="PackedScene" uid="uid://bitwqob65vm4g" path="res://scene/components/save_data_component.tscn" id="26_w36fw"]
+[ext_resource type="Resource" uid="uid://cah1hw03483ak" path="res://resources/player_data_resource.tres" id="27_w36fw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uqeln"]
 atlas = ExtResource("2_o7jhj")
@@ -615,6 +616,9 @@ collision_layer = 2
 script = ExtResource("1_v7krq")
 current_tool = 1
 
+[node name="SaveDataComponent" parent="." instance=ExtResource("26_w36fw")]
+save_data_resource = ExtResource("27_w36fw")
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-0.24836081, -7.5540433)
 scale = Vector2(0.172, 0.099)
@@ -676,7 +680,3 @@ hit_component_collision_shape = NodePath("../../HitComponent/HitComponentCollisi
 position = Vector2(13, -2)
 shape = SubResource("CircleShape2D_8gxq7")
 debug_color = Color(0.866263, 0.353089, 0.109067, 0.419608)
-
-[node name="Footstep" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("26_w5oub")
-bus = &"SFX"

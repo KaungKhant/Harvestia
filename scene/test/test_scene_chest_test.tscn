@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://eg14o7fh7xdu"]
+[gd_scene load_steps=17 format=4 uid="uid://eg14o7fh7xdu"]
 
 [ext_resource type="TileSet" uid="uid://dhheyesq1lvuw" path="res://tilesets/gametilesets.tres" id="1_vnh75"]
 [ext_resource type="Texture2D" uid="uid://coqv7ggy8jmxj" path="res://assets/game/Objects/Basic_Plants.png" id="2_2f66t"]
@@ -9,9 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://dqkphh5iahe3s" path="res://scene/ui/game_screen.tscn" id="6_icekr"]
 [ext_resource type="PackedScene" uid="uid://cnycwk4stlfnv" path="res://scene/objects/plants/tomato_harvest.tscn" id="6_x7rfa"]
 [ext_resource type="PackedScene" uid="uid://bwxy2wsdkyde5" path="res://scene/objects/chest/chest.tscn" id="7_n5elt"]
-[ext_resource type="Script" uid="uid://devf3e2bmk81m" path="res://scene/objects/chest/chest_cow.gd" id="8_2f66t"]
-[ext_resource type="PackedScene" uid="uid://b7hedi0atmi4m" path="res://scene/objects/chest/seedshop.tscn" id="12_2f66t"]
-[ext_resource type="PackedScene" uid="uid://cg5jte5gcuvim" path="res://scene/progress/player_hud.tscn" id="13_864xq"]
+[ext_resource type="PackedScene" uid="uid://d4a6xts2w26o4" path="res://scene/objects/milk.tscn" id="8_vnh75"]
+[ext_resource type="PackedScene" uid="uid://bypjijn48se8m" path="res://scene/objects/egg.tscn" id="9_2f66t"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i1t3w"]
 texture = ExtResource("2_2f66t")
@@ -120,21 +119,16 @@ position = Vector2(167, 240)
 
 [node name="CowPastureBox" parent="." instance=ExtResource("7_n5elt")]
 position = Vector2(154, 100)
-script = ExtResource("8_2f66t")
 dialogue_start_command = "start_cow_pasture_box"
+output_reward_scenes = Array[PackedScene]([ExtResource("8_vnh75")])
 
 [node name="ChickenPastureBox" parent="." instance=ExtResource("7_n5elt")]
 position = Vector2(254, 107)
 dialogue_start_command = "start_chicken_pasture_box"
+output_reward_scenes = Array[PackedScene]([ExtResource("9_2f66t")])
 
 [node name="Player" parent="." instance=ExtResource("5_5b7kv")]
 position = Vector2(126, 168)
-current_tool = 0
+current_tool = 3
 
 [node name="GameScreen" parent="." instance=ExtResource("6_icekr")]
-
-[node name="SeedShop" parent="." instance=ExtResource("12_2f66t")]
-position = Vector2(380, 76)
-dialogue_start_command = "start_shop"
-
-[node name="PlayerHUD" parent="." instance=ExtResource("13_864xq")]

@@ -17,19 +17,23 @@ var growth_progress: int = 0
 func _ready() -> void:
  DayAndNightCycleManager.time_tick_day.connect(on_time_tick_day)
 
+var just_loaded := false
+var harvested := false
 
 func on_time_tick_day(day: int) -> void:
- if is_watered:
-  if starting_day == 0:
-   starting_day = day
-  
- 
-  growth_progress += 4
-  
-  growth_states()
-  harvest_state()
+    if just_loaded:
+        just_loaded = false
+        return
 
+    if !is_watered:
+        return
 
+    if starting_day == 0:
+        starting_day = day
+
+    growth_progress += 4
+    growth_states()
+    harvest_state()   
 func growth_states() -> void:
  if current_growth_state == DataTypes.GrowthStates.Maturity:
   return
@@ -52,14 +56,16 @@ func growth_states() -> void:
 
 
 func harvest_state() -> void:
- if current_growth_state == DataTypes.GrowthStates.Harvesting:
-  return
- 
- # Since progress goes up by 2 per day, it hits a target of 8 in exactly 4 days.
- if growth_progress >= days_until_harvest:
-  current_growth_state = DataTypes.GrowthStates.Harvesting
-  crop_harvesting.emit()
+    if harvested:
+        return
 
+    if growth_progress >= days_until_harvest:
+        harvested = true
+        current_growth_state = DataTypes.GrowthStates.Harvesting
+        crop_harvesting.emit()
 
 func get_current_growth_state() -> DataTypes.GrowthStates:
  return current_growth_state
+func stop_growth():
+    if DayAndNightCycleManager.time_tick_day.is_connected(on_time_tick_day):
+        DayAndNightCycleManager.time_tick_day.disconnect(on_time_tick_day)

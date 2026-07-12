@@ -1,12 +1,14 @@
 extends Node2D
 
 var balloon_scene = preload("res://Dialog/game_dialogue_balloon.tscn")
-# Ensure this path matches your actual egg scene file
-var egg_reward_scene = preload("res://scene/objects/egg.tscn")
+
+var corn_harvest_scene = preload("res://scene/objects/plants/corn_harvest.tscn")
+var tomato_harvest_scene = preload("res://scene/objects/plants/tomato_harvest.tscn")
 
 @export var dialogue_start_command: String
 @export var food_drop_height: int = 40
 @export var reward_output_radius: int = 20
+@export var output_reward_scenes: Array[PackedScene] = []
 
 @onready var interactable_component: InteractableComponent = $InteractableComponent
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
@@ -22,12 +24,13 @@ func _ready() -> void:
 	interactable_component.interactable_deactivated.connect(on_interactable_deactivated)
 	interactable_label_component.hide()
 	
-	GameDialogueManager.feed_the_animals.connect(on_feed_the_animals_chicken)
+	GameDialogueManager.feed_the_animals.connect(on_feed_the_animals)
 	feed_component.food_received.connect(on_food_received)
 
 func on_interactable_activated() -> void:
 	interactable_label_component.show()
 	in_range = true
+
 
 func on_interactable_deactivated() -> void:
 	if is_chest_open:
@@ -44,45 +47,58 @@ func _unhandled_input(event: InputEvent) -> void:
 			animated_sprite_2d.play("chest_open")
 			is_chest_open = true
 			
+			#create some dialogue
 			var balloon: BaseGameDialogueBalloon = balloon_scene.instantiate()
 			get_tree().current_scene.add_child(balloon)
-			balloon.start(load("res://Dialog/Conversation/chest.dialogue"), dialogue_start_command)
+			balloon.start(load("res://Dialog/Conversation/chest.dialogue"),dialogue_start_command)
+			#need to do some codes tutorial 7:05
 
-func on_feed_the_animals_chicken() -> void:
+func on_feed_the_animals() -> void:
 	if in_range:
-		var inventory: Dictionary = InventoryManager.inventory
-		
-		# Only process if player has at least 2 corn
-		if inventory.get("corn", 0) >= 2:
-			process_corn_to_eggs()
-		else:
-			# Trigger the "not enough" dialogue from your file
-			var balloon: BaseGameDialogueBalloon = balloon_scene.instantiate()
-			get_tree().current_scene.add_child(balloon)
-			balloon.start(load("res://Dialog/Conversation/chest.dialogue"), "not_enough_corn")
+		trigger_feed_harvest("corn", corn_harvest_scene)
+		trigger_feed_harvest("tomato", tomato_harvest_scene)
 
-func process_corn_to_eggs() -> void:
-	# 1. Remove exactly 2 corn from the inventory
-	for i in range(2):
-		InventoryManager.remove_collectable("corn")
+func trigger_feed_harvest(inventory_item:String, scene: Resource) -> void:
+	var inventory: Dictionary = InventoryManager.inventory
 	
-	# 2. Spawn exactly 4 eggs
-	for i in range(4):
-		var reward_instance = egg_reward_scene.instantiate() as Node2D
-		reward_instance.global_position = get_random_position_in_circle(reward_marker.global_position, reward_output_radius)
-		get_tree().root.add_child(reward_instance)
+	if !inventory.has(inventory_item):
+		return
+	
+	var inventory_item_count = inventory[inventory_item]
+	
+	for index in inventory_item_count:
+		var harvest_instance = scene.instantiate() as Node2D
+		harvest_instance.global_position = Vector2(global_position.x, global_position.y - food_drop_height)
+		get_tree().root.add_child(harvest_instance)
+		var target_position = global_position
 		
-		# Small delay between each egg spawn
-		await get_tree().create_timer(0.1).timeout
+		var time_delay = randf_range(0.5, 2.0)
+		await get_tree().create_timer(time_delay).timeout
+		
+		var tween = get_tree().create_tween()
+		tween.tween_property(harvest_instance, "position", target_position, 1.0)
+		tween.tween_property(harvest_instance, "scale", Vector2(0.5, 0.5), 1.0)
+		tween.tween_callback(harvest_instance.queue_free)
+		
+		InventoryManager.remove_collectable(inventory_item)
 
 func on_food_received(area: Area2D) -> void:
-	pass
+	call_deferred("add_reward_scene")
+
+func add_reward_scene() ->void:
+	for scene in output_reward_scenes:
+		var reward_scene: Node2D = scene.instantiate()
+		var reward_position: Vector2 = get_random_position_in_circle(reward_marker.global_position, reward_output_radius)
+		reward_scene.global_position = reward_position
+		get_tree().root.add_child(reward_scene)
+		#calculate the position for reward
 
 func get_random_position_in_circle(center: Vector2, radius: int) -> Vector2i:
 	var angle = randf() * TAU
+	
 	var distance_from_center = sqrt(randf()) * radius
 	
 	var x: int = center.x + distance_from_center * cos(angle)
-	var y: int = center.y + distance_from_center * sin(angle)
+	var y: int = center.y + distance_from_center * cos(angle)
 	
 	return Vector2i(x, y)

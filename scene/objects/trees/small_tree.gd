@@ -7,47 +7,69 @@ extends Sprite2D
 @onready var damage_component: DamageComponent = $DamageComponent
 
 var log_scene = preload("res://scene/objects/trees/log.tscn")
+var is_chopped: bool = false
 
 func _ready() -> void:
- hurt_component.hurt.connect(on_hurt)
- damage_component.max_damaged_reached.connect(on_max_damaged_reached)
+  hurt_component.hurt.connect(on_hurt)
+  damage_component.max_damaged_reached.connect(on_max_damaged_reached)
 
 
 func on_hurt(hit_damage: int) -> void:
- damage_component.apply_damage(hit_damage)
+  # Ignore hits if the tree is already chopped down
+  if is_chopped:
+    return
+    
+  damage_component.apply_damage(hit_damage)
  
- # Safety check to prevent crashing if no material/shader is assigned
- if material:
-  material.set_shader_parameter("shake_intensity", 0.5)
-  await get_tree().create_timer(0.2).timeout # Reduced from 1.0 to 0.2 so the tree doesn't shake for too long
-  material.set_shader_parameter("shake_intensity", 0.0)
+  # Safety check to prevent crashing if no material/shader is assigned
+  if material:
+    material.set_shader_parameter("shake_intensity", 0.5)
+    await get_tree().create_timer(0.2).timeout 
+    material.set_shader_parameter("shake_intensity", 0.0)
 
 
 func on_max_damaged_reached() -> void:
- # Call spawning BEFORE queue_free to guarantee we grab the correct coordinates
- add_log_scene()
- print("max damaged reached")
- queue_free()
+  # Prevent this from triggering multiple times
+  if is_chopped:
+    return
+  is_chopped = true
+
+  print("max damaged reached")
+  hide()
+  
+  # Safely disable all components and collisions
+  disable_tree_physics()
+  
+  # Spawn the rewards
+  add_log_scene()
+
+
+func disable_tree_physics() -> void:
+  # 1. Turn off the HurtComponent areas so it stops detecting axe swings
+  hurt_component.set_deferred("monitoring", false)
+  hurt_component.set_deferred("monitorable", false)
+  
+  # 2. Disable the HurtComponent's internal collision shape if it has one
+  var hurt_shape = hurt_component.get_node_or_null("CollisionShape2D")
+  if hurt_shape:
+    hurt_shape.set_deferred("disabled", true)
+
+  # 3. Disable the solid trunk collision so the player can walk through it
+  var trunk_collision = get_node_or_null("StaticBody2D/CollisionShape2D")
+  if trunk_collision:
+    trunk_collision.set_deferred("disabled", true)
 
 
 func add_log_scene() -> void:
- if not log_scene:
-  return
+  if not log_scene:
+    return
   
- # Store the current world position right now before the tree is deleted
- var spawn_origin = global_position
+  var spawn_origin = global_position
+  var world_node = get_tree().current_scene
  
- # Access the main level/world layer so the log isn't bound to the tree's parent offsets
- var world_node = get_tree().current_scene
- 
- for i in range(log_drop_amount):
-  var log_instance = log_scene.instantiate() as Node2D
-  
-  # Give logs a tiny random offset so they don't stack perfectly
-  var random_offset = Vector2(randf_range(-15, 15), randf_range(-15, 15))
-  
-  # Set the position on the instance BEFORE safely deferring its entry into the tree
-  log_instance.global_position = spawn_origin + random_offset
-  
-  # Spawn the log safely after the physics calculation frame finishes
-  world_node.add_child.call_deferred(log_instance)
+  for i in range(log_drop_amount):
+    var log_instance = log_scene.instantiate() as Node2D
+    var random_offset = Vector2(randf_range(-15, 15), randf_range(-15, 15))
+    
+    log_instance.global_position = spawn_origin + random_offset
+    world_node.add_child.call_deferred(log_instance)

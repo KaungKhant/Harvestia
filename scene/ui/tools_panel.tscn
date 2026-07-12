@@ -112,22 +112,6 @@ theme_type_variation = &"ToolButton"
 icon = SubResource("AtlasTexture_7cy8s")
 icon_alignment = 1
 
-[node name="CornLabel" type="Label" parent="MarginContainer/HBoxContainer/Corn"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -9.0
-offset_top = -15.0
-offset_right = -4.0
-offset_bottom = -4.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_type_variation = &"ToolLabel"
-text = "0"
-
 [node name="Tomato" type="Button" parent="MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(26, 26)
 layout_mode = 2
@@ -135,23 +119,5 @@ focus_mode = 0
 theme_type_variation = &"ToolButton"
 icon = SubResource("AtlasTexture_t1mb4")
 icon_alignment = 1
-
-[node name="TomatoLabel" type="Label" parent="MarginContainer/HBoxContainer/Tomato"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -9.0
-offset_top = -15.0
-offset_right = -4.0
-offset_bottom = -4.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_type_variation = &"ToolLabel"
-text = "0"
-horizontal_alignment = 2
-vertical_alignment = 2
 
 [connection signal="pressed" from="MarginContainer/HBoxContainer/ToolAxe" to="." method="_on_tool_axe_pressed"]
