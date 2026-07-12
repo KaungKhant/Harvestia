@@ -17,7 +17,7 @@ func on_quest_started(quest: QuestData) -> void:
 
 	var icon := "•"
 
-	match quest.target_item:
+	match quest.quest_icon:
 		"corn":
 			icon = "🌽"
 		"tomato":
@@ -46,7 +46,7 @@ func update_progress(current: int, target: int) -> void:
 	# Change icon depending on quest item
 	var icon := "•"
 
-	match QuestManager.current_quest.target_item:
+	match QuestManager.current_quest.quest_icon:
 		"corn":
 			icon = "🌽"
 

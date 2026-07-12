@@ -14,9 +14,12 @@ signal quest_completed(quest: QuestData)
 var current_quest: QuestData = null
 var current_state: QuestState = QuestState.NOT_STARTED
 var current_progress: int = 0
-
+var completed_quests: Dictionary = {}
 
 func start_quest_data(quest: QuestData) -> void:
+	
+	print("======================")
+	print("Starting Quest:", quest.quest_id)
 	current_quest = quest
 	current_state = QuestState.IN_PROGRESS
 	current_progress = 0
@@ -131,8 +134,20 @@ func try_complete_quest() -> bool:
 	NotificationManager.show("Quest Complete!")
 
 	quest_completed.emit(finished_quest)
+	completed_quests[finished_quest.quest_id] = true
+	
+	print("Completed:", finished_quest.quest_id)
+	print("Next Quest:", finished_quest.next_quest)
+	
+	# Start the next quest automatically
+	if finished_quest.next_quest != "":
+		start_quest(finished_quest.next_quest)
+		
+	print("start_quest() called")
 
 	return true
 
 func is_ready_to_turn_in() -> bool:
 	return current_state == QuestState.READY_TO_TURN_IN
+func is_quest_completed(quest_id: String) -> bool:
+	return completed_quests.get(quest_id, false)

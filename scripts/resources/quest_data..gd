@@ -6,6 +6,7 @@ extends Resource
 @export_multiline var description : String
 
 @export var target_item : String
+@export var quest_icon : String
 @export var target_amount : int
 
 @export var reward_exp : int

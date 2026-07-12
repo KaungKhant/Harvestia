@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=4 uid="uid://cndg1ve1ggp10"]
+[gd_scene load_steps=81 format=4 uid="uid://cndg1ve1ggp10"]
 
 [ext_resource type="Texture2D" uid="uid://dibl8w1txfm4" path="res://assets/game/Tilesets/Water.png" id="1_fdf7g"]
 [ext_resource type="Texture2D" uid="uid://cqe2tosf7emuo" path="res://assets/game/Tilesets/Water Foam.png" id="2_egi22"]
@@ -36,6 +36,8 @@
 [ext_resource type="PackedScene" uid="uid://dnd41d0l7r5bq" path="res://scene/progress/game_notification.tscn" id="32_i2cep"]
 [ext_resource type="PackedScene" uid="uid://bwxy2wsdkyde5" path="res://scene/objects/chest/chest.tscn" id="35_qwath"]
 [ext_resource type="PackedScene" uid="uid://dcpi0nt4wtc6y" path="res://scene/objects/chest/chest_cow.tscn" id="36_318fa"]
+[ext_resource type="Script" uid="uid://caso18utihc3a" path="res://scene/ui/forest_blocker.gd" id="37_b82rl"]
+[ext_resource type="PackedScene" uid="uid://s758njtqgm8f" path="res://scene/characters/guide/forest_ranger.tscn" id="38_1gx8e"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fimq1"]
 texture = ExtResource("1_fdf7g")
@@ -898,6 +900,9 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(447, 106, 447, 172, 325, 166, 324, 103)])
 source_geometry_mode = 2
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_318fa"]
+size = Vector2(80, 25)
+
 [node name="Game" type="Node2D"]
 
 [node name="Tilemap" type="Node2D" parent="."]
@@ -1101,3 +1106,13 @@ dialogue_start_command = "start_chicken_pasture_box"
 [node name="ChestCow" parent="." instance=ExtResource("36_318fa")]
 position = Vector2(380, 266)
 dialogue_start_command = "start_cow_pasture_box"
+
+[node name="ForestBlocker" type="StaticBody2D" parent="."]
+script = ExtResource("37_b82rl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ForestBlocker"]
+position = Vector2(134, 189)
+shape = SubResource("RectangleShape2D_318fa")
+
+[node name="forest_ranger" parent="." instance=ExtResource("38_1gx8e")]
+position = Vector2(181, 174)

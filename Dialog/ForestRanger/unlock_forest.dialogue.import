@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://bwhwed31t0ppg"
+path="res://.godot/imported/unlock_forest.dialogue-ce231718572781893ace31010f6a5daa.tres"
+
+[deps]
+
+source_file="res://Dialog/ForestRanger/unlock_forest.dialogue"
+dest_files=["res://.godot/imported/unlock_forest.dialogue-ce231718572781893ace31010f6a5daa.tres"]
+
+[params]
+
+defaults=true

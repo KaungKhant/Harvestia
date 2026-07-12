@@ -1,0 +1,31 @@
+~ locked
+
+Forest Ranger: The Guide asked me to guard this bridge.
+
+Forest Ranger: Learn the basics of farming first.
+
+=> END
+
+
+~ unlock
+
+Forest Ranger: Excellent work.
+
+Forest Ranger: The Guide said you've completed your first harvest.
+
+Forest Ranger: You've earned the right to enter the forest.
+
+do GameDialogueManager.action_unlock_forest()
+
+Forest Ranger: The bridge is now open.
+
+=> END
+
+
+~ opened
+
+Forest Ranger: The forest is open.
+
+Forest Ranger: Take care while exploring.
+
+=> END
