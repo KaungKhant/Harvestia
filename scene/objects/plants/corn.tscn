@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b8alupsunti5"]
+[gd_scene load_steps=10 format=3 uid="uid://b8alupsunti5"]
 
 [ext_resource type="Script" uid="uid://b648rpeihp8gk" path="res://scene/objects/plants/corn.gd" id="1_3h0dd"]
 [ext_resource type="Texture2D" uid="uid://drp8itt24qjoj" path="res://assets/game/Objects/Basic Plants.png" id="1_veco4"]
@@ -6,12 +6,17 @@
 [ext_resource type="PackedScene" uid="uid://byx1xafays50i" path="res://scene/objects/plants/watering_particles.tscn" id="2_ne5oe"]
 [ext_resource type="PackedScene" uid="uid://bq7ugm3u8d875" path="res://scene/objects/plants/flowering_particles.tscn" id="3_ne5oe"]
 [ext_resource type="PackedScene" uid="uid://bgm11vdxjvqrt" path="res://scene/objects/plants/growth_cycle_components.tscn" id="6_4cd6u"]
+[ext_resource type="PackedScene" uid="uid://bitwqob65vm4g" path="res://scene/components/save_data_component.tscn" id="7_4cd6u"]
+[ext_resource type="Resource" uid="uid://c2e2l031uqq8e" path="res://resources/crop_data_resource.tres" id="8_vr4en"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2y6ov"]
 size = Vector2(13, 8)
 
 [node name="Corn" type="Node2D"]
 script = ExtResource("1_3h0dd")
+
+[node name="SaveDataComponent" parent="." instance=ExtResource("7_4cd6u")]
+save_data_resource = ExtResource("8_vr4en")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -4)
