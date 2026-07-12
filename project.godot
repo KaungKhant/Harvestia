@@ -27,6 +27,7 @@ NotificationManager="*res://scripts/globals/notification_manager.gd"
 QuestManager="*res://scripts/globals/quest_manager.gd"
 AreaManager="*res://scripts/globals/area_manager.gd"
 StageManager="*res://stage_manager.tscn"
+SaveGameManager="*res://scripts/globals/save_game_manager.gd"
 
 [display]
 
