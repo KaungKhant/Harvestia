@@ -1,6 +1,7 @@
 [gd_scene load_steps=77 format=4 uid="uid://bvkwg4jgnkmuf"]
 
 [ext_resource type="Texture2D" uid="uid://dibl8w1txfm4" path="res://assets/game/Tilesets/Water.png" id="1_hjlx7"]
+[ext_resource type="PackedScene" uid="uid://cugdxyqvq2u2o" path="res://scene/components/test_scene_save_data_manager_component.tscn" id="1_ht70e"]
 [ext_resource type="Texture2D" uid="uid://cqe2tosf7emuo" path="res://assets/game/Tilesets/Water Foam.png" id="2_nfyy7"]
 [ext_resource type="Texture2D" uid="uid://dkrx2ukwf1lj5" path="res://assets/game/Tilesets/Tilemap_color1.png" id="3_iv8qn"]
 [ext_resource type="Texture2D" uid="uid://dd878fk5oq7py" path="res://assets/game/Tilesets/Shadow.png" id="4_4ftf6"]
@@ -34,7 +35,6 @@
 [ext_resource type="PackedScene" uid="uid://cg5jte5gcuvim" path="res://scene/progress/player_hud.tscn" id="30_r6jhn"]
 [ext_resource type="PackedScene" uid="uid://dfi5u2g400moa" path="res://scene/components/save_level_data_component.tscn" id="31_iv8qn"]
 [ext_resource type="Script" uid="uid://cag743qkp4uoh" path="res://scene/components/save_level_data_component.gd" id="32_4ftf6"]
-[ext_resource type="PackedScene" uid="uid://cugdxyqvq2u2o" path="res://scene/components/test_scene_save_data_manager_component.tscn" id="33_4ftf6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fimq1"]
 texture = ExtResource("1_hjlx7")
@@ -899,7 +899,7 @@ source_geometry_mode = 2
 
 [node name="Game" type="Node2D"]
 
-[node name="TestSceneSaveDataManagerComponent" parent="." instance=ExtResource("33_4ftf6")]
+[node name="TestSceneSaveDataManagerComponent" parent="." instance=ExtResource("1_ht70e")]
 
 [node name="SaveLevelDataComponent" parent="." instance=ExtResource("31_iv8qn")]
 script = ExtResource("32_4ftf6")

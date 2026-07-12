@@ -1,9 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://cg5jte5gcuvim"]
+[gd_scene load_steps=4 format=3 uid="uid://cg5jte5gcuvim"]
 
 [ext_resource type="Script" uid="uid://bx6k8tqasd0op" path="res://scripts/ui/player_hud.gd" id="1_p7awb"]
+[ext_resource type="PackedScene" uid="uid://bitwqob65vm4g" path="res://scene/components/save_data_component.tscn" id="2_luky0"]
+[ext_resource type="Resource" uid="uid://cvpqu1234oa4y" path="res://resources/player_stats_data_resource.tres" id="3_yr8hq"]
 
 [node name="PlayerHUD" type="CanvasLayer"]
 script = ExtResource("1_p7awb")
+
+[node name="SaveDataComponent" parent="." instance=ExtResource("2_luky0")]
+save_data_resource = ExtResource("3_yr8hq")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 offset_right = 40.0
