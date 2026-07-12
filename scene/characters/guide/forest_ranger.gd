@@ -7,10 +7,15 @@ var balloon_scene = preload("res://Dialog/game_dialogue_balloon.tscn")
 
 var in_range: bool = false
 
-func _ready() -> void:
 
+<<<<<<< Updated upstream
     interactable_component.interactable_activated.connect(on_interactable_activated)
     interactable_component.interactable_deactivated.connect(on_interactable_deactivated)
+=======
+func _ready() -> void:
+	interactable_component.interactable_activated.connect(on_interactable_activated)
+	interactable_component.interactable_deactivated.connect(on_interactable_deactivated)
+>>>>>>> Stashed changes
 
     interactable_label_component.hide()
 
@@ -41,6 +46,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
     var start_node := "locked"
 
+<<<<<<< Updated upstream
     if AreaManager.is_area_unlocked("forest"):
         start_node = "opened"
     elif QuestManager.is_quest_completed("first_harvest"):
@@ -48,3 +54,18 @@ func _unhandled_input(event: InputEvent) -> void:
 
     balloon.start(dialogue, start_node)
     print("Forest Ranger dialogue starts at:", start_node)
+=======
+	# Bridge already opened
+	if AreaManager.is_area_unlocked("forest"):
+		start_node = "opened"
+
+	# Player finished first harvest but bridge not opened yet
+	elif QuestManager.is_quest_completed("first_harvest"):
+		start_node = "unlock"
+
+	# Player hasn't finished first harvest
+	else:
+		start_node = "locked"
+
+	balloon.start(dialogue, start_node)
+>>>>>>> Stashed changes
