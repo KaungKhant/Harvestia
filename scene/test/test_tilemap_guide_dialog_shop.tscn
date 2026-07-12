@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=4 uid="uid://cndg1ve1ggp10"]
+[gd_scene load_steps=89 format=4 uid="uid://cndg1ve1ggp10"]
 
 [ext_resource type="Texture2D" uid="uid://dibl8w1txfm4" path="res://assets/game/Tilesets/Water.png" id="1_fdf7g"]
 [ext_resource type="Texture2D" uid="uid://cqe2tosf7emuo" path="res://assets/game/Tilesets/Water Foam.png" id="2_egi22"]
@@ -33,11 +33,17 @@
 [ext_resource type="PackedScene" uid="uid://1dkjt1xi1b1k" path="res://scene/characters/cow/cow.tscn" id="29_smuto"]
 [ext_resource type="PackedScene" uid="uid://cg5jte5gcuvim" path="res://scene/progress/player_hud.tscn" id="30_jnha1"]
 [ext_resource type="PackedScene" uid="uid://b7hedi0atmi4m" path="res://scene/objects/chest/seedshop.tscn" id="31_egi22"]
+[ext_resource type="Script" uid="uid://ua3tc2j586ki" path="res://scene/test/chicken_area.gd" id="31_n4o3u"]
+[ext_resource type="AudioStream" uid="uid://bdu7hakn0ugg1" path="res://audio/sfx/chicken-cluck-1.ogg" id="32_26luk"]
 [ext_resource type="PackedScene" uid="uid://dnd41d0l7r5bq" path="res://scene/progress/game_notification.tscn" id="32_i2cep"]
+[ext_resource type="Script" uid="uid://bwd6uurke8i4p" path="res://scene/test/cow_area.gd" id="34_q8nqv"]
+[ext_resource type="AudioStream" uid="uid://ckteidy6dqdh1" path="res://audio/sfx/cow-moo.ogg" id="35_1n1cj"]
 [ext_resource type="PackedScene" uid="uid://bwxy2wsdkyde5" path="res://scene/objects/chest/chest.tscn" id="35_qwath"]
 [ext_resource type="PackedScene" uid="uid://dcpi0nt4wtc6y" path="res://scene/objects/chest/chest_cow.tscn" id="36_318fa"]
 [ext_resource type="Script" uid="uid://caso18utihc3a" path="res://scene/ui/forest_blocker.gd" id="37_b82rl"]
 [ext_resource type="PackedScene" uid="uid://s758njtqgm8f" path="res://scene/characters/guide/forest_ranger.tscn" id="38_1gx8e"]
+[ext_resource type="PackedScene" uid="uid://gtlq08uu7q4e" path="res://audio/music/on_the_farm_music.tscn" id="43_o0as6"]
+[ext_resource type="Script" uid="uid://cd8nou7v238tu" path="res://scene/test/canvas_layer.gd" id="44_rst5b"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fimq1"]
 texture = ExtResource("1_fdf7g")
@@ -894,11 +900,16 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(417, 157, 541, 150, 541, 213, 418, 209)])
 source_geometry_mode = 2
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fnfhk"]
+size = Vector2(80, 80)
+
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_x4mro"]
 vertices = PackedVector2Array(437, 115.75781, 437, 161.49219, 334.85156, 156.46875, 334.15625, 113.25)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(447, 106, 447, 172, 325, 166, 324, 103)])
 source_geometry_mode = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qve8u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_318fa"]
 size = Vector2(80, 25)
@@ -1071,6 +1082,18 @@ position = Vector2(487, 246)
 [node name="Chicken4" parent="Chickens" instance=ExtResource("28_vq1n4")]
 position = Vector2(487, 216)
 
+[node name="ChickenArea" type="Area2D" parent="Chickens"]
+collision_mask = 2
+script = ExtResource("31_n4o3u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Chickens/ChickenArea"]
+position = Vector2(447, 224)
+shape = SubResource("RectangleShape2D_fnfhk")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Chickens/ChickenArea"]
+stream = ExtResource("32_26luk")
+volume_db = -10.0
+
 [node name="Cows" type="Node2D" parent="."]
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="Cows"]
@@ -1090,6 +1113,18 @@ position = Vector2(487, 284)
 
 [node name="Cow4" parent="Cows" instance=ExtResource("29_smuto")]
 position = Vector2(472, 312)
+
+[node name="CowArea" type="Area2D" parent="Cows"]
+collision_mask = 2
+script = ExtResource("34_q8nqv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cows/CowArea"]
+position = Vector2(430, 303)
+scale = Vector2(3, 3)
+shape = SubResource("RectangleShape2D_qve8u")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Cows/CowArea"]
+stream = ExtResource("35_1n1cj")
 
 [node name="PlayerHUD" parent="." instance=ExtResource("30_jnha1")]
 
@@ -1116,3 +1151,26 @@ shape = SubResource("RectangleShape2D_318fa")
 
 [node name="forest_ranger" parent="." instance=ExtResource("38_1gx8e")]
 position = Vector2(181, 174)
+
+[node name="OnTheFarmMusic" parent="." instance=ExtResource("43_o0as6")]
+autoplay = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("44_rst5b")
+
+[node name="HSlider" type="HSlider" parent="CanvasLayer"]
+custom_minimum_size = Vector2(80, 40)
+offset_left = 10.0
+offset_top = 450.0
+offset_right = 90.0
+offset_bottom = 490.0
+value = 100.0
+
+[node name="OnTheFarmMusic" parent="CanvasLayer" instance=ExtResource("43_o0as6")]
+autoplay = true
+
+[connection signal="body_entered" from="Chickens/ChickenArea" to="Chickens/ChickenArea" method="_on_body_entered"]
+[connection signal="body_exited" from="Chickens/ChickenArea" to="Chickens/ChickenArea" method="_on_body_exited"]
+[connection signal="body_entered" from="Cows/CowArea" to="Cows/CowArea" method="_on_body_entered"]
+[connection signal="body_exited" from="Cows/CowArea" to="Cows/CowArea" method="_on_body_exited"]
+[connection signal="value_changed" from="CanvasLayer/HSlider" to="CanvasLayer" method="_on_h_slider_value_changed"]
