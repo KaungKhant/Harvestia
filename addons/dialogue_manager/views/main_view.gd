@@ -325,157 +325,156 @@ func save_file(path: String, rescan_file_system: bool = true) -> void:
 
     files_list.mark_file_as_unsaved(path, false)
     save_all_button.disabled = files_list.unsaved_files.size() == 0
-
     # Don't bother saving if there is nothing to save
-	if buffer.text == buffer.pristine_text:
-		return
+    if buffer.text == buffer.pristine_text:
+        return
 
-	buffer.pristine_text = buffer.text
+    buffer.pristine_text = buffer.text
 
-	# Save the current text
-	var file: FileAccess = FileAccess.open(path, FileAccess.WRITE)
-	file.store_string(buffer.text)
-	file.close()
+    # Save the current text
+    var file: FileAccess = FileAccess.open(path, FileAccess.WRITE)
+    file.store_string(buffer.text)
+    file.close()
 
-	if rescan_file_system:
-		EditorInterface.get_resource_filesystem().scan()
+    if rescan_file_system:
+        EditorInterface.get_resource_filesystem().scan()
 
 
 func close_file(path: String) -> void:
-	if not path in open_buffers.keys(): return
+    if not path in open_buffers.keys(): return
 
-	var buffer = open_buffers[path]
+    var buffer = open_buffers[path]
 
-	if buffer.text == buffer.pristine_text:
-		remove_file_from_open_buffers(path)
-		await get_tree().process_frame
-	else:
-		close_confirmation_dialog.dialog_text = DMConstants.translate(&"confirm_close").format({ path = path.get_file() })
-		close_confirmation_dialog.popup_centered()
-		await confirmation_closed
+    if buffer.text == buffer.pristine_text:
+        remove_file_from_open_buffers(path)
+        await get_tree().process_frame
+    else:
+        close_confirmation_dialog.dialog_text = DMConstants.translate(&"confirm_close").format({ path = path.get_file() })
+        close_confirmation_dialog.popup_centered()
+        await confirmation_closed
 
 
 func remove_file_from_open_buffers(path: String) -> void:
-	if not path in open_buffers.keys(): return
+    if not path in open_buffers.keys(): return
 
-	var current_index = open_buffers.keys().find(current_file_path)
+    var current_index = open_buffers.keys().find(current_file_path)
 
-	open_buffers.erase(path)
-	if open_buffers.size() == 0:
-		self.current_file_path = ""
-	else:
-		current_index = clamp(current_index, 0, open_buffers.size() - 1)
-		self.current_file_path = open_buffers.keys()[current_index]
+    open_buffers.erase(path)
+    if open_buffers.size() == 0:
+        self.current_file_path = ""
+    else:
+        current_index = clamp(current_index, 0, open_buffers.size() - 1)
+        self.current_file_path = open_buffers.keys()[current_index]
 
-	files_list.files = open_buffers.keys()
+    files_list.files = open_buffers.keys()
 
 
 # Apply theme colors and icons to the UI
 func apply_theme() -> void:
-	if is_instance_valid(code_edit):
-		var scale: float = EditorInterface.get_editor_scale()
-		var editor_settings = EditorInterface.get_editor_settings()
-		code_edit.theme_overrides = {
-			scale = scale,
+    if is_instance_valid(code_edit):
+        var scale: float = EditorInterface.get_editor_scale()
+        var editor_settings = EditorInterface.get_editor_settings()
+        code_edit.theme_overrides = {
+            scale = scale,
 
-			background_color = Color(editor_settings.get_setting("interface/theme/base_color").blend(editor_settings.get_setting("text_editor/theme/highlighting/background_color")), 1),
-			current_line_color = editor_settings.get_setting("text_editor/theme/highlighting/current_line_color"),
-			error_line_color = editor_settings.get_setting("text_editor/theme/highlighting/mark_color"),
+            background_color = Color(editor_settings.get_setting("interface/theme/base_color").blend(editor_settings.get_setting("text_editor/theme/highlighting/background_color")), 1),
+            current_line_color = editor_settings.get_setting("text_editor/theme/highlighting/current_line_color"),
+            error_line_color = editor_settings.get_setting("text_editor/theme/highlighting/mark_color"),
 
-			critical_color = editor_settings.get_setting("text_editor/theme/highlighting/comment_markers/critical_color"),
-			notice_color = editor_settings.get_setting("text_editor/theme/highlighting/comment_markers/notice_color"),
+            critical_color = editor_settings.get_setting("text_editor/theme/highlighting/comment_markers/critical_color"),
+            notice_color = editor_settings.get_setting("text_editor/theme/highlighting/comment_markers/notice_color"),
 
-			titles_color = editor_settings.get_setting("text_editor/theme/highlighting/control_flow_keyword_color"),
-			text_color = editor_settings.get_setting("text_editor/theme/highlighting/text_color"),
-			conditions_color = editor_settings.get_setting("text_editor/theme/highlighting/keyword_color"),
-			mutations_color = editor_settings.get_setting("text_editor/theme/highlighting/function_color"),
-			mutations_line_color = Color(editor_settings.get_setting("text_editor/theme/highlighting/function_color"), 0.6),
-			members_color = editor_settings.get_setting("text_editor/theme/highlighting/member_variable_color"),
-			strings_color = editor_settings.get_setting("text_editor/theme/highlighting/string_color"),
-			numbers_color = editor_settings.get_setting("text_editor/theme/highlighting/number_color"),
-			symbols_color = editor_settings.get_setting("text_editor/theme/highlighting/symbol_color"),
-			comments_color = editor_settings.get_setting("text_editor/theme/highlighting/comment_color"),
-			jumps_color = Color(editor_settings.get_setting("text_editor/theme/highlighting/control_flow_keyword_color"), 0.6),
+            titles_color = editor_settings.get_setting("text_editor/theme/highlighting/control_flow_keyword_color"),
+            text_color = editor_settings.get_setting("text_editor/theme/highlighting/text_color"),
+            conditions_color = editor_settings.get_setting("text_editor/theme/highlighting/keyword_color"),
+            mutations_color = editor_settings.get_setting("text_editor/theme/highlighting/function_color"),
+            mutations_line_color = Color(editor_settings.get_setting("text_editor/theme/highlighting/function_color"), 0.6),
+            members_color = editor_settings.get_setting("text_editor/theme/highlighting/member_variable_color"),
+            strings_color = editor_settings.get_setting("text_editor/theme/highlighting/string_color"),
+            numbers_color = editor_settings.get_setting("text_editor/theme/highlighting/number_color"),
+            symbols_color = editor_settings.get_setting("text_editor/theme/highlighting/symbol_color"),
+            comments_color = editor_settings.get_setting("text_editor/theme/highlighting/comment_color"),
+            jumps_color = Color(editor_settings.get_setting("text_editor/theme/highlighting/control_flow_keyword_color"), 0.6),
 
-			font_size = editor_settings.get_setting("interface/editor/code_font_size")
-		}
+            font_size = editor_settings.get_setting("interface/editor/code_font_size")
+        }
 
-		banner_new_button.icon = get_theme_icon("New", "EditorIcons")
-		banner_quick_open.icon = get_theme_icon("Load", "EditorIcons")
+        banner_new_button.icon = get_theme_icon("New", "EditorIcons")
+        banner_quick_open.icon = get_theme_icon("Load", "EditorIcons")
 
-		new_button.icon = get_theme_icon("New", "EditorIcons")
-		new_button.tooltip_text = DMConstants.translate(&"start_a_new_file")
+        new_button.icon = get_theme_icon("New", "EditorIcons")
+        new_button.tooltip_text = DMConstants.translate(&"start_a_new_file")
 
-		open_button.icon = get_theme_icon("Load", "EditorIcons")
-		open_button.tooltip_text = DMConstants.translate(&"open_a_file")
+        open_button.icon = get_theme_icon("Load", "EditorIcons")
+        open_button.tooltip_text = DMConstants.translate(&"open_a_file")
 
-		save_all_button.icon = get_theme_icon("Save", "EditorIcons")
-		save_all_button.text = DMConstants.translate(&"all")
-		save_all_button.tooltip_text = DMConstants.translate(&"start_all_files")
+        save_all_button.icon = get_theme_icon("Save", "EditorIcons")
+        save_all_button.text = DMConstants.translate(&"all")
+        save_all_button.tooltip_text = DMConstants.translate(&"start_all_files")
 
-		find_in_files_button.icon = get_theme_icon("ViewportZoom", "EditorIcons")
-		find_in_files_button.tooltip_text = DMConstants.translate(&"find_in_files")
+        find_in_files_button.icon = get_theme_icon("ViewportZoom", "EditorIcons")
+        find_in_files_button.tooltip_text = DMConstants.translate(&"find_in_files")
 
-		test_button.icon = get_theme_icon("DebugNext", "EditorIcons")
-		test_button.tooltip_text = DMConstants.translate(&"test_dialogue")
+        test_button.icon = get_theme_icon("DebugNext", "EditorIcons")
+        test_button.tooltip_text = DMConstants.translate(&"test_dialogue")
 
-		test_line_button.icon = get_theme_icon("DebugStep", "EditorIcons")
-		test_line_button.tooltip_text = DMConstants.translate(&"test_dialogue_from_line")
+        test_line_button.icon = get_theme_icon("DebugStep", "EditorIcons")
+        test_line_button.tooltip_text = DMConstants.translate(&"test_dialogue_from_line")
 
-		search_button.icon = get_theme_icon("Search", "EditorIcons")
-		search_button.tooltip_text = DMConstants.translate(&"search_for_text")
+        search_button.icon = get_theme_icon("Search", "EditorIcons")
+        search_button.tooltip_text = DMConstants.translate(&"search_for_text")
 
-		insert_button.icon = get_theme_icon("RichTextEffect", "EditorIcons")
-		insert_button.text = DMConstants.translate(&"insert")
+        insert_button.icon = get_theme_icon("RichTextEffect", "EditorIcons")
+        insert_button.text = DMConstants.translate(&"insert")
 
-		translations_button.icon = get_theme_icon("Translation", "EditorIcons")
-		translations_button.text = DMConstants.translate(&"translations")
+        translations_button.icon = get_theme_icon("Translation", "EditorIcons")
+        translations_button.text = DMConstants.translate(&"translations")
 
-		support_button.icon = get_theme_icon("Heart", "EditorIcons")
-		support_button.text = DMConstants.translate(&"sponsor")
-		support_button.tooltip_text = DMConstants.translate(&"show_support")
+        support_button.icon = get_theme_icon("Heart", "EditorIcons")
+        support_button.text = DMConstants.translate(&"sponsor")
+        support_button.tooltip_text = DMConstants.translate(&"show_support")
 
-		docs_button.icon = get_theme_icon("Help", "EditorIcons")
-		docs_button.text = DMConstants.translate(&"docs")
+        docs_button.icon = get_theme_icon("Help", "EditorIcons")
+        docs_button.text = DMConstants.translate(&"docs")
 
-		update_button.apply_theme()
+        update_button.apply_theme()
 
-		# Set up the effect menu
-		var popup: PopupMenu = insert_button.get_popup()
-		popup.clear()
-		popup.add_icon_item(get_theme_icon("RichTextEffect", "EditorIcons"), DMConstants.translate(&"insert.wave_bbcode"), 0)
-		popup.add_icon_item(get_theme_icon("RichTextEffect", "EditorIcons"), DMConstants.translate(&"insert.shake_bbcode"), 1)
-		popup.add_separator()
-		popup.add_icon_item(get_theme_icon("Time", "EditorIcons"), DMConstants.translate(&"insert.typing_pause"), 3)
-		popup.add_icon_item(get_theme_icon("ViewportSpeed", "EditorIcons"), DMConstants.translate(&"insert.typing_speed_change"), 4)
-		popup.add_icon_item(get_theme_icon("DebugNext", "EditorIcons"), DMConstants.translate(&"insert.auto_advance"), 5)
-		popup.add_separator(DMConstants.translate(&"insert.templates"))
-		popup.add_icon_item(get_theme_icon("RichTextEffect", "EditorIcons"), DMConstants.translate(&"insert.title"), 6)
-		popup.add_icon_item(get_theme_icon("RichTextEffect", "EditorIcons"), DMConstants.translate(&"insert.dialogue"), 7)
-		popup.add_icon_item(get_theme_icon("RichTextEffect", "EditorIcons"), DMConstants.translate(&"insert.response"), 8)
-		popup.add_icon_item(get_theme_icon("RichTextEffect", "EditorIcons"), DMConstants.translate(&"insert.random_lines"), 9)
-		popup.add_icon_item(get_theme_icon("RichTextEffect", "EditorIcons"), DMConstants.translate(&"insert.random_text"), 10)
-		popup.add_separator(DMConstants.translate(&"insert.actions"))
-		popup.add_icon_item(get_theme_icon("RichTextEffect", "EditorIcons"), DMConstants.translate(&"insert.jump"), 11)
-		popup.add_icon_item(get_theme_icon("RichTextEffect", "EditorIcons"), DMConstants.translate(&"insert.end_dialogue"), 12)
+        # Set up the effect menu
+        var popup: PopupMenu = insert_button.get_popup()
+        popup.clear()
+        popup.add_icon_item(get_theme_icon("RichTextEffect", "EditorIcons"), DMConstants.translate(&"insert.wave_bbcode"), 0)
+        popup.add_icon_item(get_theme_icon("RichTextEffect", "EditorIcons"), DMConstants.translate(&"insert.shake_bbcode"), 1)
+        popup.add_separator()
+        popup.add_icon_item(get_theme_icon("Time", "EditorIcons"), DMConstants.translate(&"insert.typing_pause"), 3)
+        popup.add_icon_item(get_theme_icon("ViewportSpeed", "EditorIcons"), DMConstants.translate(&"insert.typing_speed_change"), 4)
+        popup.add_icon_item(get_theme_icon("DebugNext", "EditorIcons"), DMConstants.translate(&"insert.auto_advance"), 5)
+        popup.add_separator(DMConstants.translate(&"insert.templates"))
+        popup.add_icon_item(get_theme_icon("RichTextEffect", "EditorIcons"), DMConstants.translate(&"insert.title"), 6)
+        popup.add_icon_item(get_theme_icon("RichTextEffect", "EditorIcons"), DMConstants.translate(&"insert.dialogue"), 7)
+        popup.add_icon_item(get_theme_icon("RichTextEffect", "EditorIcons"), DMConstants.translate(&"insert.response"), 8)
+        popup.add_icon_item(get_theme_icon("RichTextEffect", "EditorIcons"), DMConstants.translate(&"insert.random_lines"), 9)
+        popup.add_icon_item(get_theme_icon("RichTextEffect", "EditorIcons"), DMConstants.translate(&"insert.random_text"), 10)
+        popup.add_separator(DMConstants.translate(&"insert.actions"))
+        popup.add_icon_item(get_theme_icon("RichTextEffect", "EditorIcons"), DMConstants.translate(&"insert.jump"), 11)
+        popup.add_icon_item(get_theme_icon("RichTextEffect", "EditorIcons"), DMConstants.translate(&"insert.end_dialogue"), 12)
 
-		# Set up the translations menu
-		popup = translations_button.get_popup()
-		popup.clear()
-		popup.add_icon_item(get_theme_icon("Translation", "EditorIcons"), DMConstants.translate(&"generate_line_ids_for_file"), TRANSLATIONS_GENERATE_LINE_IDS_FOR_FILE)
-		popup.add_icon_item(get_theme_icon("Translation", "EditorIcons"), DMConstants.translate(&"generate_line_ids_for_project"), TRANSLATIONS_GENERATE_LINE_IDS_FOR_PROJECT)
-		popup.add_separator()
-		popup.add_icon_item(get_theme_icon("FileList", "EditorIcons"), DMConstants.translate(&"save_characters_to_csv"), TRANSLATIONS_SAVE_CHARACTERS_TO_CSV)
-		popup.add_icon_item(get_theme_icon("FileList", "EditorIcons"), DMConstants.translate(&"save_to_csv"), TRANSLATIONS_SAVE_TO_CSV)
-		popup.add_icon_item(get_theme_icon("AssetLib", "EditorIcons"), DMConstants.translate(&"import_from_csv"), TRANSLATIONS_IMPORT_FROM_CSV)
+        # Set up the translations menu
+        popup = translations_button.get_popup()
+        popup.clear()
+        popup.add_icon_item(get_theme_icon("Translation", "EditorIcons"), DMConstants.translate(&"generate_line_ids_for_file"), TRANSLATIONS_GENERATE_LINE_IDS_FOR_FILE)
+        popup.add_icon_item(get_theme_icon("Translation", "EditorIcons"), DMConstants.translate(&"generate_line_ids_for_project"), TRANSLATIONS_GENERATE_LINE_IDS_FOR_PROJECT)
+        popup.add_separator()
+        popup.add_icon_item(get_theme_icon("FileList", "EditorIcons"), DMConstants.translate(&"save_characters_to_csv"), TRANSLATIONS_SAVE_CHARACTERS_TO_CSV)
+        popup.add_icon_item(get_theme_icon("FileList", "EditorIcons"), DMConstants.translate(&"save_to_csv"), TRANSLATIONS_SAVE_TO_CSV)
+        popup.add_icon_item(get_theme_icon("AssetLib", "EditorIcons"), DMConstants.translate(&"import_from_csv"), TRANSLATIONS_IMPORT_FROM_CSV)
 
-		# Dialog sizes
-		new_dialog.min_size = Vector2(600, 500) * scale
-		save_dialog.min_size = Vector2(600, 500) * scale
-		open_dialog.min_size = Vector2(600, 500) * scale
-		quick_open_dialog.min_size = Vector2(400, 600) * scale
-		export_dialog.min_size = Vector2(600, 500) * scale
-		import_dialog.min_size = Vector2(600, 500) * scale
+        # Dialog sizes
+        new_dialog.min_size = Vector2(600, 500) * scale
+        save_dialog.min_size = Vector2(600, 500) * scale
+        open_dialog.min_size = Vector2(600, 500) * scale
+        quick_open_dialog.min_size = Vector2(400, 600) * scale
+        export_dialog.min_size = Vector2(600, 500) * scale
+        import_dialog.min_size = Vector2(600, 500) * scale
 
 
 #region Helpers
@@ -483,54 +482,54 @@ func apply_theme() -> void:
 
 # Move the cursor to a given title in the dialogue editor
 func go_to_title(title: String, create_if_none: bool = false) -> void:
-	code_edit.go_to_title(title, create_if_none)
-	code_edit.grab_focus()
+    code_edit.go_to_title(title, create_if_none)
+    code_edit.grab_focus()
 
 
 # Refresh the open menu with the latest files
 func build_open_menu() -> void:
-	var menu = open_button.get_popup()
-	menu.clear()
-	menu.add_icon_item(get_theme_icon("Load", "EditorIcons"), DMConstants.translate(&"open.open"), OPEN_OPEN)
-	menu.add_icon_item(get_theme_icon("Load", "EditorIcons"), DMConstants.translate(&"open.quick_open"), OPEN_QUICK)
-	menu.add_separator()
+    var menu = open_button.get_popup()
+    menu.clear()
+    menu.add_icon_item(get_theme_icon("Load", "EditorIcons"), DMConstants.translate(&"open.open"), OPEN_OPEN)
+    menu.add_icon_item(get_theme_icon("Load", "EditorIcons"), DMConstants.translate(&"open.quick_open"), OPEN_QUICK)
+    menu.add_separator()
 
-	var recent_files = DMSettings.get_recent_files()
-	if recent_files.size() == 0:
-		menu.add_item(DMConstants.translate(&"open.no_recent_files"))
-		menu.set_item_disabled(2, true)
-	else:
-		for path in recent_files:
-			if FileAccess.file_exists(path):
-				menu.add_icon_item(get_theme_icon("File", "EditorIcons"), path)
+    var recent_files = DMSettings.get_recent_files()
+    if recent_files.size() == 0:
+        menu.add_item(DMConstants.translate(&"open.no_recent_files"))
+        menu.set_item_disabled(2, true)
+    else:
+        for path in recent_files:
+            if FileAccess.file_exists(path):
+                menu.add_icon_item(get_theme_icon("File", "EditorIcons"), path)
 
-	menu.add_separator()
-	menu.add_item(DMConstants.translate(&"open.clear_recent_files"), OPEN_CLEAR)
-	if menu.id_pressed.is_connected(_on_open_menu_id_pressed):
-		menu.id_pressed.disconnect(_on_open_menu_id_pressed)
-	menu.id_pressed.connect(_on_open_menu_id_pressed)
+    menu.add_separator()
+    menu.add_item(DMConstants.translate(&"open.clear_recent_files"), OPEN_CLEAR)
+    if menu.id_pressed.is_connected(_on_open_menu_id_pressed):
+        menu.id_pressed.disconnect(_on_open_menu_id_pressed)
+    menu.id_pressed.connect(_on_open_menu_id_pressed)
 
 
 # Get the last place a CSV, etc was exported
 func get_last_export_path(extension: String) -> String:
-	var filename = current_file_path.get_file().replace(".dialogue", "." + extension)
-	return DMSettings.get_user_value("last_export_path", current_file_path.get_base_dir()) + "/" + filename
+    var filename = current_file_path.get_file().replace(".dialogue", "." + extension)
+    return DMSettings.get_user_value("last_export_path", current_file_path.get_base_dir()) + "/" + filename
 
 
 # Check the current text for errors
 func compile() -> void:
-	# Skip if nothing to parse
-	if current_file_path == "": return
+    # Skip if nothing to parse
+    if current_file_path == "": return
 
-	var result: DMCompilerResult = DMCompiler.compile_string(code_edit.text, current_file_path)
-	code_edit.errors = result.errors
-	errors_panel.errors = result.errors
-	title_list.titles = code_edit.get_titles()
+    var result: DMCompilerResult = DMCompiler.compile_string(code_edit.text, current_file_path)
+    code_edit.errors = result.errors
+    errors_panel.errors = result.errors
+    title_list.titles = code_edit.get_titles()
 
 
 func show_build_error_dialog() -> void:
-	build_error_dialog.dialog_text = DMConstants.translate(&"errors_with_build")
-	build_error_dialog.popup_centered()
+    build_error_dialog.dialog_text = DMConstants.translate(&"errors_with_build")
+    build_error_dialog.popup_centered()
 
 
 # Generate translation line IDs for any line that doesn't already have one
@@ -557,17 +556,17 @@ func export_translations_to_csv(path: String) -> void:
     EditorInterface.get_file_system_dock().call_deferred("navigate_to_path", path)
 
     # Add it to the project l10n settings if it's not already there
-	var default_locale: String = DMSettings.get_setting(DMSettings.DEFAULT_CSV_LOCALE, "en")
-	var language_code: RegExMatch = RegEx.create_from_string("^[a-z]{2,3}").search(default_locale)
-	var translation_path: String = path.replace(".csv", ".%s.translation" % language_code.get_string())
-	call_deferred("add_path_to_project_translations", translation_path)
+    var default_locale: String = DMSettings.get_setting(DMSettings.DEFAULT_CSV_LOCALE, "en")
+    var language_code: RegExMatch = RegEx.create_from_string("^[a-z]{2,3}").search(default_locale)
+    var translation_path: String = path.replace(".csv", ".%s.translation" % language_code.get_string())
+    call_deferred("add_path_to_project_translations", translation_path)
 
 
 func export_character_names_to_csv(path: String) -> void:
-	DMTranslationUtilities.export_character_names_to_csv(path, code_edit.text, current_file_path)
+    DMTranslationUtilities.export_character_names_to_csv(path, code_edit.text, current_file_path)
 
-	EditorInterface.get_resource_filesystem().scan()
-	EditorInterface.get_file_system_dock().call_deferred("navigate_to_path", path)
+    EditorInterface.get_resource_filesystem().scan()
+    EditorInterface.get_file_system_dock().call_deferred("navigate_to_path", path)
 
     # Add it to the project l10n settings if it's not already there
     var translation_path: String = path.replace(".csv", ".en.translation")

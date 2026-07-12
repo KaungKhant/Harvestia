@@ -20,7 +20,6 @@ config/icon="res://icon.svg"
 ToolManager="*res://scripts/globals/tool_manager.gd"
 InventoryManager="*res://scripts/globals/inventory_manager.gd"
 DayAndNightCycleManager="*res://scripts/globals/day_and_night_cycle_manager.gd"
-DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 GameDialogueManager="*res://scripts/globals/game_dialogue_manager.gd"
 PlayerProgressManager="*res://scripts/globals/player_progress_manager.gd"
 NotificationManager="*res://scripts/globals/notification_manager.gd"
@@ -28,6 +27,7 @@ QuestManager="*res://scripts/globals/quest_manager.gd"
 AreaManager="*res://scripts/globals/area_manager.gd"
 StageManager="*res://stage_manager.tscn"
 SaveGameManager="*res://scripts/globals/save_game_manager.gd"
+DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 
 [display]
 

@@ -21,10 +21,12 @@ func _ready() -> void:
     growth_cycle_components.crop_maturity.connect(on_crop_maturity)
     growth_cycle_components.crop_harvesting.connect(on_crop_harvesting)
 
-
+func update_sprite():
+    sprite_2d.frame_coords = Vector2i(growth_state, 0)
+    
 func _process(delta: float) -> void:
     growth_state = growth_cycle_components.get_current_growth_state()
-    sprite_2d.frame = growth_state
+    update_sprite()
     
     if growth_state == DataTypes.GrowthStates.Maturity:
         flowering_particles.emitting = true
@@ -35,7 +37,7 @@ func sync_loaded_state() -> void:
         return
     
     growth_state = growth_cycle_components.get_current_growth_state()
-    sprite_2d.frame = growth_state
+    update_sprite()
     
     if growth_state == DataTypes.GrowthStates.Maturity:
         flowering_particles.emitting = true
@@ -49,7 +51,7 @@ func sync_loaded_state() -> void:
     print("Vframes:", sprite_2d.vframes)
 
     growth_state = growth_cycle_components.current_growth_state
-    sprite_2d.frame = growth_state
+    update_sprite()
 
     print("Frame after:", sprite_2d.frame)
 
