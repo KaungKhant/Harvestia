@@ -13,7 +13,10 @@ func _ready() -> void:
 	#PlayerProgressManager.add_gold(250)
 	
 	await get_tree().create_timer(1.0).timeout
-	NotificationManager.show("Welcome to Harvestia!")
+	NotificationManager.show(
+	"🌾 Welcome to Harvestia!",
+	"Your new farming journey begins."
+)
 
 func _on_tool_selected(new_tool: DataTypes.Tools) -> void:
 	current_tool = new_tool

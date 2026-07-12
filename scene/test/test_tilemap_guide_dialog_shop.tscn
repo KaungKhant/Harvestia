@@ -916,6 +916,8 @@ size = Vector2(80, 25)
 
 [node name="Game" type="Node2D"]
 
+[node name="GameNotification" parent="." instance=ExtResource("32_i2cep")]
+
 [node name="Tilemap" type="Node2D" parent="."]
 
 [node name="water" type="TileMapLayer" parent="Tilemap"]
@@ -1131,8 +1133,6 @@ stream = ExtResource("35_1n1cj")
 [node name="SeedShop" parent="." instance=ExtResource("31_egi22")]
 position = Vector2(405, 108)
 dialogue_start_command = "start_shop"
-
-[node name="GameNotification" parent="." instance=ExtResource("32_i2cep")]
 
 [node name="ChickenBox" parent="." instance=ExtResource("35_qwath")]
 position = Vector2(379, 209)

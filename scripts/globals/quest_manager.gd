@@ -50,7 +50,7 @@ func add_progress(item_name: String) -> void:
 	if current_progress >= current_quest.target_amount and current_state == QuestState.IN_PROGRESS:
 		current_state = QuestState.READY_TO_TURN_IN
 
-		NotificationManager.show("📖 Objective Complete!\nReturn to the Guide.")
+		NotificationManager.show_objective("Return to the Guide.")
 
 
 func complete_quest() -> void:
@@ -131,7 +131,7 @@ func try_complete_quest() -> bool:
 	# Finish quest
 	current_state = QuestState.COMPLETED
 
-	NotificationManager.show("Quest Complete!")
+	NotificationManager.show_quest_complete(current_quest.quest_name)
 
 	quest_completed.emit(finished_quest)
 	completed_quests[finished_quest.quest_id] = true

@@ -1,16 +1,19 @@
 extends CanvasLayer
 
-@onready var message_label: Label = $CenterContainer/PanelContainer/MessageLabel
+@onready var title_label = $CenterContainer/PanelContainer/MarginContainer/VBoxContainer/TitleLabel
+@onready var message_label = $CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MessageLabel
 
 func _ready():
 	visible = false
 
-	# Register this UI with the NotificationManager
 	NotificationManager.register(self)
 
+	NotificationManager.register(self)
 
-func show_notification(message: String, duration: float = 2.0) -> void:
+func show_notification(title: String, message: String = "", duration: float = 2.0) -> void:
+	title_label.text = title
 	message_label.text = message
+	message_label.visible = message != ""
 
 	visible = true
 

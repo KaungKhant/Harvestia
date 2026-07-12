@@ -9,23 +9,27 @@ Forest Ranger: Learn the basics of farming first.
 
 ~ unlock
 
-Forest Ranger: Excellent work.
+Forest Ranger: So...
 
-Forest Ranger: The Guide said you've completed your first harvest.
+Forest Ranger: You've finally proven yourself.
 
-Forest Ranger: You've earned the right to enter the forest.
+Forest Ranger: The Guide always has a good eye for people.
+
+Forest Ranger: I'll open the bridge.
 
 do GameDialogueManager.action_unlock_forest()
 
-Forest Ranger: The bridge is now open.
+Forest Ranger: Beyond this bridge lies the forest.
+
+Forest Ranger: It will become an important part of rebuilding this farm.
 
 => END
 
 
 ~ opened
 
-Forest Ranger: The forest is open.
+Forest Ranger: The forest is yours now.
 
-Forest Ranger: Take care while exploring.
+Forest Ranger: Explore it whenever you're ready.
 
 => END

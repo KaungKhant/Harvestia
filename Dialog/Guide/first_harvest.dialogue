@@ -16,13 +16,21 @@ Nyan: I need 5 Corn before we can continue restoring Harvestia.
 
 ~ turn_in
 
-Nyan: Wonderful work!
+Guide: Excellent work.
+
+Guide: You've grown your very first harvest.
 
 do QuestManager.try_complete_quest()
 
-Nyan: These Corn will keep our animals fed.
+Guide: Farming is the heart of this land.
 
-Nyan: Here is your reward.
+Guide: Take this Axe.
+
+do GameDialogueManager.action_give_axe()
+
+Guide: My old friend, the Forest Ranger, has been guarding the bridge for years.
+
+Guide: Go and speak with him.
 
 => END
 

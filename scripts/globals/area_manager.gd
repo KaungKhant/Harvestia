@@ -19,7 +19,7 @@ func unlock_area(area_id: String) -> void:
 	unlocked_areas[area_id] = true
 	area_unlocked.emit(area_id)
 
-	NotificationManager.show("🌉 New Area Unlocked!")
+	NotificationManager.show_area("Forest")
 
 
 func is_area_unlocked(area_id: String) -> bool:

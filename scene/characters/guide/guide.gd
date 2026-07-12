@@ -13,6 +13,8 @@ func _ready() -> void:
 	interactable_label_component.hide()
 	
 	GameDialogueManager.teach_farming.connect(on_teach_farming)
+	GameDialogueManager.give_axe.connect(on_give_axe)
+	
 	
 func on_interactable_activated() -> void:
 	interactable_label_component.show()
@@ -49,3 +51,7 @@ func on_teach_farming() -> void:
 	ToolManager.enable_tool_button(DataTypes.Tools.TillGround)
 	ToolManager.enable_tool_button(DataTypes.Tools.WaterCrops)
 	ToolManager.enable_tool_button(DataTypes.Tools.PlantCorn)
+
+func on_give_axe() -> void:
+	ToolManager.enable_tool_button(DataTypes.Tools.AxeWood)
+	NotificationManager.show_tool("Axe")
