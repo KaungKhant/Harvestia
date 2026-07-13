@@ -94,6 +94,7 @@ Button/styles/pressed = SubResource("StyleBoxTexture_0nsa7")
 CharacterNameText/base_type = &"RichTextLabel"
 CharacterNameText/font_sizes/normal_font_size = 14
 DialogueText/base_type = &"RichTextLabel"
+DialogueText/colors/default_color = Color(0.19076243, 0.19076231, 0.19076231, 1)
 DialogueText/font_sizes/normal_font_size = 12
 MarginContainer/constants/margin_bottom = 10
 MarginContainer/constants/margin_left = 10

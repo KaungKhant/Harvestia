@@ -1,18 +1,18 @@
 ~ start
 
-Nyan: [[Hi|Hello|Howdy]], nice to meet you.
-Nyan: Welcome to your new farm.
-Nyan: As you can see, the cows and chickens are hungry.
-Nyan: We need to grow some crops before we can feed them again.
-Nyan: But first, you'll need some Corn Seeds.
-Nyan: The Seed Shop nearby still has some in stock.
+Guide: [[Hi|Hello|Howdy]], nice to meet you.
+Guide: Welcome to your new farm.
+Guide: As you can see, the cows and chickens are hungry.
+Guide: We need to grow some crops before we can feed them again.
+Guide: But first, you'll need some Corn Seeds.
+Guide: The Seed Shop nearby still has some in stock.
 
 - Take 125 Gold
-    Teemo: Thank you! I'll buy some Corn Seeds.
+    Player: Thank you! I'll buy some Corn Seeds.
     do PlayerProgressManager.add_gold(125)
     do QuestManager.start_quest("buy_corn_seeds")
 
 - Maybe later
-    Teemo: I'll come back when I'm ready.
+    Player: I'll come back when I'm ready.
 
 => END

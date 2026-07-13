@@ -1,15 +1,15 @@
 ~ start
 
-Nyan: It's time to grow your first crop.
-Nyan: Harvest 5 Corn and bring them back to me.
+Guide: It's time to grow your first crop.
+Guide: Harvest 5 Corn and bring them back to me.
 
 => END
 
 
 ~ progress
 
-Nyan: Keep going!
-Nyan: I need 5 Corn before we can continue restoring Harvestia.
+Guide: Keep going!
+Guide: I need 5 Corn before we can continue restoring Harvestia.
 
 => END
 
@@ -37,7 +37,7 @@ Guide: Go and speak with him.
 
 ~ completed
 
-Nyan: Thanks again.
-Nyan: We can now move on to the next task.
+Guide: Thanks again.
+Guide: We can now move on to the next task.
 
 => END
