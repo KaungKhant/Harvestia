@@ -1043,9 +1043,6 @@ tile_set = ExtResource("19_o0as6")
 [node name="SaveDataComponent" parent="Tilemap/TilledSoil" instance=ExtResource("21_qve8u")]
 save_data_resource = ExtResource("22_6i3b8")
 
-[node name="guide" parent="." instance=ExtResource("20_rst5b")]
-position = Vector2(327, 154)
-
 [node name="CropFields" type="Node2D" parent="."]
 
 [node name="FieldCursorComponent" parent="." node_paths=PackedStringArray("grass_tilemap_layer", "tilled_soil_tilemap_layer") instance=ExtResource("21_fnfhk")]
@@ -1161,6 +1158,9 @@ script = ExtResource("37_b82rl")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ForestBlocker"]
 position = Vector2(134, 189)
 shape = SubResource("RectangleShape2D_318fa")
+
+[node name="guide" parent="." instance=ExtResource("20_rst5b")]
+position = Vector2(327, 154)
 
 [node name="forest_ranger" parent="." instance=ExtResource("38_1gx8e")]
 position = Vector2(181, 174)

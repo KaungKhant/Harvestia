@@ -5,43 +5,42 @@
 [ext_resource type="Texture2D" uid="uid://dro85siw16w3y" path="res://assets/game/Characters/npc4.png" id="2_7khqe"]
 [ext_resource type="PackedScene" uid="uid://dtg2w66i1vtib" path="res://scene/components/interactable_label_component.tscn" id="4_oback"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1uvtl"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_7khqe"]
 atlas = ExtResource("2_7khqe")
 region = Rect2(700, 0, 140, 374)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_oback"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_1uvtl"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1uvtl")
+"texture": SubResource("AtlasTexture_7khqe")
 }],
 "loop": true,
 "name": &"idle",
 "speed": 4.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7khqe"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oback"]
 size = Vector2(6, 4)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_svabx"]
 radius = 13.0
 
 [node name="guide" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("1_7khqe")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="Sprite2D" type="CharacterBody2D" parent="."]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
-position = Vector2(0, -11)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Sprite2D"]
+position = Vector2(0, -11.000001)
 scale = Vector2(0.15731421, 0.112045825)
-sprite_frames = SubResource("SpriteFrames_oback")
+sprite_frames = SubResource("SpriteFrames_1uvtl")
 animation = &"idle"
-frame_progress = 0.9856554
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-y_sort_enabled = true
-position = Vector2(0, -1)
-shape = SubResource("RectangleShape2D_7khqe")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D"]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_oback")
 
 [node name="InteractableComponent" parent="." instance=ExtResource("2_7fbcc")]
 
