@@ -22,5 +22,19 @@ func select_tool(tool: DataTypes.Tools) -> void:
 	selected_tool = tool
 	tool_selected.emit(tool)
 
-func enable_tool_button(tool: DataTypes.Tools) -> void:
+var unlocked_tools:Array[int] = []
+
+func enable_tool_button(tool):
+	if tool not in unlocked_tools:
+		unlocked_tools.append(tool)
+
 	enable_tool.emit(tool)
+
+func restore_tools_from_progress() -> void:
+	if QuestManager.is_quest_completed("first_harvest"):
+		enable_tool_button(DataTypes.Tools.TillGround)
+		enable_tool_button(DataTypes.Tools.WaterCrops)
+	if QuestManager.is_quest_completed("forest_unlock"):
+		enable_tool_button(DataTypes.Tools.AxeWood)
+
+  # Add your other quest → tool unlocks here

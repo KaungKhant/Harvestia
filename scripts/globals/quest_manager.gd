@@ -45,7 +45,10 @@ func add_progress(item_name: String) -> void:
 
 	# Always update the tracker
 	quest_updated.emit(current_progress, current_quest.target_amount)
-
+	if QuestManager.current_quest != null:
+		QuestManager.quest_updated.emit(
+			QuestManager.current_progress,
+			QuestManager.current_quest.target_amount)
 	# Objective completed
 	if current_progress >= current_quest.target_amount and current_state == QuestState.IN_PROGRESS:
 		current_state = QuestState.READY_TO_TURN_IN
