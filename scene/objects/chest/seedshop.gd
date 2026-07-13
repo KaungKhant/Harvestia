@@ -2,7 +2,7 @@ extends Node2D
 
 var balloon_scene = preload("res://Dialog/game_dialogue_balloon.tscn")
 
-@export var dialogue_start_command: String = "start"
+@export var dialogue_start_command: String = "start_shop"
 
 @onready var interactable_component: InteractableComponent = $InteractableComponent
 @onready var animated_sprite_2d: AnimatedSprite2D = $Chest
@@ -10,6 +10,13 @@ var balloon_scene = preload("res://Dialog/game_dialogue_balloon.tscn")
 
 var in_range: bool
 var is_shop_open: bool
+
+# ─── SHOP TRANSACTION VARIABLES ───
+var temp_qty: int = 1
+var temp_item_type: String = ""
+var temp_price: int = 0
+var temp_tool_enum: String = ""
+var temp_prev_menu: String = ""
 
 func _ready() -> void:
 	interactable_component.interactable_activated.connect(on_interactable_activated)
@@ -48,6 +55,11 @@ func _unhandled_input(event: InputEvent) -> void:
 ### ─── BUYING SYSTEM ─── ###
 
 func buy_seeds(seed_type: String, tool_enum_value: DataTypes.Tools, single_cost: int, amount: int) -> bool:
+	# BUGS DEFENSE: Never allow 0 or negative quantities to process!
+	if amount <= 0:
+		print("Transaction rejected: Invalid quantity amount!")
+		return false
+		
 	var total_cost = single_cost * amount
 	
 	if not PlayerProgressManager.spend_gold(total_cost):
@@ -60,7 +72,7 @@ func buy_seeds(seed_type: String, tool_enum_value: DataTypes.Tools, single_cost:
 		InventoryManager.inventory[seed_type] = amount
 	print("Inventory after buying:", InventoryManager.inventory)
 		
-		# Notify the quest system that seeds were purchased
+	# Notify the quest system that seeds were purchased
 	for i in amount:
 		QuestManager.add_progress(seed_type)
 		
@@ -69,9 +81,14 @@ func buy_seeds(seed_type: String, tool_enum_value: DataTypes.Tools, single_cost:
 	return true
 
 
-### ─── SELLING SYSTEM (NEW) ─── ###
+### ─── SELLING SYSTEM ─── ###
 
 func sell_item(item_type: String, item_earnings: int, amount: int) -> bool:
+	# BUGS DEFENSE: Never allow 0 or negative quantities to process!
+	if amount <= 0:
+		print("Transaction rejected: Invalid quantity amount!")
+		return false
+		
 	var inventory: Dictionary = InventoryManager.inventory
 	
 	# Check if player actually has enough items to sell

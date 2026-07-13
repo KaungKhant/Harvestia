@@ -24,6 +24,7 @@ Pasture Box: You need 2 corns
 => END
 
 ~ start_shop
+set InventoryManager.current_shop.temp_qty = 1
 Shopkeeper: Welcome! Are you looking to buy some fresh seeds, or are you looking to sell your harvested goods?
 - Open Buying Shop
 	=> buy_menu
@@ -35,54 +36,41 @@ Shopkeeper: Welcome! Are you looking to buy some fresh seeds, or are you looking
 
 ~ buy_menu
 Shopkeeper: What seeds do you need?
-- Buy Corn Seeds (25 Gold each)
-	Shopkeeper: How many Corn Seeds would you like to buy?
-	- Buy 1 Corn Seed (25 Gold)
-		if InventoryManager.current_shop != null and InventoryManager.current_shop.buy_seeds("corn_seeds", DataTypes.Tools.PlantCorn, 25, 1):
-			Shopkeeper: Excellent! Added to your tool panel.
-		else:
-			Shopkeeper: Sorry, you don't have enough gold!
-		=> start_shop
-	- Buy 5 Corn Seeds (125 Gold)
-		if InventoryManager.current_shop != null and InventoryManager.current_shop.buy_seeds("corn_seeds", DataTypes.Tools.PlantCorn, 25, 5):
-			Shopkeeper: Excellent! 5 Corn Seeds added to your tool panel.
-		else:
-			Shopkeeper: Sorry, you don't have enough gold!
-		=> start_shop
-	- Buy 10 Corn Seeds (250 Gold)
-		if InventoryManager.current_shop != null and InventoryManager.current_shop.buy_seeds("corn_seeds", DataTypes.Tools.PlantCorn, 25, 10):
-			Shopkeeper: Splendid! 10 Corn Seeds added to your tool panel.
-		else:
-			Shopkeeper: Sorry, you don't have enough gold!
-		=> start_shop
-	- Go Back
-		=> buy_menu
-
-- Buy Tomato Seeds (30 Gold each)
-	Shopkeeper: How many Tomato Seeds would you like to buy?
-	- Buy 1 Tomato Seed (30 Gold)
-		if InventoryManager.current_shop != null and InventoryManager.current_shop.buy_seeds("tomato_seeds", DataTypes.Tools.PlantTomato, 30, 1):
-			Shopkeeper: There you go! Ready for tilling.
-		else:
-			Shopkeeper: Sorry, you don't have enough gold!
-		=> start_shop
-	- Buy 5 Tomato Seeds (150 Gold)
-		if InventoryManager.current_shop != null and InventoryManager.current_shop.buy_seeds("tomato_seeds", DataTypes.Tools.PlantTomato, 30, 5):
-			Shopkeeper: There you go! 5 Tomato Seeds added.
-		else:
-			Shopkeeper: Sorry, you don't have enough gold!
-		=> start_shop
-	- Buy 10 Tomato Seeds (300 Gold)
-		if InventoryManager.current_shop != null and InventoryManager.current_shop.buy_seeds("tomato_seeds", DataTypes.Tools.PlantTomato, 30, 10):
-			Shopkeeper: Double checks out! 10 Tomato Seeds added.
-		else:
-			Shopkeeper: Sorry, you don't have enough gold!
-		=> start_shop
-	- Go Back
-		=> buy_menu
-
+- Corn Seeds (25 Gold each)
+	set InventoryManager.current_shop.temp_item_type = "corn_seeds"
+	set InventoryManager.current_shop.temp_price = 25
+	set InventoryManager.current_shop.temp_tool_enum = "PlantCorn"
+	=> buy_qty_select
+- Tomato Seeds (30 Gold each)
+	set InventoryManager.current_shop.temp_item_type = "tomato_seeds"
+	set InventoryManager.current_shop.temp_price = 30
+	set InventoryManager.current_shop.temp_tool_enum = "PlantTomato"
+	=> buy_qty_select
 - Back to Main Menu
 	=> start_shop
+
+~ buy_qty_select
+Shopkeeper: How many would you like? (Current: {{InventoryManager.current_shop.temp_qty}}) | Total Cost: {{InventoryManager.current_shop.temp_qty * InventoryManager.current_shop.temp_price}} Gold
+- Add +1 Item
+	set InventoryManager.current_shop.temp_qty += 1
+	=> buy_qty_select
+- Add +5 Items
+	set InventoryManager.current_shop.temp_qty += 5
+	=> buy_qty_select
+- Remove -1 Item
+	set InventoryManager.current_shop.temp_qty -= 1
+	=> buy_qty_select
+- Remove -5 Items
+	set InventoryManager.current_shop.temp_qty -= 5
+	=> buy_qty_select
+- Confirm Purchase
+	if InventoryManager.current_shop.temp_qty > 0 and InventoryManager.current_shop.buy_seeds(InventoryManager.current_shop.temp_item_type, DataTypes.Tools[InventoryManager.current_shop.temp_tool_enum], InventoryManager.current_shop.temp_price, InventoryManager.current_shop.temp_qty):
+		Shopkeeper: Excellent! Added to your tool panel.
+	else:
+		Shopkeeper: Sorry, the transaction failed!
+	=> start_shop
+- Cancel / Go Back
+	=> buy_menu
 
 ~ sell_menu
 Shopkeeper: I'm buying all kinds of farm goods today. What are you looking to sell?
@@ -97,153 +85,74 @@ Shopkeeper: I'm buying all kinds of farm goods today. What are you looking to se
 
 ~ sell_resources
 Shopkeeper: Looking to sell some materials?
-- Sell Logs (Gets 10 Gold each)
-	Shopkeeper: How many Logs do you want to sell?
-	- Sell 1 Log (+10 Gold)
-		if InventoryManager.current_shop != null and InventoryManager.current_shop.sell_item("log", 10, 1):
-			Shopkeeper: Perfect, thank you for the wood!
-		else:
-			Shopkeeper: You don't have enough Logs in your inventory!
-		=> start_shop
-	- Sell 5 Logs (+50 Gold)
-		if InventoryManager.current_shop != null and InventoryManager.current_shop.sell_item("log", 10, 5):
-			Shopkeeper: Great, 5 logs! Here is your gold.
-		else:
-			Shopkeeper: You don't have enough Logs in your inventory!
-		=> start_shop
-	- Sell 10 Logs (+100 Gold)
-		if InventoryManager.current_shop != null and InventoryManager.current_shop.sell_item("log", 10, 10):
-			Shopkeeper: Great haul! Here is your gold.
-		else:
-			Shopkeeper: You don't have enough Logs in your inventory!
-		=> start_shop
-	- Go Back
-		=> sell_resources
-
-- Sell Stone (Gets 12 Gold each)
-	Shopkeeper: How much Stone do you want to sell?
-	- Sell 1 Stone (+12 Gold)
-		if InventoryManager.current_shop != null and InventoryManager.current_shop.sell_item("stone", 12, 1):
-			Shopkeeper: Thanks! Hard rock is always useful.
-		else:
-			Shopkeeper: You don't have enough Stone in your inventory!
-		=> start_shop
-	- Sell 5 Stone (+60 Gold)
-		if InventoryManager.current_shop != null and InventoryManager.current_shop.sell_item("stone", 12, 5):
-			Shopkeeper: 5 stones! Thanks for the haul.
-		else:
-			Shopkeeper: You don't have enough Stone in your inventory!
-		=> start_shop
-	- Sell 10 Stone (+120 Gold)
-		if InventoryManager.current_shop != null and InventoryManager.current_shop.sell_item("stone", 12, 10):
-			Shopkeeper: Fantastic! This will make a sturdy foundation.
-		else:
-			Shopkeeper: You don't have enough Stone in your inventory!
-		=> start_shop
-	- Go Back
-		=> sell_resources
-
+- Logs (10 Gold each)
+	set InventoryManager.current_shop.temp_item_type = "log"
+	set InventoryManager.current_shop.temp_price = 10
+	set InventoryManager.current_shop.temp_prev_menu = "sell_resources"
+	=> sell_qty_select
+- Stone (12 Gold each)
+	set InventoryManager.current_shop.temp_item_type = "stone"
+	set InventoryManager.current_shop.temp_price = 12
+	set InventoryManager.current_shop.temp_prev_menu = "sell_resources"
+	=> sell_qty_select
 - Go Back
 	=> sell_menu
 
 ~ sell_crops
 Shopkeeper: Fresh out of the fields, eh? Let me see what you've got.
-- Sell Corn (Gets 40 Gold each)
-	Shopkeeper: How much Corn do you want to sell?
-	- Sell 1 Corn (+40 Gold)
-		if InventoryManager.current_shop != null and InventoryManager.current_shop.sell_item("corn", 40, 1):
-			Shopkeeper: Sweet corn! The town will love this.
-		else:
-			Shopkeeper: You don't have enough Corn in your inventory!
-		=> start_shop
-	- Sell 5 Corn (+200 Gold)
-		if InventoryManager.current_shop != null and InventoryManager.current_shop.sell_item("corn", 40, 5):
-			Shopkeeper: 5 ears of corn! Great harvest.
-		else:
-			Shopkeeper: You don't have enough Corn in your inventory!
-		=> start_shop
-	- Sell 10 Corn (+400 Gold)
-		if InventoryManager.current_shop != null and InventoryManager.current_shop.sell_item("corn", 40, 10):
-			Shopkeeper: Awesome bundle! Here is your gold.
-		else:
-			Shopkeeper: You don't have enough Corn in your inventory!
-		=> start_shop
-	- Go Back
-		=> sell_crops
-
-- Sell Tomato (Gets 50 Gold each)
-	Shopkeeper: How many Tomatoes do you want to sell?
-	- Sell 1 Tomato (+50 Gold)
-		if InventoryManager.current_shop != null and InventoryManager.current_shop.sell_item("tomato", 50, 1):
-			Shopkeeper: Nice and ripe! Thanks.
-		else:
-			Shopkeeper: You don't have enough Tomatoes in your inventory!
-		=> start_shop
-	- Sell 5 Tomatoes (+250 Gold)
-		if InventoryManager.current_shop != null and InventoryManager.current_shop.sell_item("tomato", 50, 5):
-			Shopkeeper: 5 ripe tomatoes! Thanks.
-		else:
-			Shopkeeper: You don't have enough Tomatoes in your inventory!
-		=> start_shop
-	- Sell 10 Tomatoes (+500 Gold)
-		if InventoryManager.current_shop != null and InventoryManager.current_shop.sell_item("tomato", 50, 10):
-			Shopkeeper: Perfect shipment. Here is your payment!
-		else:
-			Shopkeeper: You don't have enough Tomatoes in your inventory!
-		=> start_shop
-	- Go Back
-		=> sell_crops
-
+- Corn (40 Gold each)
+	set InventoryManager.current_shop.temp_item_type = "corn"
+	set InventoryManager.current_shop.temp_price = 40
+	set InventoryManager.current_shop.temp_prev_menu = "sell_crops"
+	=> sell_qty_select
+- Tomato (50 Gold each)
+	set InventoryManager.current_shop.temp_item_type = "tomato"
+	set InventoryManager.current_shop.temp_price = 50
+	set InventoryManager.current_shop.temp_prev_menu = "sell_crops"
+	=> sell_qty_select
 - Go Back
 	=> sell_menu
 
 ~ sell_animals
 Shopkeeper: Ah, fresh products straight from your barn!
-- Sell Milk (Gets 60 Gold each)
-	Shopkeeper: How much Milk do you want to sell?
-	- Sell 1 Milk (+60 Gold)
-		if InventoryManager.current_shop != null and InventoryManager.current_shop.sell_item("milk", 60, 1):
-			Shopkeeper: Fresh milk! Perfect.
-		else:
-			Shopkeeper: You don't have enough Milk in your inventory!
-		=> start_shop
-	- Sell 5 Milk (+300 Gold)
-		if InventoryManager.current_shop != null and InventoryManager.current_shop.sell_item("milk", 60, 5):
-			Shopkeeper: 5 units of milk! Great work.
-		else:
-			Shopkeeper: You don't have enough Milk in your inventory!
-		=> start_shop
-	- Sell 10 Milk (+600 Gold)
-		if InventoryManager.current_shop != null and InventoryManager.current_shop.sell_item("milk", 60, 10):
-			Shopkeeper: Splendid dairy haul! Here is your money.
-		else:
-			Shopkeeper: You don't have enough Milk in your inventory!
-		=> start_shop
-	- Go Back
-		=> sell_animals
-
-- Sell Egg (Gets 20 Gold each)
-	Shopkeeper: How many Eggs do you want to sell?
-	- Sell 1 Egg (+20 Gold)
-		if InventoryManager.current_shop != null and InventoryManager.current_shop.sell_item("egg", 20, 1):
-			Shopkeeper: Great, a nice farm-fresh egg.
-		else:
-			Shopkeeper: You don't have enough Eggs in your inventory!
-		=> start_shop
-	- Sell 5 Eggs (+100 Gold)
-		if InventoryManager.current_shop != null and InventoryManager.current_shop.sell_item("egg", 20, 5):
-			Shopkeeper: 5 eggs! Perfect for breakfast.
-		else:
-			Shopkeeper: You don't have enough Eggs in your inventory!
-		=> start_shop
-	- Sell 10 Eggs (+200 Gold)
-		if InventoryManager.current_shop != null and InventoryManager.current_shop.sell_item("egg", 20, 10):
-			Shopkeeper: A whole carton! Thank you.
-		else:
-			Shopkeeper: You don't have enough Eggs in your inventory!
-		=> start_shop
-	- Go Back
-		=> sell_animals
-
+- Milk (60 Gold each)
+	set InventoryManager.current_shop.temp_item_type = "milk"
+	set InventoryManager.current_shop.temp_price = 60
+	set InventoryManager.current_shop.temp_prev_menu = "sell_animals"
+	=> sell_qty_select
+- Egg (20 Gold each)
+	set InventoryManager.current_shop.temp_item_type = "egg"
+	set InventoryManager.current_shop.temp_price = 20
+	set InventoryManager.current_shop.temp_prev_menu = "sell_animals"
+	=> sell_qty_select
 - Go Back
+	=> sell_menu
+
+~ sell_qty_select
+Shopkeeper: How many do you want to sell? (Current: {{InventoryManager.current_shop.temp_qty}}) | Total Payout: {{InventoryManager.current_shop.temp_qty * InventoryManager.current_shop.temp_price}} Gold
+- Add +1 Item
+	set InventoryManager.current_shop.temp_qty += 1
+	=> sell_qty_select
+- Add +5 Items
+	set InventoryManager.current_shop.temp_qty += 5
+	=> sell_qty_select
+- Remove -1 Item
+	set InventoryManager.current_shop.temp_qty -= 1
+	=> sell_qty_select
+- Remove -5 Items
+	set InventoryManager.current_shop.temp_qty -= 5
+	=> sell_qty_select
+- Confirm Sale
+	if InventoryManager.current_shop.temp_qty > 0 and InventoryManager.current_shop.sell_item(InventoryManager.current_shop.temp_item_type, InventoryManager.current_shop.temp_price, InventoryManager.current_shop.temp_qty):
+		Shopkeeper: Great trade! Here is your gold.
+	else:
+		Shopkeeper: You don't have enough items in your inventory!
+	=> start_shop
+- Cancel / Go Back
+	if InventoryManager.current_shop.temp_prev_menu == "sell_resources":
+		=> sell_resources
+	if InventoryManager.current_shop.temp_prev_menu == "sell_crops":
+		=> sell_crops
+	if InventoryManager.current_shop.temp_prev_menu == "sell_animals":
+		=> sell_animals
 	=> sell_menu

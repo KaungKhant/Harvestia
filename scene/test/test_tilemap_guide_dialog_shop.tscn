@@ -1132,7 +1132,6 @@ stream = ExtResource("35_1n1cj")
 
 [node name="SeedShop" parent="." instance=ExtResource("31_egi22")]
 position = Vector2(405, 108)
-dialogue_start_command = "start_shop"
 
 [node name="ChickenBox" parent="." instance=ExtResource("35_qwath")]
 position = Vector2(379, 209)
