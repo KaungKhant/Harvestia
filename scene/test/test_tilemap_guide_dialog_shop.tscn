@@ -900,25 +900,25 @@ terrain_set_0/terrain_0/name = "Fences"
 terrain_set_0/terrain_0/color = Color(0.685178, 0.157576, 0.189384, 1)
 sources/0 = SubResource("TileSetAtlasSource_r4ldt")
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_63asn"]
-vertices = PackedVector2Array(531, 202.67188, 427.8125, 199.3125, 427.1797, 166.42969, 531, 160.57031)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(417, 157, 541, 150, 541, 213, 418, 209)])
-source_geometry_mode = 2
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fnfhk"]
 size = Vector2(80, 80)
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_x4mro"]
-vertices = PackedVector2Array(437, 115.828125, 437, 161.82031, 339.85156, 160.15625, 339.14844, 114.171875)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(447, 106, 447, 172, 330, 170, 329, 104)])
+vertices = PackedVector2Array(437, 116, 437, 161.79688, 341.25, 160, 355, 136.64063, 355, 116, 328.2422, 137.61719, 328.77344, 159.42969)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(3, 4, 0), PackedInt32Array(5, 3, 2, 6)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(447, 106, 447, 172, 341, 170, 319, 169, 318, 128, 345, 127, 345, 106)])
 source_geometry_mode = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qve8u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_318fa"]
 size = Vector2(80, 25)
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_fnfhk"]
+vertices = PackedVector2Array(419.7578, 181, 419.25, 160, 531, 160, 446, 181, 531, 202.89844, 446, 202.09375)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(3, 2, 4, 5)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(436, 150, 541, 150, 541, 213, 436, 212, 436, 191, 410, 191, 409, 150)])
+source_geometry_mode = 2
 
 [node name="Game" type="Node2D"]
 
@@ -1076,16 +1076,12 @@ initial_minute = 0
 
 [node name="Chickens" type="Node2D" parent="."]
 
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="Chickens"]
-position = Vector2(-18, 47)
-navigation_polygon = SubResource("NavigationPolygon_63asn")
-
 [node name="Chicken" parent="Chickens" instance=ExtResource("28_vq1n4")]
 y_sort_enabled = true
 position = Vector2(439, 223)
 
 [node name="Chicken2" parent="Chickens" instance=ExtResource("28_vq1n4")]
-position = Vector2(422, 246)
+position = Vector2(463, 238)
 
 [node name="Chicken3" parent="Chickens" instance=ExtResource("28_vq1n4")]
 position = Vector2(487, 246)
@@ -1098,39 +1094,36 @@ collision_mask = 2
 script = ExtResource("31_n4o3u")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Chickens/ChickenArea"]
-position = Vector2(447, 224)
+position = Vector2(445, 217)
 shape = SubResource("RectangleShape2D_fnfhk")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Chickens/ChickenArea"]
 stream = ExtResource("32_26luk")
 volume_db = -10.0
 
-[node name="Cows" type="Node2D" parent="."]
-
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="Cows"]
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="Chickens"]
 position = Vector2(73, 156)
 navigation_polygon = SubResource("NavigationPolygon_x4mro")
 navigation_layers = 2
 
+[node name="Cows" type="Node2D" parent="."]
+
 [node name="Cow" parent="Cows" instance=ExtResource("29_smuto")]
 y_sort_enabled = true
-position = Vector2(421, 284)
+position = Vector2(447, 288)
 
 [node name="Cow2" parent="Cows" instance=ExtResource("29_smuto")]
-position = Vector2(427, 310)
+position = Vector2(490, 292)
 
 [node name="Cow3" parent="Cows" instance=ExtResource("29_smuto")]
-position = Vector2(487, 284)
-
-[node name="Cow4" parent="Cows" instance=ExtResource("29_smuto")]
-position = Vector2(472, 312)
+position = Vector2(464, 317)
 
 [node name="CowArea" type="Area2D" parent="Cows"]
 collision_mask = 2
 script = ExtResource("34_q8nqv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Cows/CowArea"]
-position = Vector2(430, 303)
+position = Vector2(436, 292)
 scale = Vector2(3, 3)
 shape = SubResource("RectangleShape2D_qve8u")
 
@@ -1143,13 +1136,14 @@ stream = ExtResource("35_1n1cj")
 position = Vector2(405, 108)
 
 [node name="GameNotification" parent="." instance=ExtResource("32_i2cep")]
+visible = false
 
 [node name="ChickenBox" parent="." instance=ExtResource("35_qwath")]
-position = Vector2(379, 209)
+position = Vector2(404, 248)
 dialogue_start_command = "start_chicken_pasture_box"
 
 [node name="ChestCow" parent="." instance=ExtResource("36_318fa")]
-position = Vector2(380, 266)
+position = Vector2(405, 276)
 dialogue_start_command = "start_cow_pasture_box"
 
 [node name="ForestBlocker" type="StaticBody2D" parent="."]
@@ -1186,6 +1180,10 @@ autoplay = true
 
 [node name="SaveDataComponent" parent="QuestSave" instance=ExtResource("21_qve8u")]
 save_data_resource = ExtResource("47_c8jb2")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+position = Vector2(-18, 47)
+navigation_polygon = SubResource("NavigationPolygon_fnfhk")
 
 [connection signal="body_entered" from="Chickens/ChickenArea" to="Chickens/ChickenArea" method="_on_body_entered"]
 [connection signal="body_exited" from="Chickens/ChickenArea" to="Chickens/ChickenArea" method="_on_body_exited"]

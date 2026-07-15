@@ -59,7 +59,7 @@ animations = [{
 size = Vector2(56, 6)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dspnv"]
-size = Vector2(30, 33)
+size = Vector2(59, 43)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_51syw"]
 
@@ -88,7 +88,7 @@ shape = SubResource("RectangleShape2D_y0rvt")
 [node name="InteractableComponent" parent="." instance=ExtResource("3_d6crc")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableComponent"]
-position = Vector2(0, 3.5)
+position = Vector2(-0.5, 2.5)
 shape = SubResource("RectangleShape2D_dspnv")
 
 [node name="InteractableLabelComponent" parent="." instance=ExtResource("4_g40q7")]

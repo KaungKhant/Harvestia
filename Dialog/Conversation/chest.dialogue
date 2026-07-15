@@ -24,7 +24,7 @@ Pasture Box: You need 2 corns
 => END
 
 ~ start_shop
-set InventoryManager.current_shop.temp_qty = 1
+set InventoryManager.current_shop.temp_qty = 0
 Shopkeeper: Welcome! Are you looking to buy some fresh seeds, or are you looking to sell your harvested goods?
 - Open Buying Shop
 	=> buy_menu
