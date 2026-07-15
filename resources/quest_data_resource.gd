@@ -23,7 +23,8 @@ func _load_data(source_node: Node) -> void:
     QuestManager.current_progress = current_progress
 
     # Don't restart a completed quest
-    if current_quest_id != "" and !QuestManager.completed_quests.has(current_quest_id):
+    if current_quest_id != "":
+        !QuestManager.completed_quests.has(current_quest_id)
         QuestManager.start_quest(current_quest_id)
         QuestManager.current_progress = current_progress
         QuestManager.current_state = current_state

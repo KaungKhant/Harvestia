@@ -55,22 +55,22 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vavhd"]
-radius = 4.472136
+radius = 6.0827627
 
 [node name="Cow" type="CharacterBody2D"]
 collision_layer = 64
 script = ExtResource("1_04crm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(1.7500001, -10.75)
-scale = Vector2(0.703125, 0.76562506)
+position = Vector2(0.50000083, -12.749999)
+scale = Vector2(0.78125006, 0.890625)
 sprite_frames = SubResource("SpriteFrames_8dmh2")
 animation = &"walk"
 autoplay = "idle"
 frame_progress = 0.91570556
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -5)
+position = Vector2(0, -6)
 shape = SubResource("CircleShape2D_vavhd")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]

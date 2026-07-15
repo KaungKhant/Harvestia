@@ -910,9 +910,9 @@ source_geometry_mode = 2
 size = Vector2(80, 80)
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_x4mro"]
-vertices = PackedVector2Array(437, 115.75781, 437, 161.49219, 334.85156, 156.46875, 334.15625, 113.25)
+vertices = PackedVector2Array(437, 115.828125, 437, 161.82031, 339.85156, 160.15625, 339.14844, 114.171875)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(447, 106, 447, 172, 325, 166, 324, 103)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(447, 106, 447, 172, 330, 170, 329, 104)])
 source_geometry_mode = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qve8u"]
