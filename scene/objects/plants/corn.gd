@@ -69,5 +69,9 @@ func on_crop_maturity() -> void:
 
 func on_crop_harvesting() -> void:
     growth_cycle_components.harvested = true
-    growth_state = DataTypes.GrowthStates.Harvesting
-    update_sprite()
+
+    var harvest = corn_harvest_scene.instantiate()
+    harvest.global_position = global_position
+    get_parent().add_child(harvest)
+
+    queue_free()

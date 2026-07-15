@@ -1,10 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://ugnmo50k3mey"]
+[gd_scene load_steps=4 format=3 uid="uid://ugnmo50k3mey"]
 
 [ext_resource type="Script" uid="uid://ddowwg22wqkbc" path="res://scene/components/collectable_component.gd" id="1_5aen6"]
+[ext_resource type="PackedScene" uid="uid://bitwqob65vm4g" path="res://scene/components/save_data_component.tscn" id="2_ufu2l"]
+[ext_resource type="Resource" uid="uid://ppsaxrkn0d00" path="res://resources/harvest_data_resource.tres" id="3_4oqrx"]
 
 [node name="CollectableComponent" type="Area2D"]
 collision_layer = 32
 collision_mask = 2
 script = ExtResource("1_5aen6")
+
+[node name="SaveDataComponent" parent="." instance=ExtResource("2_ufu2l")]
+save_data_resource = ExtResource("3_4oqrx")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cnycwk4stlfnv"]
+[gd_scene load_steps=6 format=3 uid="uid://cnycwk4stlfnv"]
 
 [ext_resource type="Texture2D" uid="uid://drp8itt24qjoj" path="res://assets/game/Objects/Basic Plants.png" id="1_klgc5"]
 [ext_resource type="PackedScene" uid="uid://ugnmo50k3mey" path="res://scene/components/collectable_component.tscn" id="2_gwcwr"]
+[ext_resource type="PackedScene" uid="uid://bitwqob65vm4g" path="res://scene/components/save_data_component.tscn" id="3_4jvhf"]
+[ext_resource type="Resource" uid="uid://ppsaxrkn0d00" path="res://resources/harvest_data_resource.tres" id="4_2lxn3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gl3d2"]
 radius = 6.0
@@ -19,3 +21,6 @@ collectable_name = "tomato"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollectableComponent"]
 shape = SubResource("CircleShape2D_gl3d2")
+
+[node name="SaveDataComponent" parent="." instance=ExtResource("3_4jvhf")]
+save_data_resource = ExtResource("4_2lxn3")

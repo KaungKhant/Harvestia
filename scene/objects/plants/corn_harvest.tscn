@@ -1,21 +1,31 @@
-[gd_scene load_steps=4 format=3 uid="uid://bfmx3vileieam"]
+[gd_scene load_steps=8 format=3 uid="uid://bfmx3vileieam"]
 
+[ext_resource type="Script" uid="uid://htuwdx76c6u7" path="res://scene/objects/plants/corn_harvest.gd" id="1_gl3d2"]
 [ext_resource type="Texture2D" uid="uid://drp8itt24qjoj" path="res://assets/game/Objects/Basic Plants.png" id="1_w0ora"]
 [ext_resource type="PackedScene" uid="uid://ugnmo50k3mey" path="res://scene/components/collectable_component.tscn" id="2_lum4b"]
+[ext_resource type="PackedScene" uid="uid://bitwqob65vm4g" path="res://scene/components/save_data_component.tscn" id="3_gl3d2"]
+[ext_resource type="Resource" uid="uid://ppsaxrkn0d00" path="res://resources/harvest_data_resource.tres" id="4_bji42"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bji42"]
+atlas = ExtResource("1_w0ora")
+region = Rect2(80, 0, 16, 16)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gl3d2"]
 radius = 6.0
 
-[node name="CornHarvest" type="Sprite2D"]
+[node name="CornHarvest" type="Area2D"]
 y_sort_enabled = true
-texture = ExtResource("1_w0ora")
-hframes = 6
-vframes = 2
-frame = 5
+script = ExtResource("1_gl3d2")
 
-[node name="CollectableComponent" parent="." instance=ExtResource("2_lum4b")]
+[node name="CornHarvest" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_bji42")
+
+[node name="CollectableComponent" parent="CornHarvest" instance=ExtResource("2_lum4b")]
 collision_layer = 160
 collectable_name = "corn"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectableComponent"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CornHarvest/CollectableComponent"]
 shape = SubResource("CircleShape2D_gl3d2")
+
+[node name="SaveDataComponent2" parent="CornHarvest/CollectableComponent" instance=ExtResource("3_gl3d2")]
+save_data_resource = ExtResource("4_bji42")

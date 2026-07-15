@@ -12,26 +12,22 @@ func _ready() -> void:
 
 func save_node_data() -> void:
     var nodes = get_tree().get_nodes_in_group("save_data_component")
-    print("--- STARTING SAVE_NODE_DATA ---")
-    print("Found ", nodes.size(), " nodes in group 'save_data_component'")
-    
+
+    print("Found ", nodes.size(), " save components")
+
     game_data_resource = SaveGameDataResource.new()
-    
-    if nodes != null:
-        for node in nodes:
-            # Changed from 'if node is SaveDataComponent:' to checking if it has the function
-            if node.has_method("_save_data"):
-                print("Processing node: ", node.get_parent().name)
-                var save_data_resource: NodeDataResource = node._save_data()
-                
-                if save_data_resource == null:
-                    print("❌ WARNING: Node '", node.get_parent().name, "' returned NULL data resource.")
-                    continue
-                
-                var save_final_resource = save_data_resource.duplicate()
-                game_data_resource.save_data_nodes.append(save_final_resource)
-                print("✅ Successfully appended data for: ", node.get_parent().name)
-            
+
+    for node in nodes:
+        print("Saving:", node.get_parent().name)
+        var data = node._save_data()
+
+        if data is HarvestDataResource:
+            print("Harvest detected!")
+            print("Scene:", data.scene_file_path)
+            print("Item:", data.item_name)
+            print("Position:", data.global_position)
+
+        game_data_resource.save_data_nodes.append(data)         
 
 func save_game() -> void:
     print("--- START SAVE ---")
@@ -74,74 +70,148 @@ func load_game() -> void:
         return
 
     game_data_resource = ResourceLoader.load(save_game_path)
+
+    if game_data_resource == null:
+        print("Failed to load save file.")
+        return
+
+
+    # =========================
+    # Load Area Data
+    # =========================
     AreaManager.unlocked_areas = game_data_resource.unlocked_areas.duplicate(true)
+
     for area_id in AreaManager.unlocked_areas.keys():
         AreaManager.area_unlocked.emit(area_id)
+
     print("Loaded areas:", AreaManager.unlocked_areas)
     print("Forest unlocked:", AreaManager.is_area_unlocked("forest"))
-    QuestManager.completed_quests = game_data_resource.completed_quests
+
+
+    # =========================
+    # Load Quest Data
+    # =========================
+    QuestManager.completed_quests = game_data_resource.completed_quests.duplicate(true)
     QuestManager.current_progress = game_data_resource.current_progress
     QuestManager.current_state = game_data_resource.current_state
-# Restore quest
-    QuestManager.completed_quests = game_data_resource.completed_quests.duplicate(true)
 
     if game_data_resource.current_quest_id != "":
         QuestManager.start_quest(game_data_resource.current_quest_id)
 
         QuestManager.current_progress = game_data_resource.current_progress
         QuestManager.current_state = game_data_resource.current_state
-    # Refresh quest UI
-        QuestManager.quest_updated.emit(
-        QuestManager.current_progress,
-        QuestManager.current_quest.target_amount
-    )
+
+        if QuestManager.current_quest:
+            QuestManager.quest_updated.emit(
+                QuestManager.current_progress,
+                QuestManager.current_quest.target_amount
+            )
+
+
+    # =========================
+    # Load Tool Unlocks
+    # =========================
     ToolManager.unlocked_tools = game_data_resource.unlocked_tools.duplicate()
+
     for tool in ToolManager.unlocked_tools:
         ToolManager.enable_tool_button(tool)
-    if game_data_resource == null:
-        print("Failed to load save file.")
-        return
 
+
+    # =========================
+    # Get Current Scene
+    # =========================
     var current_scene := get_tree().current_scene
+
     if current_scene == null:
         current_scene = get_tree().root
 
-    # Find CropFields
+
+    # =========================
+    # Find Crop Container
+    # =========================
     var crop_fields := current_scene.find_child("CropFields", true, false)
 
-    print("Loading ", game_data_resource.save_data_nodes.size(), " resources...")
+
+    print("Loading resources:", game_data_resource.save_data_nodes.size())
+
+
+    # Remove current crops/harvests before loading
     if crop_fields:
         for child in crop_fields.get_children():
             child.queue_free()
 
+
+    # =========================
+    # Load Saved Objects
+    # =========================
     for resource in game_data_resource.save_data_nodes:
 
-        # -------- Dynamic Crops --------
+
+        # -------- Crops --------
         if resource is CropDataResource:
 
             var crop_resource := resource as CropDataResource
 
+
             if crop_resource.scene_file_path == "":
                 continue
 
+
             var crop_scene := load(crop_resource.scene_file_path)
 
+
             if crop_scene == null:
-                print("Failed to load: ", crop_resource.scene_file_path)
+                print("Failed to load crop:", crop_resource.scene_file_path)
                 continue
 
+
             var crop = crop_scene.instantiate()
+
 
             if crop_fields:
                 crop_fields.add_child(crop)
             else:
                 current_scene.add_child(crop)
 
+
             crop_resource._load_data(crop)
 
             print("Loaded crop:", crop_resource.scene_file_path)
 
-        # -------- Static objects --------
+
+
+        # -------- Harvest Items --------
+        elif resource is HarvestDataResource:
+
+            var harvest_resource := resource as HarvestDataResource
+
+
+            if harvest_resource.scene_file_path == "":
+                continue
+
+
+            var harvest_scene := load(harvest_resource.scene_file_path)
+
+
+            if harvest_scene == null:
+                print("Failed to load harvest:", harvest_resource.scene_file_path)
+                continue
+
+
+            var harvest = harvest_scene.instantiate()
+
+
+            if crop_fields:
+                crop_fields.add_child(harvest)
+            else:
+                current_scene.add_child(harvest)
+
+
+            harvest_resource._load_data(harvest)
+
+            print("Loaded harvest:", harvest_resource.item_name)
+        # -------- Other Saved Nodes --------
         elif resource is NodeDataResource:
 
             resource._load_data(current_scene)
+    print("===== LOAD COMPLETE =====")

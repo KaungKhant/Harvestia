@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=2 format=3 uid="uid://cugtp1ypwv0jc"]
 
-[ext_resource type="Script" uid="uid://twe5li6o2yto" path="res://resources/tree_data_resource.gd" id="1_jhy43"]
+[ext_resource type="Script" uid="uid://twe5li6o2yto" path="res://scene/objects/trees/tree_data_resource.gd" id="1_jhy43"]
 
 [resource]
 script = ExtResource("1_jhy43")

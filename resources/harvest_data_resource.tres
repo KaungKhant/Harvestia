@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="HarvestDataResource" load_steps=2 format=3 uid="uid://ppsaxrkn0d00"]
+
+[ext_resource type="Script" uid="uid://cv84vcr5simwh" path="res://resources/harvest_data_resource.gd" id="1_mbi7a"]
+
+[resource]
+script = ExtResource("1_mbi7a")
