@@ -82,6 +82,7 @@ func get_dialogue_label() -> String:
     
 func start_quest(quest_id: String) -> void:
     # Don't restart the same quest if it's already active
+        # Don't restart a completed quest
     if current_quest != null:
         if current_quest.quest_id == quest_id and current_state != QuestState.NOT_STARTED:
             return

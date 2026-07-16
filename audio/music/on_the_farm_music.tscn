@@ -1,7 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://gtlq08uu7q4e"]
+[gd_scene load_steps=3 format=3 uid="uid://gtlq08uu7q4e"]
 
 [ext_resource type="AudioStream" uid="uid://cpjw3ymv15o6n" path="res://audio/music/On the Farm1.wav" id="1_iwkhc"]
+[ext_resource type="Script" uid="uid://b5xd1qvcqu5us" path="res://audio/music/on_the_farm_music.gd" id="2_pese8"]
 
 [node name="OnTheFarmMusic" type="AudioStreamPlayer2D"]
 stream = ExtResource("1_iwkhc")
 bus = &"Music"
+script = ExtResource("2_pese8")
+
+[connection signal="finished" from="." to="." method="_on_finished"]
