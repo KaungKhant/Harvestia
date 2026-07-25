@@ -189,7 +189,7 @@ texture = ExtResource("7_jbpbu")
 texture = ExtResource("8_6ixo4")
 texture_region_size = Vector2i(32, 32)
 3:24/0 = 0
-3:24/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, -14.875, -16, -15)
+3:24/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4.2935505, -16, 16, -16, 16, -13.844507, -3.066822, -13.844507)
 4:24/0 = 0
 4:24/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, -14.875, -16, -15)
 5:24/0 = 0
@@ -637,7 +637,7 @@ tile_set = ExtResource("22_cicdx")
 [node name="bridge" type="TileMapLayer" parent="tilemap"]
 position = Vector2(-20, 26)
 scale = Vector2(0.5, 0.5)
-tile_map_data = PackedByteArray("AAAMAAsAAgAIABoAAAAaAA0AAgAAABcAAAAaAA4AAgAAABgAAAAaAA8AAgAAABkAAAAaABAAAgAAABoAAAAbAA0AAgABABcAAAAbAA4AAgABABgAAAAbAA8AAgABABkAAAAbABAAAgABABoAAAAcAA0AAgACABcAAAAcAA4AAgACABgAAAAcAA8AAgACABkAAAAcABAAAgACABoAAAARAAQAAgADABgAAAARAAUAAgADABkAAAARAAYAAgADABoAAAASAAQAAgAEABgAAAASAAUAAgAEABkAAAASAAYAAgAEABoAAAATAAQAAgAFABgAAAATAAUAAgAFABkAAAATAAYAAgAFABoAAAAUAAQAAgAGABgAAAAUAAUAAgAGABkAAAAUAAYAAgAGABoAAAAVAAQAAgAHABgAAAAVAAUAAgAHABkAAAAVAAYAAgAHABoAAAAWAAQAAgAIABgAAAAWAAUAAgAIABkAAAAWAAYAAgAIABoAAAA=")
+tile_map_data = PackedByteArray("AAAaAA0AAgAAABcAAAAaAA4AAgAAABgAAAAaAA8AAgAAABkAAAAaABAAAgAAABoAAAAbAA0AAgABABcAAAAbAA4AAgABABgAAAAbAA8AAgABABkAAAAbABAAAgABABoAAAAcAA0AAgACABcAAAAcAA4AAgACABgAAAAcAA8AAgACABkAAAAcABAAAgACABoAAAARAAQAAgADABgAAAARAAUAAgADABkAAAARAAYAAgADABoAAAASAAQAAgAEABgAAAASAAUAAgAEABkAAAASAAYAAgAEABoAAAATAAQAAgAFABgAAAATAAUAAgAFABkAAAATAAYAAgAFABoAAAAUAAQAAgAGABgAAAAUAAUAAgAGABkAAAAUAAYAAgAGABoAAAAVAAQAAgAHABgAAAAVAAUAAgAHABkAAAAVAAYAAgAHABoAAAAWAAQAAgAIABgAAAAWAAUAAgAIABkAAAAWAAYAAgAIABoAAAA=")
 tile_set = SubResource("TileSet_lu8pk")
 
 [node name="con" type="TileMapLayer" parent="tilemap"]
@@ -783,7 +783,6 @@ visible = false
 script = ExtResource("42_b0nrm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ForestBlocker"]
-visible = false
 position = Vector2(134, 189)
 shape = SubResource("RectangleShape2D_a38x2")
 
@@ -800,7 +799,6 @@ visible = false
 script = ExtResource("45_bb20n")
 
 [node name="HSlider" type="HSlider" parent="CanvasLayer"]
-visible = false
 custom_minimum_size = Vector2(80, 40)
 offset_left = 10.0
 offset_top = 450.0
@@ -810,7 +808,6 @@ value = 100.0
 metadata/_edit_use_anchors_ = true
 
 [node name="OnTheFarmMusic" parent="CanvasLayer" instance=ExtResource("44_c3ra0")]
-visible = false
 autoplay = true
 
 [node name="QuestSave" type="Node" parent="."]
