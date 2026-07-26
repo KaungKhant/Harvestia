@@ -116,15 +116,23 @@ Shopkeeper: Fresh out of the fields, eh? Let me see what you've got.
 ~ sell_animals
 Shopkeeper: Ah, fresh products straight from your barn!
 - Milk (60 Gold each)
-	set InventoryManager.current_shop.temp_item_type = "milk"
-	set InventoryManager.current_shop.temp_price = 60
-	set InventoryManager.current_shop.temp_prev_menu = "sell_animals"
-	=> sell_qty_select
+	if InventoryManager.player_level >= 4:
+		set InventoryManager.current_shop.temp_item_type = "milk"
+		set InventoryManager.current_shop.temp_price = 60
+		set InventoryManager.current_shop.temp_prev_menu = "sell_animals"
+		=> sell_qty_select
+	else:
+		Shopkeeper: You need to be at least Level 4 to sell animal products to me!
+		=> sell_animals
 - Egg (20 Gold each)
-	set InventoryManager.current_shop.temp_item_type = "egg"
-	set InventoryManager.current_shop.temp_price = 20
-	set InventoryManager.current_shop.temp_prev_menu = "sell_animals"
-	=> sell_qty_select
+	if InventoryManager.player_level >= 4:
+		set InventoryManager.current_shop.temp_item_type = "egg"
+		set InventoryManager.current_shop.temp_price = 20
+		set InventoryManager.current_shop.temp_prev_menu = "sell_animals"
+		=> sell_qty_select
+	else:
+		Shopkeeper: You need to be at least Level 4 to sell animal products to me!
+		=> sell_animals
 - Go Back
 	=> sell_menu
 
