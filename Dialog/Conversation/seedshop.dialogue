@@ -1,35 +1,46 @@
 ~ start_shop
-Shopkeeper: Looking for crops to plant? I only carry the finest seeds. What do you need?
-- Buy Corn Seeds (25 Gold each)
-	Shopkeeper: How many Corn Seeds would you like?
-	- Buy 1 Corn Seed (25 Gold)
-		if Engine.get_main_loop().current_scene.get_node("Chest").buy_seeds("corn_seeds", DataTypes.Tools.PlantCorn, 25, 1):
-			Shopkeeper: Excellent! Added to your tool panel.
-		else:
-			Shopkeeper: You don't have enough gold!
-	- Buy 10 Corn Seeds (250 Gold)
-		if Engine.get_main_loop().current_scene.get_node("Chest").buy_seeds("corn_seeds", DataTypes.Tools.PlantCorn, 25, 10):
-			Shopkeeper: Splendid! 10 Corn Seeds added to your tool panel.
-		else:
-			Shopkeeper: You don't have enough gold!
-	- Go Back
-		=> start_shop
-
-- Buy Tomato Seeds (30 Gold each)
-	Shopkeeper: How many Tomato Seeds would you like?
-	- Buy 1 Tomato Seed (30 Gold)
-		if Engine.get_main_loop().current_scene.get_node("Chest").buy_seeds("tomato_seeds", DataTypes.Tools.PlantTomato, 30, 1):
-			Shopkeeper: There you go! Ready for tilling.
-		else:
-			Shopkeeper: You don't have enough gold!
-	- Buy 10 Tomato Seeds (300 Gold)
-		if Engine.get_main_loop().current_scene.get_node("Chest").buy_seeds("tomato_seeds", DataTypes.Tools.PlantTomato, 30, 10):
-			Shopkeeper: Double checks out! 10 Tomato Seeds added.
-		else:
-			Shopkeeper: You don't have enough gold!
-	- Go Back
-		=> start_shop
-
+set InventoryManager.current_shop.temp_qty = 0
+Merchant: Welcome! I have the most finest seeds in Harvestia.
+- Open Shop
+	=> buy_menu
 - Leave
-	Shopkeeper: Happy farming!
+	Merchant: Come again!!
 => END
+
+~ buy_menu
+Merchant: What seeds do you need?
+- Corn Seeds (25 Gold each)
+	set InventoryManager.current_shop.temp_item_type = "corn_seeds"
+	set InventoryManager.current_shop.temp_price = 25
+	set InventoryManager.current_shop.temp_tool_enum = "PlantCorn"
+	=> buy_qty_select
+- Tomato Seeds (30 Gold each)
+	set InventoryManager.current_shop.temp_item_type = "tomato_seeds"
+	set InventoryManager.current_shop.temp_price = 30
+	set InventoryManager.current_shop.temp_tool_enum = "PlantTomato"
+	=> buy_qty_select
+- Back to Main Menu
+	=> start_shop
+
+~ buy_qty_select
+Merchant: How many would you like? (Current: {{InventoryManager.current_shop.temp_qty}}) | Total Cost: {{InventoryManager.current_shop.temp_qty * InventoryManager.current_shop.temp_price}} Gold
+- Add +1 Item
+	set InventoryManager.current_shop.temp_qty += 1
+	=> buy_qty_select
+- Add +5 Items
+	set InventoryManager.current_shop.temp_qty += 5
+	=> buy_qty_select
+- Remove -1 Item
+	set InventoryManager.current_shop.temp_qty -= 1
+	=> buy_qty_select
+- Remove -5 Items
+	set InventoryManager.current_shop.temp_qty -= 5
+	=> buy_qty_select
+- Purchase
+	if InventoryManager.current_shop.temp_qty > 0 and InventoryManager.current_shop.buy_seeds(InventoryManager.current_shop.temp_item_type, DataTypes.Tools[InventoryManager.current_shop.temp_tool_enum], InventoryManager.current_shop.temp_price, InventoryManager.current_shop.temp_qty):
+		Merchant: Excellent! New Seeds Added.
+	else:
+		Merchant: Sorry, the transaction failed!
+	=> start_shop
+- Cancel
+	=> buy_menu

@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=4 uid="uid://cndg1ve1ggp10"]
+[gd_scene load_steps=96 format=4 uid="uid://cndg1ve1ggp10"]
 
 [ext_resource type="Texture2D" uid="uid://dibl8w1txfm4" path="res://assets/game/Tilesets/Water.png" id="1_fdf7g"]
 [ext_resource type="Texture2D" uid="uid://cqe2tosf7emuo" path="res://assets/game/Tilesets/Water Foam.png" id="2_egi22"]
@@ -50,6 +50,7 @@
 [ext_resource type="PackedScene" uid="uid://cugdxyqvq2u2o" path="res://scene/components/test_scene_save_data_manager_component.tscn" id="48_2dg2b"]
 [ext_resource type="PackedScene" uid="uid://dfi5u2g400moa" path="res://scene/components/save_level_data_component.tscn" id="49_u54w2"]
 [ext_resource type="Script" uid="uid://cag743qkp4uoh" path="res://scene/components/save_level_data_component.gd" id="50_uisi5"]
+[ext_resource type="PackedScene" uid="uid://cixhj2ssjigxh" path="res://scene/objects/chest/merchant.tscn" id="51_qve8u"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fimq1"]
 texture = ExtResource("1_fdf7g")
@@ -1184,6 +1185,9 @@ save_data_resource = ExtResource("47_c8jb2")
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 position = Vector2(-18, 47)
 navigation_polygon = SubResource("NavigationPolygon_fnfhk")
+
+[node name="Merchant" parent="." instance=ExtResource("51_qve8u")]
+position = Vector2(289, 155)
 
 [connection signal="body_entered" from="Chickens/ChickenArea" to="Chickens/ChickenArea" method="_on_body_entered"]
 [connection signal="body_exited" from="Chickens/ChickenArea" to="Chickens/ChickenArea" method="_on_body_exited"]
