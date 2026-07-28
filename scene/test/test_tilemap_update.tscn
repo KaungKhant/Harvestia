@@ -682,6 +682,9 @@ scale = Vector2(0.3, 0.3)
 tile_map_data = PackedByteArray("AAABABAAGQANAA4AAAABABEAGQANAA8AAAACABAAGQAOAA4AAAACABEAGQAOAA8AAAAzAAYAGQANAA4AAAAzAAcAGQANAA8AAAA0AAYAGQAOAA4AAAA0AAcAGQAOAA8AAAADABYAGQANABAAAAADABcAGQANABEAAAAEABYAGQAOABAAAAAEABcAGQAOABEAAAAYAA4AGQALABMAAAAYAA8AGQALABQAAAAZAA4AGQAMABMAAAAZAA8AGQAMABQAAAAkABEAGQANABAAAAAkABIAGQANABEAAAAlABEAGQAOABAAAAAlABIAGQAOABEAAAAgABIAGQAQABEAAAAbABIAGQAPABIAAAAbABAAGQAPABEAAAATAA4AGQAPABEAAAAMAA0AGQAPABEAAAAMAA8AGQAMABIAAAAcABIAGQAMABIAAAAjABQAGQAMABIAAAAuABIAGQAMABAAAAA2AA8AGQAKABAAAAAvAAoAGQAKABAAAAAnABEAGQAKABAAAAAGABIAGQAKABAAAAAGABYAGQAKABAAAAD9/xYAGQAJABAAAAD7/xEAGQAJAA4AAAAAABIAGQAJAA4AAAAEAA8AGQAJAA4AAAAIAB8AGQAIAA8AAAAJAB8AGQAJAA8AAAAKAB8AGQAKAA8AAAACACAAGQALAA8AAAD+/xwAGQAMAA8AAAAOAAIAGQAOABIAAAANAAIAGQAPABIAAAAOAAMAGQAMABIAAAAhAB0AGQAAAA8AAAAhAB4AGQAAABAAAAAiAB0AGQABAA8AAAAiAB4AGQABABAAAAA=")
 tile_set = ExtResource("22_cicdx")
 
+[node name="TilledLand" type="TileMapLayer" parent="tilemap"]
+tile_set = ExtResource("22_cicdx")
+
 [node name="Player" parent="." instance=ExtResource("30_02rb0")]
 position = Vector2(303, 202)
 
@@ -693,24 +696,23 @@ limit_bottom = 600
 script = ExtResource("31_3oix6")
 
 [node name="QuestTracker" parent="Player" instance=ExtResource("32_uo8n1")]
-visible = false
 
 [node name="guide" parent="." instance=ExtResource("25_5rnl7")]
-visible = false
 position = Vector2(327, 154)
 
 [node name="CropFields" type="Node2D" parent="."]
-visible = false
 
-[node name="FieldCursorComponent" parent="." instance=ExtResource("26_yjslk")]
+[node name="FieldCursorComponent" parent="." node_paths=PackedStringArray("grass_tilemap_layer", "tilled_soil_tilemap_layer") instance=ExtResource("26_yjslk")]
 script = ExtResource("27_lf11w")
+grass_tilemap_layer = NodePath("../tilemap/water")
+tilled_soil_tilemap_layer = NodePath("../tilemap/TilledLand")
 terrain = 2
 
-[node name="CropCursorComponent" parent="." instance=ExtResource("28_ny7dy")]
+[node name="CropCursorComponent" parent="." node_paths=PackedStringArray("tilled_soil_tilemap_layer") instance=ExtResource("28_ny7dy")]
 script = ExtResource("29_4faha")
+tilled_soil_tilemap_layer = NodePath("../tilemap/TilledLand")
 
 [node name="GameScreen" parent="." instance=ExtResource("33_d6f14")]
-visible = false
 
 [node name="DayAndNightCycleComponent" parent="." instance=ExtResource("34_pqe60")]
 visible = false
@@ -718,7 +720,6 @@ initial_hour = 8
 initial_minute = 0
 
 [node name="Chickens" type="Node2D" parent="."]
-visible = false
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="Chickens"]
 position = Vector2(-18, 47)
@@ -738,7 +739,6 @@ position = Vector2(487, 246)
 position = Vector2(487, 216)
 
 [node name="Cows" type="Node2D" parent="."]
-visible = false
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="Cows"]
 position = Vector2(73, 156)
@@ -759,22 +759,17 @@ position = Vector2(487, 284)
 position = Vector2(472, 312)
 
 [node name="PlayerHUD" parent="." instance=ExtResource("37_e5nqy")]
-visible = false
 
 [node name="SeedShop" parent="." instance=ExtResource("38_65v31")]
-visible = false
 position = Vector2(405, 108)
 
 [node name="GameNotification" parent="." instance=ExtResource("39_wb5di")]
-visible = false
 
 [node name="ChickenBox" parent="." instance=ExtResource("40_aujyc")]
-visible = false
 position = Vector2(379, 209)
 dialogue_start_command = "start_chicken_pasture_box"
 
 [node name="ChestCow" parent="." instance=ExtResource("41_0uaif")]
-visible = false
 position = Vector2(380, 266)
 dialogue_start_command = "start_cow_pasture_box"
 
@@ -786,7 +781,6 @@ position = Vector2(134, 189)
 shape = SubResource("RectangleShape2D_a38x2")
 
 [node name="forest_ranger" parent="." instance=ExtResource("43_4msdk")]
-visible = false
 position = Vector2(181, 174)
 
 [node name="OnTheFarmMusic" parent="." instance=ExtResource("44_c3ra0")]
@@ -794,7 +788,6 @@ visible = false
 autoplay = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 script = ExtResource("45_bb20n")
 
 [node name="HSlider" type="HSlider" parent="CanvasLayer"]
