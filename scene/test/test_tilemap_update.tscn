@@ -609,18 +609,16 @@ position = Vector2(327, 154)
 
 [node name="CropFields" type="Node2D" parent="."]
 
-[node name="FieldCursorComponent" parent="." node_paths=PackedStringArray("grass_tilemap_layer", "tilled_soil_tilemap_layer") instance=ExtResource("26_yjslk")]
+[node name="FieldCursorComponent" parent="." node_paths=PackedStringArray("tilled_soil_tilemap_layer") instance=ExtResource("26_yjslk")]
 script = ExtResource("27_lf11w")
-grass_tilemap_layer = NodePath("../tilemap/water")
 tilled_soil_tilemap_layer = NodePath("../tilemap/TilledLand")
-terrain = 2
+terrain = 0
 
 [node name="CropCursorComponent" parent="." node_paths=PackedStringArray("tilled_soil_tilemap_layer") instance=ExtResource("28_ny7dy")]
 script = ExtResource("29_4faha")
 tilled_soil_tilemap_layer = NodePath("../tilemap/TilledLand")
 
 [node name="GameScreen" parent="." instance=ExtResource("33_d6f14")]
-visible = false
 
 [node name="DayAndNightCycleComponent" parent="." instance=ExtResource("34_pqe60")]
 initial_hour = 8
