@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=4 uid="uid://cjw80kk2l0x3u"]
+[gd_scene load_steps=67 format=4 uid="uid://cjw80kk2l0x3u"]
 
 [ext_resource type="PackedScene" uid="uid://cugdxyqvq2u2o" path="res://scene/components/test_scene_save_data_manager_component.tscn" id="1_ut2c2"]
 [ext_resource type="PackedScene" uid="uid://dfi5u2g400moa" path="res://scene/components/save_level_data_component.tscn" id="2_va105"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://d5kgh3akq7f4" path="res://assets/game/Objects/Tree1.png" id="13_ou6g3"]
 [ext_resource type="Texture2D" uid="uid://hnmioslcobsg" path="res://assets/game/Objects/Tree2.png" id="14_6ucx2"]
 [ext_resource type="Texture2D" uid="uid://5csciriv83xy" path="res://assets/game/Objects/Tree3.png" id="15_ut2c2"]
+[ext_resource type="TileSet" uid="uid://8xanr61cnemu" path="res://scene/test/tilled_land.tres" id="16_fo2b8"]
 [ext_resource type="Texture2D" uid="uid://d31yuhb1dbkja" path="res://assets/game/Objects/Tree4.png" id="16_va105"]
 [ext_resource type="Texture2D" uid="uid://btwo2nqn780rf" path="res://assets/game/Objects/tree6.png" id="17_2kh6s"]
 [ext_resource type="TileSet" uid="uid://dhheyesq1lvuw" path="res://tilesets/gametilesets.tres" id="22_cicdx"]
@@ -296,10 +297,6 @@ texture_region_size = Vector2i(128, 128)
 0:0/animation_frame_1/duration = 1.0
 0:0/animation_frame_2/duration = 1.0
 0:0/animation_frame_3/duration = 1.0
-0:0/animation_frame_4/duration = 1.0
-0:0/animation_frame_5/duration = 1.0
-0:0/animation_frame_6/duration = 1.0
-0:0/animation_frame_7/duration = 1.0
 0:0/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_bfi1c"]
@@ -448,10 +445,6 @@ texture_region_size = Vector2i(128, 128)
 0:0/animation_frame_1/duration = 1.0
 0:0/animation_frame_2/duration = 1.0
 0:0/animation_frame_3/duration = 1.0
-0:0/animation_frame_4/duration = 1.0
-0:0/animation_frame_5/duration = 1.0
-0:0/animation_frame_6/duration = 1.0
-0:0/animation_frame_7/duration = 1.0
 0:0/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_wyqb6"]
@@ -592,7 +585,7 @@ tile_map_data = PackedByteArray("AAABABAAGQANAA4AAAABABEAGQANAA8AAAACABAAGQAOAA4
 tile_set = ExtResource("22_cicdx")
 
 [node name="TilledLand" type="TileMapLayer" parent="tilemap"]
-tile_set = ExtResource("22_cicdx")
+tile_set = ExtResource("16_fo2b8")
 
 [node name="QuestHome" type="TileMapLayer" parent="tilemap"]
 scale = Vector2(0.3, 0.3)
