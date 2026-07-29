@@ -296,10 +296,6 @@ texture_region_size = Vector2i(128, 128)
 0:0/animation_frame_1/duration = 1.0
 0:0/animation_frame_2/duration = 1.0
 0:0/animation_frame_3/duration = 1.0
-0:0/animation_frame_4/duration = 1.0
-0:0/animation_frame_5/duration = 1.0
-0:0/animation_frame_6/duration = 1.0
-0:0/animation_frame_7/duration = 1.0
 0:0/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_bfi1c"]
@@ -448,10 +444,6 @@ texture_region_size = Vector2i(128, 128)
 0:0/animation_frame_1/duration = 1.0
 0:0/animation_frame_2/duration = 1.0
 0:0/animation_frame_3/duration = 1.0
-0:0/animation_frame_4/duration = 1.0
-0:0/animation_frame_5/duration = 1.0
-0:0/animation_frame_6/duration = 1.0
-0:0/animation_frame_7/duration = 1.0
 0:0/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_wyqb6"]
@@ -695,7 +687,7 @@ position = Vector2(134, 189)
 shape = SubResource("RectangleShape2D_a38x2")
 
 [node name="forest_ranger" parent="." instance=ExtResource("43_4msdk")]
-position = Vector2(181, 174)
+position = Vector2(342, 87)
 
 [node name="OnTheFarmMusic" parent="." instance=ExtResource("44_c3ra0")]
 autoplay = true
