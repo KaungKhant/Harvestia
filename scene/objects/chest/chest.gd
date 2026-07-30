@@ -40,6 +40,18 @@ func on_interactable_deactivated() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if in_range:
 		if event.is_action_pressed("show_dialogue"):
+			
+			# Check if the player is at least Level 4
+			# (Change "GameManager.player_level" to match whatever variable/manager holds your player's level)
+			if QuestManager.current_progress < 1:
+				interactable_label_component.hide()
+				var balloon: BaseGameDialogueBalloon = balloon_scene.instantiate()
+				get_tree().current_scene.add_child(balloon)
+				# Trigger a dialogue line explaining they need level 4
+				balloon.start(load("res://Dialog/Conversation/chest.dialogue"), "level_too_low")
+				return # Stop here so it doesn't open the chest
+			
+			# If level 4 or above, proceed normally:
 			interactable_label_component.hide()
 			animated_sprite_2d.play("chest_open")
 			is_chest_open = true

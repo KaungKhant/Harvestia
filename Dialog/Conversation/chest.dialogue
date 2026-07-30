@@ -23,6 +23,10 @@ Pasture Box: You don't have enough corn.
 Pasture Box: You need 2 corns
 => END
 
+~ level_too_low
+Pasture Box: This pasture is locked! You need to finish some quests to feed the animals.
+=> END
+
 ~ start_shop
 set InventoryManager.current_shop.temp_qty = 0
 Shopkeeper: Welcome! Are you looking to buy some fresh seeds, or are you looking to sell your harvested goods?
