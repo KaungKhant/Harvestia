@@ -1,6 +1,18 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://8xanr61cnemu"]
+[gd_resource type="TileSet" load_steps=9 format=3 uid="uid://8xanr61cnemu"]
 
+[ext_resource type="PackedScene" uid="uid://wbuyha341plb" path="res://scene/objects/rocks/rock.tscn" id="1_krxq0"]
 [ext_resource type="Texture2D" uid="uid://k4ias81bqf5h" path="res://assets/game/Tilesets/Tilled_Dirt_Wide_v2.png" id="1_pga0f"]
+[ext_resource type="PackedScene" uid="uid://buv337t37jnf" path="res://scene/objects/trees/small_tree.tscn" id="2_8mnmm"]
+[ext_resource type="PackedScene" uid="uid://bajv637y4ujir" path="res://scene/objects/trees/tree_1.tscn" id="3_p1p5q"]
+[ext_resource type="PackedScene" uid="uid://bkn8e0bqqbi4n" path="res://scene/objects/trees/tree_2.tscn" id="4_2act6"]
+[ext_resource type="PackedScene" uid="uid://7ouatl2f0eoh" path="res://scene/objects/trees/tree_3.tscn" id="5_lfkul"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_n6cwo"]
+scenes/1/scene = ExtResource("1_krxq0")
+scenes/2/scene = ExtResource("2_8mnmm")
+scenes/3/scene = ExtResource("3_p1p5q")
+scenes/4/scene = ExtResource("4_2act6")
+scenes/5/scene = ExtResource("5_lfkul")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4p5pf"]
 texture = ExtResource("1_pga0f")
@@ -222,3 +234,4 @@ terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Tilled_Land"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/1 = SubResource("TileSetAtlasSource_4p5pf")
+sources/0 = SubResource("TileSetScenesCollectionSource_n6cwo")

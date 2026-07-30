@@ -1,4 +1,4 @@
-[gd_scene load_steps=90 format=4 uid="uid://bvkwg4jgnkmuf"]
+[gd_scene load_steps=89 format=4 uid="uid://bvkwg4jgnkmuf"]
 
 [ext_resource type="Texture2D" uid="uid://dibl8w1txfm4" path="res://assets/game/Tilesets/Water.png" id="1_hjlx7"]
 [ext_resource type="PackedScene" uid="uid://cugdxyqvq2u2o" path="res://scene/components/test_scene_save_data_manager_component.tscn" id="1_ht70e"]
@@ -19,7 +19,6 @@
 [ext_resource type="Texture2D" uid="uid://42bicr88ft8t" path="res://assets/game/Objects/Tilemap_color16.png" id="16_ace3k"]
 [ext_resource type="Texture2D" uid="uid://d31yuhb1dbkja" path="res://assets/game/Objects/Tree4.png" id="17_8iacd"]
 [ext_resource type="Texture2D" uid="uid://dq1jnl4ha35sb" path="res://assets/game/Tilesets/Fences.png" id="18_uhfq1"]
-[ext_resource type="TileSet" uid="uid://dhheyesq1lvuw" path="res://tilesets/gametilesets.tres" id="19_7hcqr"]
 [ext_resource type="PackedScene" uid="uid://j824fxn1cohe" path="res://scene/characters/guide/guide.tscn" id="20_wk4d7"]
 [ext_resource type="PackedScene" uid="uid://cvfugxxni6yaj" path="res://scene/components/field_cursor_component.tscn" id="21_a38x2"]
 [ext_resource type="Script" uid="uid://dmr175av1oqch" path="res://scene/components/field_cursor_component.gd" id="22_1du0l"]
@@ -1037,8 +1036,8 @@ save_data_resource = ExtResource("24_1gdod")
 
 [node name="choptree" type="TileMapLayer" parent="Tilemap"]
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AAAMAA0ABgAAAAAABQAOAA8ABgAAAAAAAQAOAAoABgAAAAAAAwARAA0ABgAAAAAABAALAAkABgAAAAAAAgALAAUABgAAAAAAAgANAAQABgAAAAAAAgAMAAYABgAAAAAAAgAMAAgABgAAAAAAAgAPABEABgAAAAAAAgASABEABgAAAAAAAgARAA8ABgAAAAAAAgAMABAABgAAAAAAAgANAAMABgAAAAAAAwANABAABgAAAAAAAwAOABEABgAAAAAAAwAQABEABgAAAAAABQAPAA4ABgAAAAAABQALAA8ABgAAAAAABQAXAAsABgAAAAAACAAbAAoABgAAAAAABwAVAAsABgAAAAAABgAVAA0ABgAAAAAABgA=")
-tile_set = ExtResource("19_7hcqr")
+tile_map_data = PackedByteArray("AAAMAA0ABgAAAAAABQAOAA8ABgAAAAAAAQAOAAoABgAAAAAAAwARAA0ABgAAAAAABAALAAkABgAAAAAAAgALAAUABgAAAAAAAgANAAQABgAAAAAAAgAMAAYABgAAAAAAAgAMAAgABgAAAAAAAgAPABEABgAAAAAAAgASABEABgAAAAAAAgARAA8ABgAAAAAAAgAMABAABgAAAAAAAgANAAMABgAAAAAAAwANABAABgAAAAAAAwAOABEABgAAAAAAAwAQABEABgAAAAAABQAPAA4ABgAAAAAABQALAA8ABgAAAAAABQAXAAsABgAAAAAACAAbAAoABgAAAAAABwAVAAsABgAAAAAABgAVAA0ABgAAAAAABgARAAkAAAAAAAAAAQAPAAkAAAAAAAAAAQA=")
+tile_set = ExtResource("22_uhfq1")
 
 [node name="guide" parent="." instance=ExtResource("20_wk4d7")]
 position = Vector2(327, 154)
