@@ -1,0 +1,35 @@
+[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://blrcfljb6i2qu"]
+
+[ext_resource type="Texture2D" uid="uid://bkgp2ejfjwqt8" path="res://assets/game/Tilesets/housetileset.png" id="1_nmlrn"]
+[ext_resource type="Texture2D" uid="uid://bl6775atbemik" path="res://assets/game/Tilesets/file_00000000d98c720ba223cc2b3abdf315.png" id="2_6dcqg"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6dcqg"]
+texture = ExtResource("1_nmlrn")
+6:6/size_in_atlas = Vector2i(2, 2)
+6:6/0 = 0
+14:10/size_in_atlas = Vector2i(2, 2)
+14:10/0 = 0
+10:11/0 = 0
+11:11/0 = 0
+14:17/size_in_atlas = Vector2i(2, 2)
+14:17/0 = 0
+10:21/0 = 0
+11:21/0 = 0
+12:21/0 = 0
+13:21/0 = 0
+14:21/0 = 0
+15:21/0 = 0
+6:8/size_in_atlas = Vector2i(2, 2)
+6:8/0 = 0
+6:12/size_in_atlas = Vector2i(2, 2)
+6:12/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g8j7f"]
+texture = ExtResource("2_6dcqg")
+texture_region_size = Vector2i(32, 32)
+24:12/0 = 0
+
+[resource]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_6dcqg")
+sources/1 = SubResource("TileSetAtlasSource_g8j7f")

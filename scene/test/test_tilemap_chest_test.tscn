@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=4 uid="uid://sd1x5kuolbo3"]
+[gd_scene load_steps=72 format=4 uid="uid://sd1x5kuolbo3"]
 
 [ext_resource type="Texture2D" uid="uid://dibl8w1txfm4" path="res://assets/game/Tilesets/Water.png" id="1_2pxin"]
 [ext_resource type="Texture2D" uid="uid://cqe2tosf7emuo" path="res://assets/game/Tilesets/Water Foam.png" id="2_uim4y"]
@@ -28,6 +28,8 @@
 [ext_resource type="PackedScene" uid="uid://b6dt06p3lh2cs" path="res://scene/components/day_and_night_cycle_component.tscn" id="26_muhxj"]
 [ext_resource type="PackedScene" uid="uid://230kmok5s7ft" path="res://scene/characters/chicken/chicken.tscn" id="27_1hykp"]
 [ext_resource type="PackedScene" uid="uid://1dkjt1xi1b1k" path="res://scene/characters/cow/cow.tscn" id="28_75e3m"]
+[ext_resource type="PackedScene" uid="uid://d2n8c36b2fji" path="res://scene/objects/house/house.tscn" id="29_o3e1n"]
+[ext_resource type="PackedScene" uid="uid://cskch0kgkk2u3" path="res://scene/objects/house/interior.tscn" id="30_iybom"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fimq1"]
 texture = ExtResource("1_2pxin")
@@ -1071,3 +1073,7 @@ position = Vector2(487, 284)
 
 [node name="Cow4" parent="Cows" instance=ExtResource("28_75e3m")]
 position = Vector2(472, 312)
+
+[node name="House" parent="." instance=ExtResource("29_o3e1n")]
+position = Vector2(28, -3)
+inside_scene = ExtResource("30_iybom")
