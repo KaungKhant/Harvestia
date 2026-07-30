@@ -40,16 +40,25 @@ Shopkeeper: Welcome! Are you looking to buy some fresh seeds, or are you looking
 
 ~ buy_menu
 Shopkeeper: What seeds do you need?
+
 - Corn Seeds (25 Gold each)
 	set InventoryManager.current_shop.temp_item_type = "corn_seeds"
 	set InventoryManager.current_shop.temp_price = 25
 	set InventoryManager.current_shop.temp_tool_enum = "PlantCorn"
 	=> buy_qty_select
-- Tomato Seeds (30 Gold each)
-	set InventoryManager.current_shop.temp_item_type = "tomato_seeds"
-	set InventoryManager.current_shop.temp_price = 30
-	set InventoryManager.current_shop.temp_tool_enum = "PlantTomato"
-	=> buy_qty_select
+
+- - Tomato Seeds (30 Gold each)
+	if SeedUnlockManager.is_seed_unlocked("tomato_seeds"):
+		Shopkeeper: Tomato Seeds are 30 Gold each.
+		set InventoryManager.current_shop.temp_item_type = "tomato_seeds"
+		set InventoryManager.current_shop.temp_price = 30
+		set InventoryManager.current_shop.temp_tool_enum = "PlantTomato"
+		=> buy_qty_select
+	else:
+		Shopkeeper: Sorry, Tomato Seeds are still locked.
+		Shopkeeper: Keep progressing through Harvestia and come back later.
+		=> buy_menu
+
 - Back to Main Menu
 	=> start_shop
 

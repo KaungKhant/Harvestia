@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://d0gjrquu2pq4e"
+path="res://.godot/imported/tomato_harvest.dialogue-4465fd978022249d3c37d260fa1d532f.tres"
+
+[deps]
+
+source_file="res://Dialog/Guide/tomato_harvest.dialogue"
+dest_files=["res://.godot/imported/tomato_harvest.dialogue-4465fd978022249d3c37d260fa1d532f.tres"]
+
+[params]
+
+defaults=true

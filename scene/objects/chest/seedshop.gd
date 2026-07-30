@@ -59,25 +59,33 @@ func buy_seeds(seed_type: String, tool_enum_value: DataTypes.Tools, single_cost:
 	if amount <= 0:
 		print("Transaction rejected: Invalid quantity amount!")
 		return false
-		
+
+	# SEED LOCK CHECK
+	if not SeedUnlockManager.is_seed_unlocked(seed_type):
+		print("Transaction rejected: ", seed_type, " is locked!")
+		return false
+
 	var total_cost = single_cost * amount
-	
+
 	if not PlayerProgressManager.spend_gold(total_cost):
 		return false
-	
+
 	print("Buying:", amount, seed_type)
+
 	if InventoryManager.inventory.has(seed_type):
 		InventoryManager.inventory[seed_type] += amount
 	else:
 		InventoryManager.inventory[seed_type] = amount
+
 	print("Inventory after buying:", InventoryManager.inventory)
-		
+
 	# Notify the quest system that seeds were purchased
 	for i in amount:
 		QuestManager.add_progress(seed_type)
-		
+
 	ToolManager.enable_tool.emit(tool_enum_value)
 	InventoryManager.inventory_changed.emit()
+
 	return true
 
 

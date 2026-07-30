@@ -18,10 +18,17 @@ Forest Ranger: The Guide always has a good eye for people.
 Forest Ranger: I'll open the bridge.
 
 do GameDialogueManager.action_unlock_forest()
+do SeedUnlockManager.unlock_seed("tomato_seeds")
 
 Forest Ranger: Beyond this bridge lies the forest.
 
 Forest Ranger: It will become an important part of rebuilding this farm.
+
+Forest Ranger: The Seed Shop is now stocking Tomato Seeds.
+
+do QuestManager.start_quest("tomato_harvest")
+
+Forest Ranger: Try growing 5 Tomatoes and bring them to the Guide.
 
 => END
 

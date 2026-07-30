@@ -485,7 +485,7 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(447, 106, 447, 172, 325
 source_geometry_mode = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a38x2"]
-size = Vector2(80, 25)
+size = Vector2(80, 35.5)
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
@@ -614,10 +614,9 @@ limit_bottom = 600
 script = ExtResource("19_s87l8")
 
 [node name="QuestTracker" parent="Player" instance=ExtResource("20_xscjc")]
-visible = false
 
 [node name="guide" parent="." instance=ExtResource("21_4yern")]
-position = Vector2(327, 154)
+position = Vector2(361, 175)
 
 [node name="CropFields" type="Node2D" parent="."]
 
@@ -677,13 +676,11 @@ position = Vector2(487, 284)
 position = Vector2(472, 312)
 
 [node name="PlayerHUD" parent="." instance=ExtResource("30_utljw")]
-visible = false
 
 [node name="SeedShop" parent="." instance=ExtResource("31_wwg0v")]
 position = Vector2(405, 108)
 
 [node name="GameNotification" parent="." instance=ExtResource("32_p0bm7")]
-visible = false
 
 [node name="ChickenBox" parent="." instance=ExtResource("33_qgwej")]
 position = Vector2(379, 209)
@@ -697,7 +694,7 @@ dialogue_start_command = "start_cow_pasture_box"
 script = ExtResource("35_rldt8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ForestBlocker"]
-position = Vector2(134, 189)
+position = Vector2(291, 111)
 shape = SubResource("RectangleShape2D_a38x2")
 
 [node name="forest_ranger" parent="." instance=ExtResource("36_0i67t")]

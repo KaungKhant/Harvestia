@@ -1,0 +1,36 @@
+~ start
+
+Guide: You've come a long way since your first harvest.
+
+Guide: Tomato Seeds are now available at the Seed Shop.
+
+Guide: Grow and harvest 5 Tomatoes, then bring them to me.
+
+=> END
+
+
+~ progress
+
+Guide: Keep working on your Tomato crop.
+
+Guide: Bring me 5 Tomatoes when they're ready.
+
+=> END
+
+
+~ turn_in
+
+Guide: Excellent! Your farm is becoming more productive.
+
+do QuestManager.try_complete_quest()
+
+Guide: Every new crop brings us one step closer to restoring Harvestia.
+
+=> END
+
+
+~ completed
+
+Guide: Your farm is growing well. Keep it up!
+
+=> END
