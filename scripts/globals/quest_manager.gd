@@ -16,6 +16,9 @@ var current_state: QuestState = QuestState.NOT_STARTED
 var current_progress: int = 0
 var completed_quests: Dictionary = {}
 
+func _ready() -> void:
+	InventoryManager.inventory_changed.connect(sync_progress_with_inventory)
+
 func start_quest_data(quest: QuestData) -> void:
 	
 	print("======================")
@@ -28,33 +31,16 @@ func start_quest_data(quest: QuestData) -> void:
 
 
 func add_progress(item_name: String) -> void:
-	if current_state != QuestState.IN_PROGRESS:
-		return
-
 	if current_quest == null:
 		return
 
-	if item_name != current_quest.target_item:
+	if current_state != QuestState.IN_PROGRESS and current_state != QuestState.READY_TO_TURN_IN:
 		return
 
-	current_progress += 1
+	if item_name.to_lower() != current_quest.target_item.to_lower():
+		return
 
-	# Clamp progress
-	if current_progress > current_quest.target_amount:
-		current_progress = current_quest.target_amount
-
-	# Always update the tracker
-	quest_updated.emit(current_progress, current_quest.target_amount)
-	if QuestManager.current_quest != null:
-		QuestManager.quest_updated.emit(
-			QuestManager.current_progress,
-			QuestManager.current_quest.target_amount)
-	# Objective completed
-	if current_progress >= current_quest.target_amount and current_state == QuestState.IN_PROGRESS:
-		current_state = QuestState.READY_TO_TURN_IN
-
-		NotificationManager.show_objective("Return to the Guide.")
-
+	sync_progress_with_inventory()
 
 func complete_quest() -> void:
 	current_state = QuestState.COMPLETED
@@ -155,3 +141,30 @@ func is_ready_to_turn_in() -> bool:
 	return current_state == QuestState.READY_TO_TURN_IN
 func is_quest_completed(quest_id: String) -> bool:
 	return completed_quests.get(quest_id, false)
+
+func sync_progress_with_inventory() -> void:
+	if current_quest == null:
+		return
+
+	if current_state != QuestState.IN_PROGRESS and current_state != QuestState.READY_TO_TURN_IN:
+		return
+
+	var target_item := current_quest.target_item.to_lower()
+	var inventory_amount: int = InventoryManager.inventory.get(target_item, 0)
+
+	current_progress = min(inventory_amount, current_quest.target_amount)
+
+	# FIRST update the quest state
+	if current_progress >= current_quest.target_amount:
+		if current_state != QuestState.READY_TO_TURN_IN:
+			current_state = QuestState.READY_TO_TURN_IN
+			NotificationManager.show_objective("Return to the Guide.")
+	else:
+		if current_state == QuestState.READY_TO_TURN_IN:
+			current_state = QuestState.IN_PROGRESS
+
+	# THEN tell the UI to refresh
+	quest_updated.emit(
+		current_progress,
+		current_quest.target_amount
+	)
