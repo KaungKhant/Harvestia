@@ -772,7 +772,7 @@ texture_region_size = Vector2i(192, 192)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_mjh27")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_211qn"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r4ldt"]
 texture = ExtResource("18_h04av")
 0:0/0 = 0
 0:0/0/terrain_set = 0
@@ -876,7 +876,7 @@ physics_layer_0/collision_layer = 1
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Fences"
 terrain_set_0/terrain_0/color = Color(0.685178, 0.157576, 0.189384, 1)
-sources/0 = SubResource("TileSetAtlasSource_211qn")
+sources/0 = SubResource("TileSetAtlasSource_r4ldt")
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_63asn"]
 vertices = PackedVector2Array(531, 203, 424.9922, 203, 429.09375, 160, 531, 160)

@@ -1,6 +1,8 @@
-[gd_scene load_steps=84 format=4 uid="uid://deythsf5bwj04"]
 
-[ext_resource type="Script" uid="uid://bdyqmykvh8d2p" path="res://scene/test/test_tilemap_update_tilled_land.gd" id="1_2qbyd"]
+[gd_scene load_steps=75 format=4 uid="uid://deythsf5bwj04"]
+[gd_scene load_steps=78 format=4 uid="uid://deythsf5bwj04"]
+
+
 [ext_resource type="PackedScene" uid="uid://cugdxyqvq2u2o" path="res://scene/components/test_scene_save_data_manager_component.tscn" id="1_sd0js"]
 [ext_resource type="PackedScene" uid="uid://dfi5u2g400moa" path="res://scene/components/save_level_data_component.tscn" id="2_txhv5"]
 [ext_resource type="Script" uid="uid://cag743qkp4uoh" path="res://scene/components/save_level_data_component.gd" id="3_tv8bb"]
@@ -29,13 +31,10 @@
 [ext_resource type="PackedScene" uid="uid://7ouatl2f0eoh" path="res://scene/objects/trees/tree_3.tscn" id="22_ftlcc"]
 [ext_resource type="PackedScene" uid="uid://cvfugxxni6yaj" path="res://scene/components/field_cursor_component.tscn" id="22_jl4rj"]
 [ext_resource type="Script" uid="uid://dmr175av1oqch" path="res://scene/components/field_cursor_component.gd" id="23_rj4ig"]
-[ext_resource type="Texture2D" uid="uid://dq1jnl4ha35sb" path="res://assets/game/Tilesets/Fences.png" id="24_ftlcc"]
 [ext_resource type="PackedScene" uid="uid://4u1ibhxk6vgd" path="res://scene/components/crop_cursor_component.tscn" id="24_grctm"]
 [ext_resource type="Script" uid="uid://encln1my7qx3" path="res://scene/components/crop_cursor_component.gd" id="25_rulqn"]
 [ext_resource type="PackedScene" uid="uid://dqkphh5iahe3s" path="res://scene/ui/game_screen.tscn" id="26_ql1kl"]
 [ext_resource type="PackedScene" uid="uid://b6dt06p3lh2cs" path="res://scene/components/day_and_night_cycle_component.tscn" id="27_fa07h"]
-[ext_resource type="PackedScene" uid="uid://230kmok5s7ft" path="res://scene/characters/chicken/chicken.tscn" id="28_cqvts"]
-[ext_resource type="PackedScene" uid="uid://1dkjt1xi1b1k" path="res://scene/characters/cow/cow.tscn" id="29_4p0vi"]
 [ext_resource type="PackedScene" uid="uid://cg5jte5gcuvim" path="res://scene/progress/player_hud.tscn" id="30_utljw"]
 [ext_resource type="PackedScene" uid="uid://b7hedi0atmi4m" path="res://scene/objects/chest/seedshop.tscn" id="31_wwg0v"]
 [ext_resource type="PackedScene" uid="uid://dnd41d0l7r5bq" path="res://scene/progress/game_notification.tscn" id="32_p0bm7"]
@@ -47,8 +46,6 @@
 [ext_resource type="Script" uid="uid://cd8nou7v238tu" path="res://scene/test/canvas_layer.gd" id="38_1fukf"]
 [ext_resource type="PackedScene" uid="uid://bitwqob65vm4g" path="res://scene/components/save_data_component.tscn" id="39_axwn8"]
 [ext_resource type="Resource" uid="uid://5rbr03gu1ecy" path="res://resources/quest_data_resoource.tres" id="40_rmisn"]
-[ext_resource type="PackedScene" uid="uid://d2n8c36b2fji" path="res://scene/objects/house/house.tscn" id="46_dd2lj"]
-[ext_resource type="PackedScene" uid="uid://cskch0kgkk2u3" path="res://scene/objects/house/interior.tscn" id="47_2qbyd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7hbbt"]
 texture = ExtResource("4_m6skb")
@@ -499,130 +496,12 @@ shader = ExtResource("20_dd2lj")
 shader_parameter/shake_intensity = 0.0
 shader_parameter/shake_speed = 20.0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_742vt"]
-texture = ExtResource("24_ftlcc")
-0:0/0 = 0
-0:0/0/terrain_set = 0
-0:0/0/terrain = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-3, -8, 3, -8, 3, 8, -3, 8)
-0:0/0/terrains_peering_bit/bottom_side = 0
-1:0/0 = 0
-1:0/0/terrain_set = 0
-1:0/0/terrain = 0
-1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-3, -8, 8, -8, 8, 2, 3, 2, 3, 8, -3, 8)
-1:0/0/terrains_peering_bit/right_side = 0
-1:0/0/terrains_peering_bit/bottom_side = 0
-2:0/0 = 0
-2:0/0/terrain_set = 0
-2:0/0/terrain = 0
-2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-2:0/0/terrains_peering_bit/right_side = 0
-2:0/0/terrains_peering_bit/bottom_side = 0
-2:0/0/terrains_peering_bit/left_side = 0
-3:0/0 = 0
-3:0/0/terrain_set = 0
-3:0/0/terrain = 0
-3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 3, -8, 3, 8, -8, 8)
-3:0/0/terrains_peering_bit/bottom_side = 0
-3:0/0/terrains_peering_bit/left_side = 0
-0:1/0 = 0
-0:1/0/terrain_set = 0
-0:1/0/terrain = 0
-0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-3, -8, 3, -8, 3, 8, -3, 8)
-0:1/0/terrains_peering_bit/bottom_side = 0
-0:1/0/terrains_peering_bit/top_side = 0
-1:1/0 = 0
-1:1/0/terrain_set = 0
-1:1/0/terrain = 0
-1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-3, -8, 8, -8, 8, 2, 3, 2, 3, 8, -3, 8)
-1:1/0/terrains_peering_bit/right_side = 0
-1:1/0/terrains_peering_bit/bottom_side = 0
-1:1/0/terrains_peering_bit/top_side = 0
-2:1/0 = 0
-2:1/0/terrain_set = 0
-2:1/0/terrain = 0
-2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-2:1/0/terrains_peering_bit/right_side = 0
-2:1/0/terrains_peering_bit/bottom_side = 0
-2:1/0/terrains_peering_bit/left_side = 0
-2:1/0/terrains_peering_bit/top_side = 0
-3:1/0 = 0
-3:1/0/terrain_set = 0
-3:1/0/terrain = 0
-3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 3, -8, 3, 8, -8, 8)
-3:1/0/terrains_peering_bit/bottom_side = 0
-3:1/0/terrains_peering_bit/left_side = 0
-3:1/0/terrains_peering_bit/top_side = 0
-0:2/0 = 0
-0:2/0/terrain_set = 0
-0:2/0/terrain = 0
-0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-3, -8, 3, -8, 3, 8, -3, 8)
-0:2/0/terrains_peering_bit/top_side = 0
-1:2/0 = 0
-1:2/0/terrain_set = 0
-1:2/0/terrain = 0
-1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-3, -8, 8, -8, 8, 4, -3, 4)
-1:2/0/terrains_peering_bit/right_side = 0
-1:2/0/terrains_peering_bit/top_side = 0
-2:2/0 = 0
-2:2/0/terrain_set = 0
-2:2/0/terrain = 0
-2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 4, -8, 4)
-2:2/0/terrains_peering_bit/right_side = 0
-2:2/0/terrains_peering_bit/left_side = 0
-2:2/0/terrains_peering_bit/top_side = 0
-3:2/0 = 0
-3:2/0/terrain_set = 0
-3:2/0/terrain = 0
-3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 3, -8, 3, 4, -8, 4)
-3:2/0/terrains_peering_bit/left_side = 0
-3:2/0/terrains_peering_bit/top_side = 0
-0:3/0 = 0
-0:3/0/terrain_set = 0
-0:3/0/terrain = 0
-0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-3, -8, 3, -8, 3, 4, -3, 4)
-1:3/0 = 0
-1:3/0/terrain_set = 0
-1:3/0/terrain = 0
-1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-3, -8, 8, -8, 8, 4, -3, 4)
-1:3/0/terrains_peering_bit/right_side = 0
-2:3/0 = 0
-2:3/0/terrain_set = 0
-2:3/0/terrain = 0
-2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 4, -8, 4)
-2:3/0/terrains_peering_bit/right_side = 0
-2:3/0/terrains_peering_bit/left_side = 0
-3:3/0 = 0
-3:3/0/terrain_set = 0
-3:3/0/terrain = 0
-3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 3, -8, 3, 4, -8, 4)
-3:3/0/terrains_peering_bit/left_side = 0
-
-[sub_resource type="TileSet" id="TileSet_3fytb"]
-physics_layer_0/collision_layer = 1
-terrain_set_0/mode = 0
-terrain_set_0/terrain_0/name = "Fences"
-terrain_set_0/terrain_0/color = Color(0.685178, 0.157576, 0.189384, 1)
-sources/0 = SubResource("TileSetAtlasSource_742vt")
-
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_63asn"]
-vertices = PackedVector2Array(439, 225, 439, 169, 449.21875, 173.25781, 497.29688, 225, 471.34375, 182.10938, 498.65625, 180.57813)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(3, 2, 4), PackedInt32Array(3, 4, 5)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(430, 169, 444, 171, 473, 172, 509, 170, 507, 235, 429, 235)])
-source_geometry_mode = 2
-
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_x4mro"]
-vertices = PackedVector2Array(401.52344, 133.89063, 412, 131.97656, 412, 175, 350, 175, 385.1797, 135.92969, 350, 139.92969)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 0, 3), PackedInt32Array(4, 3, 5)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(422, 120, 422, 185, 340, 185, 340, 131, 384, 126, 400, 124)])
-source_geometry_mode = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a38x2"]
 size = Vector2(80, 35.5)
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
-script = ExtResource("1_2qbyd")
 
 [node name="TestSceneSaveDataManagerComponent" parent="." instance=ExtResource("1_sd0js")]
 
@@ -764,15 +643,6 @@ position = Vector2(704.9832, 215.7763)
 material = SubResource("ShaderMaterial_hl01q")
 position = Vector2(669.9832, 231.7763)
 
-[node name="Objects" type="TileMapLayer" parent="tilemap"]
-position = Vector2(-75, 227)
-tile_map_data = PackedByteArray("AAAYAA0AAAAAAAIAAAAWABQAAAABAAIAAAAWABMAAAAAAAEAAAAWABIAAAAAAAEAAAAWABEAAAAAAAEAAAAWABAAAAAAAAEAAAAaABQAAAACAAMAAAAZABQAAAACAAMAAAAYABQAAAACAAMAAAAXABQAAAACAAMAAAAdABQAAAACAAMAAAAcABQAAAACAAMAAAAbABQAAAACAAIAAAAbABAAAAAAAAEAAAAbABEAAAAAAAEAAAAbABIAAAAAAAEAAAAbABMAAAAAAAEAAAAeABQAAAACAAMAAAAgABQAAAADAAIAAAAfABQAAAACAAMAAAAgABIAAAAAAAEAAAAgABMAAAAAAAEAAAAgABAAAAAAAAEAAAAgABEAAAAAAAEAAAAbAA8AAAACAAAAAAAaAA8AAAABAAMAAAAcAA8AAAADAAMAAAAgAA8AAAADAAAAAAAfAA8AAAABAAMAAAAWAA8AAAABAAAAAAAXAA8AAAADAAMAAAA=")
-tile_set = SubResource("TileSet_3fytb")
-
-[node name="House" parent="tilemap" instance=ExtResource("46_dd2lj")]
-position = Vector2(311, 351)
-inside_scene = ExtResource("47_2qbyd")
-
 [node name="Player" parent="." instance=ExtResource("18_nryiw")]
 position = Vector2(303, 202)
 
@@ -806,58 +676,7 @@ tilled_soil_tilemap_layer = NodePath("../tilemap/TilledLand")
 initial_hour = 8
 initial_minute = 0
 
-[node name="Chickens" type="Node2D" parent="."]
 
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="Chickens"]
-position = Vector2(-64, 315)
-navigation_polygon = SubResource("NavigationPolygon_63asn")
-
-[node name="Chicken" parent="Chickens" instance=ExtResource("28_cqvts")]
-y_sort_enabled = true
-position = Vector2(386, 509)
-
-[node name="Chicken2" parent="Chickens" instance=ExtResource("28_cqvts")]
-position = Vector2(381, 532)
-
-[node name="Chicken3" parent="Chickens" instance=ExtResource("28_cqvts")]
-position = Vector2(418, 532)
-
-[node name="Chicken4" parent="Chickens" instance=ExtResource("28_cqvts")]
-position = Vector2(431, 510)
-
-[node name="Cows" type="Node2D" parent="."]
-
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="Cows"]
-position = Vector2(-57, 363)
-navigation_polygon = SubResource("NavigationPolygon_x4mro")
-navigation_layers = 2
-
-[node name="Cow" parent="Cows" instance=ExtResource("29_4p0vi")]
-y_sort_enabled = true
-position = Vector2(314, 530)
-
-[node name="Cow2" parent="Cows" instance=ExtResource("29_4p0vi")]
-position = Vector2(298, 507)
-
-[node name="Cow3" parent="Cows" instance=ExtResource("29_4p0vi")]
-position = Vector2(343, 536)
-
-[node name="Cow4" parent="Cows" instance=ExtResource("29_4p0vi")]
-position = Vector2(349, 507)
-
-[node name="PlayerHUD" parent="." instance=ExtResource("30_utljw")]
-
-[node name="SeedShop" parent="." instance=ExtResource("31_wwg0v")]
-position = Vector2(405, 108)
-
-[node name="GameNotification" parent="." instance=ExtResource("32_p0bm7")]
-
-[node name="ChickenBox" parent="." instance=ExtResource("33_qgwej")]
-position = Vector2(427, 481)
-dialogue_start_command = "start_chicken_pasture_box"
-
-[node name="ChestCow" parent="." instance=ExtResource("34_2yd1e")]
-position = Vector2(306, 482)
 dialogue_start_command = "start_cow_pasture_box"
 
 [node name="ForestBlocker" type="StaticBody2D" parent="."]

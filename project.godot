@@ -31,7 +31,6 @@ Global="*res://scripts/Global.gd"
 SeedUnlockManager="*res://scripts/globals/seed_unlock_manager.gd"
 ProfileManager="*res://scripts/globals/profie_manager.gd"
 ProfileDatabase="*res://scripts/globals/profile_database.gd"
-SceneTransition="*res://scripts/scene_transition.gd"
 
 [display]
 

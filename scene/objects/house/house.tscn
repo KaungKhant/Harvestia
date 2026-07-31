@@ -1,28 +1,28 @@
 [gd_scene load_steps=5 format=3 uid="uid://d2n8c36b2fji"]
 
 [ext_resource type="Script" uid="uid://dshst55u2qf2g" path="res://scene/objects/house/house.gd" id="1_qkwg6"]
-[ext_resource type="Texture2D" uid="uid://le3vr4whdabd" path="res://scene/objects/house/house3.png" id="2_sq7kr"]
+[ext_resource type="Texture2D" uid="uid://bfjagiuq2yvoi" path="res://assets/game/Characters/House1.png" id="1_sq7kr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_exnda"]
-size = Vector2(82, 63)
+size = Vector2(71, 47)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p42m7"]
-size = Vector2(17, 22.8125)
+size = Vector2(21, 21.25)
 
 [node name="House" type="Node2D"]
 position = Vector2(51, -13)
 script = ExtResource("1_qkwg6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(224, 120.00001)
-scale = Vector2(1.3, 1.3)
-texture = ExtResource("2_sq7kr")
+position = Vector2(226, 117)
+scale = Vector2(0.6425781, 0.57682294)
+texture = ExtResource("1_sq7kr")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(227, 114)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-3, 23.5)
+position = Vector2(-3, 20)
 shape = SubResource("RectangleShape2D_exnda")
 
 [node name="EnteredArea" type="Area2D" parent="."]
@@ -31,12 +31,12 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnteredArea"]
-position = Vector2(-1.5, -2.40625)
+position = Vector2(1, -3)
 shape = SubResource("RectangleShape2D_p42m7")
 debug_color = Color(0.87763214, 0.3236599, 0.29890978, 0.41960785)
 
-[node name="Marker2D" type="Marker2D" parent="EnteredArea"]
-position = Vector2(0, 16)
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(226, 157)
 
 [connection signal="body_entered" from="EnteredArea" to="." method="_on_entered_area_body_entered"]
 [connection signal="body_exited" from="EnteredArea" to="." method="_on_entered_area_body_exited"]
