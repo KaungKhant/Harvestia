@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bsafpnpdruexe"]
+[gd_scene load_steps=19 format=3 uid="uid://bsafpnpdruexe"]
 
 [ext_resource type="Theme" uid="uid://xafwas3w3fi0" path="res://scene/ui/game_ui_theme.tres" id="1_7fxoo"]
 [ext_resource type="Script" uid="uid://c52qfwpydufsm" path="res://scene/ui/inventory_panel.gd" id="2_hi15f"]
@@ -8,7 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://ibym4nlr0k0w" path="res://assets/game/Objects/Egg_item.png" id="4_88qtr"]
 [ext_resource type="Resource" uid="uid://da8ftq02ycwfj" path="res://resources/inventory_data_resource.tres" id="4_upfgb"]
 [ext_resource type="Texture2D" uid="uid://tugptq6673xf" path="res://assets/game/Objects/Simple Milk and grass item.png" id="5_hi15f"]
-[ext_resource type="Texture2D" uid="uid://cpthxsxgdv8oe" path="res://assets/game/Objects/carrot_pumpkin_transparent.png" id="7_upfgb"]
+[ext_resource type="Texture2D" uid="uid://bjpp278obswyc" path="res://assets/game/Objects/carrot.png" id="7_yafbe"]
+[ext_resource type="Texture2D" uid="uid://c17fucm5gpgen" path="res://assets/game/Objects/pumpkin.png" id="8_6mic8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_atueq"]
 atlas = ExtResource("2_tuue8")
@@ -22,13 +23,11 @@ region = Rect2(0, 16, 16, 16)
 atlas = ExtResource("3_tuue8")
 region = Rect2(80, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yafbe"]
-atlas = ExtResource("7_upfgb")
-region = Rect2(82, 0, 13, 14)
+[sub_resource type="AtlasTexture" id="AtlasTexture_a1noo"]
+atlas = ExtResource("7_yafbe")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6mic8"]
-atlas = ExtResource("7_upfgb")
-region = Rect2(81, 18, 14, 12)
+[sub_resource type="AtlasTexture" id="AtlasTexture_pcaw8"]
+atlas = ExtResource("8_6mic8")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tuue8"]
 atlas = ExtResource("3_tuue8")
@@ -125,7 +124,7 @@ theme_type_variation = &"InventoryItemPanel"
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
-texture = SubResource("AtlasTexture_yafbe")
+texture = SubResource("AtlasTexture_a1noo")
 
 [node name="CarrotLabel" type="Label" parent="MarginContainer/VBoxContainer/Carrot"]
 layout_mode = 2
@@ -145,7 +144,7 @@ theme_type_variation = &"InventoryItemPanel"
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
-texture = SubResource("AtlasTexture_6mic8")
+texture = SubResource("AtlasTexture_pcaw8")
 
 [node name="PumpkinLabel" type="Label" parent="MarginContainer/VBoxContainer/Pumpkin"]
 layout_mode = 2

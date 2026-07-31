@@ -1,11 +1,12 @@
-[gd_scene load_steps=19 format=3 uid="uid://c2b7r4cw8hr8r"]
+[gd_scene load_steps=20 format=3 uid="uid://c2b7r4cw8hr8r"]
 
 [ext_resource type="Theme" uid="uid://xafwas3w3fi0" path="res://scene/ui/game_ui_theme.tres" id="1_mvffb"]
 [ext_resource type="Texture2D" uid="uid://b2b6qy2huc5rm" path="res://assets/game/Objects/Basic tools and meterials.png" id="2_3eg61"]
 [ext_resource type="Script" uid="uid://bw5jxeb45mswo" path="res://scene/ui/tools_panel.gd" id="2_ic3pl"]
 [ext_resource type="Texture2D" uid="uid://dcitp1ryvrkcp" path="res://assets/game/Characters/tools16pixel.png" id="4_isgxs"]
 [ext_resource type="Texture2D" uid="uid://drp8itt24qjoj" path="res://assets/game/Objects/Basic Plants.png" id="5_7cy8s"]
-[ext_resource type="Texture2D" uid="uid://cpthxsxgdv8oe" path="res://assets/game/Objects/carrot_pumpkin_transparent.png" id="6_7cy8s"]
+[ext_resource type="Texture2D" uid="uid://dvioq2af6vyqu" path="res://assets/game/Objects/Veg-brown_11.png" id="6_sy1nf"]
+[ext_resource type="Texture2D" uid="uid://dou2s8tvtxk0q" path="res://assets/game/Objects/Veg-brown_05.png" id="7_t1mb4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3m4gr"]
 atlas = ExtResource("2_3eg61")
@@ -47,13 +48,11 @@ atlas = SubResource("CompressedTexture2D_sy1nf")
 region = Rect2(0, 16, 16, 16)
 margin = Rect2(1, 0, 0, 0)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5r675"]
-atlas = ExtResource("6_7cy8s")
-region = Rect2(2, 1, 11, 13)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_hu372"]
-atlas = ExtResource("6_7cy8s")
-region = Rect2(1.7555542, 18.18764, 10.599991, 11.662701)
+atlas = ExtResource("6_sy1nf")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5r675"]
+atlas = ExtResource("7_t1mb4")
 
 [node name="ToolsPanel" type="PanelContainer"]
 offset_right = 166.0
@@ -167,7 +166,7 @@ custom_minimum_size = Vector2(26, 26)
 layout_mode = 2
 focus_mode = 0
 theme_type_variation = &"ToolButton"
-icon = SubResource("AtlasTexture_5r675")
+icon = SubResource("AtlasTexture_hu372")
 icon_alignment = 1
 
 [node name="CarrotLabel" type="Label" parent="MarginContainer/HBoxContainer/Carrot"]
@@ -191,7 +190,7 @@ custom_minimum_size = Vector2(26, 26)
 layout_mode = 2
 focus_mode = 0
 theme_type_variation = &"ToolButton"
-icon = SubResource("AtlasTexture_hu372")
+icon = SubResource("AtlasTexture_5r675")
 icon_alignment = 1
 
 [node name="PumpkinLabel" type="Label" parent="MarginContainer/HBoxContainer/Pumpkin"]
