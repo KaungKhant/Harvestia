@@ -42,10 +42,15 @@ Shopkeeper: Welcome! Are you looking to buy some fresh seeds, or are you looking
 Shopkeeper: What seeds do you need?
 
 - Corn Seeds (25 Gold each)
-	set InventoryManager.current_shop.temp_item_type = "corn_seeds"
-	set InventoryManager.current_shop.temp_price = 25
-	set InventoryManager.current_shop.temp_tool_enum = "PlantCorn"
-	=> buy_qty_select
+	if SeedUnlockManager.is_seed_unlocked("corn_seeds"):
+		set InventoryManager.current_shop.temp_item_type = "corn_seeds"
+		set InventoryManager.current_shop.temp_price = 25
+		set InventoryManager.current_shop.temp_tool_enum = "PlantCorn"
+		=> buy_qty_select
+	else:
+		Shopkeeper: Sorry, Corn Seeds are still locked.
+		Shopkeeper: Talk to the Guide to begin your farming journey.
+		=> buy_menu
 
 - - Tomato Seeds (30 Gold each)
 	if SeedUnlockManager.is_seed_unlocked("tomato_seeds"):

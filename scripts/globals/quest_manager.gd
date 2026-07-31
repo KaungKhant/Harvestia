@@ -121,7 +121,11 @@ func try_complete_quest() -> bool:
 	# Finish quest
 	current_state = QuestState.COMPLETED
 
-	NotificationManager.show_quest_complete(current_quest.quest_name)
+	NotificationManager.show_quest_complete(
+	current_quest.quest_name,
+	current_quest.reward_exp,
+	current_quest.reward_gold
+)
 
 	quest_completed.emit(finished_quest)
 	completed_quests[finished_quest.quest_id] = true

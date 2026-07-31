@@ -3,20 +3,53 @@ extends CanvasLayer
 @onready var title_label = $CenterContainer/PanelContainer/MarginContainer/VBoxContainer/TitleLabel
 @onready var message_label = $CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MessageLabel
 
-func _ready():
-    visible = false
+var notification_queue: Array = []
+var is_showing_notification: bool = false
 
-    NotificationManager.register(self)
 
-    NotificationManager.register(self)
+func _ready() -> void:
+	visible = false
+	NotificationManager.register(self)
 
-func show_notification(title: String, message: String = "", duration: float = 2.0) -> void:
-    title_label.text = title
-    message_label.text = message
-    message_label.visible = message != ""
 
-    visible = true
+func show_notification(
+	title: String,
+	message: String = "",
+	duration: float = 2.0
+) -> void:
+	# Add notification to the queue
+	notification_queue.append({
+		"title": title,
+		"message": message,
+		"duration": duration
+	})
 
-    await get_tree().create_timer(duration).timeout
+	# Start processing if nothing is currently showing
+	if not is_showing_notification:
+		_process_queue()
 
-    visible = false
+
+func _process_queue() -> void:
+	if notification_queue.is_empty():
+		is_showing_notification = false
+		visible = false
+		return
+
+	is_showing_notification = true
+
+	var notification = notification_queue.pop_front()
+
+	title_label.text = notification["title"]
+	message_label.text = notification["message"]
+	message_label.visible = notification["message"] != ""
+
+	visible = true
+
+	await get_tree().create_timer(notification["duration"]).timeout
+
+	visible = false
+
+	# Small gap between notifications
+	await get_tree().create_timer(0.1).timeout
+
+	_process_queue()
