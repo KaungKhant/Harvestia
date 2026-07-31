@@ -1,65 +1,88 @@
 extends Control
 
-@onready var new_game = $New_Game
-@onready var continue_game = $Continue
+@onready var profile_dropdown : OptionButton = $ProfileDropDown
+@onready var profile_name : LineEdit = $NewAccount
 
-@onready var profile1 = $Profile_1
-@onready var profile2 = $Profile_2
-@onready var profile3 = $Profile_3
+@onready var create_button : Button = $CreateAccount
+@onready var new_game : Button = $New_Game
+@onready var continue_game : Button = $Continue
 
-var selected_profile : String = ""
 
 func _ready():
 
-	profile1.pressed.connect(_on_profile1_pressed)
-	profile2.pressed.connect(_on_profile2_pressed)
-	profile3.pressed.connect(_on_profile3_pressed)
+	create_button.pressed.connect(_on_create_pressed)
 
 	new_game.pressed.connect(_on_new_game_pressed)
+
 	continue_game.pressed.connect(_on_continue_pressed)
 
-	new_game.disabled = true
-	continue_game.disabled = true
+	profile_dropdown.item_selected.connect(_on_profile_selected)
+
+	refresh_profiles()
+
+	update_buttons()
 
 
-func _on_profile1_pressed():
+func refresh_profiles():
 
-	selected_profile = "Profile1"
-	ProfieManager.set_profile(selected_profile)
+	profile_dropdown.clear()
 
-	new_game.disabled = false
-	continue_game.disabled = false
+	var profiles = ProfileDatabase.get_profiles()
+
+	for profile in profiles:
+		profile_dropdown.add_item(profile)
+
+	if profile_dropdown.item_count > 0:
+		profile_dropdown.select(0)
+		ProfileManager.set_profile(profile_dropdown.get_item_text(0))
+
+	update_buttons()   # <-- Add this
+
+func update_buttons():
+
+	var has_profile = profile_dropdown.item_count > 0
+
+	print("Profiles:", profile_dropdown.item_count)
+	print("Has Profile:", has_profile)
+
+	new_game.disabled = !has_profile
+	continue_game.disabled = !has_profile
+
+func _on_create_pressed():
+
+	var name = profile_name.text
+
+	if ProfileDatabase.create_profile(name):
+
+		refresh_profiles()
+		update_buttons()   # <-- Add this
+
+		profile_name.clear()
+
+	else:
+
+		print("Cannot create profile")
 
 
-func _on_profile2_pressed():
+func _on_profile_selected(index):
 
-	selected_profile = "Profile2"
-	ProfieManager.set_profile(selected_profile)
+	var profile = profile_dropdown.get_item_text(index)
 
-	new_game.disabled = false
-	continue_game.disabled = false
-
-
-func _on_profile3_pressed():
-
-	selected_profile = "Profile3"
-	ProfieManager.set_profile(selected_profile)
-
-	new_game.disabled = false
-	continue_game.disabled = false
+	ProfileManager.set_profile(profile)
 
 
 func _on_new_game_pressed():
 
-	print("Starting New Game:", selected_profile)
+	if !ProfileManager.has_profile():
+		return
 
-	# Change this to your first game scene
-	get_tree().change_scene_to_file("res://scene/test/test_tilemap_guide_dialog_shop.tscn")
+	# Change this to your game's first scene
+	get_tree().change_scene_to_file("res://scene/test/test_tilemap_save_load.tscn")
 
 
 func _on_continue_pressed():
 
-	print("Continue:", selected_profile)
+	if !ProfileManager.has_profile():
+		return
 
-	# Change this to your first game scene
-	get_tree().change_scene_to_file("res://scene/test/test_tilemap_guide_dialog_shop.tscn")
+	get_tree().change_scene_to_file("res://scene/test/test_tilemap_save_load.tscn")

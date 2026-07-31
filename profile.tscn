@@ -43,51 +43,51 @@ vertical_alignment = 1
 
 [node name="New_Game" type="Button" parent="."]
 layout_mode = 0
-offset_left = 321.0
-offset_top = 247.0
-offset_right = 470.0
-offset_bottom = 304.0
+offset_left = 195.0
+offset_top = 388.0
+offset_right = 344.0
+offset_bottom = 445.0
 theme_override_fonts/font = ExtResource("4_khxjx")
 text = "New Game"
 
 [node name="Continue" type="Button" parent="."]
 layout_mode = 0
-offset_left = 321.0
-offset_top = 314.0
-offset_right = 470.0
-offset_bottom = 371.0
+offset_left = 461.0
+offset_top = 386.0
+offset_right = 610.0
+offset_bottom = 443.0
 theme_override_fonts/font = ExtResource("4_khxjx")
 text = "Continue"
 
-[node name="Profile_1" type="Button" parent="."]
+[node name="ProfileDropDown" type="OptionButton" parent="."]
 layout_mode = 0
-offset_left = 111.0
-offset_top = 396.0
-offset_right = 260.0
-offset_bottom = 453.0
-theme_override_fonts/font = ExtResource("4_khxjx")
-text = "Player-1"
+offset_left = 295.0
+offset_top = 267.0
+offset_right = 512.0
+offset_bottom = 312.0
 
-[node name="Profile_2" type="Button" parent="."]
+[node name="NewAccount" type="LineEdit" parent="."]
 layout_mode = 0
-offset_left = 321.0
-offset_top = 397.0
-offset_right = 470.0
-offset_bottom = 454.0
-theme_override_fonts/font = ExtResource("4_khxjx")
-text = "Player-2"
+offset_left = 297.0
+offset_top = 47.0
+offset_right = 513.0
+offset_bottom = 93.0
 
-[node name="Profile_3" type="Button" parent="."]
-layout_mode = 0
-offset_left = 539.0
-offset_top = 397.0
-offset_right = 688.0
-offset_bottom = 454.0
-theme_override_fonts/font = ExtResource("4_khxjx")
-text = "Player-3"
+[node name="CreateAccount" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -80.0
+offset_top = -386.5
+offset_right = 90.0
+offset_bottom = -355.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Create New Account"
 
 [connection signal="pressed" from="New_Game" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Continue" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="Profile_1" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="Profile_2" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="Profile_3" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="CreateAccount" to="." method="_on_create_account_pressed"]

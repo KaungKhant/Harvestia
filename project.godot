@@ -28,8 +28,9 @@ StageManager="*res://stage_manager.tscn"
 SaveGameManager="*res://scripts/globals/save_game_manager.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 Global="*res://scripts/Global.gd"
-ProfieManager="*res://scripts/globals/profie_manager.gd"
 SeedUnlockManager="*res://scripts/globals/seed_unlock_manager.gd"
+ProfileManager="*res://scripts/globals/profie_manager.gd"
+ProfileDatabase="*res://scripts/globals/profile_database.gd"
 
 [display]
 

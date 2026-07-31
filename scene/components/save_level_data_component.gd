@@ -9,7 +9,7 @@ var game_data_resource: SaveGameDataResource
 func _ready() -> void:
 	add_to_group("save_level_data_component")
 	level_scene_name = get_parent().name
-	save_game_data_path = ProfieManager.get_save_folder()
+	save_game_data_path = ProfileManager.get_save_folder()
 
 func save_node_data() -> void:
 	var nodes = get_tree().get_nodes_in_group("save_data_component")
@@ -31,7 +31,7 @@ func save_node_data() -> void:
 		game_data_resource.save_data_nodes.append(data)         
 
 func save_game() -> void:
-	save_game_data_path = ProfieManager.get_save_folder()
+	save_game_data_path = ProfileManager.get_save_folder()
 	print("--- START SAVE ---")
 
 	game_data_resource = SaveGameDataResource.new()
@@ -64,7 +64,7 @@ func save_game() -> void:
 	else:
 		print("Save failed. Error:", result)
 func load_game() -> void:
-	save_game_data_path = ProfieManager.get_save_folder()
+	save_game_data_path = ProfileManager.get_save_folder()
 	var level_save_file_name := save_file_name % level_scene_name
 	var save_game_path := save_game_data_path + level_save_file_name
 

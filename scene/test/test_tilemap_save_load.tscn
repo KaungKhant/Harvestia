@@ -1046,7 +1046,7 @@ position = Vector2(327, 154)
 
 [node name="FieldCursorComponent" parent="." node_paths=PackedStringArray("grass_tilemap_layer", "tilled_soil_tilemap_layer") instance=ExtResource("21_a38x2")]
 script = ExtResource("22_1du0l")
-grass_tilemap_layer = NodePath("../Tilemap/highground")
+grass_tilemap_layer = NodePath("../Tilemap/water")
 tilled_soil_tilemap_layer = NodePath("../Tilemap/TilledSoil")
 terrain = 0
 
