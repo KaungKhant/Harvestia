@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://baobhkkvmt1nd" path="res://scene/characters/player/player.tscn" id="4_hxur4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hxur4"]
-size = Vector2(96.25, 21)
+size = Vector2(111, 14.5)
 
 [node name="Interior" type="Node2D"]
 script = ExtResource("1_n02in")
@@ -40,7 +40,7 @@ collision_layer = 3
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Exit"]
-position = Vector2(-99.125, 68.5)
+position = Vector2(-100, 63)
 shape = SubResource("RectangleShape2D_hxur4")
 debug_color = Color(0.9848147, 0, 0.3444455, 0.41960785)
 

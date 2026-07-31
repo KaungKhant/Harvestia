@@ -1,0 +1,43 @@
+[gd_scene load_steps=11 format=3 uid="uid://uaavi5gmg6a2"]
+
+[ext_resource type="Script" uid="uid://bvy7eomic8j07" path="res://scene/objects/plants/carrot.gd" id="1_k3ejl"]
+[ext_resource type="Texture2D" uid="uid://c7ka6l4bxi8mu" path="res://assets/game/Objects/ChatGPT Image Jul 30, 2026, 03_58_23 PM.png" id="2_k3ejl"]
+[ext_resource type="PackedScene" uid="uid://bgm11vdxjvqrt" path="res://scene/objects/plants/growth_cycle_components.tscn" id="3_y4w8a"]
+[ext_resource type="PackedScene" uid="uid://dg8e005hj8y6k" path="res://scene/components/hurt_component.tscn" id="4_6aop3"]
+[ext_resource type="PackedScene" uid="uid://bitwqob65vm4g" path="res://scene/components/save_data_component.tscn" id="5_waxpe"]
+[ext_resource type="Resource" uid="uid://c2e2l031uqq8e" path="res://resources/crop_data_resource.tres" id="6_wdn41"]
+[ext_resource type="PackedScene" uid="uid://byx1xafays50i" path="res://scene/objects/plants/watering_particles.tscn" id="7_mk5d2"]
+[ext_resource type="PackedScene" uid="uid://bq7ugm3u8d875" path="res://scene/objects/plants/flowering_particles.tscn" id="8_5rfdr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_718dr"]
+atlas = ExtResource("2_k3ejl")
+region = Rect2(518, 119, 181, 163)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2y6ov"]
+size = Vector2(13, 8)
+
+[node name="Carrot" type="Node2D"]
+script = ExtResource("1_k3ejl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-0.5000001, -1)
+scale = Vector2(0.0718232, 0.04835521)
+texture = SubResource("AtlasTexture_718dr")
+
+[node name="GrowthCycleComponents" parent="." instance=ExtResource("3_y4w8a")]
+days_until_harvest = 4
+
+[node name="HurtComponent" parent="." instance=ExtResource("4_6aop3")]
+position = Vector2(0, -4)
+tool = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtComponent"]
+position = Vector2(-0.5, 3)
+shape = SubResource("RectangleShape2D_2y6ov")
+
+[node name="SaveDataComponent" parent="." instance=ExtResource("5_waxpe")]
+save_data_resource = ExtResource("6_wdn41")
+
+[node name="WateringParticles" parent="." instance=ExtResource("7_mk5d2")]
+
+[node name="FloweringParticles" parent="." instance=ExtResource("8_5rfdr")]

@@ -1,0 +1,34 @@
+[gd_scene load_steps=8 format=3 uid="uid://bqrckwsd50vhf"]
+
+[ext_resource type="Script" uid="uid://ut6w5v6kdrhm" path="res://scene/objects/plants/pumpkin_harvest.gd" id="1_cuxif"]
+[ext_resource type="Texture2D" uid="uid://c7ka6l4bxi8mu" path="res://assets/game/Objects/ChatGPT Image Jul 30, 2026, 03_58_23 PM.png" id="2_kjhy6"]
+[ext_resource type="PackedScene" uid="uid://ugnmo50k3mey" path="res://scene/components/collectable_component.tscn" id="3_cn5sm"]
+[ext_resource type="PackedScene" uid="uid://bitwqob65vm4g" path="res://scene/components/save_data_component.tscn" id="4_pojji"]
+[ext_resource type="Resource" uid="uid://ppsaxrkn0d00" path="res://resources/harvest_data_resource.tres" id="5_60dtn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cuxif"]
+atlas = ExtResource("2_kjhy6")
+region = Rect2(1133, 398, 140, 114)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gl3d2"]
+radius = 52.292683
+
+[node name="PumpkinHarvest" type="Area2D"]
+y_sort_enabled = true
+script = ExtResource("1_cuxif")
+
+[node name="PumpkinHarvest" type="Sprite2D" parent="."]
+position = Vector2(-0.16138066, -0.73387116)
+scale = Vector2(0.05483742, 0.057300508)
+texture = SubResource("AtlasTexture_cuxif")
+
+[node name="CollectableComponent" parent="PumpkinHarvest" instance=ExtResource("3_cn5sm")]
+collision_layer = 160
+collectable_name = "corn"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PumpkinHarvest/CollectableComponent"]
+position = Vector2(3.8146973e-06, 0)
+shape = SubResource("CircleShape2D_gl3d2")
+
+[node name="SaveDataComponent2" parent="PumpkinHarvest/CollectableComponent" instance=ExtResource("4_pojji")]
+save_data_resource = ExtResource("5_60dtn")

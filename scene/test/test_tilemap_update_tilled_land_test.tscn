@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=4 uid="uid://dhklss7cgeqmv"]
+[gd_scene load_steps=80 format=4 uid="uid://dhklss7cgeqmv"]
 
 [ext_resource type="PackedScene" uid="uid://cugdxyqvq2u2o" path="res://scene/components/test_scene_save_data_manager_component.tscn" id="1_6c2ut"]
 [ext_resource type="PackedScene" uid="uid://dfi5u2g400moa" path="res://scene/components/save_level_data_component.tscn" id="2_fjkei"]
@@ -17,9 +17,12 @@
 [ext_resource type="Texture2D" uid="uid://d31yuhb1dbkja" path="res://assets/game/Objects/Tree4.png" id="15_fctaa"]
 [ext_resource type="Texture2D" uid="uid://btwo2nqn780rf" path="res://assets/game/Objects/tree6.png" id="16_qsoco"]
 [ext_resource type="TileSet" uid="uid://8xanr61cnemu" path="res://scene/test/tilled_land.tres" id="17_2esvx"]
+[ext_resource type="PackedScene" uid="uid://bajv637y4ujir" path="res://scene/objects/trees/tree_1.tscn" id="18_3eope"]
 [ext_resource type="PackedScene" uid="uid://baobhkkvmt1nd" path="res://scene/characters/player/player.tscn" id="18_lgsey"]
+[ext_resource type="Shader" uid="uid://ogdy8gnqtapr" path="res://scene/objects/trees/tree_shake.gdshader" id="19_b77ay"]
 [ext_resource type="Script" uid="uid://cmaf3n4ahyef6" path="res://scene/test/camera_2d.gd" id="19_kwfff"]
 [ext_resource type="PackedScene" uid="uid://buvrbla3ymun3" path="res://scene/progress/quest_tracker.tscn" id="20_ntqdu"]
+[ext_resource type="PackedScene" uid="uid://bkn8e0bqqbi4n" path="res://scene/objects/trees/tree_2.tscn" id="20_ylsp4"]
 [ext_resource type="PackedScene" uid="uid://j824fxn1cohe" path="res://scene/characters/guide/guide.tscn" id="21_5cpk4"]
 [ext_resource type="PackedScene" uid="uid://cvfugxxni6yaj" path="res://scene/components/field_cursor_component.tscn" id="22_kwm71"]
 [ext_resource type="Script" uid="uid://dmr175av1oqch" path="res://scene/components/field_cursor_component.gd" id="23_02p2k"]
@@ -40,6 +43,8 @@
 [ext_resource type="Script" uid="uid://cd8nou7v238tu" path="res://scene/test/canvas_layer.gd" id="38_og5xu"]
 [ext_resource type="PackedScene" uid="uid://bitwqob65vm4g" path="res://scene/components/save_data_component.tscn" id="39_2jqlr"]
 [ext_resource type="Resource" uid="uid://5rbr03gu1ecy" path="res://resources/quest_data_resoource.tres" id="40_bwu34"]
+[ext_resource type="PackedScene" uid="uid://wbuyha341plb" path="res://scene/objects/rocks/rock.tscn" id="41_fjkei"]
+[ext_resource type="PackedScene" uid="uid://7ouatl2f0eoh" path="res://scene/objects/trees/tree_3.tscn" id="45_7xukj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7hbbt"]
 texture = ExtResource("4_4copv")
@@ -472,6 +477,18 @@ sources/6 = SubResource("TileSetAtlasSource_ifjmn")
 sources/7 = SubResource("TileSetAtlasSource_eu8x6")
 sources/8 = SubResource("TileSetAtlasSource_hxyme")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ucruj"]
+resource_local_to_scene = true
+shader = ExtResource("19_b77ay")
+shader_parameter/shake_intensity = 0.0
+shader_parameter/shake_speed = 20.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jqvpf"]
+resource_local_to_scene = true
+shader = ExtResource("19_b77ay")
+shader_parameter/shake_intensity = 0.0
+shader_parameter/shake_speed = 20.0
+
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_63asn"]
 vertices = PackedVector2Array(531, 202.67188, 427.8125, 199.3125, 427.1797, 166.42969, 531, 160.57031)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
@@ -486,6 +503,24 @@ source_geometry_mode = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a38x2"]
 size = Vector2(80, 25)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qsrf0"]
+resource_local_to_scene = true
+shader = ExtResource("19_b77ay")
+shader_parameter/shake_intensity = 0.0
+shader_parameter/shake_speed = 20.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1xdl3"]
+resource_local_to_scene = true
+shader = ExtResource("19_b77ay")
+shader_parameter/shake_intensity = 0.0
+shader_parameter/shake_speed = 20.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d3yp8"]
+resource_local_to_scene = true
+shader = ExtResource("19_b77ay")
+shader_parameter/shake_intensity = 0.0
+shader_parameter/shake_speed = 20.0
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
@@ -602,6 +637,14 @@ tile_set = ExtResource("5_t63wt")
 scale = Vector2(0.3, 0.3)
 tile_map_data = PackedByteArray("AAAMABcAIAAAAAAAAAA=")
 tile_set = ExtResource("5_t63wt")
+
+[node name="Tree1" parent="tilemap" instance=ExtResource("18_3eope")]
+material = SubResource("ShaderMaterial_ucruj")
+position = Vector2(743, 209)
+
+[node name="Tree3" parent="tilemap" instance=ExtResource("20_ylsp4")]
+material = SubResource("ShaderMaterial_jqvpf")
+position = Vector2(600.00006, 239)
 
 [node name="Player" parent="." instance=ExtResource("18_lgsey")]
 position = Vector2(303, 202)
@@ -725,5 +768,32 @@ autoplay = true
 
 [node name="SaveDataComponent" parent="QuestSave" instance=ExtResource("39_2jqlr")]
 save_data_resource = ExtResource("40_bwu34")
+
+[node name="Rock" parent="." instance=ExtResource("41_fjkei")]
+position = Vector2(516, 108)
+
+[node name="Rock2" parent="." instance=ExtResource("41_fjkei")]
+position = Vector2(545, 115)
+
+[node name="Rock3" parent="." instance=ExtResource("41_fjkei")]
+position = Vector2(579, 128)
+
+[node name="Rock4" parent="." instance=ExtResource("41_fjkei")]
+position = Vector2(548, 88)
+
+[node name="Rock5" parent="." instance=ExtResource("41_fjkei")]
+position = Vector2(579, 95)
+
+[node name="Tree1" parent="." instance=ExtResource("18_3eope")]
+material = SubResource("ShaderMaterial_qsrf0")
+position = Vector2(632.25, 206)
+
+[node name="Tree3" parent="." instance=ExtResource("20_ylsp4")]
+material = SubResource("ShaderMaterial_1xdl3")
+position = Vector2(704.9832, 215.7763)
+
+[node name="Tree2" parent="." instance=ExtResource("45_7xukj")]
+material = SubResource("ShaderMaterial_d3yp8")
+position = Vector2(669.9832, 231.7763)
 
 [connection signal="value_changed" from="CanvasLayer/HSlider" to="CanvasLayer" method="_on_h_slider_value_changed"]

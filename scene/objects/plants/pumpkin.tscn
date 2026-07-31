@@ -1,0 +1,43 @@
+[gd_scene load_steps=11 format=3 uid="uid://bvjmh6vl3434i"]
+
+[ext_resource type="Script" uid="uid://bixd2psf706gt" path="res://scene/objects/plants/pumpkin.gd" id="1_pufeo"]
+[ext_resource type="Texture2D" uid="uid://c7ka6l4bxi8mu" path="res://assets/game/Objects/ChatGPT Image Jul 30, 2026, 03_58_23 PM.png" id="2_elpiy"]
+[ext_resource type="PackedScene" uid="uid://bgm11vdxjvqrt" path="res://scene/objects/plants/growth_cycle_components.tscn" id="3_8q7mm"]
+[ext_resource type="PackedScene" uid="uid://dg8e005hj8y6k" path="res://scene/components/hurt_component.tscn" id="4_wfmoq"]
+[ext_resource type="PackedScene" uid="uid://bitwqob65vm4g" path="res://scene/components/save_data_component.tscn" id="5_xqoqn"]
+[ext_resource type="Resource" uid="uid://c2e2l031uqq8e" path="res://resources/crop_data_resource.tres" id="6_n71sc"]
+[ext_resource type="PackedScene" uid="uid://byx1xafays50i" path="res://scene/objects/plants/watering_particles.tscn" id="7_obog1"]
+[ext_resource type="PackedScene" uid="uid://bq7ugm3u8d875" path="res://scene/objects/plants/flowering_particles.tscn" id="8_qhtt2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pufeo"]
+atlas = ExtResource("2_elpiy")
+region = Rect2(499, 379, 175, 127)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2y6ov"]
+size = Vector2(13, 8)
+
+[node name="Pumpkin" type="Node2D"]
+script = ExtResource("1_pufeo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-0.6077349, -1.464722)
+scale = Vector2(0.07305446, 0.055673674)
+texture = SubResource("AtlasTexture_pufeo")
+
+[node name="GrowthCycleComponents" parent="." instance=ExtResource("3_8q7mm")]
+days_until_harvest = 7
+
+[node name="HurtComponent" parent="." instance=ExtResource("4_wfmoq")]
+position = Vector2(0, -4)
+tool = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtComponent"]
+position = Vector2(-0.5, 3)
+shape = SubResource("RectangleShape2D_2y6ov")
+
+[node name="SaveDataComponent" parent="." instance=ExtResource("5_xqoqn")]
+save_data_resource = ExtResource("6_n71sc")
+
+[node name="WateringParticles" parent="." instance=ExtResource("7_obog1")]
+
+[node name="FloweringParticles" parent="." instance=ExtResource("8_qhtt2")]

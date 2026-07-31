@@ -18,6 +18,15 @@ func select_tool(tool: DataTypes.Tools) -> void:
         if inventory.get("tomato_seeds", 0) <= 0:
             print("Cannot select Tomato: 0 seeds remaining!")
             return
+    elif tool == DataTypes.Tools.PlantCarrot:
+        if inventory.get("carrot_seeds", 0) <= 0:
+            print("Cannot select Carrot: 0 seeds remaining!")
+            return
+            
+    elif tool == DataTypes.Tools.PlantPumpkin:
+        if inventory.get("pumpkin_seeds", 0) <= 0:
+            print("Cannot select Pumpkin: 0 seeds remaining!")
+            return
 
     selected_tool = tool
     tool_selected.emit(tool)

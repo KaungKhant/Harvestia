@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://c2b7r4cw8hr8r"]
+[gd_scene load_steps=19 format=3 uid="uid://c2b7r4cw8hr8r"]
 
 [ext_resource type="Theme" uid="uid://xafwas3w3fi0" path="res://scene/ui/game_ui_theme.tres" id="1_mvffb"]
 [ext_resource type="Texture2D" uid="uid://b2b6qy2huc5rm" path="res://assets/game/Objects/Basic tools and meterials.png" id="2_3eg61"]
 [ext_resource type="Script" uid="uid://bw5jxeb45mswo" path="res://scene/ui/tools_panel.gd" id="2_ic3pl"]
-[ext_resource type="Texture2D" uid="uid://coqv7ggy8jmxj" path="res://assets/game/Objects/Basic_Plants.png" id="3_3m4gr"]
 [ext_resource type="Texture2D" uid="uid://dcitp1ryvrkcp" path="res://assets/game/Characters/tools16pixel.png" id="4_isgxs"]
+[ext_resource type="Texture2D" uid="uid://drp8itt24qjoj" path="res://assets/game/Objects/Basic Plants.png" id="5_7cy8s"]
+[ext_resource type="Texture2D" uid="uid://cpthxsxgdv8oe" path="res://assets/game/Objects/carrot_pumpkin_transparent.png" id="6_7cy8s"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3m4gr"]
 atlas = ExtResource("2_3eg61")
@@ -34,10 +35,9 @@ atlas = SubResource("CompressedTexture2D_3m4gr")
 region = Rect2(0, 0, 16, 16)
 margin = Rect2(1.4, 0.5, 0, 0)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7cy8s"]
-atlas = ExtResource("3_3m4gr")
-region = Rect2(0, 0, 16, 16)
-margin = Rect2(1, 0, 0, 0)
+[sub_resource type="AtlasTexture" id="AtlasTexture_t2ef3"]
+atlas = ExtResource("5_7cy8s")
+region = Rect2(2, 2, 12, 13)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_sy1nf"]
 load_path = "res://.godot/imported/Basic_Plants.png-92646f18f870d2f170bfa09a65962d9f.ctex"
@@ -46,6 +46,14 @@ load_path = "res://.godot/imported/Basic_Plants.png-92646f18f870d2f170bfa09a6596
 atlas = SubResource("CompressedTexture2D_sy1nf")
 region = Rect2(0, 16, 16, 16)
 margin = Rect2(1, 0, 0, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5r675"]
+atlas = ExtResource("6_7cy8s")
+region = Rect2(2, 1, 11, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hu372"]
+atlas = ExtResource("6_7cy8s")
+region = Rect2(1.7555542, 18.18764, 10.599991, 11.662701)
 
 [node name="ToolsPanel" type="PanelContainer"]
 offset_right = 166.0
@@ -109,7 +117,7 @@ custom_minimum_size = Vector2(26, 26)
 layout_mode = 2
 focus_mode = 0
 theme_type_variation = &"ToolButton"
-icon = SubResource("AtlasTexture_7cy8s")
+icon = SubResource("AtlasTexture_t2ef3")
 icon_alignment = 1
 
 [node name="CornLabel" type="Label" parent="MarginContainer/HBoxContainer/Corn"]
@@ -153,5 +161,53 @@ theme_type_variation = &"ToolLabel"
 text = "0"
 horizontal_alignment = 2
 vertical_alignment = 2
+
+[node name="Carrot" type="Button" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+focus_mode = 0
+theme_type_variation = &"ToolButton"
+icon = SubResource("AtlasTexture_5r675")
+icon_alignment = 1
+
+[node name="CarrotLabel" type="Label" parent="MarginContainer/HBoxContainer/Carrot"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -9.0
+offset_top = -15.0
+offset_right = -4.0
+offset_bottom = -4.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_type_variation = &"ToolLabel"
+text = "0"
+
+[node name="Pumpkin" type="Button" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+focus_mode = 0
+theme_type_variation = &"ToolButton"
+icon = SubResource("AtlasTexture_hu372")
+icon_alignment = 1
+
+[node name="PumpkinLabel" type="Label" parent="MarginContainer/HBoxContainer/Pumpkin"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -9.0
+offset_top = -15.0
+offset_right = -4.0
+offset_bottom = -4.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_type_variation = &"ToolLabel"
+text = "0"
 
 [connection signal="pressed" from="MarginContainer/HBoxContainer/ToolAxe" to="." method="_on_tool_axe_pressed"]

@@ -3,6 +3,8 @@ extends PanelContainer
 @onready var stone_label: Label = $MarginContainer/VBoxContainer/Stone/StoneLabel
 @onready var corn_label: Label = $MarginContainer/VBoxContainer/Corn/CornLabel
 @onready var tomato_label: Label = $MarginContainer/VBoxContainer/Tomato/TomatoLabel
+@onready var carrot_label: Label = $MarginContainer/VBoxContainer/Carrot/CarrotLabel
+@onready var pumpkin_label: Label = $MarginContainer/VBoxContainer/Pumpkin/PumpkinLabel
 @onready var egg_label: Label = $MarginContainer/VBoxContainer/Egg/EggLabel
 @onready var milk_label: Label = $MarginContainer/VBoxContainer/Milk/MilkLabel
 
@@ -19,5 +21,7 @@ func on_inventory_changed() -> void:
     stone_label.text = str(inventory.get("stone", 0))
     corn_label.text = str(inventory.get("corn", 0))
     tomato_label.text = str(inventory.get("tomato", 0))
+    carrot_label.text = str(inventory.get("carrot", 0))
+    pumpkin_label.text = str(inventory.get("pumpkin", 0))
     egg_label.text = str(inventory.get("egg", 0))
     milk_label.text = str(inventory.get("milk", 0))
