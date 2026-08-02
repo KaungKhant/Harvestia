@@ -11,10 +11,10 @@ Merchant: Welcome! I have the most finest seeds in Harvestia.
 
 Merchant: What seeds do you need?
 
-- Corn Seeds (25 Gold each)
-	set InventoryManager.current_shop.temp_item_type = "corn_seeds"
-	set InventoryManager.current_shop.temp_price = 25
-	set InventoryManager.current_shop.temp_tool_enum = "PlantCorn"
+- Carrot Seeds (35 Gold each)
+	set InventoryManager.current_shop.temp_item_type = "carrot_seeds"
+	set InventoryManager.current_shop.temp_price = 35
+	set InventoryManager.current_shop.temp_tool_enum = "PlantCarrot"
 	=> buy_qty_select
 
 - Tomato Seeds
@@ -25,13 +25,13 @@ Merchant: What seeds do you need?
 
 ~ tomato_menu
 
-if SeedUnlockManager.is_seed_unlocked("tomato_seeds"):
-	Merchant: Tomato Seeds cost 30 Gold each.
+if SeedUnlockManager.is_seed_unlocked("pumpkin_seeds"):
+	Merchant: Pumpkin Seeds cost 40 Gold each.
 
 	- Buy Tomato Seeds
-		set InventoryManager.current_shop.temp_item_type = "tomato_seeds"
-		set InventoryManager.current_shop.temp_price = 30
-		set InventoryManager.current_shop.temp_tool_enum = "PlantTomato"
+		set InventoryManager.current_shop.temp_item_type = "pumpkin_seeds"
+		set InventoryManager.current_shop.temp_price = 40
+		set InventoryManager.current_shop.temp_tool_enum = "PlantPumpkin"
 		=> buy_qty_select
 
 	- Back

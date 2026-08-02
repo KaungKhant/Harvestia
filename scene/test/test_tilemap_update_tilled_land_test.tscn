@@ -649,15 +649,11 @@ position = Vector2(600.00006, 239)
 [node name="Player" parent="." instance=ExtResource("18_lgsey")]
 position = Vector2(303, 202)
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-limit_left = -100
-limit_top = -75
-limit_right = 1050
-limit_bottom = 600
-script = ExtResource("19_kwfff")
-
 [node name="QuestTracker" parent="Player" instance=ExtResource("20_ntqdu")]
 visible = false
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+script = ExtResource("19_kwfff")
 
 [node name="guide" parent="." instance=ExtResource("21_5cpk4")]
 position = Vector2(327, 154)

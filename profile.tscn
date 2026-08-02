@@ -88,6 +88,15 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "Create New Account"
 
+[node name="Delete" type="Button" parent="."]
+layout_mode = 0
+offset_left = 328.0
+offset_top = 327.0
+offset_right = 478.0
+offset_bottom = 384.0
+text = "Delete
+"
+
 [connection signal="pressed" from="New_Game" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Continue" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="CreateAccount" to="." method="_on_create_account_pressed"]

@@ -72,10 +72,7 @@ func delete_profile(profile_name:String):
 	if !profiles.has(profile_name):
 		return
 
-	profiles.erase(profile_name)
-
-	save_profiles()
-
+	# Delete save files
 	var folder = ProfileManager.get_profile_path(profile_name)
 
 	if DirAccess.dir_exists_absolute(folder):
@@ -93,15 +90,19 @@ func delete_profile(profile_name:String):
 				if file == "":
 					break
 
-				if !dir.current_is_dir():
+				if dir.current_is_dir():
+					continue
 
-					dir.remove(file)
+				dir.remove(file)
 
 			dir.list_dir_end()
 
 		DirAccess.remove_absolute(folder)
 
+	# Remove from profile list
+	profiles.erase(profile_name)
 
+	save_profiles()
 func rename_profile(old_name:String,new_name:String)->bool:
 
 	new_name = new_name.strip_edges()

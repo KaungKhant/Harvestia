@@ -6,7 +6,7 @@ extends Camera2D
 
 # How fast the camera zooms in and out
 @export var zoom_speed: float = 0.1
-@onready var tilemap: TileMapLayer = $"../../tilemap/ground"
+@onready var tilemap: TileMapLayer = $"../../Tilemap/highground"
 
 
 func _ready():
