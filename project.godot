@@ -32,6 +32,8 @@ SeedUnlockManager="*res://scripts/globals/seed_unlock_manager.gd"
 ProfileManager="*res://scripts/globals/profie_manager.gd"
 ProfileDatabase="*res://scripts/globals/profile_database.gd"
 SceneTransition="*res://scripts/scene_transition.gd"
+ProfileSaveManager="*res://scripts/globals/profile_save_manager.gd"
+SceneManager="*res://scripts/globals/scene_manager.gd"
 
 [display]
 

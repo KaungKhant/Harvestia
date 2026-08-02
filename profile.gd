@@ -40,13 +40,15 @@ func refresh_profiles():
 
 func update_buttons():
 
-	var has_profile = profile_dropdown.item_count > 0
+	if profile_dropdown.item_count == 0:
 
-	print("Profiles:", profile_dropdown.item_count)
-	print("Has Profile:", has_profile)
+		new_game.disabled = true
+		continue_game.disabled = true
+		return
 
-	new_game.disabled = !has_profile
-	continue_game.disabled = !has_profile
+	new_game.disabled = false
+
+	continue_game.disabled = !ProfileSaveManager.current_profile_has_save()
 
 func _on_create_pressed():
 
@@ -70,19 +72,21 @@ func _on_profile_selected(index):
 
 	ProfileManager.set_profile(profile)
 
+	update_buttons()
 
 func _on_new_game_pressed():
 
 	if !ProfileManager.has_profile():
 		return
 
-	# Change this to your game's first scene
-	get_tree().change_scene_to_file("res://scene/test/test_tilemap_save_load.tscn")
+	# Delete ONLY this profile's save.
+	ProfileSaveManager.start_new_game()
 
+	SceneManager.start_game()
 
 func _on_continue_pressed():
 
 	if !ProfileManager.has_profile():
 		return
 
-	get_tree().change_scene_to_file("res://scene/test/test_tilemap_save_load.tscn")
+	SceneManager.start_game()

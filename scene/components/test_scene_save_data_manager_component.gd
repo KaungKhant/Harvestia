@@ -3,7 +3,17 @@ extends Node
 
 
 func _ready() -> void:
-    call_deferred("load_test_scene")
-    
+
+	await get_tree().process_frame
+
+	if ProfileSaveManager.current_profile_has_save():
+
+		print("Loading save for:", ProfileManager.get_profile())
+
+		SaveGameManager.load_game()
+
+	else:
+
+		print("New profile - no save found.")    
 func load_test_scene():
-    SaveGameManager.load_game()
+	SaveGameManager.load_game()
