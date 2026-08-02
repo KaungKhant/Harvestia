@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=4 uid="uid://crxvy4g3xp3xg"]
+[gd_scene load_steps=88 format=4 uid="uid://crxvy4g3xp3xg"]
 
 [ext_resource type="PackedScene" uid="uid://cugdxyqvq2u2o" path="res://scene/components/test_scene_save_data_manager_component.tscn" id="1_bppt6"]
 [ext_resource type="PackedScene" uid="uid://dfi5u2g400moa" path="res://scene/components/save_level_data_component.tscn" id="2_8yodm"]
@@ -49,6 +49,10 @@
 [ext_resource type="AudioStream" uid="uid://dwylppjqx7h4k" path="res://audio/music/morning.mp3" id="47_pg116"]
 [ext_resource type="AudioStream" uid="uid://lidy4at5j5h3" path="res://audio/music/day.mp3" id="48_kx435"]
 [ext_resource type="AudioStream" uid="uid://cuhd04tvliemn" path="res://audio/music/night.mp3" id="49_yydt4"]
+[ext_resource type="PackedScene" uid="uid://cixhj2ssjigxh" path="res://scene/objects/chest/merchant.tscn" id="50_8yodm"]
+[ext_resource type="PackedScene" uid="uid://4ccsr3tx2dmk" path="res://scene/characters/guide/chicken_owner.tscn" id="51_h27ao"]
+[ext_resource type="PackedScene" uid="uid://6ulr3yrb52fj" path="res://scene/characters/guide/cow_owner.tscn" id="52_gnjxv"]
+[ext_resource type="PackedScene" uid="uid://ckkkyaue6gdym" path="res://scene/characters/guide/village_elder.tscn" id="53_ykpoo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7hbbt"]
 texture = ExtResource("4_pvkn2")
@@ -506,7 +510,7 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(447, 106, 447, 172, 325
 source_geometry_mode = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a38x2"]
-size = Vector2(80, 25)
+size = Vector2(82, 31.25)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qsrf0"]
 resource_local_to_scene = true
@@ -661,7 +665,6 @@ limit_bottom = 600
 script = ExtResource("22_exvb3")
 
 [node name="QuestTracker" parent="Player" instance=ExtResource("23_vt1rs")]
-visible = false
 
 [node name="guide" parent="." instance=ExtResource("24_gwdxx")]
 position = Vector2(327, 154)
@@ -724,7 +727,6 @@ position = Vector2(487, 284)
 position = Vector2(472, 312)
 
 [node name="PlayerHUD" parent="." instance=ExtResource("33_3ljft")]
-visible = false
 
 [node name="SeedShop" parent="." instance=ExtResource("34_f3la5")]
 position = Vector2(405, 108)
@@ -744,7 +746,7 @@ dialogue_start_command = "start_cow_pasture_box"
 script = ExtResource("38_l5uxl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ForestBlocker"]
-position = Vector2(134, 189)
+position = Vector2(292, 110.625)
 shape = SubResource("RectangleShape2D_a38x2")
 
 [node name="forest_ranger" parent="." instance=ExtResource("39_dey3a")]
@@ -807,5 +809,19 @@ script = ExtResource("46_ucafl")
 morning_bgm = ExtResource("47_pg116")
 day_bgm = ExtResource("48_kx435")
 night_bgm = ExtResource("49_yydt4")
+
+[node name="Merchant" parent="." instance=ExtResource("50_8yodm")]
+position = Vector2(564, 199)
+
+[node name="chicken_owner" parent="." instance=ExtResource("51_h27ao")]
+position = Vector2(395, 368)
+script = null
+
+[node name="cow_owner" parent="." instance=ExtResource("52_gnjxv")]
+position = Vector2(491, 385)
+script = null
+
+[node name="village_elder" parent="." instance=ExtResource("53_ykpoo")]
+position = Vector2(584, 493)
 
 [connection signal="value_changed" from="CanvasLayer/HSlider" to="CanvasLayer" method="_on_h_slider_value_changed"]
