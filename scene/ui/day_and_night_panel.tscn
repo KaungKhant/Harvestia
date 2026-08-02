@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://bo7ws24oj2yr4"]
+[gd_scene load_steps=8 format=3 uid="uid://bo7ws24oj2yr4"]
 
 [ext_resource type="Theme" uid="uid://xafwas3w3fi0" path="res://scene/ui/game_ui_theme.tres" id="1_kwte7"]
 [ext_resource type="Texture2D" uid="uid://cbl1duvt7svw0" path="res://assets/ui/basic_ui_sprite.png" id="2_addie"]
 [ext_resource type="Script" uid="uid://drs7snqi18o4h" path="res://scene/ui/day_and_night_panel.gd" id="2_v42tk"]
 [ext_resource type="PackedScene" uid="uid://bitwqob65vm4g" path="res://scene/components/save_data_component.tscn" id="3_ieojc"]
 [ext_resource type="Resource" uid="uid://ck3ydrtidbph4" path="res://resources/time_data_resource.tres" id="4_n0oxt"]
+[ext_resource type="AudioStream" uid="uid://4xshxvawelc6" path="res://audio/music/metalClick.ogg" id="6_n0oxt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v42tk"]
 atlas = ExtResource("2_addie")
@@ -179,6 +180,12 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_v42tk")
 
+[node name="HoverSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_n0oxt")
+
+[connection signal="mouse_entered" from="Control/NormalSpeedButton" to="." method="_on_normal_speed_button_mouse_entered"]
 [connection signal="pressed" from="Control/NormalSpeedButton" to="." method="_on_normal_speed_button_pressed"]
+[connection signal="mouse_entered" from="Control/FastSpeedButton" to="." method="_on_fast_speed_button_mouse_entered"]
 [connection signal="pressed" from="Control/FastSpeedButton" to="." method="_on_fast_speed_button_pressed"]
+[connection signal="mouse_entered" from="Control/CheetahSpeedButton" to="." method="_on_cheetah_speed_button_mouse_entered"]
 [connection signal="pressed" from="Control/CheetahSpeedButton" to="." method="_on_cheetah_speed_button_pressed"]
