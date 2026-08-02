@@ -134,8 +134,8 @@ func try_complete_quest() -> bool:
 	print("Next Quest:", finished_quest.next_quest)
 	
 	# Start the next quest automatically
-	if finished_quest.next_quest != "":
-		start_quest(finished_quest.next_quest)
+	#if finished_quest.next_quest != "":
+		#start_quest(finished_quest.next_quest)
 		
 	print("start_quest() called")
 
