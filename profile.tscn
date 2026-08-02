@@ -97,6 +97,9 @@ offset_bottom = 384.0
 text = "Delete
 "
 
+[node name="DeleteConfirmation" type="ConfirmationDialog" parent="."]
+title = "Delete Account."
+
 [connection signal="pressed" from="New_Game" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Continue" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="CreateAccount" to="." method="_on_create_account_pressed"]

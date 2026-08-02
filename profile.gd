@@ -1,5 +1,6 @@
 extends Control
 
+@onready var delete_confirmation : ConfirmationDialog = $DeleteConfirmation
 @onready var profile_dropdown : OptionButton = $ProfileDropDown
 @onready var profile_name : LineEdit = $NewAccount
 @onready var delete_profile_button : Button = $Delete
@@ -18,6 +19,7 @@ func _ready():
 
 	profile_dropdown.item_selected.connect(_on_profile_selected)
 	delete_profile_button.pressed.connect(_on_delete_profile_pressed)
+	delete_confirmation.confirmed.connect(_on_delete_confirmed)
 
 	refresh_profiles()
 
@@ -99,6 +101,14 @@ func _on_delete_profile_pressed():
 
 	var profile_name = ProfileManager.get_profile()
 
+	delete_confirmation.dialog_text = "Delete  \"%s\"?\n\nThis action cannot be undone." % profile_name
+
+	delete_confirmation.popup_centered()
+
+func _on_delete_confirmed():
+
+	var profile_name = ProfileManager.get_profile()
+
 	print("Deleting:", profile_name)
 
 	ProfileDatabase.delete_profile(profile_name)
@@ -107,9 +117,9 @@ func _on_delete_profile_pressed():
 
 	if profile_dropdown.item_count > 0:
 
-		var new_profile = profile_dropdown.get_item_text(0)
+		var next_profile = profile_dropdown.get_item_text(0)
 
-		ProfileManager.set_profile(new_profile)
+		ProfileManager.set_profile(next_profile)
 
 	else:
 
