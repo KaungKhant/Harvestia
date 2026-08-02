@@ -1,7 +1,6 @@
 class_name TestSceneSaveDataManagerComponent
 extends Node
 
-
 func _ready() -> void:
 
 	await get_tree().process_frame
@@ -14,6 +13,11 @@ func _ready() -> void:
 
 	else:
 
-		print("New profile - no save found.")    
+		print("New profile - starting fresh.")
+
+
 func load_test_scene():
-	SaveGameManager.load_game()
+
+	if ProfileSaveManager.current_profile_has_save():
+
+		SaveGameManager.load_game()
