@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://dd4aav7jfij07"]
+[gd_scene load_steps=6 format=3 uid="uid://dd4aav7jfij07"]
 
 [ext_resource type="Script" uid="uid://bw8f38ayn24rp" path="res://profile.gd" id="1_yghs0"]
-[ext_resource type="Texture2D" uid="uid://cf1n8m3dccw1o" path="res://assets/game/mainmenu.png" id="2_r2xaa"]
+[ext_resource type="Texture2D" uid="uid://bjpl8phlgms4u" path="res://assets/game/Objects/20260803_005237_0000.png" id="2_yghs0"]
 [ext_resource type="FontFile" uid="uid://cwc2vg6qvhch7" path="res://assets/ui/fonts/Changa_One/ChangaOne-Italic.ttf" id="3_o4dpx"]
 [ext_resource type="FontVariation" uid="uid://dtkipuriu336c" path="res://assets/ui/fonts/zx_palm_variation.tres" id="4_khxjx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r2xaa"]
+atlas = ExtResource("2_yghs0")
 
 [node name="Profile" type="Control"]
 layout_mode = 3
@@ -26,7 +29,7 @@ offset_top = 2.0
 offset_right = 1928.8604
 offset_bottom = 1110.8889
 scale = Vector2(0.43, 0.45)
-texture = ExtResource("2_r2xaa")
+texture = SubResource("AtlasTexture_r2xaa")
 
 [node name="Label" type="Label" parent="."]
 visible = false
@@ -98,7 +101,7 @@ text = "Delete
 "
 
 [node name="DeleteConfirmation" type="ConfirmationDialog" parent="."]
-title = "Delete Account."
+title = "DE."
 
 [connection signal="pressed" from="New_Game" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Continue" to="." method="_on_play_pressed"]
