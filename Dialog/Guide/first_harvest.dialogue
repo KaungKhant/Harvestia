@@ -1,7 +1,7 @@
 ~ start
 
 Guide: It's time to grow your first crop.
-Guide: Harvest 5 Corn and bring them back to me.
+Guide: Harvest 5 Corn and bring it back to me.
 
 => END
 
@@ -9,20 +9,22 @@ Guide: Harvest 5 Corn and bring them back to me.
 ~ progress
 
 Guide: Keep going!
-Guide: I need 5 Corn before we can continue restoring Harvestia.
+Guide: I need 5 Corn before we can continue rebuilding Harvestia.
 
 => END
 
 
 ~ turn_in
 
-Guide: Excellent work.
+Guide: Excellent work!
 
 Guide: You've grown your very first harvest.
 
 do QuestManager.try_complete_quest()
 
-Guide: Farming is the heart of this land.
+Guide: Farming is the heart of Harvestia.
+
+Guide: But rebuilding this place will take more than crops.
 
 Guide: Take this Axe.
 
@@ -31,13 +33,13 @@ do GameDialogueManager.action_give_axe()
 Guide: My old friend, the Forest Ranger, has been guarding the bridge for years.
 
 Guide: Go and speak with him.
+Guide: He'll let you into the forest.
 
 => END
 
 
 ~ completed
 
-Guide: Thanks again.
-Guide: We can now move on to the next task.
+Guide: The Forest Ranger is waiting for you.
 
 => END

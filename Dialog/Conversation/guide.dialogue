@@ -10,13 +10,15 @@ Guide: The Seed Shop nearby still has some in stock.
 - Take 125 Gold
     Player: Thank you! I'll buy some Corn Seeds.
     do PlayerProgressManager.add_gold(125)
-	do SeedUnlockManager.unlock_seed("corn_seeds")
+    do SeedUnlockManager.unlock_seed("corn_seeds")
     do QuestManager.start_quest("buy_corn_seeds")
 
 - Maybe later
     Player: I'll come back when I'm ready.
 
 => END
+
+
 ~ progress
 
 Guide: The Seed Shop is nearby.
@@ -32,14 +34,25 @@ Guide: You bought everything you need.
 
 do QuestManager.try_complete_quest()
 
-Guide: Now I'll teach you the basics of farming.
+Guide: Before you begin farming, let me show you the tools you'll be using.
+
+Guide: Use the Hoe to till the soil.
+
+Guide: Plant your Corn Seeds on the tilled land.
+
+Guide: Water your crops every day with the Watering Can.
+
+Guide: If weeds start growing, clear them with the Scythe.
+
+Guide: Here, these tools are yours now.
 
 do GameDialogueManager.action_teach_farming()
 
+Guide: Now it's your turn.
+
 do QuestManager.start_quest("first_harvest")
 
-Guide: Your first task is simple.
-Guide: Harvest 5 Corn and bring them to me.
+Guide: Harvest 5 Corn and come back to show me what you've learned.
 
 => END
 

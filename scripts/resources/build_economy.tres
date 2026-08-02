@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="QuestData" load_steps=3 format=3 uid="uid://bxul4uxxnpeop"]
+
+[ext_resource type="Resource" uid="uid://kbdo2yydy4gq" path="res://Dialog/Guide/rebuilding_harvestia.dialogue" id="1_3y3q5"]
+[ext_resource type="Script" uid="uid://6n4u527vyey0" path="res://scripts/resources/quest_data.gd" id="2_5tmpt"]
+
+[resource]
+script = ExtResource("2_5tmpt")
+quest_id = "build_economy"
+quest_name = "Building the Economy"
+description = "Earn 1000 Gold."
+target_item = "gold"
+quest_icon = "gold"
+target_amount = 1000
+reward_exp = 100
+reward_gold = 200
+dialogue_file = ExtResource("1_3y3q5")
+next_quest = "chicken_ownership"
+consume_items = false
+metadata/_custom_type_script = "uid://6n4u527vyey0"

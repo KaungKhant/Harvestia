@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="QuestData" load_steps=3 format=3 uid="uid://q832bun14t47"]
 
-[ext_resource type="Resource" uid="uid://bcq2gf5ibv6qk" path="res://Dialog/Guide/first_harvest.dialogue" id="1_ulmtk"]
-[ext_resource type="Script" uid="uid://6n4u527vyey0" path="res://scripts/resources/quest_data..gd" id="1_w3gla"]
+[ext_resource type="Resource" uid="uid://bbx3oub0odywm" path="res://Dialog/Guide/first_harvest.dialogue" id="1_ulmtk"]
+[ext_resource type="Script" uid="uid://6n4u527vyey0" path="res://scripts/resources/quest_data.gd" id="1_w3gla"]
 
 [resource]
 script = ExtResource("1_w3gla")

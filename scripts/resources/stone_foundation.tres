@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="QuestData" load_steps=3 format=3 uid="uid://d18sebtftjf5e"]
+
+[ext_resource type="Resource" uid="uid://kbdo2yydy4gq" path="res://Dialog/Guide/rebuilding_harvestia.dialogue" id="1_ov0v4"]
+[ext_resource type="Script" uid="uid://6n4u527vyey0" path="res://scripts/resources/quest_data.gd" id="2_ies1y"]
+
+[resource]
+script = ExtResource("2_ies1y")
+quest_id = "stone_foundation"
+quest_name = "Stone for the Foundation"
+description = "Collect 15 Stones."
+target_item = "stone"
+quest_icon = "stone"
+target_amount = 15
+reward_exp = 80
+reward_gold = 150
+dialogue_file = ExtResource("1_ov0v4")
+next_quest = "build_economy"
+consume_items = false
+metadata/_custom_type_script = "uid://6n4u527vyey0"

@@ -1,17 +1,23 @@
 ~ start
 
-Guide: You've come a long way since your first harvest.
+Guide: You've done well so far.
+
+Guide: It's time to grow something even more valuable.
+
+do SeedUnlockManager.unlock_seed("tomato_seeds")
 
 Guide: Tomato Seeds are now available at the Seed Shop.
 
-Guide: Grow and harvest 5 Tomatoes, then bring them to me.
+Guide: Buy some Tomato Seeds, harvest 5 Tomatoes, and bring them to me.
 
 => END
 
 
 ~ progress
 
-Guide: Keep working on your Tomato crop.
+Guide: Tomatoes are worth more than Corn.
+
+Guide: A good farmer always looks for better opportunities.
 
 Guide: Bring me 5 Tomatoes when they're ready.
 
@@ -20,17 +26,23 @@ Guide: Bring me 5 Tomatoes when they're ready.
 
 ~ turn_in
 
-Guide: Excellent! Your farm is becoming more productive.
+Guide: Excellent work!
+
+Guide: Your farm is becoming more productive.
 
 do QuestManager.try_complete_quest()
 
-Guide: Every new crop brings us one step closer to restoring Harvestia.
+Guide: Tomatoes can be sold for a good price.
+
+Guide: Keep farming, keep selling, and keep saving your Gold.
+
+Guide: You'll need both money and materials to rebuild Harvestia.
 
 => END
 
 
 ~ completed
 
-Guide: Your farm is growing well. Keep it up!
+Guide: Your farm is growing stronger every day.
 
 => END

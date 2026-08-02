@@ -1,15 +1,16 @@
 ~ start
 
 Guide: Welcome back.
-Guide: You should visit the Seed Shop and buy 5 Corn Seeds.
+Guide: The Seed Shop is nearby.
+Guide: Buy 5 Corn Seeds and return when you're ready.
 
 => END
 
 
 ~ progress
 
-Guide: The Seed Shop is nearby.
-Guide: Buy 5 Corn Seeds and come back to me.
+Guide: Have you bought the Corn Seeds yet?
+Guide: Bring me 5 Corn Seeds, then I'll teach you how to start your farm.
 
 => END
 
@@ -21,21 +22,34 @@ Guide: You bought the Corn Seeds.
 
 do QuestManager.try_complete_quest()
 
-Guide: Now I'll teach you how to farm.
+Guide: Before you begin, let me teach you the basics of farming.
+
+Guide: You'll be using three essential tools.
+
+Guide: Use the Hoe to till the soil.
+
+Guide: Plant your Corn Seeds on the tilled land.
+
+Guide: Water your crops every day with the Watering Can.
+
+Guide: If weeds begin to grow, clear them with the Scythe.
+
+Guide: Here, these tools are yours now.
 
 do GameDialogueManager.action_teach_farming()
 
-Guide: First, till the soil.
-Guide: Then plant the Corn Seeds.
-Guide: Finally, water them every day.
+Guide: Now it's your turn.
 
 do QuestManager.start_quest("first_harvest")
+
+Guide: Harvest 5 Corn and come back to show me what you've learned.
 
 => END
 
 
 ~ completed
 
-Guide: Good luck with your first harvest!
+Guide: Good luck!
+Guide: I'll be waiting for your first harvest.
 
 => END

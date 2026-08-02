@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://0r5442h0l5lo"
+path="res://.godot/imported/stone_foundation.dialogue-e59f6471eb2f91cbb3285ee2ac682d6d.tres"
+
+[deps]
+
+source_file="res://Dialog/Guide/stone_foundation.dialogue"
+dest_files=["res://.godot/imported/stone_foundation.dialogue-e59f6471eb2f91cbb3285ee2ac682d6d.tres"]
+
+[params]
+
+defaults=true

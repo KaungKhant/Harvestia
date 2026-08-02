@@ -14,6 +14,7 @@ func _ready() -> void:
 	
 	GameDialogueManager.teach_farming.connect(on_teach_farming)
 	GameDialogueManager.give_axe.connect(on_give_axe)
+	GameDialogueManager.give_pickaxe.connect(on_give_pickaxe)
 	
 	
 func on_interactable_activated() -> void:
@@ -53,9 +54,16 @@ func on_teach_farming() -> void:
 
 	ToolManager.enable_tool_button(DataTypes.Tools.WaterCrops)
 	NotificationManager.show_tool("Watering Can")
+	
+	ToolManager.enable_tool_button(DataTypes.Tools.Scythe)
+	NotificationManager.show_tool("Scythe")
 
 	ToolManager.enable_tool_button(DataTypes.Tools.PlantCorn)
 
 func on_give_axe() -> void:
 	ToolManager.enable_tool_button(DataTypes.Tools.AxeWood)
 	NotificationManager.show_tool("Axe")
+
+func on_give_pickaxe() -> void:
+	ToolManager.enable_tool_button(DataTypes.Tools.Pickaxe)
+	NotificationManager.show_tool("Pickaxe")

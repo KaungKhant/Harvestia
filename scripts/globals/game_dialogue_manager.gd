@@ -4,6 +4,7 @@ signal teach_farming
 signal feed_the_animals
 signal unlock_forest
 signal give_axe
+signal give_pickaxe
 
 func action_teach_farming() -> void:
 	teach_farming.emit()
@@ -16,3 +17,6 @@ func action_unlock_forest() -> void:
 
 func action_give_axe() -> void:
 	give_axe.emit()
+
+func action_give_pickaxe() -> void:
+	give_pickaxe.emit()

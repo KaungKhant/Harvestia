@@ -1,0 +1,52 @@
+~ start
+
+Guide: You've come a long way since your first harvest.
+
+Guide: Thanks to your hard work, Harvestia is beginning to come back to life.
+
+Guide: But crops alone won't rebuild this village.
+
+Guide: We'll need strong materials for the work ahead.
+
+Guide: Take this old Pickaxe.
+
+do GameDialogueManager.action_give_pickaxe()
+
+Guide: Even though we're starting with Logs, you'll need the Pickaxe soon.
+
+Guide: Head into the forest and collect 20 Logs.
+
+=> END
+
+
+~ progress
+
+Guide: Keep gathering Logs.
+
+Guide: Every piece of wood brings us one step closer to rebuilding Harvestia.
+
+=> END
+
+
+~ turn_in
+
+Guide: Excellent work!
+
+Guide: These Logs will be a great help.
+
+do QuestManager.try_complete_quest()
+
+Guide: Wood alone isn't enough.
+
+Guide: Our next task is to gather Stone.
+
+do QuestManager.start_quest("stone_foundation")
+
+=> END
+
+
+~ completed
+
+Guide: Let's continue gathering materials.
+
+=> END

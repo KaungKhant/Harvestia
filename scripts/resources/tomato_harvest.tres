@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="QuestData" load_steps=3 format=3 uid="uid://dia2wfaf3k33x"]
 
 [ext_resource type="Resource" uid="uid://d0gjrquu2pq4e" path="res://Dialog/Guide/tomato_harvest.dialogue" id="1_nwcy3"]
-[ext_resource type="Script" uid="uid://6n4u527vyey0" path="res://scripts/resources/quest_data..gd" id="2_umjrb"]
+[ext_resource type="Script" uid="uid://6n4u527vyey0" path="res://scripts/resources/quest_data.gd" id="2_umjrb"]
 
 [resource]
 script = ExtResource("2_umjrb")
@@ -14,4 +14,5 @@ target_amount = 5
 reward_exp = 75
 reward_gold = 150
 dialogue_file = ExtResource("1_nwcy3")
+next_quest = "rebuilding_harvestia"
 metadata/_custom_type_script = "uid://6n4u527vyey0"

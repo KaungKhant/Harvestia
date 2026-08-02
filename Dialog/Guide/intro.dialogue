@@ -10,10 +10,10 @@ Guide: The Seed Shop nearby still has some in stock.
 - Take 125 Gold
     Player: Thank you! I'll buy some Corn Seeds.
     do PlayerProgressManager.add_gold(125)
-	do SeedUnlockManager.unlock_seed("corn_seeds")
+    do SeedUnlockManager.unlock_seed("corn_seeds")
     do QuestManager.start_quest("buy_corn_seeds")
 
 - Maybe later
-    Player: I'll come back when I'm ready.
+    Player: I'd like to look around first.
 
 => END

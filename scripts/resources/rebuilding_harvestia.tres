@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="QuestData" load_steps=3 format=3 uid="uid://d3wr2vsolshnv"]
+
+[ext_resource type="Resource" uid="uid://kbdo2yydy4gq" path="res://Dialog/Guide/rebuilding_harvestia.dialogue" id="1_en5um"]
+[ext_resource type="Script" uid="uid://6n4u527vyey0" path="res://scripts/resources/quest_data.gd" id="2_o87fo"]
+
+[resource]
+script = ExtResource("2_o87fo")
+quest_id = "rebuilding_harvestia"
+quest_name = "Rebuilding Harvestia"
+description = "Collect 20 Logs."
+target_item = "log"
+quest_icon = "log"
+target_amount = 20
+reward_exp = 80
+reward_gold = 150
+dialogue_file = ExtResource("1_en5um")
+next_quest = "stone_foundation"
+consume_items = false
+metadata/_custom_type_script = "uid://6n4u527vyey0"

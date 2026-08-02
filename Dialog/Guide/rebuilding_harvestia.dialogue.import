@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://kbdo2yydy4gq"
+path="res://.godot/imported/rebuilding_harvestia.dialogue-dbf667f8319cd250947c247eeb36cbe7.tres"
+
+[deps]
+
+source_file="res://Dialog/Guide/rebuilding_harvestia.dialogue"
+dest_files=["res://.godot/imported/rebuilding_harvestia.dialogue-dbf667f8319cd250947c247eeb36cbe7.tres"]
+
+[params]
+
+defaults=true
