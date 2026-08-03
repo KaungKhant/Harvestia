@@ -5,7 +5,7 @@ func _ready():
 	$Label.hide()
 	
 const MainMenu = "res://main_menu.tscn"
-const MainWorld = "res://scene/test/test_tilemap_guide_dialog_shop.tscn"
+const MainWorld = "res://profile.tscn"
 
 func change_stage(stage_path:String):
 
