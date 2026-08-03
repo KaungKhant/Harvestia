@@ -91,62 +91,62 @@ func _process(delta: float) -> void:
 ## Sets the label's text from the current dialogue line. Override if you want
 ## to do something more interesting in your subclass.
 func _update_text() -> void:
-	text = dialogue_line.text
+    text = dialogue_line.text
 
 
 ## Start typing out the text
 func type_out() -> void:
-	_update_text()
-	visible_characters = 0
-	visible_ratio = 0
-	_waiting_seconds = 0
-	_last_wait_index = -1
-	_last_mutation_index = -1
-	_already_mutated_indices.clear()
+    _update_text()
+    visible_characters = 0
+    visible_ratio = 0
+    _waiting_seconds = 0
+    _last_wait_index = -1
+    _last_mutation_index = -1
+    _already_mutated_indices.clear()
 
-	is_typing = true
-	started_typing.emit()
+    is_typing = true
+    started_typing.emit()
 
-	# Allow typing listeners a chance to connect
-	await get_tree().process_frame
+    # Allow typing listeners a chance to connect
+    await get_tree().process_frame
 
-	if get_total_character_count() == 0:
-		is_typing = false
-	elif seconds_per_step == 0:
-		_mutate_remaining_mutations()
-		visible_characters = get_total_character_count()
-		is_typing = false
+    if get_total_character_count() == 0:
+        is_typing = false
+    elif seconds_per_step == 0:
+        _mutate_remaining_mutations()
+        visible_characters = get_total_character_count()
+        is_typing = false
 
 
 ## Stop typing out the text and jump right to the end
 func skip_typing() -> void:
-	_mutate_remaining_mutations()
-	visible_characters = get_total_character_count()
-	is_typing = false
-	skipped_typing.emit()
+    _mutate_remaining_mutations()
+    visible_characters = get_total_character_count()
+    is_typing = false
+    skipped_typing.emit()
 
 
 # Type out the next character(s)
 func _type_next(delta: float, seconds_needed: float) -> void:
-	if _is_awaiting_mutation: return
+    if _is_awaiting_mutation: return
 
-	if visible_characters == get_total_character_count():
-		return
+    if visible_characters == get_total_character_count():
+        return
 
-	if _last_mutation_index != visible_characters:
-		_last_mutation_index = visible_characters
-		_mutate_inline_mutations(visible_characters)
-		if _is_awaiting_mutation: return
+    if _last_mutation_index != visible_characters:
+        _last_mutation_index = visible_characters
+        _mutate_inline_mutations(visible_characters)
+        if _is_awaiting_mutation: return
 
-	# Pause on characters like "."
-	var waiting_seconds: float = seconds_per_pause_step if _should_auto_pause() else 0
-	if _last_wait_index != visible_characters and waiting_seconds > 0:
-		_last_wait_index = visible_characters
-		_waiting_seconds += waiting_seconds
-	else:
-		visible_characters += 1
-		if visible_characters <= get_total_character_count():
-			spoke.emit(get_parsed_text()[visible_characters - 1], visible_characters - 1, _get_speed(visible_characters))
+    # Pause on characters like "."
+    var waiting_seconds: float = seconds_per_pause_step if _should_auto_pause() else 0
+    if _last_wait_index != visible_characters and waiting_seconds > 0:
+        _last_wait_index = visible_characters
+        _waiting_seconds += waiting_seconds
+    else:
+        visible_characters += 1
+        if visible_characters <= get_total_character_count():
+            spoke.emit(get_parsed_text()[visible_characters - 1], visible_characters - 1, _get_speed(visible_characters))
         # See if there's time to type out some more in this frame
         seconds_needed += seconds_per_step * (1.0 / _get_speed(visible_characters))
         if seconds_needed > delta:
@@ -167,42 +167,42 @@ func _get_speed(at_index: int) -> float:
 
 # Run any inline mutations that haven't been run yet
 func _mutate_remaining_mutations() -> void:
-	_is_skipping_mutations = true
-	for i in range(visible_characters, get_total_character_count() + 1):
-		_mutate_inline_mutations(i)
-	_is_skipping_mutations = false
+    _is_skipping_mutations = true
+    for i in range(visible_characters, get_total_character_count() + 1):
+        _mutate_inline_mutations(i)
+    _is_skipping_mutations = false
 
 
 # Run any mutations at the current typing position
 func _mutate_inline_mutations(index: int) -> void:
-	for inline_mutation in dialogue_line.inline_mutations:
-		# inline mutations are an array of arrays in the form of [character index, resolvable function]
-		if inline_mutation[0] > index:
-			return
-		if inline_mutation[0] == index and not _already_mutated_indices.has(index):
-			if _is_skipping_mutations:
-				Engine.get_singleton("DialogueManager")._mutate(inline_mutation[1], dialogue_line.extra_game_states, true)
-			else:
-				_is_awaiting_mutation = true
-				await Engine.get_singleton("DialogueManager")._mutate(inline_mutation[1], dialogue_line.extra_game_states, true)
-				_is_awaiting_mutation = false
+    for inline_mutation in dialogue_line.inline_mutations:
+        # inline mutations are an array of arrays in the form of [character index, resolvable function]
+        if inline_mutation[0] > index:
+            return
+        if inline_mutation[0] == index and not _already_mutated_indices.has(index):
+            if _is_skipping_mutations:
+                Engine.get_singleton("DialogueManager")._mutate(inline_mutation[1], dialogue_line.extra_game_states, true)
+            else:
+                _is_awaiting_mutation = true
+                await Engine.get_singleton("DialogueManager")._mutate(inline_mutation[1], dialogue_line.extra_game_states, true)
+                _is_awaiting_mutation = false
 
-	_already_mutated_indices.append(index)
+    _already_mutated_indices.append(index)
 
 
 # Determine if the current autopause character at the cursor should qualify to pause typing.
 func _should_auto_pause() -> bool:
-	if visible_characters == 0: return false
+    if visible_characters == 0: return false
 
-	var parsed_text: String = get_parsed_text()
+    var parsed_text: String = get_parsed_text()
 
-	# Avoid outofbounds when the label auto-translates and the text changes to one shorter while typing out
-	# Note: visible characters can be larger than parsed_text after a translation event
-	if visible_characters >= parsed_text.length(): return false
+    # Avoid outofbounds when the label auto-translates and the text changes to one shorter while typing out
+    # Note: visible characters can be larger than parsed_text after a translation event
+    if visible_characters >= parsed_text.length(): return false
 
-	# Ignore pause characters if they are next to a non-pause character
-	if parsed_text[visible_characters] in skip_pause_at_character_if_followed_by.split():
-		return false
+    # Ignore pause characters if they are next to a non-pause character
+    if parsed_text[visible_characters] in skip_pause_at_character_if_followed_by.split():
+        return false
 
     # Ignore "." if it's between two numbers
     if visible_characters > 3 and parsed_text[visible_characters - 1] == ".":
@@ -211,17 +211,17 @@ func _should_auto_pause() -> bool:
             return false
 
     # Ignore "." if it's used in an abbreviation
-	# Note: does NOT support multi-period abbreviations (ex. p.m.)
-	if "." in pause_at_characters and parsed_text[visible_characters - 1] == ".":
-		for abbreviation in skip_pause_at_abbreviations:
-			if visible_characters >= abbreviation.length():
-				var previous_characters: String = parsed_text.substr(visible_characters - abbreviation.length() - 1, abbreviation.length())
-				if previous_characters == abbreviation:
-					return false
+    # Note: does NOT support multi-period abbreviations (ex. p.m.)
+    if "." in pause_at_characters and parsed_text[visible_characters - 1] == ".":
+        for abbreviation in skip_pause_at_abbreviations:
+            if visible_characters >= abbreviation.length():
+                var previous_characters: String = parsed_text.substr(visible_characters - abbreviation.length() - 1, abbreviation.length())
+                if previous_characters == abbreviation:
+                    return false
 
-	# Ignore two non-"." characters next to each other
-	var other_pause_characters: PackedStringArray = pause_at_characters.replace(".", "").split()
-	if visible_characters > 1 and parsed_text[visible_characters - 1] in other_pause_characters and parsed_text[visible_characters] in other_pause_characters:
-		return false
+    # Ignore two non-"." characters next to each other
+    var other_pause_characters: PackedStringArray = pause_at_characters.replace(".", "").split()
+    if visible_characters > 1 and parsed_text[visible_characters - 1] in other_pause_characters and parsed_text[visible_characters] in other_pause_characters:
+        return false
 
-	return parsed_text[visible_characters - 1] in pause_at_characters.split()
+    return parsed_text[visible_characters - 1] in pause_at_characters.split()

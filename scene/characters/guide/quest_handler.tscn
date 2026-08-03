@@ -1,6 +1,5 @@
-[gd_scene load_steps=9 format=3 uid="uid://tobm1vgjohon"]
+[gd_scene load_steps=8 format=3 uid="uid://tobm1vgjohon"]
 
-[ext_resource type="Script" uid="uid://cym2frqd08efq" path="res://scene/characters/guide/forest_ranger.gd" id="1_cqy05"]
 [ext_resource type="Texture2D" uid="uid://uq3utpp47u0n" path="res://assets/game/Characters/npc1.png" id="2_wjix7"]
 [ext_resource type="PackedScene" uid="uid://cv3tlgmwisqki" path="res://scene/components/interactable_component.tscn" id="3_ptxjs"]
 [ext_resource type="PackedScene" uid="uid://dtg2w66i1vtib" path="res://scene/components/interactable_label_component.tscn" id="4_rsxc3"]
@@ -27,7 +26,6 @@ size = Vector2(6, 4)
 radius = 13.0
 
 [node name="quest_handler" type="Node2D"]
-script = ExtResource("1_cqy05")
 
 [node name="Sprite2D" type="CharacterBody2D" parent="."]
 
