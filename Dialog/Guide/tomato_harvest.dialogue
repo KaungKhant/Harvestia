@@ -36,13 +36,18 @@ Guide: Tomatoes can be sold for a good price.
 
 Guide: Keep farming, keep selling, and keep saving your Gold.
 
-Guide: You'll need both money and materials to rebuild Harvestia.
+Guide: We'll need both money and materials to rebuild Harvestia.
 
 => END
 
-
 ~ completed
 
-Guide: Your farm is growing stronger every day.
+Guide: Are you ready for our next task?
+
+- Yes.
+    do QuestManager.start_next_quest()
+
+- Not yet.
+    Player: I'd like to prepare first.
 
 => END

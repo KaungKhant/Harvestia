@@ -1,18 +1,12 @@
 ~ start
 
-Guide: You've come a long way since your first harvest.
+Guide: It's time to begin rebuilding Harvestia.
 
-Guide: Thanks to your hard work, Harvestia is beginning to come back to life.
-
-Guide: But crops alone won't rebuild this village.
-
-Guide: We'll need strong materials for the work ahead.
+Guide: Every building begins with strong materials.
 
 Guide: Take this old Pickaxe.
 
 do GameDialogueManager.action_give_pickaxe()
-
-Guide: Even though we're starting with Logs, you'll need the Pickaxe soon.
 
 Guide: Head into the forest and collect 20 Logs.
 

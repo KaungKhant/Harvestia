@@ -2,6 +2,7 @@ extends Node
 
 enum QuestState{
 	NOT_STARTED,
+	START, 
 	IN_PROGRESS,
 	READY_TO_TURN_IN,
 	COMPLETED
@@ -51,9 +52,11 @@ func get_dialogue_label() -> String:
 	if current_quest == null:
 		return "start"
 
+
 	match current_state:
 		QuestState.NOT_STARTED:
 			return "start"
+
 
 		QuestState.IN_PROGRESS:
 			return "progress"
@@ -135,7 +138,7 @@ func try_complete_quest() -> bool:
 	
 	# Start the next quest automatically
 	#if finished_quest.next_quest != "":
-		#start_quest(finished_quest.next_quest)
+	#	start_quest(finished_quest.next_quest)
 		
 	print("start_quest() called")
 
@@ -172,3 +175,13 @@ func sync_progress_with_inventory() -> void:
 		current_progress,
 		current_quest.target_amount
 	)
+
+func start_next_quest() -> bool:
+	if current_quest == null:
+		return false
+
+	if current_quest.next_quest == "":
+		return false
+
+	start_quest(current_quest.next_quest)
+	return true

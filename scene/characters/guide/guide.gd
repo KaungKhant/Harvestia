@@ -43,9 +43,12 @@ func _unhandled_input(event: InputEvent) -> void:
 		dialogue = QuestManager.current_quest.dialogue_file
 
 	balloon.start(
-		dialogue,
-		QuestManager.get_dialogue_label()
+	dialogue,
+	QuestManager.get_dialogue_label()
 )
+
+	if QuestManager.current_state == QuestManager.QuestState.START:
+		QuestManager.current_state = QuestManager.QuestState.IN_PROGRESS
 
 func on_teach_farming() -> void:
 	# Unlock farming tools

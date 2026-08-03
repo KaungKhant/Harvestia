@@ -56,7 +56,7 @@ func _ready() -> void:
 	carrot.pressed.connect(_on_carrot_pressed)
 	pumpkin.pressed.connect(_on_pumpkin_pressed)
 	
-	all_buttons = [tool_axe, tool_scythe, tool_pickaxe, tool_tilling, tool_watering, corn, tomato]
+	all_buttons = [tool_axe, tool_scythe, tool_pickaxe, tool_tilling, tool_watering, corn, tomato , carrot, pumpkin]
 	
 	ToolManager.tool_selected.connect(_on_global_tool_selected)
 	_on_global_tool_selected(ToolManager.selected_tool)
