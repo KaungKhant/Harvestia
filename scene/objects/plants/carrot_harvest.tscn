@@ -24,7 +24,7 @@ texture = SubResource("AtlasTexture_5dl5v")
 
 [node name="CollectableComponent" parent="CarrotHarvest" instance=ExtResource("3_k51ll")]
 collision_layer = 160
-collectable_name = "corn"
+collectable_name = "carrot"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CarrotHarvest/CollectableComponent"]
 position = Vector2(-13.073171, 18.599998)

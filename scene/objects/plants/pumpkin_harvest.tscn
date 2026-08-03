@@ -24,7 +24,7 @@ texture = SubResource("AtlasTexture_cuxif")
 
 [node name="CollectableComponent" parent="PumpkinHarvest" instance=ExtResource("3_cn5sm")]
 collision_layer = 160
-collectable_name = "corn"
+collectable_name = "pumpkin"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PumpkinHarvest/CollectableComponent"]
 position = Vector2(3.8146973e-06, 0)

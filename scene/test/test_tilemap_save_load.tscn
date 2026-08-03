@@ -1,4 +1,4 @@
-[gd_scene load_steps=90 format=4 uid="uid://bvkwg4jgnkmuf"]
+[gd_scene load_steps=92 format=4 uid="uid://bvkwg4jgnkmuf"]
 
 [ext_resource type="Texture2D" uid="uid://dibl8w1txfm4" path="res://assets/game/Tilesets/Water.png" id="1_hjlx7"]
 [ext_resource type="PackedScene" uid="uid://cugdxyqvq2u2o" path="res://scene/components/test_scene_save_data_manager_component.tscn" id="1_ht70e"]
@@ -47,6 +47,8 @@
 [ext_resource type="Script" uid="uid://cd8nou7v238tu" path="res://scene/test/canvas_layer.gd" id="43_wk4d7"]
 [ext_resource type="Resource" uid="uid://5rbr03gu1ecy" path="res://resources/quest_data_resoource.tres" id="45_ace3k"]
 [ext_resource type="PackedScene" uid="uid://cixhj2ssjigxh" path="res://scene/objects/chest/merchant.tscn" id="47_uhfq1"]
+[ext_resource type="PackedScene" uid="uid://bxvjq3ncsvayh" path="res://scene/objects/plants/carrot_harvest.tscn" id="48_wk4d7"]
+[ext_resource type="PackedScene" uid="uid://bfmx3vileieam" path="res://scene/objects/plants/corn_harvest.tscn" id="49_a38x2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uhfq1"]
 texture = ExtResource("1_hjlx7")
@@ -1159,5 +1161,11 @@ save_data_resource = ExtResource("45_ace3k")
 
 [node name="Merchant" parent="." instance=ExtResource("47_uhfq1")]
 position = Vector2(319, 103)
+
+[node name="CarrotHarvest" parent="." instance=ExtResource("48_wk4d7")]
+position = Vector2(228, 113)
+
+[node name="CornHarvest" parent="." instance=ExtResource("49_a38x2")]
+position = Vector2(264, 95)
 
 [connection signal="value_changed" from="CanvasLayer/HSlider" to="CanvasLayer" method="_on_h_slider_value_changed"]
