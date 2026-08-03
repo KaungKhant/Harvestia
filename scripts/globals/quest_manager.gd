@@ -2,7 +2,6 @@ extends Node
 
 enum QuestState{
 	NOT_STARTED,
-	START, 
 	IN_PROGRESS,
 	READY_TO_TURN_IN,
 	COMPLETED
@@ -85,7 +84,6 @@ func start_quest(quest_id: String) -> void:
 	var quest := load(quest_path) as QuestData
 
 	start_quest_data(quest)
-# Add this function to your existing quest_manager.gd
 # Inside QuestManager.gd
 func try_complete_quest() -> bool:
 	# No active quest
@@ -175,13 +173,3 @@ func sync_progress_with_inventory() -> void:
 		current_progress,
 		current_quest.target_amount
 	)
-
-func start_next_quest() -> bool:
-	if current_quest == null:
-		return false
-
-	if current_quest.next_quest == "":
-		return false
-
-	start_quest(current_quest.next_quest)
-	return true

@@ -38,16 +38,16 @@ Guide: Keep farming, keep selling, and keep saving your Gold.
 
 Guide: We'll need both money and materials to rebuild Harvestia.
 
+Guide: Your next task is to collect 20 Logs from the forest.
+
+do QuestManager.start_quest("rebuilding_harvestia")
+
+Guide: Return to me after you've gathered enough Logs.
+
 => END
 
 ~ completed
 
-Guide: Are you ready for our next task?
-
-- Yes.
-    do QuestManager.start_next_quest()
-
-- Not yet.
-    Player: I'd like to prepare first.
+Guide: Good luck.
 
 => END

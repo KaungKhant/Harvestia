@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="QuestData" load_steps=3 format=3 uid="uid://d18sebtftjf5e"]
 
-[ext_resource type="Resource" uid="uid://kbdo2yydy4gq" path="res://Dialog/Guide/rebuilding_harvestia.dialogue" id="1_ov0v4"]
+[ext_resource type="Resource" uid="uid://0r5442h0l5lo" path="res://Dialog/Guide/stone_foundation.dialogue" id="1_ov0v4"]
 [ext_resource type="Script" uid="uid://6n4u527vyey0" path="res://scripts/resources/quest_data.gd" id="2_ies1y"]
 
 [resource]

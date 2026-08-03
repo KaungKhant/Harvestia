@@ -1,18 +1,3 @@
-~ start
-
-Guide: It's time to begin rebuilding Harvestia.
-
-Guide: Every building begins with strong materials.
-
-Guide: Take this old Pickaxe.
-
-do GameDialogueManager.action_give_pickaxe()
-
-Guide: Head into the forest and collect 20 Logs.
-
-=> END
-
-
 ~ progress
 
 Guide: Keep gathering Logs.
@@ -30,9 +15,15 @@ Guide: These Logs will be a great help.
 
 do QuestManager.try_complete_quest()
 
-Guide: Wood alone isn't enough.
+Guide: Now we'll need something even stronger.
 
-Guide: Our next task is to gather Stone.
+Guide: Take this old Pickaxe.
+
+do GameDialogueManager.action_give_pickaxe()
+
+Guide: Stone will become the foundation of our rebuilding efforts.
+
+Guide: Go and collect 15 Stones.
 
 do QuestManager.start_quest("stone_foundation")
 
@@ -41,6 +32,6 @@ do QuestManager.start_quest("stone_foundation")
 
 ~ completed
 
-Guide: Let's continue gathering materials.
+Guide: Good work.
 
 => END

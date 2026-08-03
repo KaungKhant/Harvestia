@@ -1,19 +1,8 @@
-~ start
-
-Guide: The Logs will help us rebuild.
-
-Guide: But every strong building also needs a solid foundation.
-
-Guide: Head back into the forest and collect 15 Stones.
-
-=> END
-
-
 ~ progress
 
-Guide: Keep gathering Stones.
+Guide: Stone is just as important as Wood.
 
-Guide: A strong foundation is the first step toward rebuilding Harvestia.
+Guide: Bring me 15 Stones so we can strengthen Harvestia.
 
 => END
 
@@ -22,21 +11,25 @@ Guide: A strong foundation is the first step toward rebuilding Harvestia.
 
 Guide: Excellent work!
 
-Guide: These Stones will strengthen everything we build.
+Guide: These Stones will become the foundation of our future buildings.
 
 do QuestManager.try_complete_quest()
 
-Guide: You've proven that you can farm and gather resources.
+Guide: We've gathered enough materials for now.
 
-Guide: Now it's time to put those skills to good use.
+Guide: But rebuilding Harvestia also requires money.
 
-do QuestManager.start_quest("build_economy")
+Guide: Sell your crops and earn 500 Gold.
+
+Guide: A good farmer knows how to grow crops and build a strong economy.
+
+do QuestManager.start_quest("build_your_economy")
 
 => END
 
 
 ~ completed
 
-Guide: The village is beginning to take shape.
+Guide: Good work.
 
 => END
