@@ -1,4 +1,4 @@
-[gd_scene load_steps=94 format=4 uid="uid://deythsf5bwj04"]
+[gd_scene load_steps=95 format=4 uid="uid://deythsf5bwj04"]
 
 [ext_resource type="PackedScene" uid="uid://cugdxyqvq2u2o" path="res://scene/components/test_scene_save_data_manager_component.tscn" id="1_l8e72"]
 [ext_resource type="PackedScene" uid="uid://dfi5u2g400moa" path="res://scene/components/save_level_data_component.tscn" id="2_srjjg"]
@@ -49,6 +49,7 @@
 [ext_resource type="PackedScene" uid="uid://4ccsr3tx2dmk" path="res://scene/characters/guide/chicken_owner.tscn" id="42_jst1g"]
 [ext_resource type="PackedScene" uid="uid://6ulr3yrb52fj" path="res://scene/characters/guide/cow_owner.tscn" id="43_ulqcw"]
 [ext_resource type="PackedScene" uid="uid://ckkkyaue6gdym" path="res://scene/characters/guide/village_elder.tscn" id="44_ehgm4"]
+[ext_resource type="PackedScene" uid="uid://tobm1vgjohon" path="res://scene/characters/guide/quest_handler.tscn" id="50_3ieud"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7hbbt"]
 texture = ExtResource("4_6l1wj")
@@ -1000,6 +1001,9 @@ position = Vector2(597, 225)
 
 [node name="village_elder" parent="." instance=ExtResource("44_ehgm4")]
 position = Vector2(404, 367)
+
+[node name="quest_handler" parent="." instance=ExtResource("50_3ieud")]
+position = Vector2(395, 154)
 
 [node name="Tree2" parent="." instance=ExtResource("22_3ieud")]
 material = SubResource("ShaderMaterial_nriah")

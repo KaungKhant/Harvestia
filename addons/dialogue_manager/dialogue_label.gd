@@ -47,22 +47,22 @@ var _already_mutated_indices: PackedInt32Array = []
 
 ## The current line of dialogue.
 var dialogue_line:
-	set(value):
-		if value != dialogue_line:
-			dialogue_line = value
-			_update_text()
-	get:
-		return dialogue_line
+    set(value):
+        if value != dialogue_line:
+            dialogue_line = value
+            _update_text()
+    get:
+        return dialogue_line
 
 ## Whether the label is currently typing itself out.
 var is_typing: bool = false:
-	set(value):
-		var is_finished: bool = _is_typing != value and value == false and visible_characters == get_total_character_count()
-		_is_typing = value
-		if is_finished:
-			finished_typing.emit()
-	get:
-		return _is_typing and not _is_awaiting_mutation
+    set(value):
+        var is_finished: bool = _is_typing != value and value == false and visible_characters == get_total_character_count()
+        _is_typing = value
+        if is_finished:
+            finished_typing.emit()
+    get:
+        return _is_typing and not _is_awaiting_mutation
 var _is_typing: bool = false
 
 var _last_wait_index: int = -1
@@ -73,19 +73,19 @@ var _is_skipping_mutations: bool = false
 
 
 func _process(delta: float) -> void:
-	if _is_typing:
-		# Type out text
-		if visible_ratio < 1:
-			# See if we are waiting
-			if _waiting_seconds > 0:
-				_waiting_seconds = _waiting_seconds - delta
-			# If we are no longer waiting then keep typing
-			if _waiting_seconds <= 0:
-				_type_next(delta, _waiting_seconds)
-		else:
-			# Make sure any mutations at the end of the line get run
-			_mutate_inline_mutations(get_total_character_count())
-			is_typing = false
+    if _is_typing:
+        # Type out text
+        if visible_ratio < 1:
+            # See if we are waiting
+            if _waiting_seconds > 0:
+                _waiting_seconds = _waiting_seconds - delta
+            # If we are no longer waiting then keep typing
+            if _waiting_seconds <= 0:
+                _type_next(delta, _waiting_seconds)
+        else:
+            # Make sure any mutations at the end of the line get run
+            _mutate_inline_mutations(get_total_character_count())
+            is_typing = false
 
 
 ## Sets the label's text from the current dialogue line. Override if you want
@@ -147,22 +147,22 @@ func _type_next(delta: float, seconds_needed: float) -> void:
 		visible_characters += 1
 		if visible_characters <= get_total_character_count():
 			spoke.emit(get_parsed_text()[visible_characters - 1], visible_characters - 1, _get_speed(visible_characters))
-		# See if there's time to type out some more in this frame
-		seconds_needed += seconds_per_step * (1.0 / _get_speed(visible_characters))
-		if seconds_needed > delta:
-			_waiting_seconds += seconds_needed
-		else:
-			_type_next(delta, seconds_needed)
+        # See if there's time to type out some more in this frame
+        seconds_needed += seconds_per_step * (1.0 / _get_speed(visible_characters))
+        if seconds_needed > delta:
+            _waiting_seconds += seconds_needed
+        else:
+            _type_next(delta, seconds_needed)
 
 
 # Get the speed for the current typing position
 func _get_speed(at_index: int) -> float:
-	var speed: float = 1
-	for index in dialogue_line.speeds:
-		if index > at_index:
-			return speed
-		speed = dialogue_line.speeds[index]
-	return speed
+    var speed: float = 1
+    for index in dialogue_line.speeds:
+        if index > at_index:
+            return speed
+        speed = dialogue_line.speeds[index]
+    return speed
 
 
 # Run any inline mutations that haven't been run yet
@@ -204,13 +204,13 @@ func _should_auto_pause() -> bool:
 	if parsed_text[visible_characters] in skip_pause_at_character_if_followed_by.split():
 		return false
 
-	# Ignore "." if it's between two numbers
-	if visible_characters > 3 and parsed_text[visible_characters - 1] == ".":
-		var possible_number: String = parsed_text.substr(visible_characters - 2, 3)
-		if str(float(possible_number)).pad_decimals(1) == possible_number:
-			return false
+    # Ignore "." if it's between two numbers
+    if visible_characters > 3 and parsed_text[visible_characters - 1] == ".":
+        var possible_number: String = parsed_text.substr(visible_characters - 2, 3)
+        if str(float(possible_number)).pad_decimals(1) == possible_number:
+            return false
 
-	# Ignore "." if it's used in an abbreviation
+    # Ignore "." if it's used in an abbreviation
 	# Note: does NOT support multi-period abbreviations (ex. p.m.)
 	if "." in pause_at_characters and parsed_text[visible_characters - 1] == ".":
 		for abbreviation in skip_pause_at_abbreviations:
