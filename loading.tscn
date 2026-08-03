@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://brl6rrai3qrw8"]
+
+[ext_resource type="Texture2D" uid="uid://dsxgvvv6nk0d8" path="res://assets/game/Objects/ChatGPT Image Aug 3, 2026, 11_54_00 AM.png" id="1_gov4d"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pg7vo"]
+atlas = ExtResource("1_gov4d")
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1672.0
+offset_bottom = 940.0
+texture = SubResource("AtlasTexture_pg7vo")

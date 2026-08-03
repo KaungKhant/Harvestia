@@ -39,4 +39,15 @@ offset_bottom = 262.0
 theme_override_fonts/font = ExtResource("2_fu7sn")
 text = "Play"
 
+[node name="Exit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 321.0
+offset_top = 264.0
+offset_right = 470.0
+offset_bottom = 321.0
+theme_override_fonts/font = ExtResource("2_fu7sn")
+text = "Exit
+"
+
 [connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
