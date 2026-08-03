@@ -1,9 +1,11 @@
 [gd_scene load_steps=5 format=3 uid="uid://4sfjx6p0sxj8"]
 
-[ext_resource type="FontFile" uid="uid://cwc2vg6qvhch7" path="res://assets/ui/fonts/Changa_One/ChangaOne-Italic.ttf" id="1_7vrkn"]
 [ext_resource type="Script" uid="uid://bncubbdgq23ly" path="res://main_menu.gd" id="1_fu7sn"]
 [ext_resource type="FontVariation" uid="uid://dtkipuriu336c" path="res://assets/ui/fonts/zx_palm_variation.tres" id="2_fu7sn"]
-[ext_resource type="Texture2D" uid="uid://cf1n8m3dccw1o" path="res://assets/game/mainmenu.png" id="4_jix8l"]
+[ext_resource type="Texture2D" uid="uid://bjpl8phlgms4u" path="res://assets/game/Objects/20260803_005237_0000.png" id="2_jix8l"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_glbon"]
+atlas = ExtResource("2_jix8l")
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -26,28 +28,26 @@ offset_top = 1.0
 offset_right = 1907.0
 offset_bottom = 1081.0
 scale = Vector2(0.43, 0.45)
-texture = ExtResource("4_jix8l")
-
-[node name="Label" type="Label" parent="."]
-visible = false
-layout_mode = 0
-offset_left = -1.0
-offset_top = 2.0
-offset_right = 799.0
-offset_bottom = 373.0
-theme_override_fonts/font = ExtResource("1_7vrkn")
-theme_override_font_sizes/font_size = 42
-text = "Welcome to Harvestia"
-horizontal_alignment = 1
-vertical_alignment = 1
+texture = SubResource("AtlasTexture_glbon")
 
 [node name="Play" type="Button" parent="."]
 layout_mode = 0
 offset_left = 321.0
-offset_top = 302.0
+offset_top = 205.0
 offset_right = 470.0
-offset_bottom = 359.0
+offset_bottom = 262.0
 theme_override_fonts/font = ExtResource("2_fu7sn")
 text = "Play"
 
+[node name="Exit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 321.0
+offset_top = 264.0
+offset_right = 470.0
+offset_bottom = 321.0
+theme_override_fonts/font = ExtResource("2_fu7sn")
+text = "Exit
+"
+
 [connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]

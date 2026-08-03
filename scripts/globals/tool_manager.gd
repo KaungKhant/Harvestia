@@ -6,7 +6,7 @@ signal tool_selected(tool: DataTypes.Tools)
 signal enable_tool(tool: DataTypes.Tools)
 
 func select_tool(tool: DataTypes.Tools) -> void:
-	# Protective check: Don't allow selecting seeds if inventory is empty
+    # Protective check: Don't allow selecting seeds if inventory is empty
 	var inventory: Dictionary = InventoryManager.inventory
 	
 	if tool == DataTypes.Tools.PlantCorn:

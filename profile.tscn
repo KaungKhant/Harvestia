@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dd4aav7jfij07"]
+[gd_scene load_steps=5 format=3 uid="uid://dd4aav7jfij07"]
 
 [ext_resource type="Script" uid="uid://bw8f38ayn24rp" path="res://profile.gd" id="1_yghs0"]
 [ext_resource type="Texture2D" uid="uid://bjpl8phlgms4u" path="res://assets/game/Objects/20260803_005237_0000.png" id="2_yghs0"]
-[ext_resource type="FontFile" uid="uid://cwc2vg6qvhch7" path="res://assets/ui/fonts/Changa_One/ChangaOne-Italic.ttf" id="3_o4dpx"]
 [ext_resource type="FontVariation" uid="uid://dtkipuriu336c" path="res://assets/ui/fonts/zx_palm_variation.tres" id="4_khxjx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r2xaa"]
@@ -31,50 +30,37 @@ offset_bottom = 1110.8889
 scale = Vector2(0.43, 0.45)
 texture = SubResource("AtlasTexture_r2xaa")
 
-[node name="Label" type="Label" parent="."]
-visible = false
-layout_mode = 0
-offset_left = -1.0
-offset_top = 2.0
-offset_right = 799.0
-offset_bottom = 373.0
-theme_override_fonts/font = ExtResource("3_o4dpx")
-theme_override_font_sizes/font_size = 42
-text = "Welcome to Harvestia"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="New_Game" type="Button" parent="."]
 layout_mode = 0
-offset_left = 195.0
-offset_top = 388.0
-offset_right = 344.0
-offset_bottom = 445.0
+offset_left = 221.0
+offset_top = 366.0
+offset_right = 370.0
+offset_bottom = 423.0
 theme_override_fonts/font = ExtResource("4_khxjx")
 text = "New Game"
 
 [node name="Continue" type="Button" parent="."]
 layout_mode = 0
-offset_left = 461.0
-offset_top = 386.0
-offset_right = 610.0
-offset_bottom = 443.0
+offset_left = 438.0
+offset_top = 364.0
+offset_right = 587.0
+offset_bottom = 421.0
 theme_override_fonts/font = ExtResource("4_khxjx")
 text = "Continue"
 
 [node name="ProfileDropDown" type="OptionButton" parent="."]
 layout_mode = 0
-offset_left = 295.0
-offset_top = 267.0
-offset_right = 512.0
-offset_bottom = 312.0
+offset_left = 293.0
+offset_top = 269.0
+offset_right = 510.0
+offset_bottom = 314.0
 
 [node name="NewAccount" type="LineEdit" parent="."]
 layout_mode = 0
-offset_left = 297.0
-offset_top = 47.0
-offset_right = 513.0
-offset_bottom = 93.0
+offset_left = 294.0
+offset_top = 173.0
+offset_right = 510.0
+offset_bottom = 219.0
 
 [node name="CreateAccount" type="Button" parent="."]
 layout_mode = 1
@@ -83,20 +69,20 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -80.0
-offset_top = -386.5
-offset_right = 90.0
-offset_bottom = -355.0
+offset_left = 111.0
+offset_top = -308.5
+offset_right = 208.0
+offset_bottom = -261.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "Create New Account"
+text = "Create"
 
 [node name="Delete" type="Button" parent="."]
 layout_mode = 0
-offset_left = 328.0
-offset_top = 327.0
-offset_right = 478.0
-offset_bottom = 384.0
+offset_left = 512.0
+offset_top = 269.0
+offset_right = 609.0
+offset_bottom = 314.0
 text = "Delete
 "
 

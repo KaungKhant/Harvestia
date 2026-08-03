@@ -7,7 +7,7 @@ extends Node2D
 signal max_damaged_reached
 
 func apply_damage(damage : int) -> void:
-	current_damage = clamp(current_damage + damage, 0, max_damage)
-	
-	if current_damage == max_damage:
-		max_damaged_reached.emit()
+    current_damage = clamp(current_damage + damage, 0, max_damage)
+    
+    if current_damage == max_damage:
+        max_damaged_reached.emit()
