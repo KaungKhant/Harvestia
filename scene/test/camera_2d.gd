@@ -1,7 +1,7 @@
 extends Camera2D
 
 # The minimum and maximum zoom levels
-@export var min_zoom: Vector2 = Vector2(0.2, 0.2)
+@export var min_zoom: Vector2 = Vector2(1, 1)
 @export var max_zoom: Vector2 = Vector2(3.0, 3.0)
 
 # How fast the camera zooms in and out
