@@ -1,6 +1,6 @@
 extends Control
 
-const GAME_SCENE := "res://scene/test/test_tilemap_update_tilled_land.tscn"
+const GAME_SCENE := "res://scene/test/main_harvestia_update.tscn"
 
 func _ready() -> void:
 	# Let Godot draw the loading screen first
