@@ -1,94 +1,94 @@
-[gd_scene load_steps=39 format=3 uid="uid://dd4aav7jfij07"]
+[gd_scene load_steps=42 format=3 uid="uid://k87e5cy1lhnw"]
 
-[ext_resource type="Script" uid="uid://bw8f38ayn24rp" path="res://profile.gd" id="1_yghs0"]
-[ext_resource type="Texture2D" uid="uid://bjpl8phlgms4u" path="res://assets/game/Objects/20260803_005237_0000.png" id="2_yghs0"]
-[ext_resource type="FontVariation" uid="uid://dtkipuriu336c" path="res://assets/ui/fonts/zx_palm_variation.tres" id="4_khxjx"]
-[ext_resource type="Texture2D" uid="uid://cqnkvro86hdgq" path="res://assets/ui/newGameStateNormal.png" id="4_o4dpx"]
-[ext_resource type="Texture2D" uid="uid://bbmts1ucyhptg" path="res://assets/ui/NewGameStateHover.png" id="5_khxjx"]
-[ext_resource type="Texture2D" uid="uid://dya8kmvunk47o" path="res://assets/ui/NewGameStateDisable.png" id="6_kn0d4"]
-[ext_resource type="Texture2D" uid="uid://b3ounxa61wolc" path="res://assets/ui/continueNormalState.png" id="7_jcuo4"]
-[ext_resource type="Texture2D" uid="uid://dxvvnkfo8ybk7" path="res://assets/ui/ContinueStateHover.png" id="8_4b1mu"]
-[ext_resource type="Texture2D" uid="uid://xprv07mhi7sq" path="res://assets/ui/ContinueStateDisable.png" id="9_altqp"]
-[ext_resource type="Texture2D" uid="uid://phpsabog6lkj" path="res://assets/ui/optionBox.png" id="10_klohp"]
-[ext_resource type="Texture2D" uid="uid://buxnh38pp771o" path="res://assets/ui/textBox1.png" id="11_o3lyu"]
-[ext_resource type="Texture2D" uid="uid://c15owp2ncekrp" path="res://assets/ui/create.png" id="12_6aff7"]
-[ext_resource type="Texture2D" uid="uid://g3yu6chvuwnt" path="res://assets/ui/delete.png" id="13_d1733"]
+[ext_resource type="Script" uid="uid://bw8f38ayn24rp" path="res://profile.gd" id="1_nkxlt"]
+[ext_resource type="Texture2D" uid="uid://bjpl8phlgms4u" path="res://assets/game/Objects/20260803_005237_0000.png" id="2_64bs5"]
+[ext_resource type="Texture2D" uid="uid://cqnkvro86hdgq" path="res://assets/ui/newGameStateNormal.png" id="4_e0ykc"]
+[ext_resource type="Texture2D" uid="uid://bbmts1ucyhptg" path="res://assets/ui/NewGameStateHover.png" id="5_wm55u"]
+[ext_resource type="Texture2D" uid="uid://dya8kmvunk47o" path="res://assets/ui/NewGameStateDisable.png" id="6_4fsc7"]
+[ext_resource type="Texture2D" uid="uid://b3ounxa61wolc" path="res://assets/ui/continueNormalState.png" id="7_cird3"]
+[ext_resource type="Texture2D" uid="uid://dxvvnkfo8ybk7" path="res://assets/ui/ContinueStateHover.png" id="8_c7je7"]
+[ext_resource type="Texture2D" uid="uid://xprv07mhi7sq" path="res://assets/ui/ContinueStateDisable.png" id="9_bt65q"]
+[ext_resource type="Texture2D" uid="uid://phpsabog6lkj" path="res://assets/ui/optionBox.png" id="10_8xdqv"]
+[ext_resource type="Texture2D" uid="uid://buxnh38pp771o" path="res://assets/ui/textBox1.png" id="11_s1pgp"]
+[ext_resource type="Texture2D" uid="uid://c15owp2ncekrp" path="res://assets/ui/create.png" id="12_d5q7y"]
+[ext_resource type="Texture2D" uid="uid://g3yu6chvuwnt" path="res://assets/ui/delete.png" id="13_jgu70"]
+[ext_resource type="FontFile" uid="uid://cjb8xuto7j5yw" path="res://assets/ui/fonts/Changa_One/ChangaOne-Regular.ttf" id="14_64bs5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r2xaa"]
-atlas = ExtResource("2_yghs0")
+atlas = ExtResource("2_64bs5")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jcuo4"]
-texture = ExtResource("4_o4dpx")
+texture = ExtResource("4_e0ykc")
 expand_margin_left = 70.0
 expand_margin_top = 10.0
 expand_margin_right = 70.0
 expand_margin_bottom = 10.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4b1mu"]
-texture = ExtResource("4_o4dpx")
+texture = ExtResource("4_e0ykc")
 expand_margin_left = 68.0
 expand_margin_top = 9.0
 expand_margin_right = 68.0
 expand_margin_bottom = 9.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_altqp"]
-texture = ExtResource("5_khxjx")
+texture = ExtResource("5_wm55u")
 expand_margin_left = 70.0
 expand_margin_top = 10.0
 expand_margin_right = 70.0
 expand_margin_bottom = 10.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dasb5"]
-texture = ExtResource("6_kn0d4")
+texture = ExtResource("6_4fsc7")
 expand_margin_left = 70.0
 expand_margin_top = 10.0
 expand_margin_right = 70.0
 expand_margin_bottom = 10.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_klohp"]
-texture = ExtResource("7_jcuo4")
+texture = ExtResource("7_cird3")
 expand_margin_left = 70.0
 expand_margin_top = 10.0
 expand_margin_right = 70.0
 expand_margin_bottom = 10.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o3lyu"]
-texture = ExtResource("7_jcuo4")
+texture = ExtResource("7_cird3")
 expand_margin_left = 68.0
 expand_margin_top = 9.0
 expand_margin_right = 68.0
 expand_margin_bottom = 9.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6aff7"]
-texture = ExtResource("8_4b1mu")
+texture = ExtResource("8_c7je7")
 expand_margin_left = 70.0
 expand_margin_top = 10.0
 expand_margin_right = 70.0
 expand_margin_bottom = 10.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_d1733"]
-texture = ExtResource("9_altqp")
+texture = ExtResource("9_bt65q")
 expand_margin_left = 70.0
 expand_margin_top = 10.0
 expand_margin_right = 70.0
 expand_margin_bottom = 10.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g4ley"]
-texture = ExtResource("10_klohp")
+texture = ExtResource("10_8xdqv")
 expand_margin_left = 40.0
 expand_margin_top = 10.0
 expand_margin_right = 35.0
 expand_margin_bottom = 10.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y3kp6"]
-texture = ExtResource("10_klohp")
+texture = ExtResource("10_8xdqv")
 expand_margin_left = 40.0
 expand_margin_top = 10.0
 expand_margin_right = 35.0
 expand_margin_bottom = 10.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hsdhp"]
-texture = ExtResource("10_klohp")
+texture = ExtResource("10_8xdqv")
 expand_margin_left = 42.0
 expand_margin_top = 12.0
 expand_margin_right = 37.0
@@ -99,7 +99,7 @@ expand_margin_bottom = 12.0
 [sub_resource type="ImageTexture" id="ImageTexture_klohp"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dn4ou"]
-texture = ExtResource("11_o3lyu")
+texture = ExtResource("11_s1pgp")
 expand_margin_left = 40.0
 expand_margin_top = 10.0
 expand_margin_right = 35.0
@@ -108,21 +108,21 @@ expand_margin_bottom = 10.0
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o3lyu"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_83wx1"]
-texture = ExtResource("12_6aff7")
+texture = ExtResource("12_d5q7y")
 expand_margin_left = 45.0
 expand_margin_top = 10.0
 expand_margin_right = 45.0
 expand_margin_bottom = 15.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v86w6"]
-texture = ExtResource("12_6aff7")
+texture = ExtResource("12_d5q7y")
 expand_margin_left = 45.0
 expand_margin_top = 10.0
 expand_margin_right = 45.0
 expand_margin_bottom = 15.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kdxe5"]
-texture = ExtResource("12_6aff7")
+texture = ExtResource("12_d5q7y")
 expand_margin_left = 48.0
 expand_margin_top = 13.0
 expand_margin_right = 48.0
@@ -131,21 +131,21 @@ expand_margin_bottom = 18.0
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6aff7"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_u2b82"]
-texture = ExtResource("13_d1733")
+texture = ExtResource("13_jgu70")
 expand_margin_left = 45.0
 expand_margin_top = 10.0
 expand_margin_right = 45.0
 expand_margin_bottom = 15.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c2pdk"]
-texture = ExtResource("13_d1733")
+texture = ExtResource("13_jgu70")
 expand_margin_left = 45.0
 expand_margin_top = 10.0
 expand_margin_right = 45.0
 expand_margin_bottom = 15.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m6f4o"]
-texture = ExtResource("13_d1733")
+texture = ExtResource("13_jgu70")
 expand_margin_left = 48.0
 expand_margin_top = 13.0
 expand_margin_right = 48.0
@@ -153,7 +153,30 @@ expand_margin_bottom = 18.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d1733"]
 
-[sub_resource type="Theme" id="Theme_klohp"]
+[sub_resource type="FontVariation" id="FontVariation_tcujp"]
+base_font = ExtResource("14_64bs5")
+spacing_space = 3
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_e0ykc"]
+texture = ExtResource("12_d5q7y")
+expand_margin_left = 60.0
+expand_margin_top = 15.0
+expand_margin_right = 60.0
+expand_margin_bottom = 20.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wm55u"]
+texture = ExtResource("12_d5q7y")
+expand_margin_left = 60.0
+expand_margin_top = 15.0
+expand_margin_right = 60.0
+expand_margin_bottom = 20.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4fsc7"]
+texture = ExtResource("12_d5q7y")
+expand_margin_left = 63.0
+expand_margin_top = 18.0
+expand_margin_right = 63.0
+expand_margin_bottom = 23.0
 
 [node name="Profile" type="Control"]
 layout_mode = 3
@@ -162,7 +185,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_yghs0")
+script = ExtResource("1_nkxlt")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
@@ -186,7 +209,8 @@ offset_right = 373.0
 offset_bottom = 392.0
 theme_override_colors/font_disabled_color = Color(0, 0, 0, 0.5019608)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("4_khxjx")
+theme_override_fonts/font = ExtResource("14_64bs5")
+theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxTexture_jcuo4")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_4b1mu")
 theme_override_styles/hover = SubResource("StyleBoxTexture_altqp")
@@ -201,7 +225,8 @@ offset_right = 563.0
 offset_bottom = 393.0
 theme_override_colors/font_disabled_color = Color(0, 0, 0, 0.5019608)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("4_khxjx")
+theme_override_fonts/font = ExtResource("14_64bs5")
+theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxTexture_klohp")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_o3lyu")
 theme_override_styles/hover = SubResource("StyleBoxTexture_6aff7")
@@ -248,6 +273,8 @@ offset_right = 164.0
 offset_bottom = -252.5
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_fonts/font = ExtResource("14_64bs5")
+theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxTexture_83wx1")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_v86w6")
 theme_override_styles/hover = SubResource("StyleBoxTexture_kdxe5")
@@ -260,6 +287,8 @@ offset_left = 467.0
 offset_top = 252.0
 offset_right = 564.0
 offset_bottom = 297.0
+theme_override_fonts/font = ExtResource("14_64bs5")
+theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxTexture_u2b82")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_c2pdk")
 theme_override_styles/hover = SubResource("StyleBoxTexture_m6f4o")
@@ -267,11 +296,79 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_d1733")
 text = "Delete
 "
 
-[node name="DeleteConfirmation" type="ConfirmationDialog" parent="."]
-oversampling_override = 1.0
-title = "DE."
-position = Vector2i(0, 36)
-theme = SubResource("Theme_klohp")
+[node name="DeletePopup" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -239.0
+offset_top = -118.0
+offset_right = 261.0
+offset_bottom = 121.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_s1pgp")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DeletePopup"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 70.75
+offset_top = 71.25
+offset_right = -57.25
+offset_bottom = -75.75
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LabelTitle" type="Label" parent="DeletePopup/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_tcujp")
+theme_override_font_sizes/font_size = 25
+text = "Delete Profile?"
+horizontal_alignment = 1
+
+[node name="LabelMessage" type="Label" parent="DeletePopup/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("14_64bs5")
+theme_override_font_sizes/font_size = 20
+text = "This action cannot be undone."
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="DeletePopup/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 60
+alignment = 1
+
+[node name="ConfirmDeleteButton" type="Button" parent="DeletePopup/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("14_64bs5")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxTexture_e0ykc")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_wm55u")
+theme_override_styles/hover = SubResource("StyleBoxTexture_4fsc7")
+text = "Delete"
+
+[node name="CancelButton" type="Button" parent="DeletePopup/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("14_64bs5")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxTexture_e0ykc")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_wm55u")
+theme_override_styles/hover = SubResource("StyleBoxTexture_4fsc7")
+text = "Cancel
+"
 
 [connection signal="pressed" from="New_Game" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Continue" to="." method="_on_play_pressed"]
