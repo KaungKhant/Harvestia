@@ -23,7 +23,6 @@ vframes = 2
 frame = 1
 
 [node name="GrowthCycleComponents" parent="." instance=ExtResource("6_4cd6u")]
-days_until_harvest = 5
 
 [node name="HurtComponent" parent="." instance=ExtResource("2_i6gvn")]
 position = Vector2(0, -4)
