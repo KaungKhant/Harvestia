@@ -2,9 +2,11 @@
 
 Guide: Harvest your crops and sell them at the Shop.
 
-Guide: Earn 500 Gold, then return to me.
+Guide: Rebuilding Harvestia takes more than Wood and Stone.
 
-Guide: A prosperous farm is built through hard work and smart decisions.
+Guide: We need Gold to repair homes, buy supplies, and bring life back to this village.
+
+Guide: Earn 500 Gold, then return to me.
 
 => END
 
@@ -13,25 +15,25 @@ Guide: A prosperous farm is built through hard work and smart decisions.
 
 Guide: Excellent work!
 
-Guide: You've earned enough Gold to continue rebuilding Harvestia.
+Guide: You've proven that your farm can support Harvestia's future.
 
 do QuestManager.try_complete_quest()
 
-Guide: With a strong economy, your farm is ready to grow even bigger.
+Guide: Your hard work hasn't gone unnoticed.
 
-do SeedUnlockManager.unlock_seed("carrot_seeds")
+Guide: The people of Harvestia are beginning to trust you.
 
-Guide: Carrot Seeds are now available at the Seed Shop.
+Guide: I heard the Chicken Coop Owner has been asking about you.
 
-Guide: Grow and harvest 5 Carrots.
-
-do QuestManager.start_quest("carrot_harvest")
+Guide: Go speak with them when you're ready.
 
 => END
 
 
 ~ completed
 
-Guide: Your farm is becoming a great success.
+Guide: The future of Harvestia is in good hands.
+
+Guide: Visit the Chicken Coop Owner. I believe they have something important to discuss with you.
 
 => END
