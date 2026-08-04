@@ -21,7 +21,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_70umn"]
-size = Vector2(15, 6)
+size = Vector2(10, 3)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_svabx"]
 radius = 13.0
@@ -32,14 +32,14 @@ script = ExtResource("1_2gwin")
 [node name="Sprite2D" type="CharacterBody2D" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Sprite2D"]
-position = Vector2(-2, -13.000001)
-scale = Vector2(0.15731421, 0.112045825)
+position = Vector2(-0.9318905, -8.329067)
+scale = Vector2(0.102094606, 0.075554155)
 sprite_frames = SubResource("SpriteFrames_oback")
 animation = &"idle"
 frame_progress = 0.9856554
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D"]
-position = Vector2(-0.5, -3)
+position = Vector2(0, -1.5)
 shape = SubResource("RectangleShape2D_70umn")
 
 [node name="InteractableComponent" parent="." instance=ExtResource("3_1087q")]
