@@ -1,0 +1,41 @@
+~ progress
+
+Chicken Coop Owner: Ah... so you're the young farmer the Guide told me about.
+
+Chicken Coop Owner: I've heard you've worked tirelessly to restore Harvestia.
+
+Chicken Coop Owner: There is something important I'd like to ask you.
+
+=> END
+
+
+~ turn_in
+
+Chicken Coop Owner: These chickens have been my family for many years.
+
+Chicken Coop Owner: But time catches up with everyone.
+
+Chicken Coop Owner: I can no longer care for this coop the way it deserves.
+
+Chicken Coop Owner: I'd like you to become its new caretaker.
+
+Chicken Coop Owner: The coop needs repairs before I can entrust it to you.
+
+Chicken Coop Owner: Restoring the fences and feeding troughs will cost 500 Gold.
+
+- I'll restore the coop.
+    do GameDialogueManager.action_transfer_chicken_coop()
+
+- I need more time.
+    Player: I'll come back when I'm ready.
+
+=> END
+
+
+~ completed
+
+Chicken Coop Owner: Thank you.
+
+Chicken Coop Owner: I know the chickens are in good hands.
+
+=> END

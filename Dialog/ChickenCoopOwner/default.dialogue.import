@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://bwmw47gjbxwgb"
+path="res://.godot/imported/default.dialogue-e0af0bf9ba1c5960884d56ce27a73a80.tres"
+
+[deps]
+
+source_file="res://Dialog/ChickenCoopOwner/default.dialogue"
+dest_files=["res://.godot/imported/default.dialogue-e0af0bf9ba1c5960884d56ce27a73a80.tres"]
+
+[params]
+
+defaults=true

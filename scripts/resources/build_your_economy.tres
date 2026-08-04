@@ -14,6 +14,6 @@ target_amount = 500
 reward_exp = 100
 reward_gold = 300
 dialogue_file = ExtResource("1_p2pps")
-next_quest = "carrot_harvest"
+next_quest = "Guide: I heard the Chicken Coop Owner has been asking about you.Guide: You should go see them.do QuestManager.start_quest(\"a_new_caretaker\")"
 consume_items = false
 metadata/_custom_type_script = "uid://6n4u527vyey0"

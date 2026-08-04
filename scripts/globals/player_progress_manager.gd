@@ -9,6 +9,7 @@ var player_level: int = 1
 var current_exp: int = 0
 var required_exp: int = 10
 var gold: int = 1000
+var owns_chicken_coop: bool = false
 
 var crop_exp = {
 	"corn": 10,

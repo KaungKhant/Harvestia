@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="QuestData" load_steps=3 format=3 uid="uid://b1e6pk424kph3"]
+
+[ext_resource type="Resource" uid="uid://dqokxqluqt7if" path="res://Dialog/Guide/a_new_caretaker.dialogue" id="1_cbeub"]
+[ext_resource type="Script" uid="uid://6n4u527vyey0" path="res://scripts/resources/quest_data.gd" id="2_wervm"]
+
+[resource]
+script = ExtResource("2_wervm")
+quest_id = "a_new_caretaker"
+quest_name = "A New Caretaker"
+description = "Visit the Chicken Coop Owner."
+quest_icon = "chicken"
+reward_exp = 150
+reward_gold = 300
+dialogue_file = ExtResource("1_cbeub")
+next_quest = "feed_the_chickens"
+consume_items = false
+metadata/_custom_type_script = "uid://6n4u527vyey0"

@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://dqokxqluqt7if"
+path="res://.godot/imported/a_new_caretaker.dialogue-04738602f960b7957f590e126ec48952.tres"
+
+[deps]
+
+source_file="res://Dialog/Guide/a_new_caretaker.dialogue"
+dest_files=["res://.godot/imported/a_new_caretaker.dialogue-04738602f960b7957f590e126ec48952.tres"]
+
+[params]
+
+defaults=true

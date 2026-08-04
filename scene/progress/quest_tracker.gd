@@ -27,8 +27,8 @@ func on_quest_started(quest: QuestData) -> void:
 		"stone":
 			icon = "🪨"
 
-	quest_name.text = icon + " " + quest.description
-	description.text = quest.quest_name
+	quest_name.text = icon + " " + quest.quest_name
+	description.text = quest.description
 
 	update_progress(0, quest.target_amount)
 
@@ -61,6 +61,9 @@ func update_progress(current: int, target: int) -> void:
 		
 		"gold":
 			icon = "🪙"
+		
+		"chicken":
+			icon = "🐔"
 
 	# If objective is finished, tell the player what to do
 	if QuestManager.current_state == QuestManager.QuestState.READY_TO_TURN_IN:

@@ -25,7 +25,9 @@ Guide: The people of Harvestia are beginning to trust you.
 
 Guide: I heard the Chicken Coop Owner has been asking about you.
 
-Guide: Go speak with them when you're ready.
+Guide: You should go see them.
+
+do QuestManager.start_quest("a_new_caretaker")
 
 => END
 

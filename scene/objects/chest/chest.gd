@@ -43,12 +43,12 @@ func _unhandled_input(event: InputEvent) -> void:
 			
 			# Check if the player is at least Level 4
 			# (Change "GameManager.player_level" to match whatever variable/manager holds your player's level)
-			if QuestManager.current_progress < 1:
+			if !PlayerProgressManager.owns_chicken_coop:
 				interactable_label_component.hide()
 				var balloon: BaseGameDialogueBalloon = balloon_scene.instantiate()
 				get_tree().current_scene.add_child(balloon)
 				# Trigger a dialogue line explaining they need level 4
-				balloon.start(load("res://Dialog/Conversation/chest.dialogue"), "level_too_low")
+				balloon.start(load("res://Dialog/Conversation/chest.dialogue"), "not_owner")
 				return # Stop here so it doesn't open the chest
 			
 			# If level 4 or above, proceed normally:
