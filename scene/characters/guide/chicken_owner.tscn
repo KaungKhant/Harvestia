@@ -1,19 +1,19 @@
 [gd_scene load_steps=9 format=3 uid="uid://4ccsr3tx2dmk"]
 
 [ext_resource type="Script" uid="uid://cym2frqd08efq" path="res://scene/characters/guide/forest_ranger.gd" id="1_k7fcs"]
-[ext_resource type="Texture2D" uid="uid://uq3utpp47u0n" path="res://assets/game/Characters/npc1.png" id="2_b6wuj"]
+[ext_resource type="Texture2D" uid="uid://d07fbfjm8inri" path="res://assets/game/newnpc.png" id="2_k7fcs"]
 [ext_resource type="PackedScene" uid="uid://cv3tlgmwisqki" path="res://scene/components/interactable_component.tscn" id="3_5vix8"]
 [ext_resource type="PackedScene" uid="uid://dtg2w66i1vtib" path="res://scene/components/interactable_label_component.tscn" id="4_v0r1h"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1uvtl"]
-atlas = ExtResource("2_b6wuj")
-region = Rect2(198, 16, 99, 183)
+[sub_resource type="AtlasTexture" id="AtlasTexture_b6wuj"]
+atlas = ExtResource("2_k7fcs")
+region = Rect2(256, 0, 256, 256)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_oback"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1uvtl")
+"texture": SubResource("AtlasTexture_b6wuj")
 }],
 "loop": true,
 "name": &"idle",
@@ -21,7 +21,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_70umn"]
-size = Vector2(6, 4)
+size = Vector2(14, 6)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_svabx"]
 radius = 13.0
@@ -32,14 +32,14 @@ script = ExtResource("1_k7fcs")
 [node name="Sprite2D" type="CharacterBody2D" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Sprite2D"]
-position = Vector2(1, -7.0000005)
+position = Vector2(-2, -13)
 scale = Vector2(0.15731421, 0.112045825)
 sprite_frames = SubResource("SpriteFrames_oback")
 animation = &"idle"
 frame_progress = 0.9856554
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D"]
-position = Vector2(0, -2)
+position = Vector2(0, -3)
 shape = SubResource("RectangleShape2D_70umn")
 
 [node name="InteractableComponent" parent="." instance=ExtResource("3_5vix8")]

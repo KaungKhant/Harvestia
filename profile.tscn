@@ -273,6 +273,20 @@ title = "DE."
 position = Vector2i(0, 36)
 theme = SubResource("Theme_klohp")
 
+[node name="Exit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 692.0
+offset_top = 424.0
+offset_right = 789.0
+offset_bottom = 469.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_u2b82")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_c2pdk")
+theme_override_styles/hover = SubResource("StyleBoxTexture_m6f4o")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_d1733")
+text = "Exit
+"
+
 [connection signal="pressed" from="New_Game" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Continue" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="CreateAccount" to="." method="_on_create_account_pressed"]
+[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]

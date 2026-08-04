@@ -1,6 +1,6 @@
 [gd_scene load_steps=42 format=3 uid="uid://k87e5cy1lhnw"]
 
-[ext_resource type="Script" uid="uid://bw8f38ayn24rp" path="res://profile.gd" id="1_nkxlt"]
+[ext_resource type="Script" uid="uid://d31q6ohugpmxd" path="res://profilev_2.gd" id="1_nkxlt"]
 [ext_resource type="Texture2D" uid="uid://bjpl8phlgms4u" path="res://assets/game/Objects/20260803_005237_0000.png" id="2_64bs5"]
 [ext_resource type="Texture2D" uid="uid://cqnkvro86hdgq" path="res://assets/ui/newGameStateNormal.png" id="4_e0ykc"]
 [ext_resource type="Texture2D" uid="uid://bbmts1ucyhptg" path="res://assets/ui/NewGameStateHover.png" id="5_wm55u"]
@@ -201,6 +201,22 @@ offset_bottom = 1110.8889
 scale = Vector2(0.43, 0.45)
 texture = SubResource("AtlasTexture_r2xaa")
 
+[node name="Exit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 725.0
+offset_top = 439.0
+offset_right = 777.0
+offset_bottom = 480.0
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 0.5019608)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("14_64bs5")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxTexture_jcuo4")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_4b1mu")
+theme_override_styles/hover = SubResource("StyleBoxTexture_altqp")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_dasb5")
+text = "Exit"
+
 [node name="New_Game" type="Button" parent="."]
 layout_mode = 0
 offset_left = 224.0
@@ -303,10 +319,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -239.0
-offset_top = -118.0
-offset_right = 261.0
-offset_bottom = 121.0
+offset_left = -259.0
+offset_top = -107.0
+offset_right = 241.0
+offset_bottom = 132.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("11_s1pgp")
@@ -370,6 +386,7 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_4fsc7")
 text = "Cancel
 "
 
+[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="New_Game" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Continue" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="CreateAccount" to="." method="_on_create_account_pressed"]
