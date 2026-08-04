@@ -1,0 +1,37 @@
+~ progress
+
+Guide: Harvest your crops and sell them at the Shop.
+
+Guide: Earn 500 Gold, then return to me.
+
+Guide: A prosperous farm is built through hard work and smart decisions.
+
+=> END
+
+
+~ turn_in
+
+Guide: Excellent work!
+
+Guide: You've earned enough Gold to continue rebuilding Harvestia.
+
+do QuestManager.try_complete_quest()
+
+Guide: With a strong economy, your farm is ready to grow even bigger.
+
+do SeedUnlockManager.unlock_seed("carrot_seeds")
+
+Guide: Carrot Seeds are now available at the Seed Shop.
+
+Guide: Grow and harvest 5 Carrots.
+
+do QuestManager.start_quest("carrot_harvest")
+
+=> END
+
+
+~ completed
+
+Guide: Your farm is becoming a great success.
+
+=> END

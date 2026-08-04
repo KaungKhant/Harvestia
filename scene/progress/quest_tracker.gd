@@ -58,6 +58,9 @@ func update_progress(current: int, target: int) -> void:
 
 		"stone":
 			icon = "🪨"
+		
+		"gold":
+			icon = "🪙"
 
 	# If objective is finished, tell the player what to do
 	if QuestManager.current_state == QuestManager.QuestState.READY_TO_TURN_IN:

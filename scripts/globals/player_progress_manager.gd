@@ -37,9 +37,11 @@ func add_exp(amount: int) -> void:
 
 
 func add_gold(amount: int) -> void:
+	print("Gold Added =", amount)
 	gold += amount
 	gold_changed.emit(gold)
-
+	
+	QuestManager.add_gold_progress(amount)
 
 func spend_gold(amount: int) -> bool:
 	if gold >= amount:

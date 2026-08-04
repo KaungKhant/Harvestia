@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://bkjrtkdkkd473"
+path="res://.godot/imported/build_your_economy.dialogue-8828c26a18c3f9facce8b69fb8ae587c.tres"
+
+[deps]
+
+source_file="res://Dialog/Guide/build_your_economy.dialogue"
+dest_files=["res://.godot/imported/build_your_economy.dialogue-8828c26a18c3f9facce8b69fb8ae587c.tres"]
+
+[params]
+
+defaults=true

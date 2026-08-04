@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="QuestData" load_steps=3 format=3 uid="uid://bhs0qm7crlcr8"]
+
+[ext_resource type="Resource" uid="uid://bkjrtkdkkd473" path="res://Dialog/Guide/build_your_economy.dialogue" id="1_p2pps"]
+[ext_resource type="Script" uid="uid://6n4u527vyey0" path="res://scripts/resources/quest_data.gd" id="2_dtaq5"]
+
+[resource]
+script = ExtResource("2_dtaq5")
+quest_id = "build_your_economy"
+quest_name = "Build Your Economy"
+description = "Earn 500 Gold."
+target_item = "gold"
+quest_icon = "gold"
+target_amount = 500
+reward_exp = 100
+reward_gold = 300
+dialogue_file = ExtResource("1_p2pps")
+next_quest = "carrot_harvest"
+consume_items = false
+metadata/_custom_type_script = "uid://6n4u527vyey0"

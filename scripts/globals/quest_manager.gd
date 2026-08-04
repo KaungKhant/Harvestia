@@ -15,6 +15,8 @@ var current_quest: QuestData = null
 var current_state: QuestState = QuestState.NOT_STARTED
 var current_progress: int = 0
 var completed_quests: Dictionary = {}
+var quest_start_gold: int = 0
+var gold_earned: int = 0
 
 func _ready() -> void:
 	InventoryManager.inventory_changed.connect(sync_progress_with_inventory)
@@ -26,6 +28,10 @@ func start_quest_data(quest: QuestData) -> void:
 	current_quest = quest
 	current_state = QuestState.IN_PROGRESS
 	current_progress = 0
+	gold_earned = 0
+	
+	if quest.target_item.to_lower() == "gold":
+		quest_start_gold = PlayerProgressManager.gold
 
 	quest_started.emit(quest)
 
@@ -98,8 +104,10 @@ func try_complete_quest() -> bool:
 		return true
 
 	# Inventory check
-	if !InventoryManager.has_item(current_quest.target_item, current_quest.target_amount):
-		return true
+	# Inventory check (skip for gold quests)
+	if current_quest.target_item.to_lower() != "gold":
+		if !InventoryManager.has_item(current_quest.target_item, current_quest.target_amount):
+			return true
 
 	# Remove items only if this quest consumes them
 	if current_quest.consume_items:
@@ -107,10 +115,10 @@ func try_complete_quest() -> bool:
 		current_quest.target_item,
 		current_quest.target_amount
 	)
-	print("Removing", current_quest.target_amount, current_quest.target_item)
-	print(InventoryManager.inventory)
-	print("After removal:")
-	print(InventoryManager.inventory)
+	#print("Removing", current_quest.target_amount, current_quest.target_item)
+	#print(InventoryManager.inventory)
+	#print("After removal:")
+	#print(InventoryManager.inventory)
 
 	# Give rewards
 	PlayerProgressManager.add_exp(current_quest.reward_exp)
@@ -155,9 +163,16 @@ func sync_progress_with_inventory() -> void:
 		return
 
 	var target_item := current_quest.target_item.to_lower()
-	var inventory_amount: int = InventoryManager.inventory.get(target_item, 0)
+	var current_amount: int
 
-	current_progress = min(inventory_amount, current_quest.target_amount)
+	# Gold quest
+	if target_item == "gold":
+		current_amount = max(0, PlayerProgressManager.gold - quest_start_gold)
+	# Normal inventory quests
+	else:
+		current_amount = InventoryManager.inventory.get(target_item, 0)
+
+	current_progress = min(current_amount, current_quest.target_amount)
 
 	# FIRST update the quest state
 	if current_progress >= current_quest.target_amount:
@@ -173,3 +188,29 @@ func sync_progress_with_inventory() -> void:
 		current_progress,
 		current_quest.target_amount
 	)
+
+func add_gold_progress(amount: int) -> void:
+	if current_quest == null:
+		return
+
+	if current_quest.target_item.to_lower() != "gold":
+		return
+
+	print("----------------")
+	print("Received:", amount)
+	print("Before:", gold_earned)
+
+	gold_earned += amount
+
+	print("After:", gold_earned)
+
+	current_progress = min(gold_earned, current_quest.target_amount)
+
+	print("Current Progress:", current_progress)
+
+	if current_progress >= current_quest.target_amount:
+		if current_state != QuestState.READY_TO_TURN_IN:
+			current_state = QuestState.READY_TO_TURN_IN
+			NotificationManager.show_objective("Return to the Guide.")
+
+	quest_updated.emit(current_progress, current_quest.target_amount)
