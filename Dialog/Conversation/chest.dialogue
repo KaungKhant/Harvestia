@@ -68,6 +68,30 @@ Shopkeeper: What seeds do you need?
 		Shopkeeper: Keep progressing through Harvestia and come back later.
 		=> buy_menu
 
+- - Carrot Seeds (40 Gold each)
+	if SeedUnlockManager.is_seed_unlocked("carrot_seed"):
+		Shopkeeper: Tomato Seeds are 40 Gold each.
+		set InventoryManager.current_shop.temp_item_type = "carrot_seeds"
+		set InventoryManager.current_shop.temp_price = 40
+		set InventoryManager.current_shop.temp_tool_enum = "PlantCarrot"
+		=> buy_qty_select
+	else:
+		Shopkeeper: Sorry, Carrot Seeds are still locked.
+		Shopkeeper: Keep progressing through Harvestia and come back later.
+		=> buy_menu
+
+- - Pumpkin Seeds (50 Gold each)
+	if SeedUnlockManager.is_seed_unlocked("pumpkin_seeds"):
+		Shopkeeper: Tomato Seeds are 30 Gold each.
+		set InventoryManager.current_shop.temp_item_type = "pumpkin_seeds"
+		set InventoryManager.current_shop.temp_price = 50
+		set InventoryManager.current_shop.temp_tool_enum = "PlantPumpkin"
+		=> buy_qty_select
+	else:
+		Shopkeeper: Sorry, Pumpkin Seeds are still locked.
+		Shopkeeper: Keep progressing through Harvestia and come back later.
+		=> buy_menu
+
 - Back to Main Menu
 	=> start_shop
 
