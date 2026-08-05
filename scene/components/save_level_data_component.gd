@@ -2,7 +2,7 @@ class_name SaveLevelDataComponent
 extends Node
 
 var level_scene_name: String
-var save_game_data_path:String=""
+var save_game_data_path: String = ""
 var save_file_name: String = "save_%s_game_data.tres"
 var game_data_resource: SaveGameDataResource
 
@@ -22,13 +22,9 @@ func save_node_data() -> void:
 		print("Saving:", node.get_parent().name)
 		var data = node._save_data()
 
-		if data is HarvestDataResource:
-			print("Harvest detected!")
-			print("Scene:", data.scene_file_path)
-			print("Item:", data.item_name)
-			print("Position:", data.global_position)
-
-		game_data_resource.save_data_nodes.append(data)         
+		# Safely append data without crashing if properties are missing
+		if data != null:
+			game_data_resource.save_data_nodes.append(data)         
 
 func save_game() -> void:
 	save_game_data_path = ProfileManager.get_save_folder()
@@ -50,6 +46,7 @@ func save_game() -> void:
 	# Save tools
 	game_data_resource.unlocked_tools = ToolManager.unlocked_tools.duplicate()
 	game_data_resource.unlocked_areas = AreaManager.unlocked_areas.duplicate()
+	
 	# Create save directory if needed
 	if !DirAccess.dir_exists_absolute(save_game_data_path):
 		DirAccess.make_dir_absolute(save_game_data_path)
@@ -63,6 +60,7 @@ func save_game() -> void:
 		print("Game saved successfully.")
 	else:
 		print("Save failed. Error:", result)
+
 func load_game() -> void:
 	save_game_data_path = ProfileManager.get_save_folder()
 	var level_save_file_name := save_file_name % level_scene_name
@@ -149,72 +147,56 @@ func load_game() -> void:
 	# =========================
 	for resource in game_data_resource.save_data_nodes:
 
-
 		# -------- Crops --------
 		if resource is CropDataResource:
-
 			var crop_resource := resource as CropDataResource
-
 
 			if crop_resource.scene_file_path == "":
 				continue
 
-
 			var crop_scene := load(crop_resource.scene_file_path)
-
 
 			if crop_scene == null:
 				print("Failed to load crop:", crop_resource.scene_file_path)
 				continue
 
-
 			var crop = crop_scene.instantiate()
-
 
 			if crop_fields:
 				crop_fields.add_child(crop)
 			else:
 				current_scene.add_child(crop)
 
-
 			crop_resource._load_data(crop)
 
 			print("Loaded crop:", crop_resource.scene_file_path)
 
-
-
 		# -------- Harvest Items --------
 		elif resource is HarvestDataResource:
-
 			var harvest_resource := resource as HarvestDataResource
-
 
 			if harvest_resource.scene_file_path == "":
 				continue
 
-
 			var harvest_scene := load(harvest_resource.scene_file_path)
-
 
 			if harvest_scene == null:
 				print("Failed to load harvest:", harvest_resource.scene_file_path)
 				continue
 
-
 			var harvest = harvest_scene.instantiate()
-
 
 			if crop_fields:
 				crop_fields.add_child(harvest)
 			else:
 				current_scene.add_child(harvest)
 
-
 			harvest_resource._load_data(harvest)
 
-			print("Loaded harvest:", harvest_resource.item_name)
+			print("Loaded harvest item successfully")
+
 		# -------- Other Saved Nodes --------
 		elif resource is NodeDataResource:
-
 			resource._load_data(current_scene)
+			
 	print("===== LOAD COMPLETE =====")
