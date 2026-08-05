@@ -197,7 +197,7 @@ func sync_progress_with_inventory() -> void:
 	if current_progress >= current_quest.target_amount:
 		if current_state != QuestState.READY_TO_TURN_IN:
 			current_state = QuestState.READY_TO_TURN_IN
-			NotificationManager.show_objective("Return to the Guide.")
+			NotificationManager.show_objective("Return to " + current_quest.quest_giver + ".")
 	else:
 		if current_state == QuestState.READY_TO_TURN_IN:
 			current_state = QuestState.IN_PROGRESS
@@ -230,6 +230,6 @@ func add_gold_progress(amount: int) -> void:
 	if current_progress >= current_quest.target_amount:
 		if current_state != QuestState.READY_TO_TURN_IN:
 			current_state = QuestState.READY_TO_TURN_IN
-			NotificationManager.show_objective("Return to the Guide.")
+			NotificationManager.show_objective("Return to " + current_quest.quest_giver + ".")
 
 	quest_updated.emit(current_progress, current_quest.target_amount)

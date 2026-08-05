@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="QuestData" load_steps=3 format=3 uid="uid://d1xroc1g8vuns"]
+
+[ext_resource type="Resource" uid="uid://c82e5xhaupidb" path="res://Dialog/Guide/carrot_harvest.dialogue" id="1_rh6vv"]
+[ext_resource type="Script" uid="uid://6n4u527vyey0" path="res://scripts/resources/quest_data.gd" id="2_5ysya"]
+
+[resource]
+script = ExtResource("2_5ysya")
+quest_id = "carrot_harvest"
+quest_name = "A New Harvest"
+description = "Harvest 10 Carrots."
+target_item = "carrot"
+quest_icon = "carrot"
+target_amount = 10
+reward_exp = 80
+reward_gold = 250
+dialogue_file = ExtResource("1_rh6vv")
+metadata/_custom_type_script = "uid://6n4u527vyey0"

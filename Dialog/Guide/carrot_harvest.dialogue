@@ -1,0 +1,35 @@
+~ progress
+
+Guide: The Chicken Coop is thriving thanks to your care.
+
+Guide: Now it's time to expand Harvestia's farms once again.
+
+Guide: Carrots are hardy crops that will help feed our villagers.
+
+Guide: Harvest 10 Carrots and bring them to me.
+
+=> END
+
+
+~ turn_in
+
+Guide: These carrots look fresh and healthy.
+
+Guide: Harvestia's fields are becoming more productive every day.
+
+Guide: Excellent work.
+
+do QuestManager.try_complete_quest()
+
+Guide: Keep this pace, and soon we'll be ready to restore even more of the village.
+
+=> END
+
+
+~ completed
+
+Guide: The villagers were delighted with your carrot harvest.
+
+Guide: Thank you for helping Harvestia grow.
+
+=> END

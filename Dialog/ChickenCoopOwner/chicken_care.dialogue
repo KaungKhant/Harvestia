@@ -13,21 +13,23 @@ Chicken Coop Owner: Bring the Eggs back to me when you're finished.
 
 ~ turn_in
 
-Chicken Coop Owner: Wonderful work.
+Chicken Coop Owner: These eggs look wonderful.
 
-Chicken Coop Owner: The chickens look healthy and well cared for.
+Chicken Coop Owner: The chickens seem happy and healthy.
+
+Chicken Coop Owner: You've proven you can take good care of this coop.
 
 do QuestManager.try_complete_quest()
 
-Chicken Coop Owner: I think you're ready to expand your farm even further.
+Chicken Coop Owner: I spoke with the Guide this morning.
+
+Chicken Coop Owner: He asked me to give you access to a new crop.
 
 do SeedUnlockManager.unlock_seed("carrot_seeds")
 
 Guide: Carrot Seeds are now available at the Seed Shop.
 
-Guide: Grow and harvest 10 Carrots.
-
-do QuestManager.start_quest("carrot_harvest")
+Guide: Visit the Seed Shop and begin growing carrots.
 
 => END
 
