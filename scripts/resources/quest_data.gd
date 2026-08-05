@@ -7,6 +7,7 @@ extends Resource
 
 @export var target_item : String
 @export var quest_icon : String
+@export var quest_giver: String = "Guide"
 @export var target_amount : int
 
 @export var reward_exp : int

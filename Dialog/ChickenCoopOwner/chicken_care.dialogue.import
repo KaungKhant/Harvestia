@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://bk81sg28d8u75"
+path="res://.godot/imported/chicken_care.dialogue-a48fac7ba886f47d4db06e2e88f4b736.tres"
+
+[deps]
+
+source_file="res://Dialog/ChickenCoopOwner/chicken_care.dialogue"
+dest_files=["res://.godot/imported/chicken_care.dialogue-a48fac7ba886f47d4db06e2e88f4b736.tres"]
+
+[params]
+
+defaults=true

@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="QuestData" load_steps=3 format=3 uid="uid://dloq6ivf7dopw"]
+
+[ext_resource type="Resource" uid="uid://bk81sg28d8u75" path="res://Dialog/ChickenCoopOwner/chicken_care.dialogue" id="1_j7tue"]
+[ext_resource type="Script" uid="uid://6n4u527vyey0" path="res://scripts/resources/quest_data.gd" id="2_1gyl3"]
+
+[resource]
+script = ExtResource("2_1gyl3")
+quest_id = "chicken_care"
+quest_name = "Chicken Care"
+description = "Collect 20 Eggs."
+target_item = "egg"
+quest_icon = "egg"
+quest_giver = "Chicken Coop Owner"
+target_amount = 20
+reward_exp = 250
+reward_gold = 500
+dialogue_file = ExtResource("1_j7tue")
+next_quest = "carrot_harvest"
+consume_items = false
+metadata/_custom_type_script = "uid://6n4u527vyey0"

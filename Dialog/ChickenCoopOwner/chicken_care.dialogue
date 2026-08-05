@@ -1,0 +1,41 @@
+~ progress
+
+Chicken Coop Owner: You've taken your first step as the coop's new owner.
+
+Chicken Coop Owner: Chickens need proper care before they'll reward your hard work.
+
+Chicken Coop Owner: Feed them with Corn and collect 20 Eggs.
+
+Chicken Coop Owner: Bring the Eggs back to me when you're finished.
+
+=> END
+
+
+~ turn_in
+
+Chicken Coop Owner: Wonderful work.
+
+Chicken Coop Owner: The chickens look healthy and well cared for.
+
+do QuestManager.try_complete_quest()
+
+Chicken Coop Owner: I think you're ready to expand your farm even further.
+
+do SeedUnlockManager.unlock_seed("carrot_seeds")
+
+Guide: Carrot Seeds are now available at the Seed Shop.
+
+Guide: Grow and harvest 10 Carrots.
+
+do QuestManager.start_quest("carrot_harvest")
+
+=> END
+
+
+~ completed
+
+Chicken Coop Owner: Keep caring for them every day.
+
+Chicken Coop Owner: A good farmer never neglects their animals.
+
+=> END

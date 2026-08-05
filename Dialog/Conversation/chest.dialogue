@@ -69,8 +69,8 @@ Shopkeeper: What seeds do you need?
 		=> buy_menu
 
 - - Carrot Seeds (40 Gold each)
-	if SeedUnlockManager.is_seed_unlocked("carrot_seed"):
-		Shopkeeper: Tomato Seeds are 40 Gold each.
+	if SeedUnlockManager.is_seed_unlocked("carrot_seeds"):
+		Shopkeeper: Carrot Seeds are 40 Gold each.
 		set InventoryManager.current_shop.temp_item_type = "carrot_seeds"
 		set InventoryManager.current_shop.temp_price = 40
 		set InventoryManager.current_shop.temp_tool_enum = "PlantCarrot"
@@ -82,7 +82,7 @@ Shopkeeper: What seeds do you need?
 
 - - Pumpkin Seeds (50 Gold each)
 	if SeedUnlockManager.is_seed_unlocked("pumpkin_seeds"):
-		Shopkeeper: Tomato Seeds are 30 Gold each.
+		ShopkeeperPumpkin Seeds are 50 Gold each.
 		set InventoryManager.current_shop.temp_item_type = "pumpkin_seeds"
 		set InventoryManager.current_shop.temp_price = 50
 		set InventoryManager.current_shop.temp_tool_enum = "PlantPumpkin"

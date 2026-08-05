@@ -26,6 +26,14 @@ Chicken Coop Owner: Restoring the fences and feeding troughs will cost 500 Gold.
 - I'll restore the coop.
     do GameDialogueManager.action_transfer_chicken_coop()
 
+Chicken Coop Owner: Thank you.
+
+Chicken Coop Owner: From this day forward, this coop is yours.
+
+Chicken Coop Owner: Please take good care of my chickens.
+
+=> END
+
 - I need more time.
     Player: I'll come back when I'm ready.
 
@@ -37,5 +45,24 @@ Chicken Coop Owner: Restoring the fences and feeding troughs will cost 500 Gold.
 Chicken Coop Owner: Thank you.
 
 Chicken Coop Owner: I know the chickens are in good hands.
+
+=> END
+
+~ level_too_low
+
+Chicken Coop Owner: You've accomplished a lot for Harvestia.
+
+Chicken Coop Owner: But caring for a coop is a great responsibility.
+
+Chicken Coop Owner: Gain a little more experience, then come back to me.
+
+=> END
+
+
+~ not_enough_gold
+
+Chicken Coop Owner: The coop still needs repairs before I can entrust it to you.
+
+Chicken Coop Owner: Bring me 500 Gold, and we'll finish the restoration together.
 
 => END

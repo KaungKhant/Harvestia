@@ -39,13 +39,15 @@ func _unhandled_input(event: InputEvent) -> void:
 
 	if QuestManager.current_quest == null:
 		dialogue = load("res://Dialog/Guide/intro.dialogue")
-	else:
-		dialogue = QuestManager.current_quest.dialogue_file
+		balloon.start(dialogue, "start")
 
-	balloon.start(
-	dialogue,
-	QuestManager.get_dialogue_label()
-)
+	elif QuestManager.current_quest.quest_giver == "Guide":
+		dialogue = QuestManager.current_quest.dialogue_file
+		balloon.start(dialogue, QuestManager.get_dialogue_label())
+
+	else:
+		dialogue = load("res://Dialog/Guide/default.dialogue")
+		balloon.start(dialogue, "start")
 
 	#if QuestManager.current_state == QuestManager.QuestState.START:
 		#QuestManager.current_state = QuestManager.QuestState.IN_PROGRESS

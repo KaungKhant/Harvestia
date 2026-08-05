@@ -7,12 +7,13 @@ var balloon_scene = preload("res://Dialog/game_dialogue_balloon.tscn")
 
 var in_range: bool = false
 
+
 func _ready() -> void:
 	interactable_component.interactable_activated.connect(on_interactable_activated)
 	interactable_component.interactable_deactivated.connect(on_interactable_deactivated)
 
 	interactable_label_component.hide()
-	
+
 	GameDialogueManager.transfer_chicken_coop.connect(on_transfer_chicken_coop)
 
 
@@ -38,32 +39,44 @@ func _unhandled_input(event: InputEvent) -> void:
 
 	var dialogue: DialogueResource
 
+	# This NPC only handles quests given by the Chicken Coop Owner.
 	if QuestManager.current_quest != null \
-	and QuestManager.current_quest.quest_id == "a_new_caretaker":
+	and QuestManager.current_quest.quest_giver == "Chicken Coop Owner":
+
 		dialogue = QuestManager.current_quest.dialogue_file
 
-		balloon.start(
-			dialogue,
-			QuestManager.get_dialogue_label()
-		)
+		# Only A New Caretaker has a level requirement.
+		if QuestManager.current_quest.quest_id == "a_new_caretaker" \
+		and PlayerProgressManager.player_level < 10:
+			balloon.start(dialogue, "level_too_low")
+		else:
+			balloon.start(
+				dialogue,
+				QuestManager.get_dialogue_label()
+			)
+
+	# No active Chicken Coop Owner quest.
 	else:
 		dialogue = load("res://Dialog/ChickenCoopOwner/default.dialogue")
 		balloon.start(dialogue, "start")
 
+
 func on_transfer_chicken_coop() -> void:
-	if PlayerProgressManager.player_level < 11:
-		NotificationManager.show("You must reach Level 5 before taking over the Chicken Coop.")
-		return
-	
+	# Level is already checked before opening the dialogue.
+
 	if !PlayerProgressManager.spend_gold(500):
-		NotificationManager.show("You need 500 Gold to restore the Chicken Coop.")
+		var balloon: BaseGameDialogueBalloon = balloon_scene.instantiate()
+		get_tree().current_scene.add_child(balloon)
+
+		var dialogue := load("res://Dialog/ChickenCoopOwner/a_new_caretaker.dialogue")
+		balloon.start(dialogue, "not_enough_gold")
 		return
 
-	# Complete the quest and give rewards
+	# Complete the ownership quest.
 	if QuestManager.try_complete_quest():
 		PlayerProgressManager.owns_chicken_coop = true
-		
+
 		NotificationManager.show("🐔 Chicken Coop Ownership Transferred!")
 
-		# Start the next quest
-		QuestManager.start_quest("feed_the_chickens")
+		# Start the next quest.
+		QuestManager.start_quest("chicken_care")
