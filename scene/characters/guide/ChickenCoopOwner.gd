@@ -47,14 +47,16 @@ func _unhandled_input(event: InputEvent) -> void:
 
 		# Only A New Caretaker has a level requirement.
 		if QuestManager.current_quest.quest_id == "a_new_caretaker" \
-		and PlayerProgressManager.player_level < 10:
+			and PlayerProgressManager.player_level < 10:
 			balloon.start(dialogue, "level_too_low")
 		else:
-			balloon.start(
-				dialogue,
-				QuestManager.get_dialogue_label()
-			)
+			var label := QuestManager.get_dialogue_label()
+			balloon.start(dialogue, label)
 
+	# After the first conversation, make the quest ready to turn in.
+			if QuestManager.current_quest.quest_id == "a_new_caretaker" \
+				and label == "progress":
+				QuestManager.mark_ready_to_turn_in()
 	# No active Chicken Coop Owner quest.
 	else:
 		dialogue = load("res://Dialog/ChickenCoopOwner/default.dialogue")
