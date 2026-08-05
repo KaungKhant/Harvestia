@@ -8,19 +8,19 @@ signal give_pickaxe
 signal transfer_chicken_coop
 
 func action_teach_farming() -> void:
-	teach_farming.emit()
+    teach_farming.emit()
 
 func action_feed_animals() -> void:
-	feed_the_animals.emit()
+    feed_the_animals.emit()
 
 func action_unlock_forest() -> void:
-	unlock_forest.emit()
+    unlock_forest.emit()
 
 func action_give_axe() -> void:
-	give_axe.emit()
+    give_axe.emit()
 
 func action_give_pickaxe() -> void:
-	give_pickaxe.emit()
+    give_pickaxe.emit()
 
 func action_transfer_chicken_coop() -> void:
-	transfer_chicken_coop.emit()
+    transfer_chicken_coop.emit()
