@@ -63,6 +63,7 @@ func _ready() -> void:
     
     # Run once on startup to sync data
     on_inventory_changed()
+    ToolManager.refresh_tool_buttons()
 
 
 # ─── REFRESH SEED QUANTITIES & LOCKS ───
