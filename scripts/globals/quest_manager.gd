@@ -167,7 +167,7 @@ func sync_progress_with_inventory() -> void:
 
 	# Gold quest
 	if target_item == "gold":
-		current_amount = max(0, PlayerProgressManager.gold - quest_start_gold)
+		current_amount = gold_earned
 	# Normal inventory quests
 	else:
 		current_amount = InventoryManager.inventory.get(target_item, 0)
