@@ -76,6 +76,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 theme_type_variation = &"InventoryLabel"
+theme_override_colors/font_color = Color(0.056291588, 0.056291603, 0.056291595, 1)
 text = "0"
 
 [node name="Stone" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
@@ -94,6 +95,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 theme_type_variation = &"InventoryLabel"
+theme_override_colors/font_color = Color(0.026721504, 0.026721502, 0.026721498, 1)
 text = "0"
 
 [node name="Corn" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
@@ -112,6 +114,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 theme_type_variation = &"InventoryLabel"
+theme_override_colors/font_color = Color(0.038397167, 0.038397167, 0.03839716, 1)
 text = "0"
 
 [node name="Carrot" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
@@ -131,6 +134,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 theme_type_variation = &"InventoryLabel"
+theme_override_colors/font_color = Color(0.0619267, 0.0619267, 0.061926693, 1)
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -151,6 +155,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 theme_type_variation = &"InventoryLabel"
+theme_override_colors/font_color = Color(0.067437746, 0.06743774, 0.06743772, 1)
 text = "0"
 
 [node name="Tomato" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
@@ -169,6 +174,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 theme_type_variation = &"InventoryLabel"
+theme_override_colors/font_color = Color(0.050510764, 0.050510757, 0.050510757, 1)
 text = "0"
 
 [node name="Egg" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
@@ -187,6 +193,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 theme_type_variation = &"InventoryLabel"
+theme_override_colors/font_color = Color(0.056291588, 0.056291603, 0.056291595, 1)
 text = "0"
 
 [node name="Milk" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
@@ -205,4 +212,5 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 theme_type_variation = &"InventoryLabel"
+theme_override_colors/font_color = Color(0.026721504, 0.026721502, 0.026721498, 1)
 text = "0"

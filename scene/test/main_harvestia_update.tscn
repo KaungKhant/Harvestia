@@ -900,9 +900,9 @@ position = Vector2(341, 198)
 
 [node name="FieldCursorComponent" parent="." node_paths=PackedStringArray("grass_tilemap_layer", "tilled_soil_tilemap_layer") instance=ExtResource("23_5mx0m")]
 script = ExtResource("24_uogb4")
-terrain = 0
 grass_tilemap_layer = NodePath("../tilemap/water")
 tilled_soil_tilemap_layer = NodePath("../tilemap/TilledLand")
+terrain = 0
 
 [node name="CropCursorComponent" parent="." node_paths=PackedStringArray("tilled_soil_tilemap_layer") instance=ExtResource("25_t0k6q")]
 script = ExtResource("26_q7p1b")
