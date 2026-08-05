@@ -1,4 +1,4 @@
-class_name  DamageComponent
+class_name DamageComponent
 extends Node2D
 
 @export var max_damage = 1
@@ -11,3 +11,7 @@ func apply_damage(damage : int) -> void:
     
     if current_damage == max_damage:
         max_damaged_reached.emit()
+
+# Add this function to reset damage back to 0
+func reset_damage() -> void:
+    current_damage = 0

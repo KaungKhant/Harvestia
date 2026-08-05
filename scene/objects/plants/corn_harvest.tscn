@@ -27,5 +27,7 @@ collectable_name = "corn"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CornHarvest/CollectableComponent"]
 shape = SubResource("CircleShape2D_gl3d2")
 
-[node name="SaveDataComponent2" parent="CornHarvest/CollectableComponent" instance=ExtResource("3_gl3d2")]
+[node name="SaveDataComponent" parent="." instance=ExtResource("3_gl3d2")]
 save_data_resource = ExtResource("4_bji42")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

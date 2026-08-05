@@ -16,17 +16,23 @@ func _save_data(node: Node) -> void:
     if crop == null:
         return
 
+    var growth = crop.get_node_or_null("GrowthCycleComponents")
+    if growth == null:
+        return
+
+    # Don't save crops that have already been harvested.
+    if growth.harvested:
+        scene_file_path = ""
+        return
+
     scene_file_path = crop.scene_file_path
     global_position = crop.global_position
 
-    var growth = crop.get_node_or_null("GrowthCycleComponents")
-
-    if growth:
-        current_growth_state = growth.current_growth_state
-        is_watered = growth.is_watered
-        starting_day = growth.starting_day
-        growth_progress = growth.growth_progress
-        harvested = growth.harvested
+    current_growth_state = growth.current_growth_state
+    is_watered = growth.is_watered
+    starting_day = growth.starting_day
+    growth_progress = growth.growth_progress
+    harvested = growth.harvested
 func _load_data(source_node: Node) -> void:
     super._load_data(source_node)
 
