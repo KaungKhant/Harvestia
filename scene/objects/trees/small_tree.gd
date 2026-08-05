@@ -113,11 +113,9 @@ func respawn_tree() -> void:
 	is_chopped = false
 	chopped_on_day = -1
 	
-	# Reset the damage component health back to full (adjust 'current_health' based on how your DamageComponent works)
-	if damage_component.has_method("reset_damage"):
+	# Reset the damage component health back to 0
+	if damage_component:
 		damage_component.reset_damage()
-	# Alternatively, if it uses a property:
-	# damage_component.current_health = damage_component.max_health
 	
 	# Show the tree sprite again
 	show()
