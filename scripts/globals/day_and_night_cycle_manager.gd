@@ -23,8 +23,8 @@ func _ready() -> void:
 	set_initial_time()
 
 func _process(delta: float) -> void:
-	# Keep scaling the time by radians passed per frame
-	time += delta * game_speed * Game_MINUTES_DURATION
+	# Divided by 2.0 here so real-world time takes twice as long to progress the game time
+	time += (delta / 2.0) * game_speed * Game_MINUTES_DURATION
 	game_time.emit(time)
 	
 	recalculate_time()
@@ -33,12 +33,12 @@ func set_initial_time() -> void:
 	# Calculate total raw minutes from your target start date
 	var initial_total_minutes = (initial_day * MINUTES_PER_DAY) + (initial_hour * MINUTES_PER_HOUR) + initial_minute
 	
-	# FIX: Convert the total minutes into your radian timeline by multiplying it
+	# Convert the total minutes into your radian timeline by multiplying it
 	time = initial_total_minutes * Game_MINUTES_DURATION
 
 func recalculate_time() -> void:
 	# Added a small precision offset (0.001) to prevent floating point rounding errors from dropping minutes
-	var total_minutes: int = int((time / Game_MINUTES_DURATION) + 0.001)
+	var total_minutes: int = int((time / Game_MINUTES_DURATION if false else time / Game_MINUTES_DURATION) + 0.001)
 	
 	var day: int = int(total_minutes / MINUTES_PER_DAY)
 	var current_days_minutes: int = total_minutes % MINUTES_PER_DAY

@@ -8,10 +8,15 @@ extends Sprite2D
 
 var log_scene = preload("res://scene/objects/trees/log.tscn")
 var is_chopped: bool = false
+var chopped_on_day: int = -1
+const RESPAWN_DAYS: int = 5
 
 func _ready() -> void:
 	hurt_component.hurt.connect(on_hurt)
 	damage_component.max_damaged_reached.connect(on_max_damaged_reached)
+	
+	# Listen to day changes from your manager
+	DayAndNightCycleManager.time_tick_day.connect(on_time_tick_day)
 
 
 func on_hurt(hit_damage: int) -> void:
@@ -33,6 +38,9 @@ func on_max_damaged_reached() -> void:
 	if is_chopped:
 		return
 	is_chopped = true
+
+	# Record the day the tree was chopped down
+	chopped_on_day = DayAndNightCycleManager.current_day
 
 	print("max damaged reached")
 	hide()
@@ -60,6 +68,22 @@ func disable_tree_physics() -> void:
 		trunk_collision.set_deferred("disabled", true)
 
 
+func enable_tree_physics() -> void:
+	# Re-enable HurtComponent areas
+	hurt_component.set_deferred("monitoring", true)
+	hurt_component.set_deferred("monitorable", true)
+	
+	# Re-enable HurtComponent's internal collision shape
+	var hurt_shape = hurt_component.get_node_or_null("CollisionShape2D")
+	if hurt_shape:
+		hurt_shape.set_deferred("disabled", false)
+
+	# Re-enable solid trunk collision so the player can collide with it again
+	var trunk_collision = get_node_or_null("StaticBody2D/CollisionShape2D")
+	if trunk_collision:
+		trunk_collision.set_deferred("disabled", false)
+
+
 func add_log_scene() -> void:
 	if not log_scene:
 		return
@@ -73,3 +97,31 @@ func add_log_scene() -> void:
 		
 		log_instance.global_position = spawn_origin + random_offset
 		world_node.add_child.call_deferred(log_instance)
+
+
+func on_time_tick_day(day: int) -> void:
+	# Only check if the tree is currently chopped down
+	if not is_chopped:
+		return
+	
+	# Check if 5 days have passed since it was chopped
+	if day >= chopped_on_day + RESPAWN_DAYS:
+		respawn_tree()
+
+
+func respawn_tree() -> void:
+	is_chopped = false
+	chopped_on_day = -1
+	
+	# Reset the damage component health back to full (adjust 'current_health' based on how your DamageComponent works)
+	if damage_component.has_method("reset_damage"):
+		damage_component.reset_damage()
+	# Alternatively, if it uses a property:
+	# damage_component.current_health = damage_component.max_health
+	
+	# Show the tree sprite again
+	show()
+	
+	# Turn collisions and axe detection back on
+	enable_tree_physics()
+	print("Tree respawned!")
