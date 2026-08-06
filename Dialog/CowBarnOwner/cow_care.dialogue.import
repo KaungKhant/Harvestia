@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://bgr6kkw5ckrdm"
+path="res://.godot/imported/cow_care.dialogue-977ea95e92a984043d6c0207edf945ef.tres"
+
+[deps]
+
+source_file="res://Dialog/CowBarnOwner/cow_care.dialogue"
+dest_files=["res://.godot/imported/cow_care.dialogue-977ea95e92a984043d6c0207edf945ef.tres"]
+
+[params]
+
+defaults=true

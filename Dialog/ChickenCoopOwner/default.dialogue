@@ -1,11 +1,29 @@
 ~ start
 
-Chicken Coop Owner: Welcome.
+if QuestManager.is_quest_completed("chicken_care"):
+	=> after_chicken_care
 
-Chicken Coop Owner: These chickens have been my companions for many years.
+Chicken Coop Owner: မင်္ဂလာပါ။
 
-Chicken Coop Owner: Looking after them isn't as easy as it used to be.
+Chicken Coop Owner: ဒီကြက်လေးတွေက ငါ့ရဲ့ အထီးကျန်ဘဝမှာ အဖော်ပြုပေးခဲ့တာ ကြာပါပြီ။
 
-Chicken Coop Owner: Still... I'll keep caring for them as long as I can.
+Chicken Coop Owner: အခုတော့ အသက်အရွယ်ရလာတော့ အရင်လို သူတို့ကို ပြုစုစောင့်ရှောက်ဖို့ မလွယ်တော့ဘူး။
+
+Chicken Coop Owner: ဒါပေမယ့် သူတို့ကို စွန့်လွှတ်ဖို့တော့ တစ်ခါမှ မတွေးဖူးဘူး။
+
+=> END
+
+
+~ after_chicken_care
+
+Chicken Coop Owner: ပြန်လာပြီလား။
+
+Chicken Coop Owner: မင်းလက်ထဲ အပ်ခဲ့ပြီးနောက် ဒီကြက်ခြံက အရင်ကထက် အသက်ဝင်လာတယ်။
+
+Chicken Coop Owner: ကြက်လေးတွေ ကျန်းကျန်းမာမာနဲ့ လှုပ်လှုပ်ရှားရှား ဖြစ်နေတာ မြင်ရတော့ အရမ်းဝမ်းသာတယ်။
+
+Chicken Coop Owner: မင်းကို ယုံကြည်ပြီး အပ်ခဲ့တာ မှန်သွားပြီ။
+
+Chicken Coop Owner: ကျေးဇူးတင်ပါတယ်။
 
 => END

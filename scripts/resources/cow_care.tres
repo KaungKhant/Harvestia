@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="QuestData" load_steps=3 format=3 uid="uid://bwcyubiuig6fk"]
+
+[ext_resource type="Resource" uid="uid://bgr6kkw5ckrdm" path="res://Dialog/CowBarnOwner/cow_care.dialogue" id="1_xd0f1"]
+[ext_resource type="Script" uid="uid://6n4u527vyey0" path="res://scripts/resources/quest_data.gd" id="2_7jlyu"]
+
+[resource]
+script = ExtResource("2_7jlyu")
+quest_id = "cow_care"
+quest_name = "Cow Care"
+description = "Collect 15 Milk."
+target_item = "milk"
+quest_icon = "milk"
+quest_giver = "Cow Barn Owner"
+target_amount = 15
+reward_exp = 120
+reward_gold = 300
+dialogue_file = ExtResource("1_xd0f1")
+metadata/_custom_type_script = "uid://6n4u527vyey0"
