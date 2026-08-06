@@ -10,44 +10,44 @@ extends NodeDataResource
 
 
 func _save_data(node: Node) -> void:
-    super._save_data(node)
+	super._save_data(node)
 
-    var crop := node as Node2D
-    if crop == null:
-        return
+	var crop := node as Node2D
+	if crop == null:
+		return
 
-    var growth = crop.get_node_or_null("GrowthCycleComponents")
-    if growth == null:
-        return
+	var growth = crop.get_node_or_null("GrowthCycleComponents")
+	if growth == null:
+		return
 
-    # Don't save crops that have already been harvested.
-    if growth.harvested:
-        scene_file_path = ""
-        return
+	# Don't save crops that have already been harvested.
+	if growth.harvested:
+		scene_file_path = ""
+		return
 
-    scene_file_path = crop.scene_file_path
-    global_position = crop.global_position
+	scene_file_path = crop.scene_file_path
+	global_position = crop.global_position
 
-    current_growth_state = growth.current_growth_state
-    is_watered = growth.is_watered
-    starting_day = growth.starting_day
-    growth_progress = growth.growth_progress
-    harvested = growth.harvested
+	current_growth_state = growth.current_growth_state
+	is_watered = growth.is_watered
+	starting_day = growth.starting_day
+	growth_progress = growth.growth_progress
+	harvested = growth.harvested
 func _load_data(source_node: Node) -> void:
-    super._load_data(source_node)
+	super._load_data(source_node)
 
-    var crop := source_node as Node2D
-    if crop == null:
-        return
+	var crop := source_node as Node2D
+	if crop == null:
+		return
 
-    crop.global_position = global_position
+	crop.global_position = global_position
 
-    var growth = crop.get_node_or_null("GrowthCycleComponents")
+	var growth = crop.get_node_or_null("GrowthCycleComponents")
 
-    if growth:
-        growth.current_growth_state = current_growth_state
-        growth.is_watered = is_watered
-        growth.starting_day = starting_day
-        growth.growth_progress = growth_progress
-        growth.harvested = harvested
-        growth.just_loaded = true
+	if growth:
+		growth.current_growth_state = current_growth_state
+		growth.is_watered = is_watered
+		growth.starting_day = starting_day
+		growth.growth_progress = growth_progress
+		growth.harvested = harvested
+		growth.just_loaded = true

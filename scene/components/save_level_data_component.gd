@@ -183,7 +183,8 @@ func load_game() -> void:
 		elif resource is HarvestDataResource:
 			var harvest_resource := resource as HarvestDataResource
 
-			if harvest_resource.scene_file_path == "":
+			# Skip if the item was collected/removed
+			if harvest_resource.is_removed or harvest_resource.scene_file_path == "":
 				continue
 
 			var harvest_scene := load(harvest_resource.scene_file_path)
@@ -202,7 +203,6 @@ func load_game() -> void:
 			harvest_resource._load_data(harvest)
 
 			print("Loaded harvest item successfully")
-
 		# -------- Other Saved Nodes --------
 		elif resource is NodeDataResource:
 			resource._load_data(current_scene)

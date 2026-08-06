@@ -5,15 +5,15 @@ extends NodeDataResource
 
 func _save_data(node):
 
-    super._save_data(node)
+	super._save_data(node)
 
-    destroyed=node.destroyed
+	destroyed=node.destroyed
 
 
 func _load_data(window):
 
-    var obj=window.get_node(node_path)
+	var obj=window.get_node(node_path)
 
-    obj.destroyed=destroyed
+	obj.destroyed=destroyed
 
-    obj.visible=!destroyed
+	obj.visible=!destroyed
