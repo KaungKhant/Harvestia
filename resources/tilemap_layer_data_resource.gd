@@ -1,50 +1,47 @@
 class_name TileMapLayerDataResource
 extends NodeDataResource
 
-@export var tilemap_layer_used_cells: Array[Vector2i]
-@export var terrain_set: int = 0
-@export var terrain: int = 1
-
+@export var saved_cells: Array[Vector2i] = []
+@export var saved_source_ids: Array[int] = []
+@export var saved_atlas_coords: Array[Vector2i] = []
+@export var saved_alternative_tiles: Array[int] = []
 
 func _save_data(node: Node) -> void:
 	super._save_data(node)
-
 	var layer := node as TileMapLayer
-	if layer == null:
-		return
+	if layer == null: return
 
-	tilemap_layer_used_cells = layer.get_used_cells()
+	saved_cells.clear()
+	saved_source_ids.clear()
+	saved_atlas_coords.clear()
+	saved_alternative_tiles.clear()
 
-	print("Saving soil cells count: ", tilemap_layer_used_cells.size())
-
+	var used = layer.get_used_cells()
+	for cell in used:
+		saved_cells.append(cell)
+		saved_source_ids.append(layer.get_cell_source_id(cell))
+		saved_atlas_coords.append(layer.get_cell_atlas_coords(cell))
+		saved_alternative_tiles.append(layer.get_cell_alternative_tile(cell))
+	
+	print("Directly saving ", saved_cells.size(), " tiles.")
 
 func _load_data(source_node: Node) -> void:
 	var target = source_node.get_node_or_null(node_path)
-
 	if target == null:
 		target = source_node.get_tree().root.get_node_or_null(node_path)
-
-	if target == null:
-		push_error("TileMapLayer not found for path: " + str(node_path))
-		return
+	if target == null: return
 
 	var layer := target as TileMapLayer
-	if layer == null:
-		return
+	if layer == null: return
 
-	# 1. Clear existing cells on the layer so we start fresh from the save file
 	layer.clear()
 
-	# 2. Re-apply the tilled soil cells using terrain connection if any were saved
-	if tilemap_layer_used_cells.size() > 0:
-		print("Restoring ", tilemap_layer_used_cells.size(), " tilled soil cells...")
-		
-		layer.set_cells_terrain_connect(
-			tilemap_layer_used_cells,
-			terrain_set,
-			terrain,
-			true
+	for i in range(saved_cells.size()):
+		layer.set_cell(
+			saved_cells[i],
+			saved_source_ids[i],
+			saved_atlas_coords[i],
+			saved_alternative_tiles[i]
 		)
-		print("Tilled soil successfully restored via terrain connect.")
-	else:
-		print("No saved tilled soil cells found.")
+	
+	print("Directly restored ", saved_cells.size(), " tiles to TileMapLayer.")
