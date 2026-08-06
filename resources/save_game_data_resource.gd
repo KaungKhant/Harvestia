@@ -16,3 +16,5 @@ extends Resource
 
 # Tools
 @export var unlocked_tools: Array[int] = []
+
+@export var unlocked_seeds: Dictionary = {}

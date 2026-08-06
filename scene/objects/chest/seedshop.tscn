@@ -1,10 +1,12 @@
-[gd_scene load_steps=14 format=3 uid="uid://b7hedi0atmi4m"]
+[gd_scene load_steps=16 format=3 uid="uid://b7hedi0atmi4m"]
 
 [ext_resource type="Script" uid="uid://rc3hv2wqqbv1" path="res://scene/objects/chest/seedshop.gd" id="1_2dsso"]
 [ext_resource type="Texture2D" uid="uid://dro85siw16w3y" path="res://assets/game/Characters/npc4.png" id="2_2dsso"]
 [ext_resource type="PackedScene" uid="uid://cv3tlgmwisqki" path="res://scene/components/interactable_component.tscn" id="3_d6crc"]
 [ext_resource type="PackedScene" uid="uid://dtg2w66i1vtib" path="res://scene/components/interactable_label_component.tscn" id="4_g40q7"]
 [ext_resource type="PackedScene" uid="uid://c6gbq3fylav05" path="res://scene/components/feed_component.tscn" id="5_3jfu2"]
+[ext_resource type="PackedScene" uid="uid://bitwqob65vm4g" path="res://scene/components/save_data_component.tscn" id="6_d6crc"]
+[ext_resource type="Resource" uid="uid://dtorkhkkkx8fj" path="res://resources/shop_data _resources.tres" id="7_g40q7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dspnv"]
 atlas = ExtResource("2_2dsso")
@@ -105,3 +107,6 @@ position = Vector2(13, 14)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FeedComponent"]
 shape = SubResource("CircleShape2D_51syw")
 debug_color = Color(0.6891568, 0.49624872, 0.14262447, 0.41960785)
+
+[node name="SaveDataComponent" parent="." instance=ExtResource("6_d6crc")]
+save_data_resource = ExtResource("7_g40q7")
