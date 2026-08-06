@@ -10,17 +10,17 @@ extends NodeDataResource
 
 
 func _save_data(node: Node) -> void:
-    super._save_data(node)
+	super._save_data(node)
 
-    var crop := node as Node2D
-    if crop == null:
-        return
+	var crop := node as Node2D
+	if crop == null:
+		return
 
-    var growth = crop.get_node_or_null("GrowthCycleComponents")
-    if growth == null:
-        return
+	var growth = crop.get_node_or_null("GrowthCycleComponents")
+	if growth == null:
+		return
 
-    # Don't save crops that have already been harvested.
+	# Don't save crops that have already been harvested.
 	if growth.harvested:
 		scene_file_path = ""
 		return
@@ -33,6 +33,8 @@ func _save_data(node: Node) -> void:
 	starting_day = growth.starting_day
 	growth_progress = growth.growth_progress
 	harvested = growth.harvested
+
+
 func _load_data(source_node: Node) -> void:
 	super._load_data(source_node)
 
