@@ -14,4 +14,5 @@ target_amount = 10
 reward_exp = 80
 reward_gold = 250
 dialogue_file = ExtResource("1_rh6vv")
+next_quest = "restore_cow_barn"
 metadata/_custom_type_script = "uid://6n4u527vyey0"
