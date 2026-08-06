@@ -1,0 +1,6 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dld6q80uu53hy"]
+
+[ext_resource type="Script" uid="uid://c6clxn2b123nw" path="res://resources/rock_data_resources.gd" id="1_2x5le"]
+
+[resource]
+script = ExtResource("1_2x5le")
