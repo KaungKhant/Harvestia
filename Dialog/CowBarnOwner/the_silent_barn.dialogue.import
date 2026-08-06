@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://cpy7acuv3wu56"
+path="res://.godot/imported/the_silent_barn.dialogue-d7dcbb211d9a0650912f1bf3e698cf43.tres"
+
+[deps]
+
+source_file="res://Dialog/CowBarnOwner/the_silent_barn.dialogue"
+dest_files=["res://.godot/imported/the_silent_barn.dialogue-d7dcbb211d9a0650912f1bf3e698cf43.tres"]
+
+[params]
+
+defaults=true

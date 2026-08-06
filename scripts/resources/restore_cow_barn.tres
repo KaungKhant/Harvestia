@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestData" load_steps=3 format=3 uid="uid://cr4ybndufly85"]
+
+[ext_resource type="Resource" uid="uid://cpy7acuv3wu56" path="res://Dialog/CowBarnOwner/the_silent_barn.dialogue" id="1_ruvla"]
+[ext_resource type="Script" uid="uid://6n4u527vyey0" path="res://scripts/resources/quest_data.gd" id="2_56ao3"]
+
+[resource]
+script = ExtResource("2_56ao3")
+quest_id = "restore_cow_barn"
+quest_name = "The Silent Barn"
+description = "Meet the Cow Barn Owner."
+quest_icon = "carrot"
+quest_giver = "Cow Barn Owner"
+reward_exp = 100
+dialogue_file = ExtResource("1_ruvla")
+consume_items = false
+metadata/_custom_type_script = "uid://6n4u527vyey0"
