@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://clttoo3sc7rfs"
+path="res://.godot/imported/default.dialogue-78462c8498cf25c5df3b802a442c1875.tres"
+
+[deps]
+
+source_file="res://Dialog/CowBarnOwner/default.dialogue"
+dest_files=["res://.godot/imported/default.dialogue-78462c8498cf25c5df3b802a442c1875.tres"]
+
+[params]
+
+defaults=true

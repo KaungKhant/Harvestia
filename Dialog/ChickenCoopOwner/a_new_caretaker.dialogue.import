@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://xyr34nja77ay"
+path="res://.godot/imported/a_new_caretaker.dialogue-094335e98c3182265186256b3ea7cd70.tres"
+
+[deps]
+
+source_file="res://Dialog/ChickenCoopOwner/a_new_caretaker.dialogue"
+dest_files=["res://.godot/imported/a_new_caretaker.dialogue-094335e98c3182265186256b3ea7cd70.tres"]
+
+[params]
+
+defaults=true

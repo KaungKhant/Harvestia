@@ -47,7 +47,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 		# Only The Silent Barn has a level requirement.
 		if QuestManager.current_quest.quest_id == "restore_cow_barn" \
-		and PlayerProgressManager.player_level < 15:
+		and PlayerProgressManager.player_level < 12:
 			balloon.start(dialogue, "level_too_low")
 		else:
 			var label := QuestManager.get_dialogue_label()

@@ -36,8 +36,10 @@ func _unhandled_input(event: InputEvent) -> void:
 		return
 
 	# -------------------------------------------------
-	# Start Carrot Harvest after Chicken Care is finished
+	# Story Progression
 	# -------------------------------------------------
+
+	# Chicken Care -> Carrot Harvest
 	if QuestManager.is_quest_completed("chicken_care") \
 	and !QuestManager.is_quest_completed("carrot_harvest") \
 	and (QuestManager.current_quest == null \
@@ -45,15 +47,25 @@ func _unhandled_input(event: InputEvent) -> void:
 
 		QuestManager.start_quest("carrot_harvest")
 
+	# Carrot Harvest -> The Silent Barn
+	elif QuestManager.is_quest_completed("carrot_harvest") \
+	and !QuestManager.is_quest_completed("restore_cow_barn") \
+	and (QuestManager.current_quest == null \
+	or QuestManager.current_quest.quest_id != "restore_cow_barn"):
+
+		QuestManager.start_quest("restore_cow_barn")
+
 	var balloon: BaseGameDialogueBalloon = balloon_scene.instantiate()
 	get_tree().current_scene.add_child(balloon)
 
 	var dialogue: DialogueResource
 
+	# Intro before the first quest
 	if QuestManager.current_quest == null:
 		dialogue = load("res://Dialog/Guide/intro.dialogue")
 		balloon.start(dialogue, "start")
 
+	# Guide handles Guide quests only
 	elif QuestManager.current_quest.quest_giver == "Guide":
 		dialogue = QuestManager.current_quest.dialogue_file
 		balloon.start(
@@ -61,13 +73,13 @@ func _unhandled_input(event: InputEvent) -> void:
 			QuestManager.get_dialogue_label()
 		)
 
+	# Default Guide dialogue
 	else:
 		dialogue = load("res://Dialog/Guide/default.dialogue")
 		balloon.start(dialogue, "start")
 
 
 func on_teach_farming() -> void:
-	# Unlock farming tools
 	ToolManager.enable_tool_button(DataTypes.Tools.TillGround)
 	NotificationManager.show_tool("Hoe")
 
