@@ -71,7 +71,7 @@ offset_right = -18.0
 offset_bottom = -13.0
 
 [node name="RewardMarker" type="Marker2D" parent="."]
-position = Vector2(24, 10)
+position = Vector2(0, 16)
 
 [node name="FeedComponent" parent="." instance=ExtResource("5_pxovj")]
 
