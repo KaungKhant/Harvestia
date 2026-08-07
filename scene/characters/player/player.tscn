@@ -1,4 +1,4 @@
-[gd_scene load_steps=94 format=3 uid="uid://baobhkkvmt1nd"]
+[gd_scene load_steps=95 format=3 uid="uid://baobhkkvmt1nd"]
 
 [ext_resource type="Script" uid="uid://uyqo7sfb2quo" path="res://scene/characters/player/player.gd" id="1_v7krq"]
 [ext_resource type="Texture2D" uid="uid://cdoabfgwo328b" path="res://assets/game/Characters/axev3.png" id="2_bx1cu"]
@@ -612,10 +612,12 @@ radius = 6.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_8gxq7"]
 radius = 5.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_m1awt"]
+radius = 13.0
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 y_sort_enabled = true
 collision_layer = 2
-collision_mask = 3
 script = ExtResource("1_v7krq")
 current_tool = 1
 
@@ -696,3 +698,11 @@ debug_color = Color(0.866263, 0.353089, 0.109067, 0.419608)
 stream = ExtResource("26_w5oub")
 volume_db = 10.0
 bus = &"SFX"
+
+[node name="InteractionRange" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionRange"]
+position = Vector2(0, -7)
+shape = SubResource("CircleShape2D_m1awt")
