@@ -1,0 +1,40 @@
+[gd_scene load_steps=10 format=3 uid="uid://duqlt78trxy80"]
+
+[ext_resource type="Script" uid="uid://bj0m8no4i1x2m" path="res://scene/objects/plants/carrot_2.gd" id="1_pxx3e"]
+[ext_resource type="Texture2D" uid="uid://drp8itt24qjoj" path="res://assets/game/Objects/Basic Plants.png" id="2_pyalo"]
+[ext_resource type="PackedScene" uid="uid://bgm11vdxjvqrt" path="res://scene/objects/plants/growth_cycle_components.tscn" id="3_0ssh1"]
+[ext_resource type="PackedScene" uid="uid://dg8e005hj8y6k" path="res://scene/components/hurt_component.tscn" id="4_wlfmq"]
+[ext_resource type="PackedScene" uid="uid://bitwqob65vm4g" path="res://scene/components/save_data_component.tscn" id="5_lh7qg"]
+[ext_resource type="Resource" uid="uid://c2e2l031uqq8e" path="res://resources/crop_data_resource.tres" id="6_nunt1"]
+[ext_resource type="PackedScene" uid="uid://byx1xafays50i" path="res://scene/objects/plants/watering_particles.tscn" id="7_8og2s"]
+[ext_resource type="PackedScene" uid="uid://bq7ugm3u8d875" path="res://scene/objects/plants/flowering_particles.tscn" id="8_fgyv2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2y6ov"]
+size = Vector2(13, 8)
+
+[node name="Carrot" type="Node2D"]
+script = ExtResource("1_pxx3e")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -4)
+texture = ExtResource("2_pyalo")
+hframes = 6
+vframes = 2
+frame = 1
+
+[node name="GrowthCycleComponents" parent="." instance=ExtResource("3_0ssh1")]
+
+[node name="HurtComponent" parent="." instance=ExtResource("4_wlfmq")]
+position = Vector2(0, -4)
+tool = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtComponent"]
+position = Vector2(-0.5, 3)
+shape = SubResource("RectangleShape2D_2y6ov")
+
+[node name="SaveDataComponent" parent="." instance=ExtResource("5_lh7qg")]
+save_data_resource = ExtResource("6_nunt1")
+
+[node name="WateringParticles" parent="." instance=ExtResource("7_8og2s")]
+
+[node name="FloweringParticles" parent="." instance=ExtResource("8_fgyv2")]
