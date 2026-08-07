@@ -180,6 +180,10 @@ func sync_progress_with_inventory() -> void:
 
 	if current_state != QuestState.IN_PROGRESS and current_state != QuestState.READY_TO_TURN_IN:
 		return
+	
+		# Story quests are completed by NPC interaction, not inventory.
+	if current_quest.target_amount <= 0:
+		return
 
 	var target_item := current_quest.target_item.to_lower()
 	var current_amount: int

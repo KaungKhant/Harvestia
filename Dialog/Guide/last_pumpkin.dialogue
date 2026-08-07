@@ -14,7 +14,7 @@ Uncle Rowan: Shopkeeper ကို ငါ ပြောထားလိုက်မ
 
 Uncle Rowan: အခုကစပြီး Pumpkin Seeds ကို ဝယ်ယူနိုင်ပြီ။
 
-do GameDialogueManager.action_unlock_pumpkin()
+do SeedUnlockManager.unlock_seed("pumpkin_seeds")
 
 Uncle Rowan: Harvestia ရဲ့ မျှော်လင့်ချက်ကို ပြန်လည်စိုက်ပျိုးဖို့...
 ဒီ Pumpkin တွေက အစပဲ။
@@ -33,11 +33,11 @@ Uncle Rowan: မင်းအဘိုးသာ ဒီနေ့ကို မြ�
 
 Uncle Rowan: ကျေးဇူးတင်ပါတယ်။
 
+do QuestManager.try_complete_quest()
+
 Uncle Rowan: ဒါက Pumpkin (၁၀) လုံးတင် မဟုတ်ဘူး...
 
 Uncle Rowan: Harvestia ရဲ့ မျှော်လင့်ချက်ကို ပြန်လည်စိုက်ပျိုးလိုက်တာပဲ။
-
-do GameDialogueManager.action_complete_last_pumpkin()
 
 => END
 

@@ -13,15 +13,21 @@ Guide: Harvest 10 Carrots and bring them to me.
 
 ~ turn_in
 
-Guide: These carrots look fresh and healthy.
+Uncle Rowan: မုန်လာဥနီတွေက အရမ်းကောင်းတယ်။
 
-Guide: Harvestia's fields are becoming more productive every day.
-
-Guide: Excellent work.
+Uncle Rowan: Harvestia မှာ သီးနှံတွေ တဖြည်းဖြည်း ပြန်စိုက်ပျိုးနိုင်လာပြီ။
 
 do QuestManager.try_complete_quest()
 
-Guide: Keep this pace, and soon we'll be ready to restore even more of the village.
+Uncle Rowan: ဒါပေမယ့်...
+
+Uncle Rowan: လယ်ယာတွေပဲ ပြန်ကောင်းလာရုံနဲ့ Harvestia က ပြန်အသက်ဝင်မှာ မဟုတ်သေးဘူး။
+
+Uncle Rowan: နွားခြံပိုင်ရှင်က မင်းအကြောင်း ကြားထားပြီး မင်းနဲ့ တွေ့ချင်နေတယ်။
+
+Uncle Rowan: အချိန်ရရင် သူ့ဆီ သွားတွေ့လိုက်ပါ။
+
+do QuestManager.start_quest("restore_cow_barn")
 
 => END
 

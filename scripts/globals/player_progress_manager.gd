@@ -17,7 +17,9 @@ var crop_exp = {
 	"corn": 10,
 	"tomato": 15,
 	"log" : 1,
-	"stone": 2
+	"stone": 2,
+	"carrot": 20,
+	"pumpkin": 25
 }
 
 
