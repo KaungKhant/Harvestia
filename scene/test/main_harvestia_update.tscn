@@ -1,4 +1,4 @@
-[gd_scene load_steps=100 format=4 uid="uid://deythsf5bwj04"]
+[gd_scene load_steps=101 format=4 uid="uid://deythsf5bwj04"]
 
 [ext_resource type="PackedScene" uid="uid://cugdxyqvq2u2o" path="res://scene/components/test_scene_save_data_manager_component.tscn" id="1_l8e72"]
 [ext_resource type="Script" uid="uid://bm00b7nmisjbw" path="res://scripts/main_harvestia_update.gd" id="1_y6i5f"]
@@ -55,6 +55,7 @@
 [ext_resource type="PackedScene" uid="uid://ckkkyaue6gdym" path="res://scene/characters/guide/village_elder.tscn" id="44_ehgm4"]
 [ext_resource type="Script" uid="uid://c72wdkiu116jo" path="res://scene/characters/guide/ChickenCoopOwner.gd" id="48_3ieud"]
 [ext_resource type="Script" uid="uid://bcvtj3baof658" path="res://scene/characters/guide/CowBarnOwner.gd" id="53_obarw"]
+[ext_resource type="Script" uid="uid://bcg77nai3hdm5" path="res://scene/characters/guide/village_elder.gd" id="56_yotf7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7hbbt"]
 texture = ExtResource("4_6l1wj")
@@ -1017,6 +1018,7 @@ script = ExtResource("53_obarw")
 
 [node name="village_elder" parent="." instance=ExtResource("44_ehgm4")]
 position = Vector2(404, 367)
+script = ExtResource("56_yotf7")
 
 [node name="Tree2" parent="." instance=ExtResource("22_3ieud")]
 material = SubResource("ShaderMaterial_cls3o")

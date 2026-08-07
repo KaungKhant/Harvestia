@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://fysbon5odowt"
+path="res://.godot/imported/default.dialogue-6b9bbb215535869401eb83a04f9e9eeb.tres"
+
+[deps]
+
+source_file="res://Dialog/VillageElder/default.dialogue"
+dest_files=["res://.godot/imported/default.dialogue-6b9bbb215535869401eb83a04f9e9eeb.tres"]
+
+[params]
+
+defaults=true

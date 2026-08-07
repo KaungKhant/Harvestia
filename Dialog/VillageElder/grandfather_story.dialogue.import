@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://bpwsy3buv5sa0"
+path="res://.godot/imported/grandfather_story.dialogue-7ae8ec8974f47ccfe189bc6b32c57c41.tres"
+
+[deps]
+
+source_file="res://Dialog/VillageElder/grandfather_story.dialogue"
+dest_files=["res://.godot/imported/grandfather_story.dialogue-7ae8ec8974f47ccfe189bc6b32c57c41.tres"]
+
+[params]
+
+defaults=true

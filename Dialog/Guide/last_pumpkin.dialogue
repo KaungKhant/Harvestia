@@ -1,0 +1,52 @@
+~ progress
+
+Uncle Rowan: Village Elder က အားလုံး ပြောပြလိုက်ပြီ ထင်တယ်...
+
+Uncle Rowan: မင်းအဘိုးက ငါ့ရဲ့ အရင်းနှီးဆုံး မိတ်ဆွေတွေထဲက တစ်ယောက်ပဲ။
+
+Uncle Rowan: သူ့ရဲ့ အိပ်မက်က Harvestia ကို အရင်လို ပြန်အသက်ဝင်လာတာကို မြင်ချင်တာပဲ။
+
+Uncle Rowan: ဒါပေမယ့်... အဲဒီအိပ်မက်ကို သူ ကိုယ်တိုင် အကောင်အထည် မဖော်နိုင်ခဲ့ဘူး။
+
+Uncle Rowan: အခုတော့... အဲဒီအိပ်မက်ကို ဆက်ပြီး အကောင်အထည်ဖော်မယ့်သူ မင်းပဲ။
+
+Uncle Rowan: Shopkeeper ကို ငါ ပြောထားလိုက်မယ်။
+
+Uncle Rowan: အခုကစပြီး Pumpkin Seeds ကို ဝယ်ယူနိုင်ပြီ။
+
+do GameDialogueManager.action_unlock_pumpkin()
+
+Uncle Rowan: Harvestia ရဲ့ မျှော်လင့်ချက်ကို ပြန်လည်စိုက်ပျိုးဖို့...
+ဒီ Pumpkin တွေက အစပဲ။
+
+Uncle Rowan: Pumpkin (၁၀) လုံး စိုက်ပျိုးပြီး ပြန်လာခဲ့ပါ။
+
+=> END
+
+~ turn_in
+
+Uncle Rowan: မင်း လုပ်နိုင်ခဲ့ပြီ...
+
+Uncle Rowan: Harvestia မှာ Pumpkin တွေ ပြန်ပေါက်လာတာကို မြင်ရတော့...
+
+Uncle Rowan: မင်းအဘိုးသာ ဒီနေ့ကို မြင်ရရင် အရမ်းဝမ်းသာမှာပဲ။
+
+Uncle Rowan: ကျေးဇူးတင်ပါတယ်။
+
+Uncle Rowan: ဒါက Pumpkin (၁၀) လုံးတင် မဟုတ်ဘူး...
+
+Uncle Rowan: Harvestia ရဲ့ မျှော်လင့်ချက်ကို ပြန်လည်စိုက်ပျိုးလိုက်တာပဲ။
+
+do GameDialogueManager.action_complete_last_pumpkin()
+
+=> END
+
+~ completed
+
+Uncle Rowan: Pumpkin တွေ ပြန်စိုက်ပျိုးနိုင်တာကို မြင်ရတော့ ဝမ်းသာလိုက်တာ...
+
+Uncle Rowan: မင်းအဘိုးရဲ့ အိပ်မက်က ဒီမှာပဲ ရပ်မသွားတော့ဘူး။
+
+Uncle Rowan: ဒီခရီးက အခုမှ စတာပဲ။
+
+=> END

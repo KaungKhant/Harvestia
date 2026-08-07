@@ -54,6 +54,14 @@ func _unhandled_input(event: InputEvent) -> void:
 	or QuestManager.current_quest.quest_id != "restore_cow_barn"):
 
 		QuestManager.start_quest("restore_cow_barn")
+		
+	# Cow Care -> Village Elder / Last Pumpkin
+	elif QuestManager.is_quest_completed("cow_care") \
+	and !QuestManager.is_quest_completed("last_pumpkin"):
+
+		if PlayerProgressManager.talked_to_village_elder:
+			QuestManager.start_quest("last_pumpkin")
+		
 
 	var balloon: BaseGameDialogueBalloon = balloon_scene.instantiate()
 	get_tree().current_scene.add_child(balloon)
@@ -76,7 +84,12 @@ func _unhandled_input(event: InputEvent) -> void:
 	# Default Guide dialogue
 	else:
 		dialogue = load("res://Dialog/Guide/default.dialogue")
-		balloon.start(dialogue, "start")
+
+		if QuestManager.is_quest_completed("cow_care") \
+		and !PlayerProgressManager.talked_to_village_elder:
+			balloon.start(dialogue, "after_cow_care")
+		else:
+			balloon.start(dialogue, "start")
 
 
 func on_teach_farming() -> void:
