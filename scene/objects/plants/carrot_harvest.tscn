@@ -1,10 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bxvjq3ncsvayh"]
+[gd_scene load_steps=6 format=3 uid="uid://bxvjq3ncsvayh"]
 
 [ext_resource type="Script" uid="uid://ccqh222ia0ik4" path="res://scene/objects/plants/carrot_harvest.gd" id="1_1igq8"]
 [ext_resource type="Texture2D" uid="uid://c7ka6l4bxi8mu" path="res://assets/game/Objects/ChatGPT Image Jul 30, 2026, 03_58_23 PM.png" id="2_1igq8"]
 [ext_resource type="PackedScene" uid="uid://ugnmo50k3mey" path="res://scene/components/collectable_component.tscn" id="3_k51ll"]
-[ext_resource type="PackedScene" uid="uid://bitwqob65vm4g" path="res://scene/components/save_data_component.tscn" id="4_xet5v"]
-[ext_resource type="Resource" uid="uid://ppsaxrkn0d00" path="res://resources/harvest_data_resource.tres" id="5_kndqk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5dl5v"]
 atlas = ExtResource("2_1igq8")
@@ -29,6 +27,3 @@ collectable_name = "carrot"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CarrotHarvest/CollectableComponent"]
 position = Vector2(-13.073171, 18.599998)
 shape = SubResource("CircleShape2D_gl3d2")
-
-[node name="SaveDataComponent2" parent="CarrotHarvest/CollectableComponent" instance=ExtResource("4_xet5v")]
-save_data_resource = ExtResource("5_kndqk")
