@@ -42,12 +42,14 @@ HomecomingManager="*res://scripts/manager/HomecomingManager.gd"
 
 [display]
 
-window/size/viewport_width=800
+window/size/viewport_width=960
 window/size/viewport_height=480
-window/size/mode=2
+window/size/mode=4
+window/size/initial_position_type=0
 window/size/window_width_override=1270
 window/size/window_height_override=720
 window/stretch/mode="canvas_items"
+window/stretch/aspect="keep_width"
 window/stretch/scale_mode="integer"
 window/layer_1="Chicken Nav"
 

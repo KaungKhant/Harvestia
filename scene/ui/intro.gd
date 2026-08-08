@@ -9,32 +9,34 @@ var page = 0
 var is_transitioning := false
 
 var texts = [
-"""Long ago...
+"""Many years ago....""",
 
-Harvestia was filled with life.
+"""Harvestia is with full of life.""",
 
-Every family grew crops together.""",
+"""Time passes.""",
+"""The village slowly becomes empty.""",
 
-"""But one day...
+"""Buildings decay.""",
 
-The villagers left.
+"""People leave.""",
 
-The fields became empty.""",
+"""Grandfather alone in his field.
+Looking toward the village.""",
 
-"""Years later...
-
-You receive a letter from your grandfather.""",
-
-"""Your journey begins...
+"""A letter has arrived...
 """
 ]
 
 var images = [
 
-    preload("res://assets/story/img1.png"),
-    preload("res://assets/story/img2.png"),
-    preload("res://assets/story/img3.png"),
-    preload("res://assets/story/img4.png"),
+    preload("res://assets/story/story1.png"),
+    preload("res://assets/story/story2.png"),
+    preload("res://assets/story/story3.png"),
+    preload("res://assets/story/story4.png"),
+    preload("res://assets/story/story5.png"),
+    preload("res://assets/story/story6.png"),
+    preload("res://assets/story/story7.png"),
+    preload("res://assets/story/story9.png"),
 
 ]
 func _ready():
@@ -54,8 +56,11 @@ func show_page():
 
     animation.play("FadeIn")
 func next_page():
+    if is_transitioning:
+        return
+
     is_transitioning = true
-    
+
     animation.play("FadeOut")
     await animation.animation_finished
 

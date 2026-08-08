@@ -4,7 +4,7 @@ func _ready():
     pass
 
 func _on_play_pressed() -> void:
-    StageManager.change_stage(StageManager.Intro)
+    StageManager.change_stage(StageManager.Profile)
 
 
 func _on_exit_pressed() -> void:

@@ -1,0 +1,47 @@
+[gd_scene load_steps=10 format=3 uid="uid://bnd4g4ejyjrrn"]
+
+[ext_resource type="Texture2D" uid="uid://g4h8t2g3p3dl" path="res://scene/objects/512x1024.png" id="1_ywdtc"]
+[ext_resource type="Script" uid="uid://d2lp54wa0ep0o" path="res://scene/objects/rocks/rock.gd" id="2_ss6mh"]
+[ext_resource type="PackedScene" uid="uid://dg8e005hj8y6k" path="res://scene/components/hurt_component.tscn" id="3_vi6dd"]
+[ext_resource type="PackedScene" uid="uid://bclpvokyn22rq" path="res://scene/components/damage_component.tscn" id="4_0rd3r"]
+[ext_resource type="PackedScene" uid="uid://bitwqob65vm4g" path="res://scene/components/save_data_component.tscn" id="5_51jeo"]
+[ext_resource type="Resource" uid="uid://dld6q80uu53hy" path="res://resources/rock_data_resources.tres" id="6_8fkj1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cnbme"]
+atlas = ExtResource("1_ywdtc")
+region = Rect2(400, 292, 104, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ywdtc"]
+size = Vector2(93.59999, 61.333344)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ss6mh"]
+size = Vector2(122.40002, 92.000015)
+
+[node name="Rock_2" type="Sprite2D"]
+position = Vector2(-0.5000001, -4.0000014)
+scale = Vector2(0.1388889, 0.13043478)
+texture = SubResource("AtlasTexture_cnbme")
+script = ExtResource("2_ss6mh")
+log_drop_amount = 10
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(2.6226044e-06, 1.1444092e-05)
+scale = Vector2(0.99999976, 0.9999999)
+shape = SubResource("RectangleShape2D_ywdtc")
+
+[node name="HurtComponent" parent="." instance=ExtResource("3_vi6dd")]
+tool = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtComponent"]
+position = Vector2(5.2452087e-06, 1.1444092e-05)
+scale = Vector2(0.99999976, 0.9999999)
+shape = SubResource("RectangleShape2D_ss6mh")
+debug_color = Color(0.78248864, 0.23241031, 0.902805, 0.41960785)
+
+[node name="DamageComponent" parent="." instance=ExtResource("4_0rd3r")]
+max_damage = 10
+
+[node name="SaveDataComponent" parent="." instance=ExtResource("5_51jeo")]
+save_data_resource = ExtResource("6_8fkj1")

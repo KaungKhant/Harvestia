@@ -1,10 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://buv337t37jnf"]
+[gd_scene load_steps=13 format=3 uid="uid://buv337t37jnf"]
 
 [ext_resource type="Shader" uid="uid://ogdy8gnqtapr" path="res://scene/objects/trees/tree_shake.gdshader" id="1_f4pa5"]
 [ext_resource type="Texture2D" uid="uid://d4l8egee36lli" path="res://assets/game/Objects/Basic_Grass_Biom_things.png" id="1_ikprh"]
 [ext_resource type="PackedScene" uid="uid://dg8e005hj8y6k" path="res://scene/components/hurt_component.tscn" id="2_8srlo"]
 [ext_resource type="Script" uid="uid://dhtfdvc3uo6yv" path="res://scene/objects/trees/small_tree.gd" id="2_ouqst"]
 [ext_resource type="PackedScene" uid="uid://bclpvokyn22rq" path="res://scene/components/damage_component.tscn" id="4_f4pa5"]
+[ext_resource type="PackedScene" uid="uid://bitwqob65vm4g" path="res://scene/components/save_data_component.tscn" id="6_6blbf"]
+[ext_resource type="Script" uid="uid://twe5li6o2yto" path="res://scene/objects/trees/tree_data_resource.gd" id="7_bf1of"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tq6rr"]
 resource_local_to_scene = true
@@ -21,6 +23,10 @@ radius = 5.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7oi7y"]
 size = Vector2(11, 21)
+
+[sub_resource type="Resource" id="Resource_ia7k3"]
+script = ExtResource("7_bf1of")
+metadata/_custom_type_script = "uid://twe5li6o2yto"
 
 [node name="SmallTree" type="Sprite2D"]
 material = SubResource("ShaderMaterial_tq6rr")
@@ -46,3 +52,6 @@ debug_color = Color(0.08849581, 0.62167996, 0.5319849, 0.41960785)
 
 [node name="DamageComponent" parent="." instance=ExtResource("4_f4pa5")]
 max_damage = 3
+
+[node name="SaveDataComponent" parent="." instance=ExtResource("6_6blbf")]
+save_data_resource = SubResource("Resource_ia7k3")

@@ -102,10 +102,9 @@ _data = {
 script = ExtResource("1_iijxs")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-visible = false
 modulate = Color(1, 1, 1, 0)
-offset_right = 808.0
-offset_bottom = 490.0
+offset_right = 966.0
+offset_bottom = 551.0
 
 [node name="anim" type="AnimationPlayer" parent="."]
 libraries = {
@@ -116,8 +115,8 @@ libraries = {
 visible = false
 offset_left = 4.0
 offset_top = 1.0
-offset_right = 797.0
-offset_bottom = 478.0
+offset_right = 960.0
+offset_bottom = 530.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_a7ubv")
 theme_override_font_sizes/font_size = 52
