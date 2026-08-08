@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://k87e5cy1lhnw"]
+[gd_scene load_steps=44 format=3 uid="uid://k87e5cy1lhnw"]
 
 [ext_resource type="Script" uid="uid://d31q6ohugpmxd" path="res://profilev_2.gd" id="1_nkxlt"]
 [ext_resource type="Texture2D" uid="uid://bjpl8phlgms4u" path="res://assets/game/Objects/20260803_005237_0000.png" id="2_64bs5"]
@@ -13,6 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://c15owp2ncekrp" path="res://assets/ui/create.png" id="12_d5q7y"]
 [ext_resource type="Texture2D" uid="uid://g3yu6chvuwnt" path="res://assets/ui/delete.png" id="13_jgu70"]
 [ext_resource type="FontFile" uid="uid://cjb8xuto7j5yw" path="res://assets/ui/fonts/Changa_One/ChangaOne-Regular.ttf" id="14_64bs5"]
+[ext_resource type="AudioStream" uid="uid://b2toje87semk3" path="res://audio/music/footstep09.ogg" id="14_tcujp"]
+[ext_resource type="AudioStream" uid="uid://do6co1k50gps7" path="res://audio/music/click2.ogg" id="15_e0ykc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r2xaa"]
 atlas = ExtResource("2_64bs5")
@@ -461,6 +463,14 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_wm55u")
 theme_override_styles/hover = SubResource("StyleBoxTexture_4fsc7")
 text = "No
 "
+
+[node name="ButtonClick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_tcujp")
+volume_db = 10.0
+
+[node name="TypingSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_e0ykc")
+volume_db = 10.0
 
 [connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="New_Game" to="." method="_on_play_pressed"]
