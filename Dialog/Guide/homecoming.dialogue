@@ -85,4 +85,18 @@ Uncle Rowan: The villagers are waiting for you.
 
 Uncle Rowan: Come with me.
 
+do GameDialogueManager.action_rowan_lead_player()
+
+=> END
+
+~ final_ending
+
+Uncle Rowan: Your grandfather would be proud.
+
+Uncle Rowan: You brought Harvestia back to life.
+
+Uncle Rowan: And now... this home belongs to you.
+
+do GameDialogueManager.action_rowan_lead_player()
+
 => END

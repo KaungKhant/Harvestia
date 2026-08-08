@@ -4,18 +4,18 @@
 [ext_resource type="Texture2D" uid="uid://8f7iwf72uuak" path="res://assets/game/questhouse2.png" id="2_sq7kr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_exnda"]
-size = Vector2(60, 61)
+size = Vector2(109.5, 116.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p42m7"]
-size = Vector2(17, 22.8125)
+size = Vector2(18.75, 26.703125)
 
 [node name="House" type="Node2D"]
 position = Vector2(51, -13)
 script = ExtResource("1_qkwg6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(213, 135)
-scale = Vector2(0.21487431, 0.18871947)
+position = Vector2(239.76877, 108.84374)
+scale = Vector2(0.31414115, 0.28216457)
 texture = ExtResource("2_sq7kr")
 region_enabled = true
 region_rect = Rect2(395, 26, 358, 410)
@@ -24,21 +24,21 @@ region_rect = Rect2(395, 26, 358, 410)
 position = Vector2(227, 114)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-14, 24.5)
+position = Vector2(12.25, -2.875)
 shape = SubResource("RectangleShape2D_exnda")
 
 [node name="EnteredArea" type="Area2D" parent="."]
-position = Vector2(225, 162)
+position = Vector2(252, 160)
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnteredArea"]
-position = Vector2(-1.5, -2.40625)
+position = Vector2(2, -20)
 shape = SubResource("RectangleShape2D_p42m7")
 debug_color = Color(0.87763214, 0.3236599, 0.29890978, 0.41960785)
 
 [node name="Marker2D" type="Marker2D" parent="EnteredArea"]
-position = Vector2(0, 16)
+position = Vector2(1, 15)
 
 [connection signal="body_entered" from="EnteredArea" to="." method="_on_entered_area_body_entered"]
 [connection signal="body_exited" from="EnteredArea" to="." method="_on_entered_area_body_exited"]

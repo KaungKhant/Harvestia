@@ -1,7 +1,9 @@
 extends Node
 
+signal ceremony_ready_for_dialogue
 
 var ceremony_started: bool = false
+var rowan_leading_started: bool = false
 
 
 func _ready() -> void:
@@ -10,22 +12,62 @@ func _ready() -> void:
 	GameDialogueManager.start_homecoming_ceremony.connect(
 		_on_homecoming_ceremony_started
 	)
+	
+	GameDialogueManager.rowan_lead_player.connect(
+		move_rowan_to_restored_house
+	)
 
 
 func _on_homecoming_ceremony_started() -> void:
 	print("================================")
-	print("HOMECOMING CEREMONY STARTED")
+	print("HOMECOMING CEREMONY REQUESTED")
 	print("================================")
 
 	ceremony_started = true
 
-	call_deferred("_find_gathering_points")
-	call_deferred("move_rowan_to_gathering_point")
-	call_deferred("move_elder_to_gathering_point")
-	call_deferred("move_shopkeeper_to_gathering_point")
-	call_deferred("move_ranger_to_gathering_point")
-	call_deferred("move_chicken_owner_to_gathering_point")
-	call_deferred("move_cow_owner_to_gathering_point")
+	# Wait for the current dialogue to completely finish.
+	print("Waiting for homecoming dialogue to end...")
+
+	print("================================")
+	print("HOMECOMING DIALOGUE ENDED")
+	print("STARTING CEREMONY SEQUENCE")
+	print("================================")
+
+	ceremony_started = false
+
+	call_deferred("_start_ceremony_sequence")
+
+func _start_ceremony_sequence() -> void:
+	print("================================")
+	print("STARTING CEREMONY SEQUENCE")
+	print("================================")
+
+	_find_gathering_points()
+
+	print("ROWAN MOVING...")
+	await move_rowan_to_gathering_point()
+
+	print("ELDER MOVING...")
+	await move_elder_to_gathering_point()
+
+	print("SHOPKEEPER MOVING...")
+	await move_shopkeeper_to_gathering_point()
+
+	print("RANGER MOVING...")
+	await move_ranger_to_gathering_point()
+
+	print("CHICKEN OWNER MOVING...")
+	await move_chicken_owner_to_gathering_point()
+
+	print("COW OWNER MOVING...")
+	await move_cow_owner_to_gathering_point()
+
+	print("================================")
+	print("ALL NPCs HAVE ARRIVED")
+	print("================================")
+	
+	ceremony_ready_for_dialogue.emit()
+	call_deferred("_start_ceremony_dialogue")
 
 
 func _find_gathering_points() -> void:
@@ -46,7 +88,6 @@ func _find_gathering_points() -> void:
 		return
 
 	print("HomecomingPoints found.")
-
 
 	var restored_house_point := points.get_node_or_null(
 		"RestoredHousePoint"
@@ -76,11 +117,9 @@ func _find_gathering_points() -> void:
 		"CowOwnerPoint"
 	)
 
-
 	print("--------------------------------")
 	print("CHECKING CEREMONY POINTS")
 	print("--------------------------------")
-
 
 	if restored_house_point == null:
 		print("ERROR: RestoredHousePoint NOT FOUND.")
@@ -90,7 +129,6 @@ func _find_gathering_points() -> void:
 			restored_house_point.global_position
 		)
 
-
 	if elder_point == null:
 		print("ERROR: ElderPoint NOT FOUND.")
 	else:
@@ -98,7 +136,6 @@ func _find_gathering_points() -> void:
 			"ElderPoint: ",
 			elder_point.global_position
 		)
-
 
 	if rowan_point == null:
 		print("ERROR: RowanPoint NOT FOUND.")
@@ -108,7 +145,6 @@ func _find_gathering_points() -> void:
 			rowan_point.global_position
 		)
 
-
 	if shopkeeper_point == null:
 		print("ERROR: ShopkeeperPoint NOT FOUND.")
 	else:
@@ -116,7 +152,6 @@ func _find_gathering_points() -> void:
 			"ShopkeeperPoint: ",
 			shopkeeper_point.global_position
 		)
-
 
 	if ranger_point == null:
 		print("ERROR: RangerPoint NOT FOUND.")
@@ -126,7 +161,6 @@ func _find_gathering_points() -> void:
 			ranger_point.global_position
 		)
 
-
 	if chicken_owner_point == null:
 		print("ERROR: ChickenOwnerPoint NOT FOUND.")
 	else:
@@ -134,7 +168,6 @@ func _find_gathering_points() -> void:
 			"ChickenOwnerPoint: ",
 			chicken_owner_point.global_position
 		)
-
 
 	if cow_owner_point == null:
 		print("ERROR: CowOwnerPoint NOT FOUND.")
@@ -144,11 +177,11 @@ func _find_gathering_points() -> void:
 			cow_owner_point.global_position
 		)
 
-
 	print("--------------------------------")
 	print("Gathering point check complete.")
 	print("================================")
-	
+
+
 func move_rowan_to_gathering_point() -> void:
 	var current_scene := get_tree().current_scene
 
@@ -156,7 +189,9 @@ func move_rowan_to_gathering_point() -> void:
 		print("ERROR: Current scene is NULL.")
 		return
 
-	var rowan := current_scene.get_node_or_null("EndingRowan")
+	var rowan := current_scene.get_node_or_null(
+		"EndingRowan"
+	)
 
 	if rowan == null:
 		print("ERROR: EndingRowan NOT FOUND.")
@@ -196,10 +231,10 @@ func move_rowan_to_gathering_point() -> void:
 		2.0
 	)
 
-	tween.finished.connect(
-		func() -> void:
-			print("Rowan reached RowanPoint.")
-	)
+	await tween.finished
+
+	print("Rowan reached RowanPoint.")
+
 
 func move_elder_to_gathering_point() -> void:
 	var current_scene := get_tree().current_scene
@@ -208,7 +243,9 @@ func move_elder_to_gathering_point() -> void:
 		print("ERROR: Current scene is NULL.")
 		return
 
-	var elder := current_scene.get_node_or_null("village_elder")
+	var elder := current_scene.get_node_or_null(
+		"village_elder"
+	)
 
 	if elder == null:
 		print("ERROR: village_elder NOT FOUND.")
@@ -248,10 +285,10 @@ func move_elder_to_gathering_point() -> void:
 		2.0
 	)
 
-	tween.finished.connect(
-		func() -> void:
-			print("Elder reached ElderPoint.")
-	)
+	await tween.finished
+
+	print("Elder reached ElderPoint.")
+
 
 func move_shopkeeper_to_gathering_point() -> void:
 	var current_scene := get_tree().current_scene
@@ -342,11 +379,11 @@ func move_shopkeeper_to_gathering_point() -> void:
 		1.5
 	)
 
-	tween.finished.connect(
-		func() -> void:
-			print("Shopkeeper reached ShopkeeperPoint.")
-	)
-	
+	await tween.finished
+
+	print("Shopkeeper reached ShopkeeperPoint.")
+
+
 func move_ranger_to_gathering_point() -> void:
 	var current_scene := get_tree().current_scene
 
@@ -354,25 +391,33 @@ func move_ranger_to_gathering_point() -> void:
 		print("ERROR: Current scene is NULL.")
 		return
 
-	var ranger := current_scene.get_node_or_null("forest_ranger")
+	var ranger := current_scene.get_node_or_null(
+		"forest_ranger"
+	)
 
 	if ranger == null:
 		print("ERROR: forest_ranger NOT FOUND.")
 		return
 
-	var points := current_scene.get_node_or_null("HomecomingPoints")
+	var points := current_scene.get_node_or_null(
+		"HomecomingPoints"
+	)
 
 	if points == null:
 		print("ERROR: HomecomingPoints NOT FOUND.")
 		return
 
-	var ranger_point := points.get_node_or_null("RangerPoint")
+	var ranger_point := points.get_node_or_null(
+		"RangerPoint"
+	)
 
 	if ranger_point == null:
 		print("ERROR: RangerPoint NOT FOUND.")
 		return
 
-	var path := points.get_node_or_null("RangerPath")
+	var path := points.get_node_or_null(
+		"RangerPath"
+	)
 
 	if path == null:
 		print("ERROR: RangerPath NOT FOUND.")
@@ -428,10 +473,10 @@ func move_ranger_to_gathering_point() -> void:
 		1.5
 	)
 
-	tween.finished.connect(
-		func() -> void:
-			print("Ranger reached RangerPoint.")
-	)
+	await tween.finished
+
+	print("Ranger reached RangerPoint.")
+
 
 func move_chicken_owner_to_gathering_point() -> void:
 	var current_scene := get_tree().current_scene
@@ -522,10 +567,10 @@ func move_chicken_owner_to_gathering_point() -> void:
 		1.5
 	)
 
-	tween.finished.connect(
-		func() -> void:
-			print("Chicken Owner reached ChickenOwnerPoint.")
-	)
+	await tween.finished
+
+	print("Chicken Owner reached ChickenOwnerPoint.")
+
 
 func move_cow_owner_to_gathering_point() -> void:
 	var current_scene := get_tree().current_scene
@@ -533,11 +578,6 @@ func move_cow_owner_to_gathering_point() -> void:
 	if current_scene == null:
 		print("ERROR: Current scene is NULL.")
 		return
-
-	print("================================")
-	print("SEARCHING FOR COW BARN OWNER")
-	print("Current scene:", current_scene.name)
-	print("================================")
 
 	var cow_owner := current_scene.find_child(
 		"cow_barn_owner",
@@ -547,24 +587,7 @@ func move_cow_owner_to_gathering_point() -> void:
 
 	if cow_owner == null:
 		print("ERROR: cow_barn_owner NOT FOUND.")
-		print("Searching all nodes for names containing 'cow':")
-
-		var all_nodes := current_scene.find_children("*", "", true, false)
-
-		for node in all_nodes:
-			if "cow" in node.name.to_lower():
-				print(
-					"FOUND COW-RELATED NODE:",
-					node.name,
-					"| Type:",
-					node.get_class()
-				)
-
 		return
-
-	print("SUCCESS!")
-	print("Cow Barn Owner found:", cow_owner.name)
-	print("Cow Barn Owner position:", cow_owner.global_position)
 
 	var points := current_scene.get_node_or_null(
 		"HomecomingPoints"
@@ -640,7 +663,203 @@ func move_cow_owner_to_gathering_point() -> void:
 		1.5
 	)
 
-	tween.finished.connect(
-		func() -> void:
-			print("Cow Owner reached CowOwnerPoint.")
+	await tween.finished
+
+	print("Cow Owner reached CowOwnerPoint.")
+
+func _start_ceremony_dialogue() -> void:
+	print("================================")
+	print("STARTING HOMECOMING CEREMONY DIALOGUE")
+	print("================================")
+
+	var dialogue_resource = load(
+		"res://Dialog/Guide/homecoming.dialogue"
+	)
+
+	if dialogue_resource == null:
+		print("ERROR: homecoming.dialogue NOT FOUND.")
+		return
+
+	DialogueManager.show_dialogue_balloon(
+		dialogue_resource,
+		"final_ending"
+	)
+
+func move_rowan_to_restored_house() -> void:
+	if rowan_leading_started:
+		print("Rowan leading sequence already completed. Ignoring duplicate call.")
+		return
+
+	rowan_leading_started = true
+	
+	var current_scene := get_tree().current_scene
+
+	if current_scene == null:
+		print("ERROR: Current scene is NULL.")
+		return
+
+	var rowan := current_scene.get_node_or_null("EndingRowan")
+
+	if rowan == null:
+		print("ERROR: EndingRowan NOT FOUND.")
+		return
+
+	var points := current_scene.get_node_or_null("HomecomingPoints")
+
+	if points == null:
+		print("ERROR: HomecomingPoints NOT FOUND.")
+		return
+
+	var restored_house_point := points.get_node_or_null(
+		"RestoredHousePoint"
+	)
+
+	if restored_house_point == null:
+		print("ERROR: RestoredHousePoint NOT FOUND.")
+		return
+
+	print("================================")
+	print("ROWAN LEADING PLAYER TO RESTORED HOUSE")
+	print("================================")
+	print("Rowan starting position:", rowan.global_position)
+	print("Restored house point:", restored_house_point.global_position)
+
+	var tween := create_tween()
+
+	tween.set_trans(Tween.TRANS_SINE)
+	tween.set_ease(Tween.EASE_IN_OUT)
+
+	tween.tween_property(
+		rowan,
+		"global_position",
+		restored_house_point.global_position,
+		2.0
+	)
+
+	await tween.finished
+
+	print("================================")
+	print("ROWAN REACHED RESTORED HOUSE")
+	print("================================")
+
+	await move_player_to_house()
+
+	print("================================")
+	print("PLAYER REACHED RESTORED HOUSE")
+	print("================================")
+	
+	# Restore the house now that Rowan and the player have arrived.
+	restore_home()
+
+
+	await get_tree().create_timer(0.5).timeout
+
+	start_final_homecoming_dialogue()
+	
+func move_player_to_house() -> void:
+	var current_scene := get_tree().current_scene
+
+	if current_scene == null:
+		print("ERROR: Current scene is NULL.")
+		return
+
+	var player := current_scene.get_node_or_null("Player")
+
+	if player == null:
+		print("ERROR: Player NOT FOUND.")
+		return
+
+	var points := current_scene.get_node_or_null(
+		"HomecomingPoints"
+	)
+
+	if points == null:
+		print("ERROR: HomecomingPoints NOT FOUND.")
+		return
+
+	var player_point := points.get_node_or_null(
+		"PlayerHousePoint"
+	)
+
+	if player_point == null:
+		print("ERROR: PlayerHousePoint NOT FOUND.")
+		return
+
+	print("================================")
+	print("PLAYER STARTING CEREMONY MOVE")
+	print("================================")
+	print("Player starting position:", player.global_position)
+	print("Player destination:", player_point.global_position)
+
+	var tween := create_tween()
+
+	tween.set_trans(Tween.TRANS_SINE)
+	tween.set_ease(Tween.EASE_IN_OUT)
+
+	tween.tween_property(
+		player,
+		"global_position",
+		player_point.global_position,
+		2.0
+	)
+
+	await tween.finished
+
+	print("Player reached PlayerHousePoint.")
+	
+func restore_home() -> void:
+	var current_scene := get_tree().current_scene
+
+	if current_scene == null:
+		print("ERROR: Current scene is NULL.")
+		return
+
+	var damaged_house := current_scene.find_child("QuestHome", true, false)
+	var repaired_house := current_scene.find_child("QuestHomeRepaired", true, false)
+	var house := current_scene.find_child("House", true, false)
+
+	if damaged_house == null:
+		print("ERROR: QuestHome NOT FOUND.")
+		return
+
+	if repaired_house == null:
+		print("ERROR: QuestHomeRepaired NOT FOUND.")
+		return
+
+	if house == null:
+		print("ERROR: House NOT FOUND.")
+		return
+
+	print("================================")
+	print("RESTORING GRANDFATHER'S HOUSE")
+	print("================================")
+
+	# Remove damaged visual
+	damaged_house.hide()
+
+	# We don't need the duplicate repaired TileMap visual
+	repaired_house.hide()
+
+	# Show the actual enterable repaired House
+	house.show()
+
+	print("House restoration complete.")
+	print("================================")
+
+func start_final_homecoming_dialogue() -> void:
+	print("================================")
+	print("STARTING FINAL HOMECOMING DIALOGUE")
+	print("================================")
+
+	var dialogue_resource = load(
+		"res://Dialog/Guide/homecoming.dialogue"
+	)
+
+	if dialogue_resource == null:
+		print("ERROR: homecoming.dialogue NOT FOUND.")
+		return
+
+	DialogueManager.show_dialogue_balloon(
+		dialogue_resource,
+		"completed"
 	)

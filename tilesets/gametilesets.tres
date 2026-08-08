@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=110 format=3 uid="uid://dhheyesq1lvuw"]
+[gd_resource type="TileSet" load_steps=112 format=3 uid="uid://dhheyesq1lvuw"]
 
 [ext_resource type="Texture2D" uid="uid://dibl8w1txfm4" path="res://assets/game/Tilesets/Water.png" id="1_vkkoh"]
 [ext_resource type="Texture2D" uid="uid://ckq8gani2t1q2" path="res://assets/game/Tilesets/Grass.png" id="2_u10in"]
@@ -54,6 +54,7 @@
 [ext_resource type="Texture2D" uid="uid://e27opjcs0h4u" path="res://assets/game/Objects/streetlamp&beachchair.png" id="39_ekrp4"]
 [ext_resource type="Texture2D" uid="uid://dh0ujgc1ktoew" path="res://assets/game/Objects/fences&flower.png" id="40_b7nb2"]
 [ext_resource type="Texture2D" uid="uid://ci08tme6aeg2a" path="res://assets/game/Objects/deco.png" id="42_b7nb2"]
+[ext_resource type="Texture2D" uid="uid://8f7iwf72uuak" path="res://assets/game/questhouse2.png" id="43_blcnq"]
 [ext_resource type="Texture2D" uid="uid://csetd0gl42ldu" path="res://assets/game/Objects/townhall1.png" id="43_gyccj"]
 [ext_resource type="Texture2D" uid="uid://cb30hbps0q4r5" path="res://assets/game/Objects/school.png" id="44_blcnq"]
 [ext_resource type="Texture2D" uid="uid://dbi3tu4xfq1ra" path="res://assets/game/Objects/lighthouse.png" id="46_61j7u"]
@@ -2232,6 +2233,98 @@ texture_region_size = Vector2i(128, 128)
 3:4/0/y_sort_origin = -25
 3:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-52.430008, -38.140038, -20.669952, -37.580048, -19.669952, -23.080048, -54.930008, -23.62004)
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qsh7f"]
+texture = ExtResource("43_blcnq")
+texture_region_size = Vector2i(64, 64)
+6:6/0 = 0
+7:6/0 = 0
+9:6/0 = 0
+8:6/0 = 0
+11:6/0 = 0
+10:6/0 = 0
+11:5/0 = 0
+10:5/0 = 0
+9:5/0 = 0
+8:5/0 = 0
+7:5/0 = 0
+6:5/0 = 0
+10:4/0 = 0
+11:4/0 = 0
+9:4/0 = 0
+8:4/0 = 0
+7:4/0 = 0
+6:4/0 = 0
+6:3/0 = 0
+6:2/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+8:1/0 = 0
+9:1/0 = 0
+10:1/0 = 0
+11:1/0 = 0
+11:2/0 = 0
+10:2/0 = 0
+10:3/0 = 0
+11:3/0 = 0
+9:3/0 = 0
+8:3/0 = 0
+8:2/0 = 0
+9:2/0 = 0
+7:3/0 = 0
+7:2/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+9:0/0 = 0
+10:0/0 = 0
+11:0/0 = 0
+0:0/0 = 0
+0:1/0 = 0
+0:2/0 = 0
+0:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+3:6/0 = 0
+1:3/0 = 0
+1:2/0 = 0
+1:0/0 = 0
+1:1/0 = 0
+2:0/0 = 0
+2:1/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+3:2/0 = 0
+3:1/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+4:1/0 = 0
+4:2/0 = 0
+4:4/0 = 0
+4:5/0 = 0
+4:6/0 = 0
+5:5/0 = 0
+5:7/0 = 0
+5:6/0 = 0
+5:4/0 = 0
+5:3/0 = 0
+5:0/0 = 0
+5:1/0 = 0
+5:2/0 = 0
+2:6/0 = 0
+1:6/0 = 0
+0:6/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+4:7/0 = 0
+3:7/0 = 0
+2:7/0 = 0
+1:7/0 = 0
+0:7/0 = 0
+3:4/0 = 0
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g32ri"]
 texture = ExtResource("43_gyccj")
 texture_region_size = Vector2i(410, 448)
@@ -2639,3 +2732,4 @@ sources/48 = SubResource("TileSetAtlasSource_g32ri")
 sources/49 = SubResource("TileSetAtlasSource_n1k1k")
 sources/50 = SubResource("TileSetAtlasSource_r3gij")
 sources/51 = SubResource("TileSetAtlasSource_w12nv")
+sources/47 = SubResource("TileSetAtlasSource_qsh7f")

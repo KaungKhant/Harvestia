@@ -755,7 +755,13 @@ tile_set = ExtResource("5_fb0rr")
 
 [node name="QuestHome" type="TileMapLayer" parent="tilemap"]
 scale = Vector2(0.3, 0.3)
-tile_map_data = PackedByteArray("AAAaABMAIAAAAAAAAAAQAA8AIAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAaABMAIAAAAAAAAAAQAA8ALwACAAQAAAAOAAsALwAAAAAAAAAOAAwALwAAAAEAAAAOAA0ALwAAAAIAAAAOAA4ALwAAAAMAAAAOAA8ALwAAAAQAAAAOABAALwAAAAUAAAAOABEALwAAAAYAAAAPAAsALwABAAAAAAAPAAwALwABAAEAAAAPAA0ALwABAAIAAAAPAA4ALwABAAMAAAAPAA8ALwABAAQAAAAPABAALwABAAUAAAAPABEALwABAAYAAAAQAAsALwACAAAAAAAQAAwALwACAAEAAAAQAA4ALwACAAMAAAAQABAALwACAAUAAAAQABEALwACAAYAAAARAAsALwADAAAAAAARAAwALwADAAEAAAARAA0ALwADAAIAAAARAA4ALwADAAMAAAARAA8ALwADAAQAAAARABAALwADAAUAAAARABEALwADAAYAAAASAAsALwAEAAAAAAASAAwALwAEAAEAAAASAA0ALwAEAAIAAAASAA8ALwAEAAQAAAASABAALwAEAAUAAAASABEALwAEAAYAAAATAAsALwAFAAAAAAATAAwALwAFAAEAAAATAA0ALwAFAAIAAAATAA4ALwAFAAMAAAATAA8ALwAFAAQAAAATABAALwAFAAUAAAATABEALwAFAAYAAAA=")
+tile_set = ExtResource("5_fb0rr")
+
+[node name="QuestHomeRepaired" type="TileMapLayer" parent="tilemap"]
+visible = false
+scale = Vector2(0.3, 0.3)
+tile_map_data = PackedByteArray("AAAaABMAIAAAAAAAAAAOAAsALwAGAAAAAAAOAAwALwAGAAEAAAAOAA0ALwAGAAIAAAAOAA4ALwAGAAMAAAAOAA8ALwAGAAQAAAAOABAALwAGAAUAAAAPAAsALwAHAAAAAAAPAAwALwAHAAEAAAAPAA0ALwAHAAIAAAAPAA4ALwAHAAMAAAAPAA8ALwAHAAQAAAAPABAALwAHAAUAAAAQAAsALwAIAAAAAAAQAAwALwAIAAEAAAAQAA0ALwAIAAIAAAAQAA4ALwAIAAMAAAAQAA8ALwAIAAQAAAAQABAALwAIAAUAAAARAAsALwAJAAAAAAARAAwALwAJAAEAAAARAA0ALwAJAAIAAAARAA4ALwAJAAMAAAARAA8ALwAJAAQAAAARABAALwAJAAUAAAASAAsALwAKAAAAAAASAAwALwAKAAEAAAASAA0ALwAKAAIAAAASAA4ALwAKAAMAAAASAA8ALwAKAAQAAAASABAALwAKAAUAAAATAAsALwALAAAAAAATAAwALwALAAEAAAATAA0ALwALAAIAAAATAA4ALwALAAMAAAATAA8ALwALAAQAAAATABAALwALAAUAAAAOABEALwAGAAYAAAAPABEALwAHAAYAAAAQABEALwAIAAYAAAARABEALwAJAAYAAAASABEALwAKAAYAAAATABEALwALAAYAAAA=")
 tile_set = ExtResource("5_fb0rr")
 
 [node name="smallflower" type="TileMapLayer" parent="tilemap"]
@@ -769,7 +775,8 @@ tile_map_data = PackedByteArray("AAAYAA0AAAAAAAMAAAArABEAAAACAAMAAAAqABEAAAABAAA
 tile_set = SubResource("TileSet_e48dc")
 
 [node name="House" parent="tilemap" instance=ExtResource("24_23iyd")]
-position = Vector2(-91, 367)
+visible = false
+position = Vector2(86, 171)
 inside_scene = ExtResource("25_y6i5f")
 
 [node name="Player" parent="." instance=ExtResource("19_p2qjq")]
@@ -925,16 +932,16 @@ script = ExtResource("56_nriah")
 position = Vector2(0, 8)
 
 [node name="RestoredHousePoint" type="Marker2D" parent="HomecomingPoints"]
-position = Vector2(313, 299)
+position = Vector2(326, 331)
 
 [node name="ElderPoint" type="Marker2D" parent="HomecomingPoints"]
-position = Vector2(347, 335)
+position = Vector2(353, 335)
 
 [node name="RowanPoint" type="Marker2D" parent="HomecomingPoints"]
-position = Vector2(320, 340)
+position = Vector2(319, 358)
 
 [node name="ShopkeeperPoint" type="Marker2D" parent="HomecomingPoints"]
-position = Vector2(366, 319)
+position = Vector2(382, 327)
 
 [node name="RangerPoint" type="Marker2D" parent="HomecomingPoints"]
 position = Vector2(250, 344)
@@ -944,6 +951,9 @@ position = Vector2(386, 372)
 
 [node name="CowOwnerPoint" type="Marker2D" parent="HomecomingPoints"]
 position = Vector2(264, 381)
+
+[node name="PlayerHousePoint" type="Marker2D" parent="HomecomingPoints"]
+position = Vector2(334, 341)
 
 [node name="ShopkeeperPath" type="Node2D" parent="HomecomingPoints"]
 position = Vector2(140, 231)
