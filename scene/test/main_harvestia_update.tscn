@@ -899,4 +899,8 @@ script = ExtResource("53_obarw")
 position = Vector2(404, 367)
 script = ExtResource("56_yotf7")
 
+[node name="EndingRowanSpawn" type="Marker2D" parent="."]
+position = Vector2(297, 383.00003)
+scale = Vector2(0.3, 0.3)
+
 [connection signal="value_changed" from="CanvasLayer/HSlider" to="CanvasLayer" method="_on_h_slider_value_changed"]

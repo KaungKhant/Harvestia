@@ -61,7 +61,14 @@ func _unhandled_input(event: InputEvent) -> void:
 
 		if PlayerProgressManager.talked_to_village_elder:
 			QuestManager.start_quest("last_pumpkin")
-		
+	
+	# Last Pumpkin -> Homecoming
+	elif QuestManager.is_quest_completed("last_pumpkin") \
+	and !QuestManager.is_quest_completed("homecoming") \
+	and (QuestManager.current_quest == null \
+	or QuestManager.current_quest.quest_id != "homecoming"):
+
+		QuestManager.start_quest("homecoming")	
 
 	var balloon: BaseGameDialogueBalloon = balloon_scene.instantiate()
 	get_tree().current_scene.add_child(balloon)

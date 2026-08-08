@@ -20,21 +20,28 @@ var gold_earned: int = 0
 
 func _ready() -> void:
 	InventoryManager.inventory_changed.connect(sync_progress_with_inventory)
+	PlayerProgressManager.gold_changed.connect(_on_gold_changed)
+
+func _on_gold_changed(_gold: int) -> void:
+	sync_progress_with_inventory()
 
 func start_quest_data(quest: QuestData) -> void:
-	
 	print("======================")
 	print("Starting Quest:", quest.quest_id)
+
 	current_quest = quest
 	current_state = QuestState.IN_PROGRESS
 	current_progress = 0
 	gold_earned = 0
-	
+
 	if quest.target_item.to_lower() == "gold":
 		quest_start_gold = PlayerProgressManager.gold
 
 	quest_started.emit(quest)
 
+	# Immediately check Homecoming progress.
+	if quest.quest_id == "homecoming":
+		sync_progress_with_inventory()
 
 func add_progress(item_name: String) -> void:
 	if current_quest == null:
@@ -104,17 +111,26 @@ func try_complete_quest() -> bool:
 		return true
 
 	# Inventory check
-	# Inventory check (skip for gold quests)
-	if current_quest.target_item.to_lower() != "gold":
-		if !InventoryManager.has_item(current_quest.target_item, current_quest.target_amount):
+# Gold and Homecoming quests use special completion logic.
+	if current_quest.target_item.to_lower() != "gold" \
+	and current_quest.quest_id != "homecoming":
+
+		if !InventoryManager.has_item(
+			current_quest.target_item,
+			current_quest.target_amount
+		):
 			return true
 
 	# Remove items only if this quest consumes them
-	if current_quest.consume_items:
+	# Remove items only if this quest consumes them.
+# Homecoming removes its resources through HomecomingManager.
+	if current_quest.consume_items \
+	and current_quest.quest_id != "homecoming":
+
 		InventoryManager.remove_item_stack(
-		current_quest.target_item,
-		current_quest.target_amount
-	)
+			current_quest.target_item,
+			current_quest.target_amount
+		)
 	#print("Removing", current_quest.target_amount, current_quest.target_item)
 	#print(InventoryManager.inventory)
 	#print("After removal:")
@@ -180,17 +196,24 @@ func sync_progress_with_inventory() -> void:
 
 	if current_state != QuestState.IN_PROGRESS and current_state != QuestState.READY_TO_TURN_IN:
 		return
-	
-		# Story quests are completed by NPC interaction, not inventory.
+
 	if current_quest.target_amount <= 0:
 		return
 
 	var target_item := current_quest.target_item.to_lower()
 	var current_amount: int
 
+	# Homecoming quest
+	if current_quest.quest_id == "homecoming":
+		if HomecomingManager.is_complete():
+			current_amount = current_quest.target_amount
+		else:
+			current_amount = 0
+
 	# Gold quest
-	if target_item == "gold":
+	elif target_item == "gold":
 		current_amount = gold_earned
+
 	# Normal inventory quests
 	else:
 		current_amount = InventoryManager.inventory.get(target_item, 0)
@@ -201,7 +224,9 @@ func sync_progress_with_inventory() -> void:
 	if current_progress >= current_quest.target_amount:
 		if current_state != QuestState.READY_TO_TURN_IN:
 			current_state = QuestState.READY_TO_TURN_IN
-			NotificationManager.show_objective("Return to " + current_quest.quest_giver + ".")
+			NotificationManager.show_objective(
+				"Return to " + current_quest.quest_giver + "."
+			)
 	else:
 		if current_state == QuestState.READY_TO_TURN_IN:
 			current_state = QuestState.IN_PROGRESS
