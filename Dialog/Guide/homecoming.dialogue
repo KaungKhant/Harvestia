@@ -1,0 +1,88 @@
+~ progress
+
+Uncle Rowan: You've come farther than any of us ever imagined.
+
+Uncle Rowan: When you first returned to Harvestia...
+
+Uncle Rowan: The fields were empty.
+
+Uncle Rowan: The forests were overgrown.
+
+Uncle Rowan: The barns stood silent.
+
+Uncle Rowan: But you never gave up.
+
+Uncle Rowan: Because of you...
+
+Uncle Rowan: The crops are growing again.
+
+Uncle Rowan: The chickens have found a new caretaker.
+
+Uncle Rowan: The cows once again fill the barns with life.
+
+Uncle Rowan: Harvestia is alive again.
+
+Uncle Rowan: But...
+
+Uncle Rowan: There is still one promise we have yet to fulfill.
+
+Uncle Rowan: Your grandfather always dreamed of seeing his home filled with laughter again.
+
+Uncle Rowan: The villagers have decided to rebuild it.
+
+Uncle Rowan: We only need one final contribution from you.
+
+Uncle Rowan: Bring me everything Harvestia can now provide.
+
+Uncle Rowan: Crops, animal products, building materials...
+
+Uncle Rowan: Together, we'll build your home.
+
+=> END
+
+
+~ turn_in
+
+Uncle Rowan: Welcome back.
+
+Uncle Rowan: Let's see if you've gathered everything we need.
+
+do GameDialogueManager.action_open_homecoming_board()
+
+=> END
+
+
+~ after_donation
+
+Uncle Rowan: ...
+
+Uncle Rowan: This is more than enough.
+
+Uncle Rowan: Every piece of wood...
+
+Uncle Rowan: Every stone...
+
+Uncle Rowan: Every crop...
+
+Uncle Rowan: They all carry the hope you've brought back to Harvestia.
+
+Uncle Rowan: Leave the rest to us.
+
+Uncle Rowan: We'll make sure your grandfather's home stands proudly once again.
+
+do QuestManager.try_complete_quest()
+
+do GameDialogueManager.action_start_homecoming_ceremony()
+
+=> END
+
+
+~ completed
+
+Uncle Rowan: Everything is ready.
+
+Uncle Rowan: The villagers are waiting for you.
+
+Uncle Rowan: Come with me.
+
+=> END

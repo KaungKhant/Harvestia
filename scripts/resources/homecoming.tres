@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="QuestData" load_steps=3 format=3 uid="uid://df60ha2ckuxj3"]
+
+[ext_resource type="Resource" uid="uid://bvsu41hqsifo3" path="res://Dialog/Guide/homecoming.dialogue" id="1_2if3e"]
+[ext_resource type="Script" uid="uid://6n4u527vyey0" path="res://scripts/resources/quest_data.gd" id="2_d1hfr"]
+
+[resource]
+script = ExtResource("2_d1hfr")
+quest_id = "homecoming"
+quest_name = "Homecoming"
+description = "Gather everything needed to rebuild your grandfather's home"
+target_item = "homecoming"
+quest_icon = "house"
+quest_giver = "Uncle Rowan"
+target_amount = 1
+reward_exp = 200
+dialogue_file = ExtResource("1_2if3e")
+metadata/_custom_type_script = "uid://6n4u527vyey0"

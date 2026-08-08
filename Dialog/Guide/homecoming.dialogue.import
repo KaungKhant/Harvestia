@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://bvsu41hqsifo3"
+path="res://.godot/imported/homecoming.dialogue-016852dff031d810c9f7847ca40f66a8.tres"
+
+[deps]
+
+source_file="res://Dialog/Guide/homecoming.dialogue"
+dest_files=["res://.godot/imported/homecoming.dialogue-016852dff031d810c9f7847ca40f66a8.tres"]
+
+[params]
+
+defaults=true

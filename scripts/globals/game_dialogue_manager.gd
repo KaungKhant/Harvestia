@@ -7,6 +7,8 @@ signal give_axe
 signal give_pickaxe
 signal transfer_chicken_coop
 signal transfer_cow_barn
+signal open_homecoming_board
+signal start_homecoming_ceremony
 
 func action_teach_farming() -> void:
 	teach_farming.emit()
@@ -31,3 +33,10 @@ func action_transfer_cow_barn() -> void:
 	
 func action_finish_grandfather_story() -> void:
 	PlayerProgressManager.talked_to_village_elder = true
+
+func action_open_homecoming_board() -> void:
+	open_homecoming_board.emit()
+
+
+func action_start_homecoming_ceremony() -> void:
+	start_homecoming_ceremony.emit()
