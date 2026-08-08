@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=4 uid="uid://deythsf5bwj04"]
+[gd_scene load_steps=87 format=4 uid="uid://deythsf5bwj04"]
 
 [ext_resource type="PackedScene" uid="uid://cugdxyqvq2u2o" path="res://scene/components/test_scene_save_data_manager_component.tscn" id="1_l8e72"]
 [ext_resource type="Script" uid="uid://bm00b7nmisjbw" path="res://scripts/main_harvestia_update.gd" id="1_y6i5f"]
@@ -49,7 +49,11 @@
 [ext_resource type="PackedScene" uid="uid://6ulr3yrb52fj" path="res://scene/characters/guide/cow_owner.tscn" id="43_ulqcw"]
 [ext_resource type="PackedScene" uid="uid://ckkkyaue6gdym" path="res://scene/characters/guide/village_elder.tscn" id="44_ehgm4"]
 [ext_resource type="Script" uid="uid://c72wdkiu116jo" path="res://scene/characters/guide/ChickenCoopOwner.gd" id="48_3ieud"]
+[ext_resource type="Script" uid="uid://ygbjudqer8pa" path="res://scene/test/bgm_player.gd" id="52_daxc6"]
 [ext_resource type="Script" uid="uid://bcvtj3baof658" path="res://scene/characters/guide/CowBarnOwner.gd" id="53_obarw"]
+[ext_resource type="AudioStream" uid="uid://dwylppjqx7h4k" path="res://audio/music/morning.mp3" id="53_yotf7"]
+[ext_resource type="AudioStream" uid="uid://lidy4at5j5h3" path="res://audio/music/day.mp3" id="54_nriah"]
+[ext_resource type="AudioStream" uid="uid://cuhd04tvliemn" path="res://audio/music/night.mp3" id="55_6n2xh"]
 [ext_resource type="Script" uid="uid://bcg77nai3hdm5" path="res://scene/characters/guide/village_elder.gd" id="56_yotf7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7hbbt"]
@@ -902,5 +906,13 @@ script = ExtResource("56_yotf7")
 [node name="EndingRowanSpawn" type="Marker2D" parent="."]
 position = Vector2(297, 383.00003)
 scale = Vector2(0.3, 0.3)
+
+[node name="BGMPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = 6.0
+bus = &"Music"
+script = ExtResource("52_daxc6")
+morning_bgm = ExtResource("53_yotf7")
+day_bgm = ExtResource("54_nriah")
+night_bgm = ExtResource("55_6n2xh")
 
 [connection signal="value_changed" from="CanvasLayer/HSlider" to="CanvasLayer" method="_on_h_slider_value_changed"]
