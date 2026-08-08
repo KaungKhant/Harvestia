@@ -26,7 +26,7 @@ size = Vector2(6, 4)
 [sub_resource type="CircleShape2D" id="CircleShape2D_svabx"]
 radius = 13.0
 
-[node name="guide" type="Node2D"]
+[node name="EndingRowan" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_xuvki")
 
