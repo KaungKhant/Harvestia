@@ -45,7 +45,7 @@ Shopkeeper: Welcome! Are you looking to buy some fresh seeds, or are you looking
 ~ buy_menu
 Shopkeeper: What seeds do you need?
 
-- Corn Seeds (25 Gold each)
+- - Corn Seeds (25 Gold each)
 	if SeedUnlockManager.is_seed_unlocked("corn_seeds"):
 		set InventoryManager.current_shop.temp_item_type = "corn_seeds"
 		set InventoryManager.current_shop.temp_price = 25
@@ -122,7 +122,7 @@ Shopkeeper: How many would you like? (Current: {{InventoryManager.current_shop.t
 Shopkeeper: I'm buying all kinds of farm goods today. What are you looking to sell?
 - Sell Raw Resources (Log / Stone)
 	=> sell_resources
-- Sell Harvested Crops (Corn / Tomato)
+- Sell Harvested Crops
 	=> sell_crops
 - Sell Animal Products (Milk / Egg)
 	=> sell_animals
@@ -154,6 +154,16 @@ Shopkeeper: Fresh out of the fields, eh? Let me see what you've got.
 - Tomato (50 Gold each)
 	set InventoryManager.current_shop.temp_item_type = "tomato"
 	set InventoryManager.current_shop.temp_price = 50
+	set InventoryManager.current_shop.temp_prev_menu = "sell_crops"
+	=> sell_qty_select
+- Carrot (60 Gold each)
+	set InventoryManager.current_shop.temp_item_type = "carrot"
+	set InventoryManager.current_shop.temp_price = 60
+	set InventoryManager.current_shop.temp_prev_menu = "sell_crops"
+	=> sell_qty_select
+- Pumpkin (70 Gold each)
+	set InventoryManager.current_shop.temp_item_type = "pumpkin"
+	set InventoryManager.current_shop.temp_price = 70
 	set InventoryManager.current_shop.temp_prev_menu = "sell_crops"
 	=> sell_qty_select
 - Go Back
