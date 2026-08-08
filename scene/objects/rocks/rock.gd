@@ -1,6 +1,7 @@
+class_name Rock
 extends Sprite2D
 
-# Allows you to change the log amount for each tree size in the Inspector
+# Allows you to change the log/stone amount for each rock size in the Inspector
 @export var log_drop_amount: int = 1
 
 @onready var hurt_component: HurtComponent = $HurtComponent
@@ -20,7 +21,7 @@ func _ready() -> void:
 
 
 func on_hurt(hit_damage: int) -> void:
-	# Ignore hits if the tree is already chopped down
+	# Ignore hits if the rock is already broken down
 	if is_chopped:
 		return
 	
@@ -39,10 +40,17 @@ func on_max_damaged_reached() -> void:
 		return
 	is_chopped = true
 
-	# Record the day the tree was chopped down
+	# Record the day the rock was broken down
 	chopped_on_day = DayAndNightCycleManager.current_day
 
 	print("max damaged reached")
+	
+	# Clear player's active rock prompt if they were targeting this rock
+	var world_node = get_tree().current_scene
+	var player = world_node.get_node_or_null("Player")
+	if player and player.active_tree == self:
+		player.active_tree = null
+
 	hide()
 	
 	# Safely disable all components and collisions
@@ -53,7 +61,7 @@ func on_max_damaged_reached() -> void:
 
 
 func disable_tree_physics() -> void:
-	# 1. Turn off the HurtComponent areas so it stops detecting axe swings
+	# 1. Turn off the HurtComponent areas so it stops detecting tool swings
 	hurt_component.set_deferred("monitoring", false)
 	hurt_component.set_deferred("monitorable", false)
 	
@@ -62,7 +70,7 @@ func disable_tree_physics() -> void:
 	if hurt_shape:
 		hurt_shape.set_deferred("disabled", true)
 
-	# 3. Disable the solid trunk collision so the player can walk through it
+	# 3. Disable the solid collision so the player can walk through it
 	var trunk_collision = get_node_or_null("StaticBody2D/CollisionShape2D")
 	if trunk_collision:
 		trunk_collision.set_deferred("disabled", true)
@@ -78,7 +86,7 @@ func enable_tree_physics() -> void:
 	if hurt_shape:
 		hurt_shape.set_deferred("disabled", false)
 
-	# Re-enable solid trunk collision so the player can collide with it again
+	# Re-enable solid collision so the player can collide with it again
 	var trunk_collision = get_node_or_null("StaticBody2D/CollisionShape2D")
 	if trunk_collision:
 		trunk_collision.set_deferred("disabled", false)
@@ -100,11 +108,11 @@ func add_log_scene() -> void:
 
 
 func on_time_tick_day(day: int) -> void:
-	# Only check if the tree is currently chopped down
+	# Only check if the rock is currently broken down
 	if not is_chopped:
 		return
 	
-	# Check if 5 days have passed since it was chopped
+	# Check if respawn days have passed since it was broken
 	if day >= chopped_on_day + RESPAWN_DAYS:
 		respawn_tree()
 
@@ -117,9 +125,9 @@ func respawn_tree() -> void:
 	if damage_component:
 		damage_component.reset_damage()
 	
-	# Show the tree sprite again
+	# Show the rock sprite again
 	show()
 	
-	# Turn collisions and axe detection back on
+	# Turn collisions and detection back on
 	enable_tree_physics()
 	print("Rock respawned!")

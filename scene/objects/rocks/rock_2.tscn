@@ -1,0 +1,43 @@
+[gd_scene load_steps=10 format=3 uid="uid://dudof8tuwknwg"]
+
+[ext_resource type="Texture2D" uid="uid://g4h8t2g3p3dl" path="res://scene/objects/512x1024.png" id="1_gl4lq"]
+[ext_resource type="Script" uid="uid://d2lp54wa0ep0o" path="res://scene/objects/rocks/rock.gd" id="2_cnbme"]
+[ext_resource type="PackedScene" uid="uid://dg8e005hj8y6k" path="res://scene/components/hurt_component.tscn" id="3_8n28q"]
+[ext_resource type="PackedScene" uid="uid://bclpvokyn22rq" path="res://scene/components/damage_component.tscn" id="4_ildtn"]
+[ext_resource type="PackedScene" uid="uid://bitwqob65vm4g" path="res://scene/components/save_data_component.tscn" id="5_moky5"]
+[ext_resource type="Resource" uid="uid://dld6q80uu53hy" path="res://resources/rock_data_resources.tres" id="6_xhtgm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cnbme"]
+atlas = ExtResource("1_gl4lq")
+region = Rect2(272, 659, 108, 92)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_euhmd"]
+radius = 54.778103
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qankg"]
+radius = 68.146965
+
+[node name="Rock_2" type="Sprite2D"]
+position = Vector2(-4.7683716e-07, -6.0000014)
+scale = Vector2(0.14814816, 0.13043478)
+texture = SubResource("AtlasTexture_cnbme")
+script = ExtResource("2_cnbme")
+log_drop_amount = 10
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("CircleShape2D_euhmd")
+
+[node name="HurtComponent" parent="." instance=ExtResource("3_8n28q")]
+tool = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtComponent"]
+shape = SubResource("CircleShape2D_qankg")
+debug_color = Color(0.78248864, 0.23241031, 0.902805, 0.41960785)
+
+[node name="DamageComponent" parent="." instance=ExtResource("4_ildtn")]
+max_damage = 10
+
+[node name="SaveDataComponent" parent="." instance=ExtResource("5_moky5")]
+save_data_resource = ExtResource("6_xhtgm")

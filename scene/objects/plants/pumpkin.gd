@@ -3,7 +3,7 @@ extends Node2D
 # 🟢 FIX: Removed the duplicate '@export var scene_file_path' definition!
 # Godot already provides 'scene_file_path' automatically for all nodes.
 
-var pumpkin_harvest_scene = preload("res://scene/objects/plants/pumpkin_harvest.tscn")
+var carrot_harvest_scene = preload("res://scene/objects/plants/pumpkin_harvest.tscn")
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var watering_particles: GPUParticles2D = $WateringParticles
@@ -22,7 +22,8 @@ func _ready() -> void:
 	growth_cycle_components.crop_harvesting.connect(on_crop_harvesting)
 
 func update_sprite():
-	sprite_2d.frame_coords = Vector2i(growth_state, 0)
+	# Single-frame carrot: nothing to update.
+	pass
 	
 func _process(delta: float) -> void:
 	growth_state = growth_cycle_components.get_current_growth_state()
@@ -68,9 +69,12 @@ func on_crop_maturity() -> void:
 
 
 func on_crop_harvesting() -> void:
+	print("Harvesting Pumpkin:", self)
+	print("Parent:", get_parent().name)
+
 	growth_cycle_components.harvested = true
 
-	var harvest = pumpkin_harvest_scene.instantiate()
+	var harvest = carrot_harvest_scene.instantiate()
 	harvest.global_position = global_position
 	get_parent().add_child(harvest)
 

@@ -57,17 +57,14 @@ func _on_tool_selected(new_tool: DataTypes.Tools) -> void:
 		hit_component.current_tool = new_tool
 
 func _on_interaction_range_area_entered(area: Area2D) -> void:
-	print("Entered area: ", area.name, " | Owner/Parent: ", area.get_parent())
-	var tree_node = area.get_parent() as SmallTree
-	if tree_node and not tree_node.is_chopped:
-		active_tree = tree_node
-		print("Active tree set successfully!")
+	var target_node = area.get_parent()
+	if (target_node is SmallTree or target_node is Rock or target_node is Bush) and not target_node.is_chopped:
+		active_tree = target_node
 
 func _on_interaction_range_area_exited(area: Area2D) -> void:
-	var tree_node = area.get_parent() as SmallTree
-	if tree_node and active_tree == tree_node:
+	var target_node = area.get_parent()
+	if (target_node is SmallTree or target_node is Rock or target_node is Bush) and active_tree == target_node:
 		active_tree = null
-
 # ─── HOTKEY INPUT LISTENER ───
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey and event.is_action_pressed("interact") and house != null:
