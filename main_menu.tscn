@@ -25,26 +25,26 @@ offset_bottom = 495.0
 layout_mode = 0
 offset_left = -13.0
 offset_top = 1.0
-offset_right = 1907.0
-offset_bottom = 1081.0
+offset_right = 2261.4187
+offset_bottom = 1238.7778
 scale = Vector2(0.43, 0.45)
 texture = SubResource("AtlasTexture_glbon")
 
 [node name="Play" type="Button" parent="."]
 layout_mode = 0
-offset_left = 321.0
+offset_left = 407.0
 offset_top = 205.0
-offset_right = 470.0
+offset_right = 556.0
 offset_bottom = 262.0
 theme_override_fonts/font = ExtResource("2_fu7sn")
 text = "Play"
 
 [node name="Exit" type="Button" parent="."]
 layout_mode = 0
-offset_left = 321.0
-offset_top = 264.0
-offset_right = 470.0
-offset_bottom = 321.0
+offset_left = 407.0
+offset_top = 270.0
+offset_right = 556.0
+offset_bottom = 327.0
 theme_override_fonts/font = ExtResource("2_fu7sn")
 text = "Exit
 "

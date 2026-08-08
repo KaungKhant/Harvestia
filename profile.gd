@@ -11,122 +11,122 @@ extends Control
 
 func _ready():
 
-	create_button.pressed.connect(_on_create_pressed)
+    create_button.pressed.connect(_on_create_pressed)
 
-	new_game.pressed.connect(_on_new_game_pressed)
+    new_game.pressed.connect(_on_new_game_pressed)
 
-	continue_game.pressed.connect(_on_continue_pressed)
+    continue_game.pressed.connect(_on_continue_pressed)
 
-	profile_dropdown.item_selected.connect(_on_profile_selected)
-	delete_profile_button.pressed.connect(_on_delete_profile_pressed)
-	delete_confirmation.confirmed.connect(_on_delete_confirmed)
+    profile_dropdown.item_selected.connect(_on_profile_selected)
+    delete_profile_button.pressed.connect(_on_delete_profile_pressed)
+    delete_confirmation.confirmed.connect(_on_delete_confirmed)
 
-	refresh_profiles()
+    refresh_profiles()
 
-	update_buttons()
+    update_buttons()
 
 
 func refresh_profiles():
 
-	profile_dropdown.clear()
+    profile_dropdown.clear()
 
-	var profiles = ProfileDatabase.get_profiles()
+    var profiles = ProfileDatabase.get_profiles()
 
-	for profile in profiles:
-		profile_dropdown.add_item(profile)
+    for profile in profiles:
+        profile_dropdown.add_item(profile)
 
-	if profile_dropdown.item_count > 0:
-		profile_dropdown.select(0)
-		ProfileManager.set_profile(profile_dropdown.get_item_text(0))
+    if profile_dropdown.item_count > 0:
+        profile_dropdown.select(0)
+        ProfileManager.set_profile(profile_dropdown.get_item_text(0))
 
-	update_buttons()   # <-- Add this
+    update_buttons()   # <-- Add this
 
 func update_buttons():
 
-	if profile_dropdown.item_count == 0:
+    if profile_dropdown.item_count == 0:
 
-		new_game.disabled = true
-		continue_game.disabled = true
-		return
+        new_game.disabled = true
+        continue_game.disabled = true
+        return
 
-	new_game.disabled = false
+    new_game.disabled = false
 
-	continue_game.disabled = !ProfileSaveManager.current_profile_has_save()
+    continue_game.disabled = !ProfileSaveManager.current_profile_has_save()
 
 func _on_create_pressed():
 
-	var name = profile_name.text
+    var name = profile_name.text
 
-	if ProfileDatabase.create_profile(name):
+    if ProfileDatabase.create_profile(name):
 
-		refresh_profiles()
-		update_buttons()   # <-- Add this
+        refresh_profiles()
+        update_buttons()   # <-- Add this
 
-		profile_name.clear()
+        profile_name.clear()
 
-	else:
+    else:
 
-		print("Cannot create profile")
+        print("Cannot create profile")
 
 
 func _on_profile_selected(index):
 
-	var profile = profile_dropdown.get_item_text(index)
+    var profile = profile_dropdown.get_item_text(index)
 
-	ProfileManager.set_profile(profile)
+    ProfileManager.set_profile(profile)
 
-	update_buttons()
+    update_buttons()
 
 func _on_new_game_pressed():
+    if !ProfileManager.has_profile():
+        return
 
-	if !ProfileManager.has_profile():
-		return
+    # Start a fresh game for this profile
+    ProfileSaveManager.start_new_game()
 
-	# Delete ONLY this profile's save.
-	ProfileSaveManager.start_new_game()
-
-	SceneManager.start_game()
+    # Go to the intro scene
+    get_tree().change_scene_to_file("res://scene/ui/intro.tscn")
 
 func _on_continue_pressed():
 
-	if !ProfileManager.has_profile():
-		return
+    if !ProfileManager.has_profile():
+        return
 
-	SceneManager.start_game()
+    SceneManager.start_game()
 
 func _on_delete_profile_pressed():
 
-	if profile_dropdown.item_count == 0:
-		return
+    if profile_dropdown.item_count == 0:
+        return
 
-	var profile_name = ProfileManager.get_profile()
+    var profile_name = ProfileManager.get_profile()
 
-	delete_confirmation.dialog_text = "Delete  \"%s\"?\n\nThis action cannot be undone." % profile_name
+    delete_confirmation.dialog_text = "Delete  \"%s\"?\n\nThis action cannot be undone." % profile_name
 
-	delete_confirmation.popup_centered()
+    delete_confirmation.popup_centered()
 
 func _on_delete_confirmed():
 
-	var profile_name = ProfileManager.get_profile()
+    var profile_name = ProfileManager.get_profile()
 
-	print("Deleting:", profile_name)
+    print("Deleting:", profile_name)
 
-	ProfileDatabase.delete_profile(profile_name)
+    ProfileDatabase.delete_profile(profile_name)
 
-	refresh_profiles()
+    refresh_profiles()
 
-	if profile_dropdown.item_count > 0:
+    if profile_dropdown.item_count > 0:
 
-		var next_profile = profile_dropdown.get_item_text(0)
+        var next_profile = profile_dropdown.get_item_text(0)
 
-		ProfileManager.set_profile(next_profile)
+        ProfileManager.set_profile(next_profile)
 
-	else:
+    else:
 
-		ProfileManager.clear_profile()
+        ProfileManager.clear_profile()
 
-	update_buttons()
+    update_buttons()
 
 
 func _on_exit_pressed() -> void:
-	get_tree().quit()
+    get_tree().quit()

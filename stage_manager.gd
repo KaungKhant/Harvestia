@@ -6,7 +6,8 @@ func _ready():
     
 const MainMenu = "res://main_menu.tscn"
 const Intro = "res://scene/ui/intro.tscn"
-const MainWorld = "res://profile.tscn"
+const Profile = "res://profilev2.tscn"
+const MainWorld = "res://scene/test/main_harvestia_update.tscn"
 
 func change_stage(stage_path:String):
 

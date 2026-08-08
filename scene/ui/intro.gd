@@ -56,8 +56,11 @@ func show_page():
 
     animation.play("FadeIn")
 func next_page():
+    if is_transitioning:
+        return
+
     is_transitioning = true
-    
+
     animation.play("FadeOut")
     await animation.animation_finished
 

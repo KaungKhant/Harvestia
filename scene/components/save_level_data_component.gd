@@ -93,20 +93,11 @@ func load_game() -> void:
     # Load Quest Data
     # =========================
     QuestManager.completed_quests = game_data_resource.completed_quests.duplicate(true)
-    QuestManager.current_progress = game_data_resource.current_progress
-    QuestManager.current_state = game_data_resource.current_state
-    
-    if game_data_resource.current_quest_id != "":
-        QuestManager.start_quest(game_data_resource.current_quest_id)
-
-        QuestManager.current_progress = game_data_resource.current_progress
-        QuestManager.current_state = game_data_resource.current_state
-
-        if QuestManager.current_quest:
-            QuestManager.quest_updated.emit(
-                QuestManager.current_progress,
-                QuestManager.current_quest.target_amount
-            )
+    QuestManager.restore_quest(
+        game_data_resource.current_quest_id,
+        game_data_resource.current_progress,
+        game_data_resource.current_state
+    )
 
 
     # =========================

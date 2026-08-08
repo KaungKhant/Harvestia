@@ -18,142 +18,143 @@ extends Control
 @onready var new_game : Button = $New_Game
 @onready var continue_game : Button = $Continue
 
+const INTRO_SCENE = "res://scene/ui/intro.tscn"
 
 func _ready():
-	create_button.pressed.connect(_on_create_pressed)
-	new_game.pressed.connect(_on_new_game_pressed)
-	continue_game.pressed.connect(_on_continue_pressed)
+    create_button.pressed.connect(_on_create_pressed)
+    new_game.pressed.connect(_on_new_game_pressed)
+    continue_game.pressed.connect(_on_continue_pressed)
 
-	profile_dropdown.item_selected.connect(_on_profile_selected)
-	delete_profile_button.pressed.connect(_on_delete_profile_pressed)
-	
-	# Connect your delete popup buttons
-	confirm_delete_button.pressed.connect(_on_delete_confirmed)
-	cancel_button.pressed.connect(_on_cancel_delete_pressed)
-	
-	# Connect your new game popup buttons
-	confirm_new_game_button.pressed.connect(_on_new_game_confirmed)
-	cancel_new_game_button.pressed.connect(_on_cancel_new_game_pressed)
-	
-	# Hide the popups initially when the scene starts
-	delete_popup.hide()
-	new_game_popup.hide()
+    profile_dropdown.item_selected.connect(_on_profile_selected)
+    delete_profile_button.pressed.connect(_on_delete_profile_pressed)
+    
+    # Connect your delete popup buttons
+    confirm_delete_button.pressed.connect(_on_delete_confirmed)
+    cancel_button.pressed.connect(_on_cancel_delete_pressed)
+    
+    # Connect your new game popup buttons
+    confirm_new_game_button.pressed.connect(_on_new_game_confirmed)
+    cancel_new_game_button.pressed.connect(_on_cancel_new_game_pressed)
+    
+    # Hide the popups initially when the scene starts
+    delete_popup.hide()
+    new_game_popup.hide()
 
-	refresh_profiles()
-	update_buttons()
+    refresh_profiles()
+    update_buttons()
 
 
 func refresh_profiles():
-	profile_dropdown.clear()
+    profile_dropdown.clear()
 
-	var profiles = ProfileDatabase.get_profiles()
+    var profiles = ProfileDatabase.get_profiles()
 
-	for profile in profiles:
-		profile_dropdown.add_item(profile)
+    for profile in profiles:
+        profile_dropdown.add_item(profile)
 
-	if profile_dropdown.item_count > 0:
-		profile_dropdown.select(0)
-		ProfileManager.set_profile(profile_dropdown.get_item_text(0))
+    if profile_dropdown.item_count > 0:
+        profile_dropdown.select(0)
+        ProfileManager.set_profile(profile_dropdown.get_item_text(0))
 
-	update_buttons()
+    update_buttons()
 
 
 func update_buttons():
-	if profile_dropdown.item_count == 0:
-		new_game.disabled = true
-		continue_game.disabled = true
-		return
+    if profile_dropdown.item_count == 0:
+        new_game.disabled = true
+        continue_game.disabled = true
+        return
 
-	new_game.disabled = false
-	continue_game.disabled = !ProfileSaveManager.current_profile_has_save()
+    new_game.disabled = false
+    continue_game.disabled = !ProfileSaveManager.current_profile_has_save()
 
 
 func _on_create_pressed():
-	var name = profile_name.text
+    var name = profile_name.text
 
-	if ProfileDatabase.create_profile(name):
-		refresh_profiles()
-		update_buttons()
-		profile_name.clear()
-	else:
-		print("Cannot create profile")
+    if ProfileDatabase.create_profile(name):
+        refresh_profiles()
+        update_buttons()
+        profile_name.clear()
+    else:
+        print("Cannot create profile")
 
 
 func _on_profile_selected(index):
-	var profile = profile_dropdown.get_item_text(index)
-	ProfileManager.set_profile(profile)
-	update_buttons()
+    var profile = profile_dropdown.get_item_text(index)
+    ProfileManager.set_profile(profile)
+    update_buttons()
 
 
 func _on_new_game_pressed():
-	if !ProfileManager.has_profile():
-		return
+    if !ProfileManager.has_profile():
+        return
 
-	# Check if a save file already exists for the current profile
-	if ProfileSaveManager.current_profile_has_save():
-		var current_profile = ProfileManager.get_profile()
-		new_game_label_message.text = "Start a new game for \"%s\"?\n\nExisting progress will be overwritten." % current_profile
-		new_game_popup.show()
-	else:
-		# If no save exists, start the new game immediately without prompting
-		_execute_new_game()
+    # Check if a save file already exists for the current profile
+    if ProfileSaveManager.current_profile_has_save():
+        var current_profile = ProfileManager.get_profile()
+        new_game_label_message.text = "Start a new game for \"%s\"?\n\nExisting progress will be overwritten." % current_profile
+        new_game_popup.show()
+    else:
+        # If no save exists, start the new game immediately without prompting
+        _execute_new_game()
 
 
 func _on_cancel_new_game_pressed():
-	new_game_popup.hide()
+    new_game_popup.hide()
 
 
 func _on_new_game_confirmed():
-	new_game_popup.hide()
-	_execute_new_game()
+    new_game_popup.hide()
+    _execute_new_game()
 
 
 func _execute_new_game():
-	ProfileSaveManager.start_new_game()
-	SceneManager.start_game()
+    ProfileSaveManager.start_new_game()
+    get_tree().change_scene_to_file(INTRO_SCENE)
 
 
 func _on_continue_pressed():
-	if !ProfileManager.has_profile():
-		return
+    if !ProfileManager.has_profile():
+        return
 
-	SceneManager.start_game()
+    SceneManager.start_game()
 
 
 func _on_delete_profile_pressed():
-	if profile_dropdown.item_count == 0:
-		return
+    if profile_dropdown.item_count == 0:
+        return
 
-	var profile_to_delete = ProfileManager.get_profile()
+    var profile_to_delete = ProfileManager.get_profile()
 
-	# Update the custom label text inside your DeletePopup container
-	label_message.text = "Delete \"%s\"?\n\nThis action cannot be undone." % profile_to_delete
+    # Update the custom label text inside your DeletePopup container
+    label_message.text = "Delete \"%s\"?\n\nThis action cannot be undone." % profile_to_delete
 
-	# Show your custom popup panel
-	delete_popup.show()
+    # Show your custom popup panel
+    delete_popup.show()
 
 
 func _on_cancel_delete_pressed():
-	delete_popup.hide()
+    delete_popup.hide()
 
 
 func _on_delete_confirmed():
-	delete_popup.hide()
-	
-	var profile_to_delete = ProfileManager.get_profile()
-	print("Deleting:", profile_to_delete)
+    delete_popup.hide()
+    
+    var profile_to_delete = ProfileManager.get_profile()
+    print("Deleting:", profile_to_delete)
 
-	ProfileDatabase.delete_profile(profile_to_delete)
-	refresh_profiles()
+    ProfileDatabase.delete_profile(profile_to_delete)
+    refresh_profiles()
 
-	if profile_dropdown.item_count > 0:
-		var next_profile = profile_dropdown.get_item_text(0)
-		ProfileManager.set_profile(next_profile)
-	else:
-		ProfileManager.clear_profile()
+    if profile_dropdown.item_count > 0:
+        var next_profile = profile_dropdown.get_item_text(0)
+        ProfileManager.set_profile(next_profile)
+    else:
+        ProfileManager.clear_profile()
 
-	update_buttons()
+    update_buttons()
 
 
 func _on_exit_pressed() -> void:
-	get_tree().quit()
+    get_tree().quit()

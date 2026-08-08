@@ -619,7 +619,6 @@ radius = 13.0
 y_sort_enabled = true
 collision_layer = 2
 script = ExtResource("1_v7krq")
-current_tool = 1
 
 [node name="SaveDataComponent" parent="." instance=ExtResource("2_w6fjl")]
 save_data_resource = ExtResource("3_m1awt")
