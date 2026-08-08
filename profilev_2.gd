@@ -1,5 +1,7 @@
 extends Control
-
+@onready var typing_sound:AudioStreamPlayer = $TypingSound
+@onready var button_click: AudioStreamPlayer = $ButtonClick
+@onready var exit_button: Button = $Exit
 @onready var delete_popup : Control = $DeletePopup
 @onready var label_message : Label = $DeletePopup/VBoxContainer/LabelMessage
 @onready var confirm_delete_button : Button = $DeletePopup/VBoxContainer/HBoxContainer/ConfirmDeleteButton
@@ -21,9 +23,16 @@ extends Control
 const INTRO_SCENE = "res://scene/ui/intro.tscn"
 
 func _ready():
+<<<<<<< Updated upstream
     create_button.pressed.connect(_on_create_pressed)
     new_game.pressed.connect(_on_new_game_pressed)
     continue_game.pressed.connect(_on_continue_pressed)
+=======
+	profile_name.text_changed.connect(_on_text_changed)
+	create_button.pressed.connect(_on_create_pressed)
+	new_game.pressed.connect(_on_new_game_pressed)
+	continue_game.pressed.connect(_on_continue_pressed)
+>>>>>>> Stashed changes
 
     profile_dropdown.item_selected.connect(_on_profile_selected)
     delete_profile_button.pressed.connect(_on_delete_profile_pressed)
@@ -40,8 +49,14 @@ func _ready():
     delete_popup.hide()
     new_game_popup.hide()
 
+<<<<<<< Updated upstream
     refresh_profiles()
     update_buttons()
+=======
+	refresh_profiles()
+	update_buttons()
+	
+>>>>>>> Stashed changes
 
 
 func refresh_profiles():
@@ -70,6 +85,7 @@ func update_buttons():
 
 
 func _on_create_pressed():
+<<<<<<< Updated upstream
     var name = profile_name.text
 
     if ProfileDatabase.create_profile(name):
@@ -80,6 +96,16 @@ func _on_create_pressed():
         print("Cannot create profile")
 
 
+=======
+	button_click.play()
+	var name = profile_name.text
+	if ProfileDatabase.create_profile(name):
+		refresh_profiles()
+		update_buttons()
+		profile_name.clear()
+	else:
+		print("Cannot create profile")
+>>>>>>> Stashed changes
 func _on_profile_selected(index):
     var profile = profile_dropdown.get_item_text(index)
     ProfileManager.set_profile(profile)
@@ -87,6 +113,7 @@ func _on_profile_selected(index):
 
 
 func _on_new_game_pressed():
+<<<<<<< Updated upstream
     if !ProfileManager.has_profile():
         return
 
@@ -107,6 +134,34 @@ func _on_cancel_new_game_pressed():
 func _on_new_game_confirmed():
     new_game_popup.hide()
     _execute_new_game()
+=======
+	button_click.play()
+	print("NEW GAME CLICKED")
+	if !ProfileManager.has_profile():
+		return
+	# Check if a save file already exists for the current profile
+	if ProfileSaveManager.current_profile_has_save():
+		var current_profile = ProfileManager.get_profile()
+		new_game_label_message.text = "Start a new game for \"%s\"?\n\nExisting progress will be overwritten." % current_profile
+		new_game_popup.show()
+	else:
+		# If no save exists, start the new game immediately without prompting
+		await button_click.finished
+		_execute_new_game()
+
+
+func _on_cancel_new_game_pressed():
+	button_click.play()
+	new_game_popup.hide()
+	new_game_popup.hide()
+
+
+func _on_new_game_confirmed():
+	button_click.play()
+	new_game_popup.hide()
+	await  button_click.finished
+	_execute_new_game()
+>>>>>>> Stashed changes
 
 
 func _execute_new_game():
@@ -115,15 +170,29 @@ func _execute_new_game():
 
 
 func _on_continue_pressed():
+<<<<<<< Updated upstream
     if !ProfileManager.has_profile():
         return
+=======
+	button_click.play()
+	new_game_popup.hide()
+	await  button_click.finished
+	if !ProfileManager.has_profile():
+		return
+>>>>>>> Stashed changes
 
     SceneManager.start_game()
 
 
 func _on_delete_profile_pressed():
+<<<<<<< Updated upstream
     if profile_dropdown.item_count == 0:
         return
+=======
+	button_click.play()
+	if profile_dropdown.item_count == 0:
+		return
+>>>>>>> Stashed changes
 
     var profile_to_delete = ProfileManager.get_profile()
 
@@ -135,6 +204,7 @@ func _on_delete_profile_pressed():
 
 
 func _on_cancel_delete_pressed():
+<<<<<<< Updated upstream
     delete_popup.hide()
 
 
@@ -143,6 +213,19 @@ func _on_delete_confirmed():
     
     var profile_to_delete = ProfileManager.get_profile()
     print("Deleting:", profile_to_delete)
+=======
+	button_click.play()
+	await button_click.finished
+	delete_popup.hide()
+
+
+func _on_delete_confirmed():
+	button_click.play()
+	delete_popup.hide()
+	
+	var profile_to_delete = ProfileManager.get_profile()
+	print("Deleting:", profile_to_delete)
+>>>>>>> Stashed changes
 
     ProfileDatabase.delete_profile(profile_to_delete)
     refresh_profiles()
@@ -153,8 +236,20 @@ func _on_delete_confirmed():
     else:
         ProfileManager.clear_profile()
 
+<<<<<<< Updated upstream
     update_buttons()
 
 
 func _on_exit_pressed() -> void:
     get_tree().quit()
+=======
+	update_buttons()
+func _on_text_changed(new_text):
+	typing_sound.stop()
+	typing_sound.play()
+
+func _on_exit_pressed() -> void:
+	button_click.play()
+	await button_click.finished
+	get_tree().quit()
+>>>>>>> Stashed changes
