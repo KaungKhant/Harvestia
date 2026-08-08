@@ -5,110 +5,110 @@ extends CanvasLayer
 @onready var progress = $MarginContainer/PanelContainer/VBoxContainer/ProgressLabel
 
 func _ready() -> void:
-    hide()
+	hide()
 
-    QuestManager.quest_started.connect(on_quest_started)
-    QuestManager.quest_updated.connect(on_quest_updated)
-    QuestManager.quest_completed.connect(on_quest_completed)
+	QuestManager.quest_started.connect(on_quest_started)
+	QuestManager.quest_updated.connect(on_quest_updated)
+	QuestManager.quest_completed.connect(on_quest_completed)
 
 
 func on_quest_started(quest: QuestData) -> void:
-    show()
+	show()
 
-    var icon := "•"
+	var icon := "•"
 
-    match quest.quest_icon:
-        "corn":
-            icon = "🌽"
-        "tomato":
-            icon = "🍅"
-        "log":
-            icon = "🪵"
-        "stone":
-            icon = "🪨"
-        
-        "gold":
-            icon = "🪙"
-        
-        "chicken":
-            icon = "🐔"
-            
-        "egg":
-            icon = "🥚"
-        
-        "carrot":
-            icon = "🥕"
-            
-        "cow":
-            icon = "🐮"
-            
-        "milk":
-            icon = "🥛"
-            
-        "pumpkin":
-            icon = "🎃"
-            
-        "house":
-            icon = "🏠"
-            
-    quest_name.text = icon + " " + quest.quest_name
-    description.text = quest.description
+	match quest.quest_icon:
+		"corn":
+			icon = "🌽"
+		"tomato":
+			icon = "🍅"
+		"log":
+			icon = "🪵"
+		"stone":
+			icon = "🪨"
+		
+		"gold":
+			icon = "🪙"
+		
+		"chicken":
+			icon = "🐔"
+			
+		"egg":
+			icon = "🥚"
+		
+		"carrot":
+			icon = "🥕"
+			
+		"cow":
+			icon = "🐮"
+			
+		"milk":
+			icon = "🥛"
+			
+		"pumpkin":
+			icon = "🎃"
+			
+		"house":
+			icon = "🏠"
+			
+	quest_name.text = icon + " " + quest.quest_name
+	description.text = quest.description
 
-    update_progress(0, quest.target_amount)
+	update_progress(0, quest.target_amount)
 
 
 func on_quest_updated(current: int, target: int) -> void:
-    update_progress(current, target)
+	update_progress(current, target)
 
 
 func on_quest_completed(quest: QuestData) -> void:
-    hide()
+	hide()
 
 
 func update_progress(current: int, target: int) -> void:
 
-    # Change icon depending on quest item
-    var icon := "•"
+	# Change icon depending on quest item
+	var icon := "•"
 
-    match QuestManager.current_quest.quest_icon:
-        "corn":
-            icon = "🌽"
+	match QuestManager.current_quest.quest_icon:
+		"corn":
+			icon = "🌽"
 
-        "tomato":
-            icon = "🍅"
+		"tomato":
+			icon = "🍅"
 
-        "log":
-            icon = "🪵"
+		"log":
+			icon = "🪵"
 
-        "stone":
-            icon = "🪨"
-        
-        "gold":
-            icon = "🪙"
-        
-        "chicken":
-            icon = "🐔"
-            
-        "egg":
-            icon = "🥚"
-            
-        "carrot":
-            icon = "🥕"
-            
-        "cow":
-            icon = "🐮"
-            
-        "milk":
-            icon = "🥛"
-            
-        "pumpkin":
-            icon = "🎃"
-            
-        "house":
-            icon = "🏠"
+		"stone":
+			icon = "🪨"
+		
+		"gold":
+			icon = "🪙"
+		
+		"chicken":
+			icon = "🐔"
+			
+		"egg":
+			icon = "🥚"
+			
+		"carrot":
+			icon = "🥕"
+			
+		"cow":
+			icon = "🐮"
+			
+		"milk":
+			icon = "🥛"
+			
+		"pumpkin":
+			icon = "🎃"
+			
+		"house":
+			icon = "🏠"
 
-    # If objective is finished, tell the player what to do
-    if QuestManager.current_state == QuestManager.QuestState.READY_TO_TURN_IN:
-        progress.text = "✔ Objective Complete\nReturn to " + QuestManager.current_quest.quest_giver
-    else:
-        progress.text = icon + " " + str(current) + " / " + str(target)
+	# If objective is finished, tell the player what to do
+	if QuestManager.current_state == QuestManager.QuestState.READY_TO_TURN_IN:
+		progress.text = "✔ Objective Complete\nReturn to " + QuestManager.current_quest.quest_giver
+	else:
+		progress.text = icon + " " + str(current) + " / " + str(target)
