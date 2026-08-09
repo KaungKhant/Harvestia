@@ -10,6 +10,7 @@ signal transfer_cow_barn
 signal open_homecoming_board
 signal start_homecoming_ceremony
 signal rowan_lead_player
+signal open_ending
 
 func action_teach_farming() -> void:
 	teach_farming.emit()
@@ -44,3 +45,6 @@ func action_start_homecoming_ceremony() -> void:
 
 func action_rowan_lead_player() -> void:
 	rowan_lead_player.emit()
+
+func action_open_ending() -> void:
+	open_ending.emit()

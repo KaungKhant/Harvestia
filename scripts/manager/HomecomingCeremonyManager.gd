@@ -16,6 +16,10 @@ func _ready() -> void:
 	GameDialogueManager.rowan_lead_player.connect(
 		move_rowan_to_restored_house
 	)
+	
+	GameDialogueManager.open_ending.connect(
+		_open_ending
+	)
 
 
 func _on_homecoming_ceremony_started() -> void:
@@ -862,4 +866,13 @@ func start_final_homecoming_dialogue() -> void:
 	DialogueManager.show_dialogue_balloon(
 		dialogue_resource,
 		"final_ending"
+	)
+
+func _open_ending() -> void:
+	print("================================")
+	print("OPENING ENDING SCENE")
+	print("================================")
+
+	get_tree().change_scene_to_file(
+		"res://scene/ending/Ending.tscn"
 	)
