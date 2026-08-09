@@ -79,7 +79,14 @@ func _unhandled_input(event: InputEvent) -> void:
 	if QuestManager.current_quest == null:
 		dialogue = load("res://Dialog/Guide/intro.dialogue")
 		balloon.start(dialogue, "start")
-
+	
+	# Homecoming dialogue
+	elif QuestManager.current_quest.quest_id == "homecoming":
+		dialogue = load("res://Dialog/Guide/homecoming.dialogue")
+		balloon.start(
+		dialogue,
+		QuestManager.get_dialogue_label()
+	)
 	# Guide handles Guide quests only
 	elif QuestManager.current_quest.quest_giver == "Guide":
 		dialogue = QuestManager.current_quest.dialogue_file

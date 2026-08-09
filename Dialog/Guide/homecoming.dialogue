@@ -97,6 +97,4 @@ Uncle Rowan: You brought Harvestia back to life.
 
 Uncle Rowan: And now... this home belongs to you.
 
-do GameDialogueManager.action_rowan_lead_player()
-
 => END

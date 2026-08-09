@@ -682,7 +682,7 @@ func _start_ceremony_dialogue() -> void:
 
 	DialogueManager.show_dialogue_balloon(
 		dialogue_resource,
-		"final_ending"
+		"completed"
 	)
 
 func move_rowan_to_restored_house() -> void:
@@ -861,5 +861,5 @@ func start_final_homecoming_dialogue() -> void:
 
 	DialogueManager.show_dialogue_balloon(
 		dialogue_resource,
-		"completed"
+		"final_ending"
 	)
