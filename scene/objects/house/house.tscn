@@ -4,10 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://8f7iwf72uuak" path="res://assets/game/questhouse2.png" id="2_sq7kr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_exnda"]
-size = Vector2(109.5, 116.25)
+size = Vector2(115, 117)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p42m7"]
-size = Vector2(18.75, 26.703125)
+size = Vector2(36, 47)
 
 [node name="House" type="Node2D"]
 position = Vector2(51, -13)
@@ -24,7 +24,7 @@ region_rect = Rect2(395, 26, 358, 410)
 position = Vector2(227, 114)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(12.25, -2.875)
+position = Vector2(12.5, -7.5)
 shape = SubResource("RectangleShape2D_exnda")
 
 [node name="EnteredArea" type="Area2D" parent="."]
@@ -33,12 +33,12 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnteredArea"]
-position = Vector2(2, -20)
+position = Vector2(3, -13.5)
 shape = SubResource("RectangleShape2D_p42m7")
 debug_color = Color(0.87763214, 0.3236599, 0.29890978, 0.41960785)
 
 [node name="Marker2D" type="Marker2D" parent="EnteredArea"]
-position = Vector2(1, 15)
+position = Vector2(-1, 18)
 
 [connection signal="body_entered" from="EnteredArea" to="." method="_on_entered_area_body_entered"]
 [connection signal="body_exited" from="EnteredArea" to="." method="_on_entered_area_body_exited"]
