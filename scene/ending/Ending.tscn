@@ -1,4 +1,45 @@
-[gd_scene format=3 uid="uid://ctg012ukcpi2k"]
+[gd_scene load_steps=6 format=3 uid="uid://ctg012ukcpi2k"]
+
+[ext_resource type="Script" uid="uid://dq7b2b45y6ep" path="res://scene/ending/ending.gd" id="1_62ecf"]
+[ext_resource type="Texture2D" uid="uid://cm5cxg3xwiixv" path="res://scene/ending/Gemini_Generated_Image_tibnfutibnfutibn.png" id="2_uo6hx"]
+
+[sub_resource type="Animation" id="Animation_62ecf"]
+resource_name = "CreditsScroll"
+length = 20.0
+step = 0.0003
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 20, 20.105911),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 524), Vector2(0, 1), Vector2(0, -17)]
+}
+
+[sub_resource type="Animation" id="Animation_uo6hx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 629)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f4uvt"]
+_data = {
+&"CreditsScroll": SubResource("Animation_62ecf"),
+&"RESET": SubResource("Animation_uo6hx")
+}
 
 [node name="Ending" type="Control"]
 layout_mode = 3
@@ -7,6 +48,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_62ecf")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -17,17 +59,23 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.6627451, 0.6627451, 0.6627451, 1)
 
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_uo6hx")
+stretch_mode = 6
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -480.0
-offset_top = -240.0
-offset_right = 420.0
-offset_bottom = 410.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 629.0
+offset_bottom = 629.0315
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -41,11 +89,9 @@ layout_mode = 2
 text = "Your grandfather's dream has finally come true.
 
 Through your hard work, Harvestia has come back to life.
-
 The fields are growing.
 The animals are cared for.
 And your grandfather's home stands once again.
-
 This is not the end of Harvestia.
 
 It is a new beginning."
@@ -54,7 +100,6 @@ horizontal_alignment = 1
 [node name="Credits" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 text = "HARVESTIA
-
 A 2D Farming Simulation Game
 
 Developed with Godot
@@ -62,14 +107,27 @@ Developed with Godot
 Thank you for playing."
 horizontal_alignment = 1
 
-[node name="ContinueButton" type="Button" parent="VBoxContainer"]
-layout_mode = 2
+[node name="ContinueButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 410.0
+offset_top = 436.5
+offset_right = 549.0
+offset_bottom = 467.5
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Continue Playing"
 
-[node name="MainMenuButton" type="Button" parent="VBoxContainer"]
-layout_mode = 2
+[node name="MainMenuButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 432.0
+offset_top = 471.5
+offset_right = 528.0
+offset_bottom = 502.5
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Main Menu"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_f4uvt")
+}
