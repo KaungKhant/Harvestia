@@ -40,7 +40,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y0rvt"]
-size = Vector2(56, 6)
+size = Vector2(56, 9)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dspnv"]
 size = Vector2(50, 32)
@@ -57,7 +57,8 @@ sprite_frames = SubResource("SpriteFrames_tb21g")
 animation = &"chest_close"
 
 [node name="chestshape" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 13)
+z_index = 2
+position = Vector2(-1, 11.5)
 shape = SubResource("RectangleShape2D_y0rvt")
 
 [node name="InteractableComponent" parent="." instance=ExtResource("3_d6crc")]

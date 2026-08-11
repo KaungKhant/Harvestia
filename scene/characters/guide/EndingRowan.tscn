@@ -1,19 +1,19 @@
 [gd_scene load_steps=9 format=3 uid="uid://ctaxwnci8ytld"]
 
 [ext_resource type="Script" uid="uid://cb8mkvn56li8y" path="res://scene/characters/guide/homecoming_rowan.gd" id="1_xuvki"]
-[ext_resource type="Texture2D" uid="uid://dro85siw16w3y" path="res://assets/game/Characters/npc4.png" id="2_nm23y"]
+[ext_resource type="Texture2D" uid="uid://dct6jsvi24d78" path="res://assets/game/Uncle.png" id="2_xuvki"]
 [ext_resource type="PackedScene" uid="uid://cv3tlgmwisqki" path="res://scene/components/interactable_component.tscn" id="3_e42ct"]
 [ext_resource type="PackedScene" uid="uid://dtg2w66i1vtib" path="res://scene/components/interactable_label_component.tscn" id="4_bojoe"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7khqe"]
-atlas = ExtResource("2_nm23y")
-region = Rect2(700, 0, 140, 374)
+[sub_resource type="AtlasTexture" id="AtlasTexture_1uvtl"]
+atlas = ExtResource("2_xuvki")
+region = Rect2(0, 0, 256, 256)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1uvtl"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7khqe")
+"texture": SubResource("AtlasTexture_1uvtl")
 }],
 "loop": true,
 "name": &"idle",
@@ -21,7 +21,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oback"]
-size = Vector2(6, 4)
+size = Vector2(9, 4)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_svabx"]
 radius = 13.0
@@ -33,13 +33,13 @@ script = ExtResource("1_xuvki")
 [node name="Sprite2D" type="CharacterBody2D" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Sprite2D"]
-position = Vector2(0, -11.000001)
-scale = Vector2(0.15731421, 0.112045825)
+position = Vector2(-0.06811082, -8.329068)
+scale = Vector2(0.1099071, 0.075554155)
 sprite_frames = SubResource("SpriteFrames_1uvtl")
 animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D"]
-position = Vector2(0, -2)
+position = Vector2(-0.5, -2)
 shape = SubResource("RectangleShape2D_oback")
 
 [node name="InteractableComponent" parent="." instance=ExtResource("3_e42ct")]
