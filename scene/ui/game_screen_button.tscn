@@ -1,0 +1,266 @@
+[gd_scene load_steps=26 format=3 uid="uid://nsjkdo1gpkxq"]
+
+[ext_resource type="FontFile" uid="uid://cjb8xuto7j5yw" path="res://assets/ui/fonts/Changa_One/ChangaOne-Regular.ttf" id="1_fmk7n"]
+[ext_resource type="Script" uid="uid://d0e8um0vg2x65" path="res://scene/ui/control.gd" id="1_yyw16"]
+[ext_resource type="Texture2D" uid="uid://g3yu6chvuwnt" path="res://assets/ui/delete.png" id="2_yyw16"]
+[ext_resource type="Texture2D" uid="uid://buxnh38pp771o" path="res://assets/ui/textBox1.png" id="3_1oxpg"]
+[ext_resource type="Texture2D" uid="uid://c15owp2ncekrp" path="res://assets/ui/create.png" id="4_ewqa8"]
+[ext_resource type="Texture2D" uid="uid://cqnkvro86hdgq" path="res://assets/ui/newGameStateNormal.png" id="5_wwe15"]
+[ext_resource type="Texture2D" uid="uid://bbmts1ucyhptg" path="res://assets/ui/NewGameStateHover.png" id="6_l2dxn"]
+[ext_resource type="Texture2D" uid="uid://dya8kmvunk47o" path="res://assets/ui/NewGameStateDisable.png" id="7_q8h0a"]
+[ext_resource type="Texture2D" uid="uid://dfss42xptc8um" path="res://Guide.png" id="9_1oxpg"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s1ocj"]
+texture = ExtResource("2_yyw16")
+expand_margin_left = 45.0
+expand_margin_top = 10.0
+expand_margin_right = 45.0
+expand_margin_bottom = 15.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_agtei"]
+texture = ExtResource("2_yyw16")
+expand_margin_left = 45.0
+expand_margin_top = 10.0
+expand_margin_right = 45.0
+expand_margin_bottom = 15.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c6x54"]
+texture = ExtResource("2_yyw16")
+expand_margin_left = 48.0
+expand_margin_top = 13.0
+expand_margin_right = 48.0
+expand_margin_bottom = 18.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qgw2i"]
+
+[sub_resource type="FontVariation" id="FontVariation_d0emm"]
+base_font = ExtResource("1_fmk7n")
+spacing_space = 3
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4a8m4"]
+texture = ExtResource("4_ewqa8")
+expand_margin_left = 60.0
+expand_margin_top = 15.0
+expand_margin_right = 60.0
+expand_margin_bottom = 20.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_436t2"]
+texture = ExtResource("4_ewqa8")
+expand_margin_left = 60.0
+expand_margin_top = 15.0
+expand_margin_right = 60.0
+expand_margin_bottom = 20.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5j0v0"]
+texture = ExtResource("4_ewqa8")
+expand_margin_left = 63.0
+expand_margin_top = 18.0
+expand_margin_right = 63.0
+expand_margin_bottom = 23.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kb6gh"]
+texture = ExtResource("5_wwe15")
+expand_margin_left = 70.0
+expand_margin_top = 10.0
+expand_margin_right = 70.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g7ity"]
+texture = ExtResource("5_wwe15")
+expand_margin_left = 68.0
+expand_margin_top = 9.0
+expand_margin_right = 68.0
+expand_margin_bottom = 9.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tqgde"]
+texture = ExtResource("6_l2dxn")
+expand_margin_left = 70.0
+expand_margin_top = 10.0
+expand_margin_right = 70.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x6p6u"]
+texture = ExtResource("7_q8h0a")
+expand_margin_left = 70.0
+expand_margin_top = 10.0
+expand_margin_right = 70.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fmk7n"]
+texture = ExtResource("5_wwe15")
+expand_margin_left = 70.0
+expand_margin_top = 10.0
+expand_margin_right = 70.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yyw16"]
+texture = ExtResource("5_wwe15")
+expand_margin_left = 68.0
+expand_margin_top = 9.0
+expand_margin_right = 68.0
+expand_margin_bottom = 9.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1oxpg"]
+texture = ExtResource("6_l2dxn")
+expand_margin_left = 70.0
+expand_margin_top = 10.0
+expand_margin_right = 70.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ewqa8"]
+texture = ExtResource("7_q8h0a")
+expand_margin_left = 70.0
+expand_margin_top = 10.0
+expand_margin_right = 70.0
+expand_margin_bottom = 10.0
+
+[node name="GameButton" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_yyw16")
+
+[node name="Exit" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 861.0
+offset_top = 481.0
+offset_right = 958.0
+offset_bottom = 526.0
+theme_override_fonts/font = ExtResource("1_fmk7n")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxTexture_s1ocj")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_agtei")
+theme_override_styles/hover = SubResource("StyleBoxTexture_c6x54")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_qgw2i")
+text = "Exit
+"
+
+[node name="ExitPopup" type="NinePatchRect" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 220.5
+offset_top = 84.0
+offset_right = 717.5
+offset_bottom = 339.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("3_1oxpg")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/ExitPopup"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 70.75
+offset_top = 71.25
+offset_right = -57.25
+offset_bottom = -75.75
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LabelTitle" type="Label" parent="Control/ExitPopup/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_d0emm")
+theme_override_font_sizes/font_size = 25
+text = "Do you want to exit?"
+horizontal_alignment = 1
+
+[node name="LabelMessage" type="Label" parent="Control/ExitPopup/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_fmk7n")
+theme_override_font_sizes/font_size = 20
+text = "This action cannot be undone."
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/ExitPopup/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 60
+alignment = 1
+
+[node name="ConfirmDeleteButton" type="Button" parent="Control/ExitPopup/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_fmk7n")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxTexture_4a8m4")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_436t2")
+theme_override_styles/hover = SubResource("StyleBoxTexture_5j0v0")
+text = "Yes"
+
+[node name="CancelButton" type="Button" parent="Control/ExitPopup/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_fmk7n")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxTexture_4a8m4")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_436t2")
+theme_override_styles/hover = SubResource("StyleBoxTexture_5j0v0")
+text = "Cancel
+"
+
+[node name="Guide" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 1.0
+offset_right = 84.0
+offset_bottom = 42.0
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 0.5019608)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_fmk7n")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxTexture_kb6gh")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_g7ity")
+theme_override_styles/hover = SubResource("StyleBoxTexture_tqgde")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_x6p6u")
+text = "Control"
+
+[node name="GuidePopup" type="Control" parent="Control/Guide"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="Control/Guide/GuidePopup"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.523
+anchor_top = -0.40300003
+anchor_right = -0.523
+anchor_bottom = -0.40300003
+offset_left = 1.9200001
+offset_top = 12.120001
+offset_right = 970.92
+offset_bottom = 488.12
+texture = ExtResource("9_1oxpg")
+expand_mode = 1
+
+[node name="CloseButton" type="Button" parent="Control/Guide/GuidePopup/TextureRect"]
+layout_mode = 0
+offset_left = 881.0
+offset_top = 420.0
+offset_right = 933.0
+offset_bottom = 461.0
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 0.5019608)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_fmk7n")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxTexture_fmk7n")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_yyw16")
+theme_override_styles/hover = SubResource("StyleBoxTexture_1oxpg")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_ewqa8")
+text = "Close"
