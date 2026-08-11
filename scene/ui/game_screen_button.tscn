@@ -242,10 +242,10 @@ anchor_left = -0.523
 anchor_top = -0.40300003
 anchor_right = -0.523
 anchor_bottom = -0.40300003
-offset_left = 1.9200001
-offset_top = 12.120001
-offset_right = 970.92
-offset_bottom = 488.12
+offset_left = -745.08
+offset_top = 7.120001
+offset_right = 223.92
+offset_bottom = 483.12
 texture = ExtResource("9_1oxpg")
 expand_mode = 1
 
