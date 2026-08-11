@@ -16,7 +16,7 @@ var required_resources: Dictionary = {
 	"corn": 1,
 	"tomato": 1,
 	"carrot": 1,
-	"pumpkin": 1,
+	"pumpkin": 2,
 	"egg": 1,
 	"milk": 1,
 	"log": 1,

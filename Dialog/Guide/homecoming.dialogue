@@ -1,51 +1,51 @@
 ~ progress
 
-Uncle Rowan: You've come farther than any of us ever imagined.
+Uncle Rowan: မင်းဒီအထိ ရောက်လာနိုင်ခဲ့တာကို ငါတို့ထဲက ဘယ်သူမှ မမျှော်လင့်ထားခဲ့ဘူး။
 
-Uncle Rowan: When you first returned to Harvestia...
+Uncle Rowan: မင်း Harvestia ကို ပထမဆုံး ပြန်ရောက်လာတုန်းက...
 
-Uncle Rowan: The fields were empty.
+Uncle Rowan: လယ်ကွင်းတွေက ဟာလာဟင်းလင်းဖြစ်နေခဲ့တယ်။
 
-Uncle Rowan: The forests were overgrown.
+Uncle Rowan: တောတွေကလည်း ထူထပ်ပြီး လမ်းတွေတောင် ပျောက်လုနီးပါး ဖြစ်နေခဲ့တယ်။
 
-Uncle Rowan: The barns stood silent.
+Uncle Rowan: နွားခြံတွေနဲ့ ကြက်ခြံတွေကလည်း တိတ်ဆိတ်နေခဲ့တယ်။
 
-Uncle Rowan: But you never gave up.
+Uncle Rowan: ဒါပေမယ့် မင်း ဘယ်တော့မှ လက်မလျှော့ခဲ့ဘူး။
 
-Uncle Rowan: Because of you...
+Uncle Rowan: မင်းကြောင့်...
 
-Uncle Rowan: The crops are growing again.
+Uncle Rowan: သီးနှံတွေ ပြန်စိုက်ပျိုးလာနိုင်ပြီ။
 
-Uncle Rowan: The chickens have found a new caretaker.
+Uncle Rowan: ကြက်ခြံမှာလည်း ကြက်တွေကို ဂရုစိုက်ပေးမယ့်သူ ရှိလာပြီ။
 
-Uncle Rowan: The cows once again fill the barns with life.
+Uncle Rowan: နွားခြံထဲမှာလည်း နွားတွေရဲ့ အသံတွေ ပြန်ကြားလာရပြီ။
 
-Uncle Rowan: Harvestia is alive again.
+Uncle Rowan: Harvestia လည်း ပြန်လည်အသက်ဝင်လာပြီ။
 
-Uncle Rowan: But...
+Uncle Rowan: ဒါပေမယ့်...
 
-Uncle Rowan: There is still one promise we have yet to fulfill.
+Uncle Rowan: ဖြည့်ဆည်းပေးဖို့ ကျန်နေသေးတဲ့ ကတိတစ်ခု ရှိသေးတယ်။
 
-Uncle Rowan: Your grandfather always dreamed of seeing his home filled with laughter again.
+Uncle Rowan: မင်းအဘိုးက သူ့အိမ်လေးမှာ လူတွေရဲ့ ရယ်သံတွေ ပြန်ကြားချင်ခဲ့တာ။
 
-Uncle Rowan: The villagers have decided to rebuild it.
+Uncle Rowan: အခုတော့ ရွာသားတွေက အဲဒီအိမ်ကို ပြန်လည်တည်ဆောက်ပေးဖို့ ဆုံးဖြတ်ထားကြပြီ။
 
-Uncle Rowan: We only need one final contribution from you.
+Uncle Rowan: ဒါပေမယ့် မင်းဆီက နောက်ဆုံးတစ်ခုပဲ လိုတော့တယ်။
 
-Uncle Rowan: Bring me everything Harvestia can now provide.
+Uncle Rowan: အခု Harvestia ကနေ ရလာနိုင်တဲ့ အရာတွေကို ယူလာပေးပါ။
 
-Uncle Rowan: Crops, animal products, building materials...
+Uncle Rowan: သီးနှံတွေ၊ တိရစ္ဆာန်ထွက်ကုန်တွေ၊ ဆောက်လုပ်ရေးပစ္စည်းတွေ...
 
-Uncle Rowan: Together, we'll build your home.
+Uncle Rowan: အားလုံးပေါင်းပြီး မင်းအဘိုးရဲ့ အိမ်ကို အတူတူ ပြန်တည်ဆောက်ကြမယ်။
 
 => END
 
 
 ~ turn_in
 
-Uncle Rowan: Welcome back.
+Uncle Rowan: ပြန်လာပြီပဲ။
 
-Uncle Rowan: Let's see if you've gathered everything we need.
+Uncle Rowan: ငါတို့လိုအပ်တဲ့ ပစ္စည်းတွေအားလုံး စုဆောင်းလာနိုင်ပြီလား ကြည့်ကြတာပေါ့။
 
 do GameDialogueManager.action_open_homecoming_board()
 
@@ -56,19 +56,19 @@ do GameDialogueManager.action_open_homecoming_board()
 
 Uncle Rowan: ...
 
-Uncle Rowan: This is more than enough.
+Uncle Rowan: ဒီလောက်ဆို လုံလောက်ပြီ။
 
-Uncle Rowan: Every piece of wood...
+Uncle Rowan: သစ်တစ်ချောင်းချင်းစီ...
 
-Uncle Rowan: Every stone...
+Uncle Rowan: ကျောက်တစ်တုံးချင်းစီ...
 
-Uncle Rowan: Every crop...
+Uncle Rowan: သီးနှံတစ်မျိုးချင်းစီ...
 
-Uncle Rowan: They all carry the hope you've brought back to Harvestia.
+Uncle Rowan: အားလုံးက မင်း Harvestia ကို ပြန်ပေးခဲ့တဲ့ မျှော်လင့်ချက်တွေပဲ။
 
-Uncle Rowan: Leave the rest to us.
+Uncle Rowan: ကျန်တာကို ငါတို့ ဆက်လုပ်လိုက်မယ်။
 
-Uncle Rowan: We'll make sure your grandfather's home stands proudly once again.
+Uncle Rowan: မင်းအဘိုးရဲ့ အိမ်ကို ဂုဏ်ယူစရာကောင်းအောင် ပြန်တည်ဆောက်ပေးမယ်။
 
 do QuestManager.try_complete_quest()
 
@@ -79,11 +79,11 @@ do GameDialogueManager.action_start_homecoming_ceremony()
 
 ~ completed
 
-Uncle Rowan: Everything is ready.
+Uncle Rowan: အားလုံး အဆင်သင့်ဖြစ်ပြီ။
 
-Uncle Rowan: The villagers are waiting for you.
+Uncle Rowan: ရွာသားတွေ မင်းကို စောင့်နေကြတယ်။
 
-Uncle Rowan: Come with me.
+Uncle Rowan: ငါနဲ့အတူ လိုက်ခဲ့ပါ။
 
 do GameDialogueManager.action_rowan_lead_player()
 
@@ -91,11 +91,13 @@ do GameDialogueManager.action_rowan_lead_player()
 
 ~ final_ending
 
-Uncle Rowan: Your grandfather would be proud.
+Uncle Rowan: မင်းအဘိုးသာ ဒီနေ့ကို မြင်ရရင် ဂုဏ်ယူနေမှာပဲ။
 
-Uncle Rowan: You brought Harvestia back to life.
+Uncle Rowan: မင်း Harvestia ကို ပြန်လည်အသက်ဝင်လာအောင် လုပ်ပေးနိုင်ခဲ့ပြီ။
 
-Uncle Rowan: And now... this home belongs to you.
+Uncle Rowan: အခုတော့...
+
+Uncle Rowan: ဒီအိမ်က မင်းအိမ်ပဲ။
 
 do GameDialogueManager.action_open_ending()
 
