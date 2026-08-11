@@ -183,7 +183,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_fmk7n")
 theme_override_font_sizes/font_size = 20
-text = "This action cannot be undone."
+text = "Unsaved progress will be lost."
 horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/ExitPopup/VBoxContainer"]
