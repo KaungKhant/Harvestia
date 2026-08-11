@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=4 uid="uid://c7imhl7n6jx7u"]
+[gd_scene load_steps=84 format=4 uid="uid://c7imhl7n6jx7u"]
 
 [ext_resource type="Script" uid="uid://bm00b7nmisjbw" path="res://scripts/main_harvestia_update.gd" id="1_8qup7"]
 [ext_resource type="PackedScene" uid="uid://cugdxyqvq2u2o" path="res://scene/components/test_scene_save_data_manager_component.tscn" id="2_jjh8e"]
@@ -46,6 +46,7 @@
 [ext_resource type="Script" uid="uid://cd8nou7v238tu" path="res://scene/test/canvas_layer.gd" id="49_ffxe5"]
 [ext_resource type="Resource" uid="uid://5rbr03gu1ecy" path="res://resources/quest_data_resoource.tres" id="50_x0ta3"]
 [ext_resource type="PackedScene" uid="uid://4ccsr3tx2dmk" path="res://scene/characters/guide/chicken_owner.tscn" id="51_to4li"]
+[ext_resource type="PackedScene" uid="uid://nsjkdo1gpkxq" path="res://scene/ui/game_screen_button.tscn" id="52_k7onq"]
 [ext_resource type="Script" uid="uid://c72wdkiu116jo" path="res://scene/characters/guide/ChickenCoopOwner.gd" id="52_py377"]
 [ext_resource type="PackedScene" uid="uid://6ulr3yrb52fj" path="res://scene/characters/guide/cow_owner.tscn" id="53_x5n78"]
 [ext_resource type="Script" uid="uid://bcvtj3baof658" path="res://scene/characters/guide/CowBarnOwner.gd" id="54_uo3xm"]
@@ -794,7 +795,6 @@ script = ExtResource("36_rk6bq")
 tilled_soil_tilemap_layer = NodePath("../tilemap/TilledLand")
 
 [node name="GameScreen" parent="." instance=ExtResource("37_irluo")]
-visible = false
 
 [node name="DayAndNightCycleComponent" parent="." instance=ExtResource("38_hp5gc")]
 initial_hour = 8
@@ -900,5 +900,7 @@ script = ExtResource("54_uo3xm")
 [node name="village_elder" parent="." instance=ExtResource("55_pbgoy")]
 position = Vector2(404, 367)
 script = ExtResource("56_boitk")
+
+[node name="GameButton" parent="." instance=ExtResource("52_k7onq")]
 
 [connection signal="value_changed" from="CanvasLayer/HSlider" to="CanvasLayer" method="_on_h_slider_value_changed"]
