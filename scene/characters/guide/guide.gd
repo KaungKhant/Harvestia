@@ -101,6 +101,8 @@ func _unhandled_input(event: InputEvent) -> void:
 
 		if QuestManager.is_quest_completed("cow_care") \
 		and !PlayerProgressManager.talked_to_village_elder:
+			
+			PlayerProgressManager.talked_to_rowan_after_cow_care = true
 			balloon.start(dialogue, "after_cow_care")
 		else:
 			balloon.start(dialogue, "start")

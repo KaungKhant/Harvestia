@@ -1,19 +1,19 @@
 ~ progress
 
-Guide: The Chicken Coop is thriving thanks to your care.
+Uncle Rowan: မင်းဂရုစိုက်ပေးထားလို့ အခုဆို ကြက်ခြံက ကောင်းကောင်းလည်ပတ်နေပြီ။
 
-Guide: Now it's time to expand Harvestia's farms once again.
+Uncle Rowan: အခု Harvestia ရဲ့ လယ်ယာတွေကို နောက်ထပ် တိုးချဲ့ဖို့ အချိန်ရောက်ပြီ။
 
-Guide: Carrots are hardy crops that will help feed our villagers.
+Uncle Rowan: မုန်လာဥနီက စိုက်ပျိုးရလွယ်ပြီး ရွာသားတွေအတွက် အစားအစာအဖြစ်လည်း အသုံးဝင်တယ်။
 
-Guide: Harvest 10 Carrots and bring them to me.
+Uncle Rowan: မုန်လာဥနီ ၁၀ လုံး ရိတ်သိမ်းပြီး ငါ့ဆီ ယူလာခဲ့ပါ။
 
 => END
 
 
 ~ turn_in
 
-Uncle Rowan: မုန်လာဥနီတွေက အရမ်းကောင်းတယ်။
+Uncle Rowan: ဒီမုန်လာဥနီတွေက အရည်အသွေးကောင်းတာပဲ။
 
 Uncle Rowan: Harvestia မှာ သီးနှံတွေ တဖြည်းဖြည်း ပြန်စိုက်ပျိုးနိုင်လာပြီ။
 
@@ -21,21 +21,22 @@ do QuestManager.try_complete_quest()
 
 Uncle Rowan: ဒါပေမယ့်...
 
-Uncle Rowan: လယ်ယာတွေပဲ ပြန်ကောင်းလာရုံနဲ့ Harvestia က ပြန်အသက်ဝင်မှာ မဟုတ်သေးဘူး။
+Uncle Rowan: လယ်ယာတွေ ပြန်ကောင်းလာရုံနဲ့ Harvestia ကို ပြန်အသက်ဝင်လာအောင် လုပ်ဖို့ မလုံလောက်သေးဘူး။
 
-Uncle Rowan: နွားခြံပိုင်ရှင်က မင်းအကြောင်း ကြားထားပြီး မင်းနဲ့ တွေ့ချင်နေတယ်။
+Uncle Rowan: နွားခြံပိုင်ရှင်က မင်းလုပ်ပေးခဲ့တာတွေကို ကြားထားပြီး မင်းနဲ့တွေ့ချင်နေတယ်။
 
-Uncle Rowan: အချိန်ရရင် သူ့ဆီ သွားတွေ့လိုက်ပါ။
+Uncle Rowan: အချိန်ရတဲ့အခါ သူ့ဆီသွားပြီး စကားပြောလိုက်ပါ။
 
 do QuestManager.start_quest("restore_cow_barn")
+
 
 => END
 
 
 ~ completed
 
-Guide: The villagers were delighted with your carrot harvest.
+Uncle Rowan: လယ်ယာတွေ ပြန်လည်စိုက်ပျိုးလာနိုင်တာကို ရွာသားတွေ ဝမ်းသာနေကြတယ်။
 
-Guide: Thank you for helping Harvestia grow.
+Uncle Rowan: ဒီလိုပဲ ဆက်ပြီး ကြိုးစားသွားပါ။
 
 => END

@@ -38,6 +38,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 	# Grandfather story (only once)
 	if QuestManager.is_quest_completed("cow_care") \
+	and PlayerProgressManager.talked_to_rowan_after_cow_care \
 	and !PlayerProgressManager.talked_to_village_elder:
 
 		dialogue = load("res://Dialog/VillageElder/grandfather_story.dialogue")

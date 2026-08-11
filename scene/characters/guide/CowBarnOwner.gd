@@ -83,3 +83,10 @@ func on_transfer_cow_barn() -> void:
 
 		# Start the next quest.
 		QuestManager.start_quest("cow_care")
+
+		# Show successful transfer dialogue.
+		var balloon: BaseGameDialogueBalloon = balloon_scene.instantiate()
+		get_tree().current_scene.add_child(balloon)
+
+		var dialogue := load("res://Dialog/CowBarnOwner/the_silent_barn.dialogue")
+		balloon.start(dialogue, "transfer_success")
