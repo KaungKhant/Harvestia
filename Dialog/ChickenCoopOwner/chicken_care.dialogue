@@ -1,43 +1,45 @@
 ~ progress
 
-Chicken Coop Owner: You've taken your first step as the coop's new owner.
+Chicken Coop Owner: ဒီကြက်ခြံရဲ့ ပိုင်ရှင်အသစ်အနေနဲ့ မင်းရဲ့ ပထမဆုံးခြေလှမ်းကို စလိုက်ပြီပေါ့။
 
-Chicken Coop Owner: Chickens need proper care before they'll reward your hard work.
+Chicken Coop Owner: ကြက်တွေက မင်းရဲ့ကြိုးစားမှုကို ပြန်လည်အကျိုးပေးဖို့ သူတို့ကို သေချာပြုစုစောင့်ရှောက်ပေးဖို့ လိုတယ်။
 
-Chicken Coop Owner: Feed them with Corn and collect 20 Eggs.
+Chicken Coop Owner: Corn နဲ့ ကြက်တွေကို အစာကျွေးပြီး Egg 20 လုံး စုဆောင်းလာခဲ့ပါ။
 
-Chicken Coop Owner: Bring the Eggs back to me when you're finished.
+Chicken Coop Owner: ပြီးရင် Egg တွေကို ငါ့ဆီ ယူလာခဲ့ပါ။
 
 => END
 
 
 ~ turn_in
 
-Chicken Coop Owner: These eggs look wonderful.
+Chicken Coop Owner: ဒီကြက်ဥတွေက အရည်အသွေးကောင်းတာပဲ။
 
-Chicken Coop Owner: The chickens seem happy and healthy.
+Chicken Coop Owner: ကြက်လေးတွေလည်း ကျန်းမာပြီး ပျော်ရွှင်နေကြပုံရတယ်။
 
-Chicken Coop Owner: You've proven you can take good care of this coop.
+Chicken Coop Owner: ဒီကြက်ခြံကို မင်းကောင်းကောင်း စောင့်ရှောက်နိုင်တယ်ဆိုတာ သက်သေပြနိုင်ခဲ့ပြီ။
 
 do QuestManager.try_complete_quest()
 
-Chicken Coop Owner: I spoke with the Guide this morning.
+Chicken Coop Owner: ဒီမနက်က Uncle Rowan နဲ့ စကားပြောဖြစ်တယ်။
 
-Chicken Coop Owner: He asked me to give you access to a new crop.
+Chicken Coop Owner: မင်းကောင်းကောင်းကြိုးစားနေတယ်လို့ သူပြောတယ်။
+
+Chicken Coop Owner: မင်းအတွက် နောက်ထပ်အခွင့်အရေးတစ်ခု ရှိတယ်လို့လည်း သူက ပြောထားတယ်။
 
 do SeedUnlockManager.unlock_seed("carrot_seeds")
 
-Guide: Carrot Seeds are now available at the Seed Shop.
+Chicken Coop Owner: အခုဆို Carrot Seeds ကို Seed Shop မှာ ဝယ်လို့ရပြီ။
 
-Guide: Visit the Seed Shop and begin growing carrots.
+Chicken Coop Owner: Seed Shop ကို သွားပြီး Carrot တွေ စစိုက်ပျိုးလိုက်ပါ။
 
 => END
 
 
 ~ completed
 
-Chicken Coop Owner: Keep caring for them every day.
+Chicken Coop Owner: နေ့တိုင်း သူတို့ကို ဆက်ပြီး ဂရုစိုက်ပေးပါ။
 
-Chicken Coop Owner: A good farmer never neglects their animals.
+Chicken Coop Owner: လယ်သမားကောင်းတစ်ယောက်ဆိုတာ ကိုယ့်တိရစ္ဆာန်တွေကို ဘယ်တော့မှ မပစ်ပယ်ဘူး။
 
 => END
