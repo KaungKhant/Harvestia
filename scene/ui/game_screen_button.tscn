@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cqnkvro86hdgq" path="res://assets/ui/newGameStateNormal.png" id="5_wwe15"]
 [ext_resource type="Texture2D" uid="uid://bbmts1ucyhptg" path="res://assets/ui/NewGameStateHover.png" id="6_l2dxn"]
 [ext_resource type="Texture2D" uid="uid://dya8kmvunk47o" path="res://assets/ui/NewGameStateDisable.png" id="7_q8h0a"]
-[ext_resource type="Texture2D" uid="uid://dfss42xptc8um" path="res://Guide.png" id="9_1oxpg"]
+[ext_resource type="Texture2D" uid="uid://cbo4j05gu142s" path="res://assets/game/control-guide.jpg" id="9_1oxpg"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s1ocj"]
 texture = ExtResource("2_yyw16")
@@ -125,10 +125,10 @@ script = ExtResource("1_yyw16")
 
 [node name="Exit" type="Button" parent="Control"]
 layout_mode = 0
-offset_left = 861.0
-offset_top = 481.0
-offset_right = 958.0
-offset_bottom = 526.0
+offset_left = 868.0
+offset_top = 433.0
+offset_right = 965.0
+offset_bottom = 478.0
 theme_override_fonts/font = ExtResource("1_fmk7n")
 theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxTexture_s1ocj")
@@ -183,7 +183,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_fmk7n")
 theme_override_font_sizes/font_size = 20
-text = "This action cannot be undone."
+text = "Unsaved progress will be lost."
 horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/ExitPopup/VBoxContainer"]
@@ -251,10 +251,10 @@ expand_mode = 1
 
 [node name="CloseButton" type="Button" parent="Control/Guide/GuidePopup/TextureRect"]
 layout_mode = 0
-offset_left = 881.0
-offset_top = 420.0
-offset_right = 933.0
-offset_bottom = 461.0
+offset_left = 891.0
+offset_top = 11.0
+offset_right = 943.0
+offset_bottom = 52.0
 theme_override_colors/font_disabled_color = Color(0, 0, 0, 0.5019608)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_fmk7n")

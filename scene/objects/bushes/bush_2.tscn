@@ -10,27 +10,28 @@ atlas = ExtResource("1_aenal")
 region = Rect2(407, 25, 78, 59)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_euhmd"]
-radius = 24.674097
+radius = 20.129946
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qankg"]
-radius = 30.54388
+radius = 26.817396
 
 [node name="Bush" type="Sprite2D"]
-position = Vector2(0.24999845, -3.5000005)
-scale = Vector2(0.2014926, 0.19565216)
+position = Vector2(-0.4458952, -5.864131)
+scale = Vector2(0.27061805, 0.27579218)
 texture = SubResource("AtlasTexture_nn0hp")
 script = ExtResource("2_nn0hp")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 10.877754)
 shape = SubResource("CircleShape2D_euhmd")
 
 [node name="HurtComponent" parent="." instance=ExtResource("3_3jk5x")]
 tool = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtComponent"]
-position = Vector2(1.0151591, 3.1335017e-06)
+position = Vector2(1.0151594, 3.6259205)
 shape = SubResource("CircleShape2D_qankg")
 debug_color = Color(0.78248864, 0.23241031, 0.902805, 0.41960785)
 
