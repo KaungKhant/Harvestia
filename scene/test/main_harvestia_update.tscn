@@ -1004,6 +1004,6 @@ position = Vector2(309, -40)
 position = Vector2(296, 149)
 
 [node name="shopkeeper" parent="." instance=ExtResource("57_nriah")]
-position = Vector2(367, 126)
+position = Vector2(365, 134)
 
 [connection signal="value_changed" from="CanvasLayer/HSlider" to="CanvasLayer" method="_on_h_slider_value_changed"]

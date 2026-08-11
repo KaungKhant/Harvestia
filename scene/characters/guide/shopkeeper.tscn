@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://b88hjdq24tc7l"]
+[gd_scene load_steps=9 format=3 uid="uid://b88hjdq24tc7l"]
 
+[ext_resource type="Script" uid="uid://bnh361pe85lhu" path="res://scene/characters/guide/shopkeeper.gd" id="1_fsjoe"]
 [ext_resource type="Texture2D" uid="uid://dro85siw16w3y" path="res://assets/game/Characters/npc4.png" id="2_ll47w"]
 [ext_resource type="PackedScene" uid="uid://cv3tlgmwisqki" path="res://scene/components/interactable_component.tscn" id="3_88vsn"]
 [ext_resource type="PackedScene" uid="uid://dtg2w66i1vtib" path="res://scene/components/interactable_label_component.tscn" id="4_tvwku"]
@@ -27,6 +28,7 @@ radius = 13.0
 
 [node name="Shopkeeper" type="Node2D"]
 y_sort_enabled = true
+script = ExtResource("1_fsjoe")
 
 [node name="Sprite2D" type="CharacterBody2D" parent="."]
 

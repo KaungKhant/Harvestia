@@ -82,3 +82,10 @@ func on_transfer_chicken_coop() -> void:
 
 		# Start the next quest.
 		QuestManager.start_quest("chicken_care")
+
+		# Show successful transfer dialogue.
+		var balloon: BaseGameDialogueBalloon = balloon_scene.instantiate()
+		get_tree().current_scene.add_child(balloon)
+
+		var dialogue := load("res://Dialog/ChickenCoopOwner/a_new_caretaker.dialogue")
+		balloon.start(dialogue, "transfer_success")

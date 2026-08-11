@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://ck1pmd0mghk35"
+path="res://.godot/imported/shopkeeper.dialogue-7ed446665b126625389d5b577e4dd1cb.tres"
+
+[deps]
+
+source_file="res://Dialog/Shopkeeper/shopkeeper.dialogue"
+dest_files=["res://.godot/imported/shopkeeper.dialogue-7ed446665b126625389d5b577e4dd1cb.tres"]
+
+[params]
+
+defaults=true

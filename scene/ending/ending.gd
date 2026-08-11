@@ -9,15 +9,15 @@ const MAIN_WORLD := "res://scene/test/main_harvestia_update.tscn"
 
 
 func _ready() -> void:
-    continue_button.pressed.connect(_on_continue_pressed)
-    main_menu_button.pressed.connect(_on_main_menu_pressed)
+	continue_button.pressed.connect(_on_continue_pressed)
+	main_menu_button.pressed.connect(_on_main_menu_pressed)
 
-    animation_player.play("CreditsScroll")
+	animation_player.play("CreditsScroll")
 
 
 func _on_continue_pressed() -> void:
-    get_tree().change_scene_to_file(MAIN_WORLD)
+	get_tree().change_scene_to_file(MAIN_WORLD)
 
 
 func _on_main_menu_pressed() -> void:
-    get_tree().change_scene_to_file(MAIN_MENU)
+	get_tree().change_scene_to_file(MAIN_MENU)

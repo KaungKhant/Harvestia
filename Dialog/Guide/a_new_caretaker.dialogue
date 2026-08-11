@@ -1,68 +1,67 @@
 ~ progress
 
-Chicken Coop Owner: Ah... so you're the young farmer the Guide told me about.
+Chicken Coop Owner: အော်... Guide ပြောထားတဲ့ လယ်သမားလေးက မင်းပဲကိုး။
 
-Chicken Coop Owner: I've heard you've worked tirelessly to restore Harvestia.
+Chicken Coop Owner: Harvestia ကို ပြန်လည်အသက်ဝင်လာအောင် မင်းကြိုးစားနေတယ်လို့ ကြားထားတယ်။
 
-Chicken Coop Owner: There is something important I'd like to ask you.
+Chicken Coop Owner: မင်းကို အရေးကြီးတဲ့ကိစ္စတစ်ခု အကူအညီတောင်းချင်တယ်။
 
 => END
-
 
 ~ turn_in
 
-Chicken Coop Owner: These chickens have been my family for many years.
+Chicken Coop Owner: ဒီကြက်တွေကို ငါ နှစ်ပေါင်းများစွာ ပြုစုစောင့်ရှောက်လာခဲ့တာပါ။
 
-Chicken Coop Owner: But time catches up with everyone.
+Chicken Coop Owner: ငါမှတ်မိသလောက်ဆို ဒီကြက်တွေက ငါ့ဘဝရဲ့ အစိတ်အပိုင်းတစ်ခုလို ဖြစ်နေခဲ့တာကြာပြီ။
 
-Chicken Coop Owner: I can no longer care for this coop the way it deserves.
+Chicken Coop Owner: ဒါပေမယ့် အခုတော့ ငါလည်း အသက်ကြီးလာပြီဆိုတော့ အရင်လို ဒီကြက်ခြံကို ကောင်းကောင်းမစောင့်ရှောက်နိုင်တော့ဘူး။
 
-Chicken Coop Owner: I'd like you to become its new caretaker.
+Chicken Coop Owner: ဒီကြက်ခြံကို သေချာဂရုစိုက်ပေးနိုင်မယ့်သူတစ်ယောက်ကို လွှဲပေးချင်တယ်။
 
-Chicken Coop Owner: The coop needs repairs before I can entrust it to you.
+Chicken Coop Owner: အဲဒီလူက မင်းဖြစ်စေချင်တယ်။
 
-Chicken Coop Owner: Restoring the fences and feeding troughs will cost 500 Gold.
+Chicken Coop Owner: ဒါပေမယ့် မင်းကို မအပ်ခင် ကြက်ခြံကို အရင်ပြုပြင်ဖို့ လိုသေးတယ်။
 
-- I'll restore the coop.
-    do GameDialogueManager.action_transfer_chicken_coop()
+Chicken Coop Owner: ခြံစည်းရိုးနဲ့ အစာကျွေးတဲ့နေရာတွေကို ပြန်ပြင်ဖို့ Gold 500 လိုမယ်။
 
-Chicken Coop Owner: Thank you.
+- ကြက်ခြံကိုပြင်ပေးပါမယ်
+  do GameDialogueManager.action_transfer_chicken_coop()
 
-Chicken Coop Owner: From this day forward, this coop is yours.
 
-Chicken Coop Owner: Please take good care of my chickens.
+- အခုတော့ အဆင်သင့်မဖြစ်သေးပါဘူး။
+  Player: အဆင်သင့်ဖြစ်တဲ့အခါ ပြန်လာခဲ့မယ်။
+
+Chicken Coop Owner: ကျေးဇူးတင်ပါတယ်။
+
+Chicken Coop Owner: ဒီနေ့ကစပြီး ဒီကြက်ခြံက မင်းတာဝန်ပဲ။
+
+Chicken Coop Owner: ဒီကြက်တွေကို သေချာဂရုစိုက်ပေးပါ။
 
 => END
-
-- I need more time.
-    Player: I'll come back when I'm ready.
-
-=> END
-
 
 ~ completed
 
-Chicken Coop Owner: Thank you.
+Chicken Coop Owner: ကျေးဇူးတင်ပါတယ်။
 
-Chicken Coop Owner: I know the chickens are in good hands.
+Chicken Coop Owner: ဒီကြက်တွေကို မင်းလက်ထဲ အပ်လို့ရတယ်ဆိုတာ ငါသိတယ်။
 
 => END
 
 ~ level_too_low
 
-Chicken Coop Owner: You've accomplished a lot for Harvestia.
+Chicken Coop Owner: Harvestia အတွက် မင်းအများကြီး လုပ်ပေးထားပြီးပြီ။
 
-Chicken Coop Owner: But caring for a coop is a great responsibility.
+Chicken Coop Owner: ဒါပေမယ့် ကြက်ခြံကို တာဝန်ယူစောင့်ရှောက်ရတာက တာဝန်ကြီးတစ်ခုပါ။
 
-Chicken Coop Owner: Gain a little more experience, then come back to me.
+Chicken Coop Owner: အတွေ့အကြုံနည်းနည်း ထပ်ရလာတဲ့အခါ ပြန်လာခဲ့ပါ။
 
 => END
 
 
 ~ not_enough_gold
 
-Chicken Coop Owner: The coop still needs repairs before I can entrust it to you.
+Chicken Coop Owner: ဒီကြက်ခြံကို မင်းလက်ထဲ မအပ်ခင် ပြုပြင်ဖို့ လိုနေသေးတယ်။
 
-Chicken Coop Owner: Bring me 500 Gold, and we'll finish the restoration together.
+Chicken Coop Owner: အဆင်သင့်ဖြစ်တဲ့အခါ Gold 500 စုလာခဲ့ပါ။ ပြီးရင် ဒီကြက်ခြံကို အတူတူ ပြန်ပြင်ကြမယ်။
 
 => END
