@@ -172,7 +172,7 @@ region = Rect2(443, 275, 92, 437)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_boc5i"]
 atlas = ExtResource("14_w36fw")
-region = Rect2(911, 275, 129, 437)
+region = Rect2(894, 327, 145, 327)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6ef6x"]
 atlas = ExtResource("13_w5oub")
@@ -627,8 +627,10 @@ save_data_resource = ExtResource("3_m1awt")
 position = Vector2(-0.24836081, -7.5540433)
 scale = Vector2(0.172, 0.099)
 sprite_frames = SubResource("SpriteFrames_tg7s0")
-animation = &"watering_right"
+animation = &"tilling_left"
 autoplay = "idle_front"
+frame = 1
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 texture_filter = 1
