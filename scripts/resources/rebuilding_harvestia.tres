@@ -10,6 +10,7 @@ quest_name = "Rebuilding Harvestia"
 description = "Collect 20 Logs."
 target_item = "log"
 quest_icon = "log"
+quest_giver = "Uncle Rowan"
 target_amount = 20
 reward_exp = 80
 reward_gold = 150

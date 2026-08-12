@@ -10,6 +10,7 @@ quest_name = "A Growing Farm"
 description = "Harvest 5 Tomatoes."
 target_item = "tomato"
 quest_icon = "tomato"
+quest_giver = "Uncle Rowan"
 target_amount = 5
 reward_exp = 75
 reward_gold = 150

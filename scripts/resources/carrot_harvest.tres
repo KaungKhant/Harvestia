@@ -10,6 +10,7 @@ quest_name = "A New Harvest"
 description = "Harvest 10 Carrots."
 target_item = "carrot"
 quest_icon = "carrot"
+quest_giver = "Uncle Rowan"
 target_amount = 10
 reward_exp = 80
 reward_gold = 250

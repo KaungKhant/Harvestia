@@ -10,6 +10,7 @@ quest_name = "Build Your Economy"
 description = "Earn 500 Gold."
 target_item = "gold"
 quest_icon = "gold"
+quest_giver = "Uncle Rowan"
 target_amount = 500
 reward_exp = 100
 reward_gold = 300

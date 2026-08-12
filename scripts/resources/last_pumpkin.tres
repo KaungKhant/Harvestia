@@ -10,6 +10,7 @@ quest_name = "The Last Pumpkin"
 description = "Harvest 10 Pumpkins to continue your grandfather's legacy."
 target_item = "pumpkin"
 quest_icon = "pumpkin"
+quest_giver = "Uncle Rowan"
 target_amount = 10
 reward_exp = 80
 reward_gold = 150

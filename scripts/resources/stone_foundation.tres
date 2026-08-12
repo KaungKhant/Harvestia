@@ -10,6 +10,7 @@ quest_name = "Stone for the Foundation"
 description = "Collect 15 Stones."
 target_item = "stone"
 quest_icon = "stone"
+quest_giver = "Uncle Rowan"
 target_amount = 15
 reward_exp = 80
 reward_gold = 150
