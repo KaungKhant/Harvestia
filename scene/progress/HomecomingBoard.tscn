@@ -6,8 +6,10 @@
 script = ExtResource("1_dhtgt")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 79.0
+offset_top = 129.0
+offset_right = 144.0
+offset_bottom = 465.0
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
 layout_mode = 2

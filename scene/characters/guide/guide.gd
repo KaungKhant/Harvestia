@@ -88,7 +88,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		QuestManager.get_dialogue_label()
 	)
 	# Guide handles Guide quests only
-	elif QuestManager.current_quest.quest_giver == "Guide":
+	elif QuestManager.current_quest.quest_giver == "Uncle Rowan":
 		dialogue = QuestManager.current_quest.dialogue_file
 		balloon.start(
 			dialogue,
