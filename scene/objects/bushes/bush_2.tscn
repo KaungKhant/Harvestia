@@ -13,7 +13,7 @@ region = Rect2(407, 25, 78, 59)
 radius = 20.129946
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qankg"]
-radius = 26.817396
+radius = 37.58821
 
 [node name="Bush" type="Sprite2D"]
 position = Vector2(-0.4458952, -5.864131)

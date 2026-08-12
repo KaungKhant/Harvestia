@@ -13,7 +13,7 @@ region = Rect2(424, 37, 46, 42)
 radius = 11.896969
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qankg"]
-radius = 15.42966
+radius = 23.0
 
 [node name="Bush" type="Sprite2D"]
 position = Vector2(-5.9604645e-07, -5.1956515)
@@ -32,7 +32,7 @@ shape = SubResource("CircleShape2D_euhmd")
 tool = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtComponent"]
-position = Vector2(1.0151601, 7.235958)
+position = Vector2(1.9073486e-06, 4.32584)
 shape = SubResource("CircleShape2D_qankg")
 debug_color = Color(0.78248864, 0.23241031, 0.902805, 0.41960785)
 
