@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://dilwii1wctp57"]
+[gd_scene load_steps=10 format=3 uid="uid://dilwii1wctp57"]
 
 [ext_resource type="Texture2D" uid="uid://dh4jcrvd6f7g2" path="res://assets/game/Objects/Bushe4.png" id="1_c165i"]
 [ext_resource type="Script" uid="uid://c2nphxykqex24" path="res://scene/objects/bushes/bush_1.gd" id="2_ygidn"]
 [ext_resource type="PackedScene" uid="uid://dg8e005hj8y6k" path="res://scene/components/hurt_component.tscn" id="3_t74v8"]
 [ext_resource type="PackedScene" uid="uid://bclpvokyn22rq" path="res://scene/components/damage_component.tscn" id="4_3pwpd"]
+[ext_resource type="PackedScene" uid="uid://bitwqob65vm4g" path="res://scene/components/save_data_component.tscn" id="5_t74v8"]
+[ext_resource type="Resource" uid="uid://cf5ydpsoaidey" path="res://resources/bush_data_resource.tres" id="6_3pwpd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ygidn"]
 atlas = ExtResource("1_c165i")
@@ -13,7 +15,7 @@ region = Rect2(424, 37, 46, 42)
 radius = 11.896969
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qankg"]
-radius = 23.0
+radius = 26.285715
 
 [node name="Bush" type="Sprite2D"]
 position = Vector2(-5.9604645e-07, -5.1956515)
@@ -25,16 +27,19 @@ script = ExtResource("2_ygidn")
 position = Vector2(3.2857144, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(0, 7.9180393)
+position = Vector2(-3.2857125, 7.918041)
 shape = SubResource("CircleShape2D_euhmd")
 
 [node name="HurtComponent" parent="." instance=ExtResource("3_t74v8")]
 tool = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtComponent"]
-position = Vector2(1.9073486e-06, 4.32584)
+position = Vector2(1.9073482e-06, 0.70786285)
 shape = SubResource("CircleShape2D_qankg")
 debug_color = Color(0.78248864, 0.23241031, 0.902805, 0.41960785)
 
 [node name="DamageComponent" parent="." instance=ExtResource("4_3pwpd")]
 max_damage = 2
+
+[node name="SaveDataComponent" parent="." instance=ExtResource("5_t74v8")]
+save_data_resource = ExtResource("6_3pwpd")

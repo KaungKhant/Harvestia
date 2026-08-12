@@ -125,10 +125,10 @@ script = ExtResource("1_yyw16")
 
 [node name="Exit" type="Button" parent="Control"]
 layout_mode = 0
-offset_left = 868.0
-offset_top = 433.0
-offset_right = 965.0
-offset_bottom = 478.0
+offset_left = 863.0
+offset_top = 481.0
+offset_right = 960.0
+offset_bottom = 526.0
 theme_override_fonts/font = ExtResource("1_fmk7n")
 theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxTexture_s1ocj")
@@ -215,10 +215,10 @@ text = "Cancel
 
 [node name="Guide" type="Button" parent="Control"]
 layout_mode = 0
-offset_left = 769.0
+offset_left = 776.0
 offset_top = 13.0
-offset_right = 836.0
-offset_bottom = 41.0
+offset_right = 843.0
+offset_bottom = 35.0
 theme_override_colors/font_disabled_color = Color(0, 0, 0, 0.5019608)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_fmk7n")
@@ -242,19 +242,19 @@ anchor_left = -0.523
 anchor_top = -0.40300003
 anchor_right = -0.523
 anchor_bottom = -0.40300003
-offset_left = -745.08
-offset_top = 7.120001
-offset_right = 223.92
-offset_bottom = 483.12
+offset_left = -794.08
+offset_top = -11.879999
+offset_right = 273.92
+offset_bottom = 547.12
 texture = ExtResource("9_1oxpg")
 expand_mode = 1
 
 [node name="CloseButton" type="Button" parent="Control/Guide/GuidePopup/TextureRect"]
 layout_mode = 0
-offset_left = 891.0
-offset_top = 11.0
-offset_right = 943.0
-offset_bottom = 52.0
+offset_left = 927.0
+offset_top = 28.0
+offset_right = 977.0
+offset_bottom = 50.0
 theme_override_colors/font_disabled_color = Color(0, 0, 0, 0.5019608)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_fmk7n")
