@@ -302,7 +302,7 @@ func move_shopkeeper_to_gathering_point() -> void:
 		return
 
 	var shopkeeper := current_scene.get_node_or_null(
-		"SeedShop/Shopkeeper"
+		"shopkeeper"
 	)
 
 	if shopkeeper == null:

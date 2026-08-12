@@ -960,7 +960,7 @@ position = Vector2(334, 341)
 position = Vector2(140, 231)
 
 [node name="Waypoint1" type="Marker2D" parent="HomecomingPoints/ShopkeeperPath"]
-position = Vector2(306, -122)
+position = Vector2(295, -91)
 
 [node name="Waypoint2" type="Marker2D" parent="HomecomingPoints/ShopkeeperPath"]
 position = Vector2(301, 22)
