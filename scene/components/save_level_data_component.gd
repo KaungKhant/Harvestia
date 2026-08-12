@@ -13,7 +13,6 @@ func _ready() -> void:
 
 func save_node_data() -> void:
     var nodes = get_tree().get_nodes_in_group("save_data_component")
-
     print("Found ", nodes.size(), " save components")
 
     game_data_resource = SaveGameDataResource.new()
@@ -21,10 +20,8 @@ func save_node_data() -> void:
     for node in nodes:
         print("Saving:", node.get_parent().name)
         var data = node._save_data()
-
-        # Safely append data without crashing if properties are missing
         if data != null:
-            game_data_resource.save_data_nodes.append(data)         
+            game_data_resource.save_data_nodes.append(data)
 
 func save_game() -> void:
     save_game_data_path = ProfileManager.get_save_folder()
@@ -35,7 +32,6 @@ func save_game() -> void:
     save_node_data()
     game_data_resource.collected_items = SaveGameManager.collected_items.duplicate()
 
-    # Save quest
     if QuestManager.current_quest != null:
         game_data_resource.current_quest_id = QuestManager.current_quest.quest_id
 
@@ -43,11 +39,10 @@ func save_game() -> void:
     game_data_resource.current_state = QuestManager.current_state
     game_data_resource.completed_quests = QuestManager.completed_quests.duplicate(true)
 
-    # Save tools
     game_data_resource.unlocked_tools = ToolManager.unlocked_tools.duplicate()
     game_data_resource.unlocked_areas = AreaManager.unlocked_areas.duplicate()
     game_data_resource.unlocked_seeds = SeedUnlockManager.unlocked_seeds.duplicate(true)
-    # Create save directory if needed
+
     if !DirAccess.dir_exists_absolute(save_game_data_path):
         DirAccess.make_dir_absolute(save_game_data_path)
 
@@ -61,37 +56,58 @@ func save_game() -> void:
     else:
         print("Save failed. Error:", result)
 
-func load_game() -> void:
+
+# =====================================================
+# SHARED: reads the save file from disk into
+# game_data_resource. Both load paths call this first.
+# =====================================================
+func _read_save_file() -> bool:
     save_game_data_path = ProfileManager.get_save_folder()
     var level_save_file_name := save_file_name % level_scene_name
     var save_game_path := save_game_data_path + level_save_file_name
 
     if !FileAccess.file_exists(save_game_path):
         print("Save file not found.")
-        return
+        return false
 
     game_data_resource = ResourceLoader.load(save_game_path)
 
     if game_data_resource == null:
         print("Failed to load save file.")
+        return false
+
+    return true
+
+
+# =====================================================
+# FULL LOAD: progress data + scene data.
+# Call this only on a genuine fresh app start / Continue.
+# =====================================================
+func load_game() -> void:
+    if !_read_save_file():
         return
 
+    _load_progress_data()
+    _load_scene_data()
 
-    # =========================
-    # Load Area Data
-    # =========================
+    print("===== LOAD COMPLETE =====")
+
+
+# =====================================================
+# PROGRESS DATA: quests, tools, areas, seeds.
+# These live in autoloads that already persist across
+# scene changes — only reload on a genuine fresh load.
+# =====================================================
+func _load_progress_data() -> void:
+    # Area Data
     AreaManager.unlocked_areas = game_data_resource.unlocked_areas.duplicate(true)
-
     for area_id in AreaManager.unlocked_areas.keys():
         AreaManager.area_unlocked.emit(area_id)
 
     print("Loaded areas:", AreaManager.unlocked_areas)
     print("Forest unlocked:", AreaManager.is_area_unlocked("forest"))
 
-
-    # =========================
-    # Load Quest Data
-    # =========================
+    # Quest Data
     QuestManager.completed_quests = game_data_resource.completed_quests.duplicate(true)
     QuestManager.restore_quest(
         game_data_resource.current_quest_id,
@@ -99,54 +115,42 @@ func load_game() -> void:
         game_data_resource.current_state
     )
 
-
-    # =========================
-    # Load Tool Unlocks
+    # Tool Unlocks
     ToolManager.unlocked_tools = game_data_resource.unlocked_tools.duplicate()
-
     for tool in ToolManager.unlocked_tools:
         ToolManager.enable_tool_button(tool)
 
-
-    # ---> ADD THESE LINES TO LOAD SEED UNLOCKS <---
+    # Seed Unlocks
     if game_data_resource.unlocked_seeds != null:
         SeedUnlockManager.unlocked_seeds = game_data_resource.unlocked_seeds.duplicate(true)
-        
-        # Optional: Emit signals or update UI if your seed shop needs to refresh its locked visuals
+
         for seed_name in SeedUnlockManager.unlocked_seeds.keys():
             if SeedUnlockManager.unlocked_seeds[seed_name]:
                 SeedUnlockManager.seed_unlocked.emit(seed_name)
 
-    # =========================
-    # Get Current Scene
-    # =========================
+
+# =====================================================
+# SCENE DATA: crops, tilled land, harvest items.
+# These live on scene nodes, not autoloads — reload
+# this every time the scene loads, including on a
+# routine house exit.
+# =====================================================
+func _load_scene_data() -> void:
     var current_scene := get_tree().current_scene
 
     if current_scene == null:
         current_scene = get_tree().root
 
-
-    # =========================
-    # Find Crop Container
-    # =========================
     var crop_fields := current_scene.find_child("CropFields", true, false)
-
 
     print("Loading resources:", game_data_resource.save_data_nodes.size())
 
-
-    # Remove current crops/harvests before loading
     if crop_fields:
         for child in crop_fields.get_children():
             child.queue_free()
 
-
-    # =========================
-    # Load Saved Objects
-    # =========================
     for resource in game_data_resource.save_data_nodes:
 
-        # -------- Crops --------
         if resource is CropDataResource:
             var crop_resource := resource as CropDataResource
 
@@ -167,14 +171,11 @@ func load_game() -> void:
                 current_scene.add_child(crop)
 
             crop_resource._load_data(crop)
-
             print("Loaded crop:", crop_resource.scene_file_path)
 
-        # -------- Harvest Items --------
         elif resource is HarvestDataResource:
             var harvest_resource := resource as HarvestDataResource
 
-            # Skip if the item was collected/removed
             if harvest_resource.is_removed or harvest_resource.scene_file_path == "":
                 continue
 
@@ -192,10 +193,7 @@ func load_game() -> void:
                 current_scene.add_child(harvest)
 
             harvest_resource._load_data(harvest)
-
             print("Loaded harvest item successfully")
-        # -------- Other Saved Nodes --------
+
         elif resource is NodeDataResource:
             resource._load_data(current_scene)
-            
-    print("===== LOAD COMPLETE =====")

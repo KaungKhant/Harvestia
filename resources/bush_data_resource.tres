@@ -1,0 +1,6 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://cf5ydpsoaidey"]
+
+[ext_resource type="Script" uid="uid://cspcpniscg5an" path="res://resources/bush_data_resource.gd" id="1_2yqc5"]
+
+[resource]
+script = ExtResource("1_2yqc5")
