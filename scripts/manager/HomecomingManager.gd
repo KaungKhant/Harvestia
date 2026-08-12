@@ -7,7 +7,7 @@ const ENDING_ROWAN_SCENE := preload(
 
 var ending_rowan: Node2D = null
 var donation_completed: bool = false
-
+var homecoming_board: CanvasLayer = null
 # -------------------------------------------------
 # Homecoming Resource Requirements
 # -------------------------------------------------
@@ -58,29 +58,12 @@ func _on_quest_started(quest: QuestData) -> void:
 func _on_homecoming_introduction_finished() -> void:
     print("HomecomingManager: Homecoming introduction finished.")
 
-    if donation_completed:
-        print("Homecoming already completed. Do not spawn Ending Rowan.")
-        return
-
-    if is_instance_valid(ending_rowan):
-        print("Ending Rowan already exists. Do not spawn again.")
-        return
-
     call_deferred("_spawn_ending_rowan")
+# -------------------------------------------------
+# Spawn Ending Rowan
+# -------------------------------------------------
 
 func _spawn_ending_rowan() -> void:
-    if donation_completed:
-        print("Homecoming already donated. STOP spawning Ending Rowan.")
-        return
-
-    print("================================")
-    print("Homecoming: spawn function called.")
-
-    if is_instance_valid(ending_rowan):
-        print("STOP: EndingRowan already exists.")
-        return
-
-    # ... rest of your existing code
     print("================================")
     print("Homecoming: spawn function called.")
 
@@ -153,26 +136,32 @@ func _spawn_ending_rowan() -> void:
 
 
 func open_homecoming_board() -> void:
-    print("HomecomingManager: Opening Homecoming Board.")
+    if donation_completed:
+        print("Homecoming already completed. Board will NOT open.")
+        return
+
+    if is_instance_valid(homecoming_board):
+        print("Homecoming Board already exists. Opening existing board.")
+        homecoming_board.open()
+        return
+
+    print("HomecomingManager: Creating Homecoming Board.")
 
     var board_scene := preload(
-		"res://scene/progress/HomecomingBoard.tscn"
+        "res://scene/progress/HomecomingBoard.tscn"
     )
 
-    var board := board_scene.instantiate()
+    homecoming_board = board_scene.instantiate()
 
-    if board == null:
+    if homecoming_board == null:
         print("ERROR: Failed to instantiate HomecomingBoard.")
         return
 
-    get_tree().current_scene.add_child(board)
+    get_tree().current_scene.add_child(homecoming_board)
 
-    board.open()
+    homecoming_board.open()
 
     print("HomecomingManager: Homecoming Board opened.")
-# -------------------------------------------------
-# Get Current Resource Progress
-# -------------------------------------------------
 
 func get_progress() -> Dictionary:
     var progress: Dictionary = {}
@@ -278,16 +267,10 @@ func donate_materials() -> bool:
         print("Homecoming: Donation already completed.")
         return false
 
-    # Check everything BEFORE removing anything
     if !is_complete():
         print("Homecoming: Not enough resources.")
         return false
 
-    print("================================")
-    print("Homecoming: Starting donation...")
-    print("================================")
-
-    # Remove crops
     InventoryManager.remove_item_stack(
         "corn",
         required_resources["corn"]
@@ -308,7 +291,6 @@ func donate_materials() -> bool:
         required_resources["pumpkin"]
     )
 
-    # Remove animal products
     InventoryManager.remove_item_stack(
         "egg",
         required_resources["egg"]
@@ -319,7 +301,6 @@ func donate_materials() -> bool:
         required_resources["milk"]
     )
 
-    # Remove building materials
     InventoryManager.remove_item_stack(
         "log",
         required_resources["log"]
@@ -330,26 +311,22 @@ func donate_materials() -> bool:
         required_resources["stone"]
     )
 
-    # Remove gold
     if !PlayerProgressManager.spend_gold(
         required_resources["gold"]
     ):
-        print("ERROR: Failed to spend gold.")
         return false
 
-    # IMPORTANT:
-    # Set this BEFORE emitting any signal.
+    # Set this BEFORE emitting the signal
     donation_completed = true
 
-    print("================================")
-    print("Homecoming resources donated.")
-    print("donation_completed = ", donation_completed)
-    print("================================")
+    print("Homecoming donation completed.")
 
-    # Update quest progress
     QuestManager.sync_progress_with_inventory()
 
-    # Notify other systems
     donation_completed_signal.emit()
+
+    # Explicitly hide the board
+    if is_instance_valid(homecoming_board):
+        homecoming_board.hide()
 
     return true

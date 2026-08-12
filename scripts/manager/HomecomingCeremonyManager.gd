@@ -214,7 +214,7 @@ func move_rowan_to_gathering_point() -> void:
     )
 
     if rowan_point == null:
-
+        print("ERROR: RowanPoint NOT FOUND.")
         return
 
     print("================================")
