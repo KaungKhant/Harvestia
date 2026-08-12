@@ -1,29 +1,30 @@
 ~ progress
 
-Guide: Keep gathering Logs.
+Uncle Rowan: သစ်တုံးတွေကို ဆက်ပြီး စုဆောင်းပါ။
 
-Guide: Every piece of wood brings us one step closer to rebuilding Harvestia.
+Uncle Rowan: သစ်တုံးတစ်တုံးချင်းစီက Harvestia ကို ပြန်လည်တည်ဆောက်ဖို့ ခြေလှမ်းတစ်လှမ်းစီ ပိုနီးလာစေတယ်။
 
 => END
 
 
 ~ turn_in
 
-Guide: Excellent work!
+Uncle Rowan: အရမ်းကောင်းတယ်။
 
-Guide: These Logs will be a great help.
+Uncle Rowan: ဒီသစ်တုံးတွေက ရွာကို ပြန်လည်တည်ဆောက်တဲ့နေရာမှာ အများကြီး အထောက်အကူဖြစ်လိမ့်မယ်။
 
 do QuestManager.try_complete_quest()
 
-Guide: Now we'll need something even stronger.
+Uncle Rowan: အခုတော့ ဒီထက်ပိုခိုင်မာတဲ့ အရာတစ်ခု လိုလာပြီ။
 
-Guide: Take this old Pickaxe.
+Uncle Rowan: ဒီပေါက်ချွန်းကို ယူထား။
+Uncle Rowan: ရှေ့ဆက်လုပ်ရမယ့် အလုပ်တွေအတွက် လိုအပ်လိမ့်မယ်။
 
 do GameDialogueManager.action_give_pickaxe()
 
-Guide: Stone will become the foundation of our rebuilding efforts.
+Uncle Rowan: ငါတို့ ပြန်လည်တည်ဆောက်မယ့် အရာတွေအတွက် ကျောက်တုံးတွေက အခြေခံအုတ်မြစ်တစ်ခု ဖြစ်လာလိမ့်မယ်။
 
-Guide: Go and collect 15 Stones.
+Uncle Rowan: တောထဲကိုသွားပြီး ကျောက်တုံး ၁၅ တုံး စုဆောင်းလာခဲ့။
 
 do QuestManager.start_quest("stone_foundation")
 
@@ -32,6 +33,7 @@ do QuestManager.start_quest("stone_foundation")
 
 ~ completed
 
-Guide: Good work.
+Uncle Rowan: အရမ်းကောင်းတယ်။
+Uncle Rowan: ဒီအတိုင်းပဲ ဆက်ကြိုးစားပါ။ ငါတို့ တဖြည်းဖြည်း ရှေ့ဆက်နေပြီ။
 
 => END

@@ -1,55 +1,59 @@
 ~ start
 
-Guide: Welcome back.
-Guide: The Seed Shop is nearby.
-Guide: Buy 5 Corn Seeds and return when you're ready.
+Uncle Rowan: ပြန်လာပြီပဲ။
+Uncle Rowan: Seed Shop က ဒီနားလေးမှာပဲ ရှိတယ်။
+
+Uncle Rowan: အဲဒီမှာ ပြောင်းဖူးမျိုးစေ့ ၅ ထုပ် သွားဝယ်လိုက်ပါ။
+Uncle Rowan: ဝယ်ပြီးရင် ပြန်လာခဲ့။ လယ်ယာစလုပ်ဖို့ လိုအပ်တာတွေ ငါဆက်ပြောပြမယ်။
 
 => END
 
 
 ~ progress
 
-Guide: Have you bought the Corn Seeds yet?
-Guide: Bring me 5 Corn Seeds, then I'll teach you how to start your farm.
+Uncle Rowan: ပြောင်းဖူးမျိုးစေ့တွေ ဝယ်ပြီးပြီလား။
+Uncle Rowan: ပြောင်းဖူးမျိုးစေ့ ၅ ထုပ် ယူလာခဲ့ပါ။
+Uncle Rowan: ပြီးရင် လယ်ယာကို ဘယ်လိုစတင်လုပ်ကိုင်ရမလဲ ငါပြောပြမယ်။
 
 => END
 
 
 ~ turn_in
 
-Guide: Excellent!
-Guide: You bought the Corn Seeds.
+Uncle Rowan: အရမ်းကောင်းတယ်။
+Uncle Rowan: ပြောင်းဖူးမျိုးစေ့ ၅ ထုပ်လုံး ရလာပြီပဲ။
 
 do QuestManager.try_complete_quest()
 
-Guide: Before you begin, let me teach you the basics of farming.
+Uncle Rowan: မစိုက်ခင် သိထားသင့်တာလေးတွေ ရှိတယ်။
 
-Guide: You'll be using three essential tools.
+Uncle Rowan: လယ်ယာမှာ နေ့တိုင်း အသုံးပြုရမယ့် အရေးကြီးတဲ့ ကိရိယာ သုံးမျိုးရှိတယ်။
 
-Guide: Use the Hoe to till the soil.
+Uncle Rowan: ပထမဆုံး၊ မြေကြီးကို ထွန်ယက်ဖို့ Hoe ကို အသုံးပြုရမယ်။
 
-Guide: Plant your Corn Seeds on the tilled land.
+Uncle Rowan: မြေကြီးကို ထွန်ယက်ပြီးရင် ပြောင်းဖူးမျိုးစေ့တွေကို စိုက်လို့ရပြီ။
 
-Guide: Water your crops every day with the Watering Can.
+Uncle Rowan: ပြီးတော့ သီးနှံတွေကို နေ့တိုင်း Watering Can နဲ့ ရေလောင်းပေးရမယ်။
 
-Guide: If weeds begin to grow, clear them with the Scythe.
+Uncle Rowan: ပေါင်းပင်တွေ ပေါက်လာရင်တော့ Scythe နဲ့ ရှင်းပေးရမယ်။
 
-Guide: Here, these tools are yours now.
+Uncle Rowan: ဒီမှာ။ ဒီကိရိယာတွေကို မင်းသုံးလို့ရပြီ။
 
 do GameDialogueManager.action_teach_farming()
 
-Guide: Now it's your turn.
+Uncle Rowan: ကဲ... အခုတော့ မင်းကိုယ်တိုင် စလုပ်ကြည့်တော့။
 
 do QuestManager.start_quest("first_harvest")
 
-Guide: Harvest 5 Corn and come back to show me what you've learned.
+Uncle Rowan: ပြောင်းဖူး ၅ လုံး ရိတ်သိမ်းပြီး ငါ့ဆီ ပြန်ယူလာခဲ့ပါ။
+Uncle Rowan: မင်းဘာတွေ စိုက်ပျိုးနိုင်လဲ ကြည့်ကြတာပေါ့။
 
 => END
 
 
 ~ completed
 
-Guide: Good luck!
-Guide: I'll be waiting for your first harvest.
+Uncle Rowan: ကံကောင်းပါစေ။
+Uncle Rowan: မင်းရဲ့ ပထမဆုံးရိတ်သိမ်းမှုကို ပြဖို့ ပြန်လာခဲ့နော်။
 
 => END

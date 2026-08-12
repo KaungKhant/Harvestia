@@ -1,42 +1,41 @@
 ~ locked
 
-Forest Ranger: The Guide asked me to guard this bridge.
+Forest Ranger: Uncle Rowan က ဒီတံတားကို စောင့်ပေးဖို့ ငါ့ကို တာဝန်ပေးထားတာ။
 
-Forest Ranger: Learn the basics of farming first.
+Forest Ranger: မင်း Harvestia ကို ပြန်လည်တည်ဆောက်ဖို့ ကူညီမယ်ဆိုရင်...
+Forest Ranger: အရင်ဆုံး လယ်ယာလုပ်ငန်းရဲ့ အခြေခံတွေကို ကောင်းကောင်းသင်ယူထားဖို့ လိုတယ်။
 
 => END
 
 
 ~ unlock
 
-Forest Ranger: So...
+Forest Ranger: အင်း... မင်းက Uncle Rowan ပြောထားတဲ့သူပဲ ဖြစ်မယ်ထင်တယ်။
 
-Forest Ranger: You've finally proven yourself.
+Forest Ranger: သူက မင်းကို တော်တော်ယုံကြည်ထားပုံပဲ။
+Forest Ranger: ဒီတံတားရဲ့ ဟိုဘက်မှာ ဘာတွေရှိလဲဆိုတာ သိဖို့ အခွင့်အရေး ရသင့်ပြီထင်တယ်။
 
-Forest Ranger: The Guide always has a good eye for people.
-
-Forest Ranger: I'll open the bridge.
+Forest Ranger: ကဲ... မင်းအတွက် တံတားဖွင့်ပေးလိုက်မယ်။
 
 do GameDialogueManager.action_unlock_forest()
 do SeedUnlockManager.unlock_seed("tomato_seeds")
 
-Forest Ranger: Beyond this bridge lies the forest.
+Forest Ranger: ဒီတံတားရဲ့ ဟိုဘက်မှာ တောအုပ်ရှိတယ်။
+Forest Ranger: အဲဒီမှာ အသုံးဝင်တဲ့ အရင်းအမြစ်တွေ အများကြီး ရှိတယ်။
+Forest Ranger: လယ်ယာကို ပြန်လည်တည်ဆောက်တဲ့အခါ အဲဒီအရာတွေ လိုအပ်လာလိမ့်မယ်။
 
-Forest Ranger: It will become an important part of rebuilding this farm.
-
-Forest Ranger: The Seed Shop is now stocking Tomato Seeds.
+Forest Ranger: Seed Shop မှာလည်း အခုကစပြီး ခရမ်းချဉ်သီးမျိုးစေ့တွေ ဝယ်လို့ရပြီ။
 
 do QuestManager.start_quest("tomato_harvest")
 
-Forest Ranger: Try growing 5 Tomatoes and bring them to the Guide.
+Forest Ranger: ခရမ်းချဉ်သီး ၅ လုံး စိုက်ပျိုးပြီး Uncle Rowan ဆီကို ပြန်ယူလာခဲ့ပါ။
 
 => END
 
 
 ~ opened
 
-Forest Ranger: The forest is yours now.
-
-Forest Ranger: Explore it whenever you're ready.
+Forest Ranger: အခုဆို တောအုပ်ထဲကို ဝင်လို့ရပြီ။
+Forest Ranger: အချိန်ရရင် တောထဲသွားပြီး လိုက်ကြည့်လိုက်ပါ။
 
 => END

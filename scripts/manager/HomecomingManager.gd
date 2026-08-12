@@ -16,7 +16,7 @@ var required_resources: Dictionary = {
 	"corn": 1,
 	"tomato": 1,
 	"carrot": 1,
-	"pumpkin": 1,
+	"pumpkin": 2,
 	"egg": 1,
 	"milk": 1,
 	"log": 1,
@@ -35,6 +35,9 @@ func _ready() -> void:
 	QuestManager.quest_started.connect(
 		_on_quest_started
 	)
+	GameDialogueManager.homecoming_introduction_finished.connect(
+		_on_homecoming_introduction_finished
+	)
 
 
 # -------------------------------------------------
@@ -50,9 +53,12 @@ func _on_quest_started(quest: QuestData) -> void:
 	if quest.quest_id != "homecoming":
 		return
 
+	print("Homecoming quest started. Waiting for Rowan's introduction to finish.")
+
+func _on_homecoming_introduction_finished() -> void:
+	print("HomecomingManager: Homecoming introduction finished.")
+
 	call_deferred("_spawn_ending_rowan")
-
-
 # -------------------------------------------------
 # Spawn Ending Rowan
 # -------------------------------------------------
@@ -126,8 +132,27 @@ func _spawn_ending_rowan() -> void:
 
 	print("Homecoming: EndingRowan spawned successfully.")
 	print("================================")
+	call_deferred("open_homecoming_board")
 
 
+func open_homecoming_board() -> void:
+	print("HomecomingManager: Opening Homecoming Board.")
+
+	var board_scene := preload(
+		"res://scene/progress/HomecomingBoard.tscn"
+	)
+
+	var board := board_scene.instantiate()
+
+	if board == null:
+		print("ERROR: Failed to instantiate HomecomingBoard.")
+		return
+
+	get_tree().current_scene.add_child(board)
+
+	board.open()
+
+	print("HomecomingManager: Homecoming Board opened.")
 # -------------------------------------------------
 # Get Current Resource Progress
 # -------------------------------------------------

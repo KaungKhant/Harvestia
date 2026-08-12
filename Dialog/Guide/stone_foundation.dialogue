@@ -1,27 +1,30 @@
 ~ progress
 
-Guide: Stone is just as important as Wood.
+Uncle Rowan: ကျောက်တုံးတွေကလည်း သစ်တုံးတွေလောက် အရေးကြီးတယ်။
 
-Guide: Bring me 15 Stones so we can strengthen Harvestia.
+Uncle Rowan: ကျောက်တုံး ၁၅ တုံး စုဆောင်းပြီး ငါ့ဆီ ယူလာခဲ့။
+Uncle Rowan: Harvestia ကို ပိုခိုင်မာအောင် ပြန်လည်တည်ဆောက်ဖို့ အဲဒါတွေ လိုအပ်လိမ့်မယ်။
 
 => END
 
 
 ~ turn_in
 
-Guide: Excellent work!
+Uncle Rowan: အရမ်းကောင်းတယ်။
 
-Guide: These Stones will become the foundation of our future buildings.
+Uncle Rowan: ဒီကျောက်တုံးတွေက ငါတို့ ပြန်လည်တည်ဆောက်မယ့် အဆောက်အအုံတွေရဲ့ အခြေခံအုတ်မြစ် ဖြစ်လာလိမ့်မယ်။
 
 do QuestManager.try_complete_quest()
 
-Guide: We've gathered enough materials for now.
+Uncle Rowan: အခုလောလောဆယ်တော့ လိုအပ်တဲ့ အရင်းအမြစ်တွေ လုံလောက်ပြီ။
 
-Guide: But rebuilding Harvestia also requires money.
+Uncle Rowan: ဒါပေမယ့် ပြန်လည်တည်ဆောက်ဖို့ အရင်းအမြစ်တွေပဲ လိုတာမဟုတ်ဘူး။
+Uncle Rowan: Harvestia ကို ပြန်လည်တည်ဆောက်ဖို့ Gold လည်း လိုအပ်တယ်။
 
-Guide: Sell your crops and earn 500 Gold.
+Uncle Rowan: မင်းစိုက်ပျိုးထားတဲ့ သီးနှံတွေကို ရောင်းပြီး Gold 500 စုဆောင်းပါ။
 
-Guide: A good farmer knows how to grow crops and build a strong economy.
+Uncle Rowan: လယ်သမားကောင်းတစ်ယောက်ဆိုတာ သီးနှံတွေကို ဘယ်လိုစိုက်ရမလဲ သိရုံတင်မကဘူး။
+Uncle Rowan: ကိုယ့်ပိုက်ဆံကိုလည်း ဘယ်လိုစီမံရမလဲ သိရတယ်။
 
 do QuestManager.start_quest("build_your_economy")
 
@@ -30,6 +33,7 @@ do QuestManager.start_quest("build_your_economy")
 
 ~ completed
 
-Guide: Good work.
+Uncle Rowan: အရမ်းကောင်းတယ်။
+Uncle Rowan: လယ်ယာကို ဆက်ပြီးတိုးတက်အောင်လုပ်ရင်း ပိုက်ဆံကိုလည်း စုဆောင်းထားပါ။
 
 => END

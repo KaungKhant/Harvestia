@@ -1,19 +1,27 @@
 ~ start
 
-Guide: [[Hi|Hello|Howdy]], nice to meet you.
-Guide: Welcome to your new farm.
-Guide: As you can see, the cows and chickens are hungry.
-Guide: We need to grow some crops before we can feed them again.
-Guide: But first, you'll need some Corn Seeds.
-Guide: The Seed Shop nearby still has some in stock.
+Uncle Rowan: [[မင်္ဂလာပါ|ဟယ်လို|တွေ့ရတာဝမ်းသာပါတယ်]]။ မင်းနဲ့တွေ့ရတာ ဝမ်းသာပါတယ်။
+Uncle Rowan: Harvestia ကနေ ကြိုဆိုပါတယ်... မင်းရဲ့ လယ်ယာအသစ်လေးကိုလည်း ကြိုဆိုပါတယ်။
 
-- Take 125 Gold
-    Player: Thank you! I'll buy some Corn Seeds.
-    do PlayerProgressManager.add_gold(125)
-    do SeedUnlockManager.unlock_seed("corn_seeds")
-    do QuestManager.start_quest("buy_corn_seeds")
+Uncle Rowan: အခုကြည့်ရတာ သိပ်တော့ မလှပသေးဘူးဆိုတာ ငါသိပါတယ်။
+Uncle Rowan: ဒီလယ်ယာတွေကို အချိန်အတော်ကြာ ထိန်းသိမ်းမယ့်သူ မရှိခဲ့ဘူးလေ။
 
-- Maybe later
-    Player: I'd like to look around first.
+Uncle Rowan: နွားတွေနဲ့ ကြက်တွေလည်း အစာငတ်နေကြတယ်။
+Uncle Rowan: သူတို့ကို ပြန်ဂရုစိုက်ပေးနိုင်ဖို့အတွက် အရင်ဆုံး လယ်ယာကို ပြန်လည်အလုပ်လုပ်နိုင်အောင် လုပ်ရမယ်။
+
+Uncle Rowan: လွယ်လွယ်ကူကူလေးနဲ့ စလိုက်ကြရအောင်။
+Uncle Rowan: ပြောင်းဖူးက စိုက်ပျိုးရတာ မခက်လောက်ပါဘူး။
+
+Uncle Rowan: အရင်ဆုံး ပြောင်းဖူးမျိုးစေ့တွေ လိုလိမ့်မယ်။
+Uncle Rowan: ဒီနားက Seed Shop မှာ မျိုးစေ့တချို့ ကျန်နေသေးလောက်တယ်။
+
+- Gold 125 လက်ခံမယ်
+  Player: ကျေးဇူးတင်ပါတယ်။ ပြောင်းဖူးမျိုးစေ့တွေ သွားယူလိုက်မယ်။
+  do PlayerProgressManager.add_gold(125)
+  do SeedUnlockManager.unlock_seed("corn_seeds")
+  do QuestManager.start_quest("buy_corn_seeds")
+
+- နောက်မှပဲ
+  Player: အရင်ဆုံး ဒီပတ်ဝန်းကျင်ကို နည်းနည်းလောက် လိုက်ကြည့်ချင်သေးတယ်။
 
 => END

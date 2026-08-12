@@ -1,31 +1,33 @@
 ~ progress
 
-Guide: Harvest your crops and sell them at the Shop.
+Uncle Rowan: မင်းစိုက်ထားတဲ့ သီးနှံတွေကို ရိတ်သိမ်းပြီး ဆိုင်မှာ ရောင်းလိုက်ပါ။
 
-Guide: Rebuilding Harvestia takes more than Wood and Stone.
+Uncle Rowan: Harvestia ကို ပြန်လည်တည်ဆောက်ဖို့ သစ်တုံးတွေနဲ့ ကျောက်တုံးတွေပဲ ရှိရုံနဲ့ မလုံလောက်ဘူး။
 
-Guide: We need Gold to repair homes, buy supplies, and bring life back to this village.
+Uncle Rowan: အိမ်တွေကို ပြုပြင်ဖို့၊ လိုအပ်တဲ့ပစ္စည်းတွေ ဝယ်ဖို့နဲ့
+Uncle Rowan: ဒီရွာကို ပြန်လည်အသက်ဝင်လာအောင်လုပ်ဖို့ Gold လည်း လိုအပ်တယ်။
 
-Guide: Earn 500 Gold, then return to me.
+Uncle Rowan: Gold 500 စုဆောင်းပြီးရင် ငါ့ဆီ ပြန်လာခဲ့။
 
 => END
 
 
 ~ turn_in
 
-Guide: Excellent work!
+Uncle Rowan: အရမ်းကောင်းတယ်။
 
-Guide: You've proven that your farm can support Harvestia's future.
+Uncle Rowan: မင်းရဲ့လယ်ယာက Harvestia ရဲ့ အနာဂတ်အတွက် အထောက်အကူဖြစ်နိုင်တယ်ဆိုတာ သက်သေပြနိုင်ခဲ့ပြီ။
 
 do QuestManager.try_complete_quest()
 
-Guide: Your hard work hasn't gone unnoticed.
+Uncle Rowan: မင်းရဲ့ ကြိုးစားမှုတွေကို ရွာသားတွေကလည်း သတိထားမိလာကြပြီ။
 
-Guide: The people of Harvestia are beginning to trust you.
+Uncle Rowan: Harvestia ရဲ့ လူတွေက မင်းကို တဖြည်းဖြည်း ယုံကြည်လာကြပြီ။
 
-Guide: I heard the Chicken Coop Owner has been asking about you.
+Uncle Rowan: Chicken Coop Owner က မင်းအကြောင်း မေးနေတယ်လို့ ငါကြားတယ်။
 
-Guide: You should go see them.
+Uncle Rowan: သူ့ဆီ သွားတွေ့လိုက်ပါ။
+Uncle Rowan: မင်းနဲ့ ဆွေးနွေးစရာ အရေးကြီးတဲ့အကြောင်းတစ်ခု ရှိနေလောက်တယ်။
 
 do QuestManager.start_quest("a_new_caretaker")
 
@@ -34,8 +36,9 @@ do QuestManager.start_quest("a_new_caretaker")
 
 ~ completed
 
-Guide: The future of Harvestia is in good hands.
+Uncle Rowan: Harvestia ရဲ့ အနာဂတ်က အခုဆို စိတ်ချရပြီ။
 
-Guide: Visit the Chicken Coop Owner. I believe they have something important to discuss with you.
+Uncle Rowan: Chicken Coop Owner ဆီ သွားတွေ့လိုက်ပါ။
+Uncle Rowan: မင်းနဲ့ ပြောစရာ အရေးကြီးတဲ့အကြောင်း ရှိလိမ့်မယ်။
 
 => END

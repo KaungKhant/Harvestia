@@ -29,49 +29,49 @@ Looking toward the village.""",
 
 var images = [
 
-    preload("res://assets/story/story1.png"),
-    preload("res://assets/story/story2.png"),
-    preload("res://assets/story/story3.png"),
-    preload("res://assets/story/story4.png"),
-    preload("res://assets/story/story5.png"),
-    preload("res://assets/story/story6.png"),
-    preload("res://assets/story/story7.png"),
-    preload("res://assets/story/story9.png"),
+	preload("res://assets/story/story1.png"),
+	preload("res://assets/story/story2.png"),
+	preload("res://assets/story/story3.png"),
+	preload("res://assets/story/story4.png"),
+	preload("res://assets/story/story5.png"),
+	preload("res://assets/story/story6.png"),
+	preload("res://assets/story/story7.png"),
+	preload("res://assets/story/story9.png"),
 
 ]
 func _ready():
-    show_page()
+	show_page()
 
 func _unhandled_input(event):
-    if event is InputEventKey and event.pressed and not event.echo:
-        if event.keycode == KEY_B:
-            print("B key pressed! Current page: ", page)
-            next_page()
+	if event is InputEventKey and event.pressed and not event.echo:
+		if event.keycode == KEY_B:
+			print("B key pressed! Current page: ", page)
+			next_page()
 
 func show_page():
 
-    background.texture = images[page]
+	background.texture = images[page]
 
-    story.text = texts[page]
+	story.text = texts[page]
 
-    animation.play("FadeIn")
+	animation.play("FadeIn")
 func next_page():
-    if is_transitioning:
-        return
+	if is_transitioning:
+		return
 
-    is_transitioning = true
+	is_transitioning = true
 
-    animation.play("FadeOut")
-    await animation.animation_finished
+	animation.play("FadeOut")
+	await animation.animation_finished
 
-    page += 1
+	page += 1
 
-    if page >= texts.size():
-        start_game()
-        return
+	if page >= texts.size():
+		start_game()
+		return
 
-    show_page()
-    is_transitioning = false
+	show_page()
+	is_transitioning = false
 
 func start_game():
-    StageManager.change_stage(StageManager.MainWorld)
+	StageManager.change_stage(StageManager.MainWorld)

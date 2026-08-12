@@ -60,7 +60,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 	balloon.start(
 		dialogue,
-		QuestManager.get_dialogue_label()
+		"turn_in"
 	)
 
 func on_open_homecoming_board() -> void:

@@ -1,45 +1,45 @@
 ~ start
 
-Guide: It's time to grow your first crop.
-Guide: Harvest 5 Corn and bring it back to me.
+Uncle Rowan: အခုတော့ မင်းရဲ့ ပထမဆုံးသီးနှံကို စိုက်ပျိုးရမယ့်အချိန်ပဲ။
+Uncle Rowan: အဲဒီပြောင်းဖူးမျိုးစေ့တွေကို စိုက်ပြီး ပြောင်းဖူး ၅ လုံး ရိတ်သိမ်းလိုက်ပါ။
+Uncle Rowan: ပြီးရင် ငါ့ဆီ ပြန်ယူလာခဲ့။
 
 => END
 
 
 ~ progress
 
-Guide: Keep going!
-Guide: I need 5 Corn before we can continue rebuilding Harvestia.
+Uncle Rowan: မင်းကောင်းကောင်းလုပ်နေတာပဲ။ ဆက်ကြိုးစားပါ။
+Uncle Rowan: Harvestia ကို ပြန်လည်တည်ဆောက်တာ ဆက်လုပ်နိုင်ဖို့ ပြောင်းဖူး ၅ လုံး လိုတယ်။
 
 => END
 
 
 ~ turn_in
 
-Guide: Excellent work!
-
-Guide: You've grown your very first harvest.
+Uncle Rowan: အရမ်းကောင်းတယ်။
+Uncle Rowan: မင်းရဲ့ ပထမဆုံးသီးနှံကို ကိုယ်တိုင် စိုက်ပျိုးပြီး ရိတ်သိမ်းနိုင်ခဲ့ပြီပဲ။
 
 do QuestManager.try_complete_quest()
 
-Guide: Farming is the heart of Harvestia.
+Uncle Rowan: လယ်ယာက Harvestia ရဲ့ အဓိကပဲ။
+Uncle Rowan: ဒါပေမယ့် ဒီရွာကို ပြန်လည်အသက်ဝင်လာအောင် လုပ်ဖို့ သီးနှံတွေနဲ့တင် မလုံလောက်ဘူး။
 
-Guide: But rebuilding this place will take more than crops.
-
-Guide: Take this Axe.
+Uncle Rowan: ဒီပုဆိန်ကို ယူထား။ ရှေ့ဆက်လုပ်ရမယ့် အလုပ်တွေအတွက် အသုံးဝင်လိမ့်မယ်။
 
 do GameDialogueManager.action_give_axe()
 
-Guide: My old friend, the Forest Ranger, has been guarding the bridge for years.
+Uncle Rowan: ငါ့ရဲ့ မိတ်ဆွေဟောင်းတစ်ယောက်ဖြစ်တဲ့ Forest Ranger က ဒီတံတားကို နှစ်ပေါင်းများစွာ စောင့်ရှောက်နေခဲ့တာ။
 
-Guide: Go and speak with him.
-Guide: He'll let you into the forest.
+Uncle Rowan: သူ့ဆီသွားပြီး စကားပြောကြည့်ပါ။
+Uncle Rowan: သူက မင်းကို တောထဲဝင်ခွင့် ပေးလိမ့်မယ်။
 
 => END
 
 
 ~ completed
 
-Guide: The Forest Ranger is waiting for you.
+Uncle Rowan: Forest Ranger က မင်းကို စောင့်နေတယ်။
+Uncle Rowan: သူ့ဆီသွားပြီး ဘာပြောမလဲဆိုတာ သွားကြည့်လိုက်။
 
 => END

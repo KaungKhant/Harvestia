@@ -12,11 +12,11 @@ Uncle Rowan: ဒါပေမယ့်... သူ မပြီးမြောက�
 
 Uncle Rowan: Shopkeeper ကို ငါ ပြောထားလိုက်မယ်။
 
-Uncle Rowan: အခုကစပြီး Pumpkin Seeds ကို ဝယ်ယူနိုင်ပြီ။
+Uncle Rowan: အခုကစပြီး Pumpkin Seeds ကို Seed Shop မှာ ဝယ်လို့ရပြီ။
 
 do SeedUnlockManager.unlock_seed("pumpkin_seeds")
 
-Uncle Rowan: Harvestia ရဲ့ မျှော်လင့်ချက်ကို ပြန်လည်စိုက်ပျိုးဖို့...
+Uncle Rowan: Harvestia ရဲ့ မျှော်လင့်ချက်ကို ပြန်လည်ရှင်သန်လာအောင်...
 
 Uncle Rowan: ဒီ Pumpkin တွေက အစပဲ။
 
@@ -47,6 +47,6 @@ Uncle Rowan: Pumpkin တွေ ပြန်စိုက်ပျိုးနိ�
 
 Uncle Rowan: မင်းအဘိုးရဲ့ အိပ်မက်က ဒီမှာပဲ ရပ်မသွားတော့ဘူး။
 
-Uncle Rowan: ဒီခရီးက အခုမှ စတာပဲ။
+Uncle Rowan: တကယ်တော့... ဒီခရီးက အခုမှ စတာပဲ။
 
 => END

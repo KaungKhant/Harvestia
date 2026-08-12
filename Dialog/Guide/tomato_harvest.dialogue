@@ -1,53 +1,41 @@
-~ start
-
-Guide: You've done well so far.
-
-Guide: It's time to grow something even more valuable.
-
-do SeedUnlockManager.unlock_seed("tomato_seeds")
-
-Guide: Tomato Seeds are now available at the Seed Shop.
-
-Guide: Buy some Tomato Seeds, harvest 5 Tomatoes, and bring them to me.
-
-=> END
-
-
 ~ progress
 
-Guide: Tomatoes are worth more than Corn.
+Uncle Rowan: ခရမ်းချဉ်သီးတွေ ဘယ်လိုဖြစ်နေပြီလဲ။
 
-Guide: A good farmer always looks for better opportunities.
+Uncle Rowan: ခရမ်းချဉ်သီးက ပြောင်းဖူးထက် ပိုတန်ဖိုးရှိတယ်။
+Uncle Rowan: ဒါကြောင့် ဆက်ပြီး စိုက်ပျိုးထားသင့်တဲ့ သီးနှံတစ်မျိုးပဲ။
 
-Guide: Bring me 5 Tomatoes when they're ready.
+Uncle Rowan: ဆက်စိုက်ပျိုးပါ။
+Uncle Rowan: ခရမ်းချဉ်သီး ၅ လုံး ပြည့်ရင် ငါ့ဆီ ပြန်ယူလာခဲ့။
 
 => END
 
 
 ~ turn_in
 
-Guide: Excellent work!
+Uncle Rowan: အရမ်းကောင်းတယ်။
 
-Guide: Your farm is becoming more productive.
+Uncle Rowan: မင်းရဲ့လယ်ယာကလည်း တစ်နေ့ထက်တစ်နေ့ ပိုပြီး ဖြစ်ထွန်းလာပြီ။
 
 do QuestManager.try_complete_quest()
 
-Guide: Tomatoes can be sold for a good price.
+Uncle Rowan: ခရမ်းချဉ်သီးက Gold ကောင်းကောင်း ရနိုင်တဲ့ သီးနှံတစ်မျိုးပဲ။
+Uncle Rowan: လယ်သမားကောင်းတစ်ယောက်ဆိုတာ ဘာစိုက်မလဲ၊ ဘယ်အချိန်ရောင်းမလဲ၊ ဘယ်အချိန်မှာ Gold ကို ချွေတာထားမလဲဆိုတာ သိရတယ်။
 
-Guide: Keep farming, keep selling, and keep saving your Gold.
+Uncle Rowan: Harvestia ကို ပြန်လည်တည်ဆောက်ဖို့ ပိုက်ဆံရော အရင်းအမြစ်တွေရော လိုအပ်လိမ့်မယ်။
 
-Guide: We'll need both money and materials to rebuild Harvestia.
-
-Guide: Your next task is to collect 20 Logs from the forest.
+Uncle Rowan: အခု မင်းလုပ်ရမယ့်အလုပ်က တောထဲက သစ်တုံး ၂၀ စုဆောင်းလာဖို့ပဲ။
 
 do QuestManager.start_quest("rebuilding_harvestia")
 
-Guide: Return to me after you've gathered enough Logs.
+Uncle Rowan: သစ်တုံး ၂၀ ပြည့်ရင် ငါ့ဆီ ပြန်ယူလာခဲ့။
 
 => END
 
+
 ~ completed
 
-Guide: Good luck.
+Uncle Rowan: ဆက်ကြိုးစားပါ။
+Uncle Rowan: Harvestia မှာ ပြန်လည်တည်ဆောက်ဖို့ ကျန်နေသေးတာတွေ အများကြီးရှိသေးတယ်။
 
 => END

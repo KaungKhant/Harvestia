@@ -11,6 +11,7 @@ signal open_homecoming_board
 signal start_homecoming_ceremony
 signal rowan_lead_player
 signal open_ending
+signal homecoming_introduction_finished
 
 func action_teach_farming() -> void:
 	teach_farming.emit()
@@ -39,6 +40,8 @@ func action_finish_grandfather_story() -> void:
 func action_open_homecoming_board() -> void:
 	open_homecoming_board.emit()
 
+func action_finish_homecoming_introduction() -> void:
+	homecoming_introduction_finished.emit()
 
 func action_start_homecoming_ceremony() -> void:
 	start_homecoming_ceremony.emit()

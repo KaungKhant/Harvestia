@@ -1,49 +1,51 @@
 ~ start_cow_pasture_box
 
-Pasture Box: Would you like to feed your cow?
+Pasture Box: နွားတွေကို အစာကျွေးမလား။
 - Yes
-	Player: Yeah! Lets feed my cows.
+	Player: ဟုတ်ကဲ့။ နွားတွေကို အစာကျွေးမယ်။
 	do GameDialogueManager.action_feed_animals()
 - No
-	Player: No, I don't need to feed them.
+	Player: မကျွေးတော့ပါဘူး။
 => END
 
 ~ start_chicken_pasture_box
 
-Pasture Box: Would you like to feed your chickens?
+Pasture Box: ကြက်တွေကို အစာကျွေးမလား။
 - Yes
-	Player: Yeah! Lets feed them.
+	Player: ဟုတ်ကဲ့။ ကြက်တွေကို အစာကျွေးမယ်။
 	do GameDialogueManager.action_feed_animals()
 - No
-	Player: No, I don't need to feed them.
+	Player: မကျွေးတော့ပါဘူး။
 => END
 
 ~ not_enough_corn
-Pasture Box: You don't have enough corn.
-Pasture Box: You need 2 corns
+Pasture Box: Corn မလုံလောက်သေးဘူး။
+Pasture Box: အစာကျွေးဖို့ Corn ၂ ခု လိုတယ်။
 => END
 
 ~ not_owner
 
-Chicken Coop Owner: This coop hasn't been entrusted to you yet.
+Chicken Coop Owner: ဒီကြက်ခြံကို မင်းဆီ မအပ်ရသေးဘူး။
 
-Chicken Coop Owner: Speak with me first.
+Chicken Coop Owner: အရင်ဆုံး ငါ့ဆီလာပြီး စကားပြောပါ။
 
 => END
 
 ~ start_shop
 set InventoryManager.current_shop.temp_qty = 0
-Shopkeeper: Welcome! Are you looking to buy some fresh seeds, or are you looking to sell your harvested goods?
+Shopkeeper: ကြိုဆိုပါတယ်။
+Shopkeeper: မျိုးစေ့အသစ်တွေ ဝယ်ချင်တာလား၊
+Shopkeeper: ဒါမှမဟုတ် ရိတ်သိမ်းထားတဲ့ သီးနှံတွေကို ရောင်းချင်တာလား။
 - Open Buying Shop
 	=> buy_menu
 - Open Selling Shop
 	=> sell_menu
 - Leave
-	Shopkeeper: Happy farming!
+	Shopkeeper: စိုက်ပျိုးရေး အဆင်ပြေပါစေ။
 => END
 
 ~ buy_menu
-Shopkeeper: What seeds do you need?
+Shopkeeper: ဘယ်မျိုးစေ့တွေ ဝယ်ချင်လဲ။
 
 - - Corn Seeds (25 Gold each)
 	if SeedUnlockManager.is_seed_unlocked("corn_seeds"):
@@ -52,8 +54,9 @@ Shopkeeper: What seeds do you need?
 		set InventoryManager.current_shop.temp_tool_enum = "PlantCorn"
 		=> buy_qty_select
 	else:
-		Shopkeeper: Sorry, Corn Seeds are still locked.
-		Shopkeeper: Talk to the Guide to begin your farming journey.
+		Shopkeeper: Sorry! Corn Seeds ကို ဝယ်လို့ မရသေးဘူး။
+		Shopkeeper: မင်းရဲ့ လယ်ယာလုပ်ငန်းကို စတင်ဖို့ Uncle Rowan ဆီ အရင်သွားတွေ့လိုက်ပါ။
+
 		=> buy_menu
 
 - - Tomato Seeds (30 Gold each)
@@ -64,8 +67,8 @@ Shopkeeper: What seeds do you need?
 		set InventoryManager.current_shop.temp_tool_enum = "PlantTomato"
 		=> buy_qty_select
 	else:
-		Shopkeeper: Sorry, Tomato Seeds are still locked.
-		Shopkeeper: Keep progressing through Harvestia and come back later.
+		Shopkeeper: Sorry! Tomato Seeds ကို ဝယ်လို့ မရသေးဘူး။
+		Shopkeeper: Harvestia မှာ မင်းရဲ့ခရီးကို ဆက်ပြီး တိုးတက်အောင်လုပ်ပါ။ ပြီးရင် ပြန်လာခဲ့ပါ။
 		=> buy_menu
 
 - - Carrot Seeds (40 Gold each)
@@ -76,8 +79,8 @@ Shopkeeper: What seeds do you need?
 		set InventoryManager.current_shop.temp_tool_enum = "PlantCarrot"
 		=> buy_qty_select
 	else:
-		Shopkeeper: Sorry, Carrot Seeds are still locked.
-		Shopkeeper: Keep progressing through Harvestia and come back later.
+		Shopkeeper: Sorry! Carrot Seeds ကို ဝယ်လို့ မရသေးဘူး။
+		Shopkeeper: Harvestia မှာ မင်းရဲ့ခရီးကို ဆက်ပြီး တိုးတက်အောင်လုပ်ပါ။ ပြီးရင် ပြန်လာခဲ့ပါ။
 		=> buy_menu
 
 - - Pumpkin Seeds (50 Gold each)
@@ -88,8 +91,8 @@ Shopkeeper: What seeds do you need?
 		set InventoryManager.current_shop.temp_tool_enum = "PlantPumpkin"
 		=> buy_qty_select
 	else:
-		Shopkeeper: Sorry, Pumpkin Seeds are still locked.
-		Shopkeeper: Keep progressing through Harvestia and come back later.
+		Shopkeeper: Sorry! Pumpkin Seeds ကို ဝယ်လို့ မရသေးဘူး။
+		Shopkeeper: Harvestia မှာ မင်းရဲ့ခရီးကို ဆက်ပြီး တိုးတက်အောင်လုပ်ပါ။ ပြီးရင် ပြန်လာခဲ့ပါ။
 		=> buy_menu
 
 - Back to Main Menu
@@ -119,7 +122,8 @@ Shopkeeper: How many would you like? (Current: {{InventoryManager.current_shop.t
 	=> buy_menu
 
 ~ sell_menu
-Shopkeeper: I'm buying all kinds of farm goods today. What are you looking to sell?
+Shopkeeper: ဒီနေ့တော့ လယ်ယာထွက်ကုန်မျိုးစုံကို ဝယ်နေတယ်။
+Shopkeeper: ဘာတွေ ရောင်းချင်လဲ။
 - Sell Raw Resources (Log / Stone)
 	=> sell_resources
 - Sell Harvested Crops
@@ -130,7 +134,7 @@ Shopkeeper: I'm buying all kinds of farm goods today. What are you looking to se
 	=> start_shop
 
 ~ sell_resources
-Shopkeeper: Looking to sell some materials?
+Shopkeeper: ဆောက်လုပ်ရေးပစ္စည်းတွေ ရောင်းချင်တာလား။
 - Logs (10 Gold each)
 	set InventoryManager.current_shop.temp_item_type = "log"
 	set InventoryManager.current_shop.temp_price = 10
@@ -145,7 +149,8 @@ Shopkeeper: Looking to sell some materials?
 	=> sell_menu
 
 ~ sell_crops
-Shopkeeper: Fresh out of the fields, eh? Let me see what you've got.
+Shopkeeper: လယ်ကွင်းထဲကနေ လတ်လတ်ဆတ်ဆတ် ရလာတာပဲနော်။
+Shopkeeper: ဘာတွေ ရလာလဲ ကြည့်ရအောင်
 - Corn (40 Gold each)
 	set InventoryManager.current_shop.temp_item_type = "corn"
 	set InventoryManager.current_shop.temp_price = 40
@@ -170,7 +175,7 @@ Shopkeeper: Fresh out of the fields, eh? Let me see what you've got.
 	=> sell_menu
 
 ~ sell_animals
-Shopkeeper: Ah, fresh products straight from your barn!
+Shopkeeper: အော်... နွားခြံနဲ့ ကြက်ခြံကနေ လတ်လတ်ဆတ်ဆတ် ရလာတာပဲ။
 - Milk (60 Gold each)
 	set InventoryManager.current_shop.temp_item_type = "milk"
 	set InventoryManager.current_shop.temp_price = 60

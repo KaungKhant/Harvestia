@@ -38,6 +38,8 @@ Uncle Rowan: သီးနှံတွေ၊ တိရစ္ဆာန်ထွက
 
 Uncle Rowan: အားလုံးပေါင်းပြီး မင်းအဘိုးရဲ့ အိမ်ကို အတူတူ ပြန်တည်ဆောက်ကြမယ်။
 
+do GameDialogueManager.action_finish_homecoming_introduction()
+
 => END
 
 
