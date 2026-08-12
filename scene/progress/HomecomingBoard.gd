@@ -15,38 +15,42 @@ extends CanvasLayer
 
 
 func _ready():
-	hide()
+    hide()
 
-	donate_button.pressed.connect(on_donate_pressed)
-	close_button.pressed.connect(hide)
+    donate_button.pressed.connect(on_donate_pressed)
+    close_button.pressed.connect(hide)
 
 
 func open():
-	show()
-	refresh()
+    show()
+    refresh()
 
 
 func refresh():
 
-	var progress = HomecomingManager.get_progress()
-	var required = HomecomingManager.get_required()
+    var progress = HomecomingManager.get_progress()
+    var required = HomecomingManager.get_required()
 
-	corn.text = "🌽 Corn: %d / %d" % [progress["corn"], required["corn"]]
-	tomato.text = "🍅 Tomato: %d / %d" % [progress["tomato"], required["tomato"]]
-	carrot.text = "🥕 Carrot: %d / %d" % [progress["carrot"], required["carrot"]]
-	pumpkin.text = "🎃 Pumpkin: %d / %d" % [progress["pumpkin"], required["pumpkin"]]
-	egg.text = "🥚 Egg: %d / %d" % [progress["egg"], required["egg"]]
-	milk.text = "🥛 Milk: %d / %d" % [progress["milk"], required["milk"]]
-	wood.text = "🪵 Wood: %d / %d" % [progress["log"], required["log"]]
-	stone.text = "🪨 Stone: %d / %d" % [progress["stone"], required["stone"]]
-	gold.text = "🪙 Gold: %d / %d" % [progress["gold"], required["gold"]]
+    corn.text = "🌽 Corn: %d / %d" % [progress["corn"], required["corn"]]
+    tomato.text = "🍅 Tomato: %d / %d" % [progress["tomato"], required["tomato"]]
+    carrot.text = "🥕 Carrot: %d / %d" % [progress["carrot"], required["carrot"]]
+    pumpkin.text = "🎃 Pumpkin: %d / %d" % [progress["pumpkin"], required["pumpkin"]]
+    egg.text = "🥚 Egg: %d / %d" % [progress["egg"], required["egg"]]
+    milk.text = "🥛 Milk: %d / %d" % [progress["milk"], required["milk"]]
+    wood.text = "🪵 Wood: %d / %d" % [progress["log"], required["log"]]
+    stone.text = "🪨 Stone: %d / %d" % [progress["stone"], required["stone"]]
+    gold.text = "🪙 Gold: %d / %d" % [progress["gold"], required["gold"]]
 
-	donate_button.disabled = !HomecomingManager.is_complete()
+    donate_button.disabled = !HomecomingManager.is_complete()
 
 
-func on_donate_pressed():
+func on_donate_pressed() -> void:
+    print("========== DONATE PRESSED ==========")
 
-	if HomecomingManager.donate_materials():
-		hide()
+    var success := HomecomingManager.donate_materials()
 
-		# We'll continue the ending dialogue later.
+    print("Donation success: ", success)
+
+    if success:
+        hide()
+        print("Homecoming Board hidden.")

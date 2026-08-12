@@ -1,23 +1,31 @@
-extends Control
+extends CanvasLayer
 
-const MAIN_MENU := "res://main_menu.tscn"
-const MAIN_WORLD := "res://scene/test/main_harvestia_update.tscn"
 
-@onready var continue_button: Button = $ContinueButton
-@onready var main_menu_button: Button = $MainMenuButton
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var continue_button: Button = $Control/ContinueButton
+@onready var main_menu_button: Button = $Control/MainMenuButton
+@onready var animation_player: AnimationPlayer = $Control/AnimationPlayer
 
 
 func _ready() -> void:
-	continue_button.pressed.connect(_on_continue_pressed)
-	main_menu_button.pressed.connect(_on_main_menu_pressed)
+    continue_button.pressed.connect(_on_continue_pressed)
+    main_menu_button.pressed.connect(_on_main_menu_pressed)
 
-	animation_player.play("CreditsScroll")
-
-
+    animation_player.play("CreditsScroll")
 func _on_continue_pressed() -> void:
-	get_tree().change_scene_to_file(MAIN_WORLD)
+    print("CONTINUE PLAYING")
+
+    # Resume the current game.
+    get_tree().paused = false
+
+    # Remove only the ending UI.
+    queue_free()
 
 
 func _on_main_menu_pressed() -> void:
-	get_tree().change_scene_to_file(MAIN_MENU)
+    print("MAIN MENU")
+
+    get_tree().paused = false
+
+    get_tree().change_scene_to_file(
+		"res://main_menu.tscn"
+    )

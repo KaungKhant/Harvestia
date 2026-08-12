@@ -2,10 +2,10 @@ extends Node
 
 
 enum QuestState {
-	NOT_STARTED,
-	IN_PROGRESS,
-	READY_TO_TURN_IN,
-	COMPLETED
+    NOT_STARTED,
+    IN_PROGRESS,
+    READY_TO_TURN_IN,
+    COMPLETED
 }
 
 
@@ -29,9 +29,9 @@ var gold_earned: int = 0
 # =================================================
 
 func _ready() -> void:
-	InventoryManager.inventory_changed.connect(
-		sync_progress_with_inventory
-	)
+    InventoryManager.inventory_changed.connect(
+        sync_progress_with_inventory
+    )
 
 
 # =================================================
@@ -39,22 +39,22 @@ func _ready() -> void:
 # =================================================
 
 func start_quest_data(quest: QuestData) -> void:
-	print("======================")
-	print("Starting Quest:", quest.quest_id)
+    print("======================")
+    print("Starting Quest:", quest.quest_id)
 
-	current_quest = quest
-	current_state = QuestState.IN_PROGRESS
-	current_progress = 0
-	gold_earned = 0
+    current_quest = quest
+    current_state = QuestState.IN_PROGRESS
+    current_progress = 0
+    gold_earned = 0
 
-	if quest.target_item.to_lower() == "gold":
-		quest_start_gold = PlayerProgressManager.gold
+    if quest.target_item.to_lower() == "gold":
+        quest_start_gold = PlayerProgressManager.gold
 
-	quest_started.emit(quest)
+    quest_started.emit(quest)
 
-	# Homecoming needs to check its resources immediately.
-	if quest.quest_id == "homecoming":
-		sync_progress_with_inventory()
+    # Homecoming needs to check its resources immediately.
+    if quest.quest_id == "homecoming":
+        sync_progress_with_inventory()
 
 
 # =================================================
@@ -62,17 +62,17 @@ func start_quest_data(quest: QuestData) -> void:
 # =================================================
 
 func add_progress(item_name: String) -> void:
-	if current_quest == null:
-		return
+    if current_quest == null:
+        return
 
-	if current_state != QuestState.IN_PROGRESS \
-	and current_state != QuestState.READY_TO_TURN_IN:
-		return
+    if current_state != QuestState.IN_PROGRESS \
+    and current_state != QuestState.READY_TO_TURN_IN:
+        return
 
-	if item_name.to_lower() != current_quest.target_item.to_lower():
-		return
+    if item_name.to_lower() != current_quest.target_item.to_lower():
+        return
 
-	sync_progress_with_inventory()
+    sync_progress_with_inventory()
 
 
 # =================================================
@@ -80,36 +80,41 @@ func add_progress(item_name: String) -> void:
 # =================================================
 
 func complete_quest() -> void:
-	if current_quest == null:
-		return
+    if current_quest == null:
+        return
 
-	current_state = QuestState.COMPLETED
+    var finished_quest := current_quest
 
-	quest_completed.emit(current_quest)
+    current_state = QuestState.COMPLETED
 
+    # Permanently remember that this quest was completed.
+    completed_quests[finished_quest.quest_id] = true
 
-# =================================================
-# GET DIALOGUE LABEL
-# =================================================
+    print("================================")
+    print("QUEST COMPLETED")
+    print("Quest ID: ", finished_quest.quest_id)
+    print("Completed quests: ", completed_quests)
+    print("================================")
 
+    quest_completed.emit(finished_quest)
 func get_dialogue_label() -> String:
-	if current_quest == null:
-		return "start"
+    if current_quest == null:
+        return "start"
 
-	match current_state:
-		QuestState.NOT_STARTED:
-			return "start"
+    match current_state:
+        QuestState.NOT_STARTED:
+            return "start"
 
-		QuestState.IN_PROGRESS:
-			return "progress"
+        QuestState.IN_PROGRESS:
+            return "progress"
 
-		QuestState.READY_TO_TURN_IN:
-			return "turn_in"
+        QuestState.READY_TO_TURN_IN:
+            return "turn_in"
 
-		QuestState.COMPLETED:
-			return "completed"
+        QuestState.COMPLETED:
+            return "completed"
 
-	return "start"
+    return "start"
 
 
 # =================================================
@@ -117,52 +122,52 @@ func get_dialogue_label() -> String:
 # =================================================
 
 func restore_quest(
-	quest_id: String,
-	progress: int,
-	state: int
+    quest_id: String,
+    progress: int,
+    state: int
 ) -> void:
 
-	# No active quest
-	if quest_id == "":
-		current_quest = null
-		current_state = QuestState.NOT_STARTED
-		current_progress = 0
-		gold_earned = 0
-		return
+    # No active quest
+    if quest_id == "":
+        current_quest = null
+        current_state = QuestState.NOT_STARTED
+        current_progress = 0
+        gold_earned = 0
+        return
 
-	var quest_path := (
+    var quest_path := (
 		"res://scripts/resources/"
-		+ quest_id
-		+ ".tres"
-	)
+        + quest_id
+        + ".tres"
+    )
 
-	if !ResourceLoader.exists(quest_path):
-		push_error("Quest not found: " + quest_path)
-		return
+    if !ResourceLoader.exists(quest_path):
+        push_error("Quest not found: " + quest_path)
+        return
 
-	current_quest = load(quest_path) as QuestData
+    current_quest = load(quest_path) as QuestData
 
-	if current_quest == null:
-		push_error("Failed to load quest: " + quest_path)
-		return
+    if current_quest == null:
+        push_error("Failed to load quest: " + quest_path)
+        return
 
-	current_progress = progress
-	current_state = state
-	gold_earned = progress
+    current_progress = progress
+    current_state = state
+    gold_earned = progress
 
-	# Restore UI/state based on actual quest state.
-	if current_state == QuestState.COMPLETED:
+    # Restore UI/state based on actual quest state.
+    if current_state == QuestState.COMPLETED:
 
-		quest_completed.emit(current_quest)
+        quest_completed.emit(current_quest)
 
-	elif current_state != QuestState.NOT_STARTED:
+    elif current_state != QuestState.NOT_STARTED:
 
-		quest_started.emit(current_quest)
+        quest_started.emit(current_quest)
 
-		quest_updated.emit(
-			current_progress,
-			current_quest.target_amount
-		)
+        quest_updated.emit(
+            current_progress,
+            current_quest.target_amount
+        )
 
 
 # =================================================
@@ -171,30 +176,30 @@ func restore_quest(
 
 func start_quest(quest_id: String) -> void:
 
-	# Don't restart the same active quest.
-	if current_quest != null:
+    # Don't restart the same active quest.
+    if current_quest != null:
 
-		if current_quest.quest_id == quest_id \
-		and current_state != QuestState.NOT_STARTED:
-			return
+        if current_quest.quest_id == quest_id \
+        and current_state != QuestState.NOT_STARTED:
+            return
 
-	var quest_path := (
+    var quest_path := (
 		"res://scripts/resources/"
-		+ quest_id
-		+ ".tres"
-	)
+        + quest_id
+        + ".tres"
+    )
 
-	if !ResourceLoader.exists(quest_path):
-		push_error("Quest not found: " + quest_path)
-		return
+    if !ResourceLoader.exists(quest_path):
+        push_error("Quest not found: " + quest_path)
+        return
 
-	var quest := load(quest_path) as QuestData
+    var quest := load(quest_path) as QuestData
 
-	if quest == null:
-		push_error("Failed to load quest: " + quest_path)
-		return
+    if quest == null:
+        push_error("Failed to load quest: " + quest_path)
+        return
 
-	start_quest_data(quest)
+    start_quest_data(quest)
 
 
 # =================================================
@@ -203,97 +208,97 @@ func start_quest(quest_id: String) -> void:
 
 func try_complete_quest() -> bool:
 
-	# Quest must be ready to turn in.
-	if current_state != QuestState.READY_TO_TURN_IN:
-		return false
+    # Quest must be ready to turn in.
+    if current_state != QuestState.READY_TO_TURN_IN:
+        return false
 
-	if current_quest == null:
-		return false
+    if current_quest == null:
+        return false
 
-	# Objective is not finished.
-	if current_progress < current_quest.target_amount:
-		return false
-
-
-	# =================================================
-	# NORMAL INVENTORY CHECK
-	# =================================================
-
-	# Gold quests and Homecoming quests have
-	# special completion logic.
-
-	if current_quest.target_item.to_lower() != "gold" \
-	and current_quest.quest_id != "homecoming":
-
-		if !InventoryManager.has_item(
-			current_quest.target_item,
-			current_quest.target_amount
-		):
-			return false
+    # Objective is not finished.
+    if current_progress < current_quest.target_amount:
+        return false
 
 
-	# =================================================
-	# REMOVE NORMAL QUEST ITEMS
-	# =================================================
+    # =================================================
+    # NORMAL INVENTORY CHECK
+    # =================================================
 
-	# Homecoming resources are removed by
-	# HomecomingManager.donate_materials().
-	#
-	# Therefore QuestManager must NOT remove them again.
+    # Gold quests and Homecoming quests have
+    # special completion logic.
 
-	if current_quest.consume_items \
-	and current_quest.quest_id != "homecoming":
+    if current_quest.target_item.to_lower() != "gold" \
+    and current_quest.quest_id != "homecoming":
 
-		InventoryManager.remove_item_stack(
-			current_quest.target_item,
-			current_quest.target_amount
-		)
-
-
-	# =================================================
-	# GIVE QUEST REWARDS
-	# =================================================
-
-	PlayerProgressManager.add_exp(
-		current_quest.reward_exp
-	)
-
-	PlayerProgressManager.add_gold(
-		current_quest.reward_gold
-	)
+        if !InventoryManager.has_item(
+            current_quest.target_item,
+            current_quest.target_amount
+        ):
+            return false
 
 
-	# Keep reference before changing anything.
-	var finished_quest := current_quest
+    # =================================================
+    # REMOVE NORMAL QUEST ITEMS
+    # =================================================
+
+    # Homecoming resources are removed by
+    # HomecomingManager.donate_materials().
+    #
+    # Therefore QuestManager must NOT remove them again.
+
+    if current_quest.consume_items \
+    and current_quest.quest_id != "homecoming":
+
+        InventoryManager.remove_item_stack(
+            current_quest.target_item,
+            current_quest.target_amount
+        )
 
 
-	# =================================================
-	# FINISH QUEST
-	# =================================================
+    # =================================================
+    # GIVE QUEST REWARDS
+    # =================================================
 
-	current_state = QuestState.COMPLETED
+    PlayerProgressManager.add_exp(
+        current_quest.reward_exp
+    )
 
-	NotificationManager.show_quest_complete(
-		finished_quest.quest_name,
-		finished_quest.reward_exp,
-		finished_quest.reward_gold
-	)
+    PlayerProgressManager.add_gold(
+        current_quest.reward_gold
+    )
 
-	quest_completed.emit(finished_quest)
 
-	completed_quests[finished_quest.quest_id] = true
+    # Keep reference before changing anything.
+    var finished_quest := current_quest
 
-	print("Completed:", finished_quest.quest_id)
-	print("Next Quest:", finished_quest.next_quest)
 
-	# Do NOT automatically start the next quest.
-	#
-	# if finished_quest.next_quest != "":
-	# 	start_quest(finished_quest.next_quest)
+    # =================================================
+    # FINISH QUEST
+    # =================================================
 
-	print("start_quest() called")
+    current_state = QuestState.COMPLETED
 
-	return true
+    NotificationManager.show_quest_complete(
+        finished_quest.quest_name,
+        finished_quest.reward_exp,
+        finished_quest.reward_gold
+    )
+
+    quest_completed.emit(finished_quest)
+
+    completed_quests[finished_quest.quest_id] = true
+
+    print("Completed:", finished_quest.quest_id)
+    print("Next Quest:", finished_quest.next_quest)
+
+    # Do NOT automatically start the next quest.
+    #
+    # if finished_quest.next_quest != "":
+    # 	start_quest(finished_quest.next_quest)
+
+    print("start_quest() called")
+
+    return true
 
 
 # =================================================
@@ -301,7 +306,7 @@ func try_complete_quest() -> bool:
 # =================================================
 
 func is_ready_to_turn_in() -> bool:
-	return current_state == QuestState.READY_TO_TURN_IN
+    return current_state == QuestState.READY_TO_TURN_IN
 
 
 # =================================================
@@ -309,10 +314,10 @@ func is_ready_to_turn_in() -> bool:
 # =================================================
 
 func is_quest_completed(quest_id: String) -> bool:
-	return completed_quests.get(
-		quest_id,
-		false
-	)
+    return completed_quests.get(
+        quest_id,
+        false
+    )
 
 
 # =================================================
@@ -320,23 +325,23 @@ func is_quest_completed(quest_id: String) -> bool:
 # =================================================
 
 func mark_ready_to_turn_in() -> void:
-	if current_quest == null:
-		return
+    if current_quest == null:
+        return
 
-	if current_state != QuestState.IN_PROGRESS:
-		return
+    if current_state != QuestState.IN_PROGRESS:
+        return
 
-	current_progress = current_quest.target_amount
-	current_state = QuestState.READY_TO_TURN_IN
+    current_progress = current_quest.target_amount
+    current_state = QuestState.READY_TO_TURN_IN
 
-	NotificationManager.show_objective(
-		"Return to " + current_quest.quest_giver + "."
-	)
+    NotificationManager.show_objective(
+        "Return to " + current_quest.quest_giver + "."
+    )
 
-	quest_updated.emit(
-		current_progress,
-		current_quest.target_amount
-	)
+    quest_updated.emit(
+        current_progress,
+        current_quest.target_amount
+    )
 
 
 # =================================================
@@ -345,93 +350,93 @@ func mark_ready_to_turn_in() -> void:
 
 func sync_progress_with_inventory() -> void:
 
-	if current_quest == null:
-		return
+    if current_quest == null:
+        return
 
-	if current_state != QuestState.IN_PROGRESS \
-	and current_state != QuestState.READY_TO_TURN_IN:
-		return
+    if current_state != QuestState.IN_PROGRESS \
+    and current_state != QuestState.READY_TO_TURN_IN:
+        return
 
-	if current_quest.target_amount <= 0:
-		return
-
-
-	var target_item := current_quest.target_item.to_lower()
-	var current_amount: int = 0
+    if current_quest.target_amount <= 0:
+        return
 
 
-	# =================================================
-	# HOMECOMING
-	# =================================================
-
-	if current_quest.quest_id == "homecoming":
-
-		if HomecomingManager.is_complete():
-			current_amount = current_quest.target_amount
-		else:
-			current_amount = 0
+    var target_item := current_quest.target_item.to_lower()
+    var current_amount: int = 0
 
 
-	# =================================================
-	# GOLD QUEST
-	# =================================================
+    # =================================================
+    # HOMECOMING
+    # =================================================
 
-	elif target_item == "gold":
+    if current_quest.quest_id == "homecoming":
 
-		current_amount = gold_earned
-
-
-	# =================================================
-	# NORMAL INVENTORY QUEST
-	# =================================================
-
-	else:
-
-		current_amount = InventoryManager.inventory.get(
-			target_item,
-			0
-		)
+        if HomecomingManager.is_complete():
+            current_amount = current_quest.target_amount
+        else:
+            current_amount = 0
 
 
-	# =================================================
-	# UPDATE PROGRESS
-	# =================================================
+    # =================================================
+    # GOLD QUEST
+    # =================================================
 
-	current_progress = min(
-		current_amount,
-		current_quest.target_amount
-	)
+    elif target_item == "gold":
 
-
-	# =================================================
-	# UPDATE STATE
-	# =================================================
-
-	if current_progress >= current_quest.target_amount:
-
-		if current_state != QuestState.READY_TO_TURN_IN:
-
-			current_state = QuestState.READY_TO_TURN_IN
-
-			NotificationManager.show_objective(
-				"Return to " + current_quest.quest_giver + "."
-			)
-
-	else:
-
-		if current_state == QuestState.READY_TO_TURN_IN:
-
-			current_state = QuestState.IN_PROGRESS
+        current_amount = gold_earned
 
 
-	# =================================================
-	# UPDATE UI
-	# =================================================
+    # =================================================
+    # NORMAL INVENTORY QUEST
+    # =================================================
 
-	quest_updated.emit(
-		current_progress,
-		current_quest.target_amount
-	)
+    else:
+
+        current_amount = InventoryManager.inventory.get(
+            target_item,
+            0
+        )
+
+
+    # =================================================
+    # UPDATE PROGRESS
+    # =================================================
+
+    current_progress = min(
+        current_amount,
+        current_quest.target_amount
+    )
+
+
+    # =================================================
+    # UPDATE STATE
+    # =================================================
+
+    if current_progress >= current_quest.target_amount:
+
+        if current_state != QuestState.READY_TO_TURN_IN:
+
+            current_state = QuestState.READY_TO_TURN_IN
+
+            NotificationManager.show_objective(
+                "Return to " + current_quest.quest_giver + "."
+            )
+
+    else:
+
+        if current_state == QuestState.READY_TO_TURN_IN:
+
+            current_state = QuestState.IN_PROGRESS
+
+
+    # =================================================
+    # UPDATE UI
+    # =================================================
+
+    quest_updated.emit(
+        current_progress,
+        current_quest.target_amount
+    )
 
 
 # =================================================
@@ -440,38 +445,38 @@ func sync_progress_with_inventory() -> void:
 
 func add_gold_progress(amount: int) -> void:
 
-	if current_quest == null:
-		return
+    if current_quest == null:
+        return
 
-	if current_quest.target_item.to_lower() != "gold":
-		return
+    if current_quest.target_item.to_lower() != "gold":
+        return
 
-	print("----------------")
-	print("Received:", amount)
-	print("Before:", gold_earned)
+    print("----------------")
+    print("Received:", amount)
+    print("Before:", gold_earned)
 
-	gold_earned += amount
+    gold_earned += amount
 
-	print("After:", gold_earned)
+    print("After:", gold_earned)
 
-	current_progress = min(
-		gold_earned,
-		current_quest.target_amount
-	)
+    current_progress = min(
+        gold_earned,
+        current_quest.target_amount
+    )
 
-	print("Current Progress:", current_progress)
+    print("Current Progress:", current_progress)
 
-	if current_progress >= current_quest.target_amount:
+    if current_progress >= current_quest.target_amount:
 
-		if current_state != QuestState.READY_TO_TURN_IN:
+        if current_state != QuestState.READY_TO_TURN_IN:
 
-			current_state = QuestState.READY_TO_TURN_IN
+            current_state = QuestState.READY_TO_TURN_IN
 
-			NotificationManager.show_objective(
-				"Return to " + current_quest.quest_giver + "."
-			)
+            NotificationManager.show_objective(
+                "Return to " + current_quest.quest_giver + "."
+            )
 
-	quest_updated.emit(
-		current_progress,
-		current_quest.target_amount
-	)
+    quest_updated.emit(
+        current_progress,
+        current_quest.target_amount
+    )

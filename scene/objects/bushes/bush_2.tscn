@@ -1,19 +1,25 @@
-[gd_scene load_steps=8 format=3 uid="uid://dwcsuac6r1xsk"]
+[gd_scene load_steps=11 format=3 uid="uid://dwcsuac6r1xsk"]
 
 [ext_resource type="Texture2D" uid="uid://bqxd5sggbmhft" path="res://assets/game/Objects/Bushe3.png" id="1_aenal"]
 [ext_resource type="Script" uid="uid://c2nphxykqex24" path="res://scene/objects/bushes/bush_1.gd" id="2_nn0hp"]
 [ext_resource type="PackedScene" uid="uid://dg8e005hj8y6k" path="res://scene/components/hurt_component.tscn" id="3_3jk5x"]
 [ext_resource type="PackedScene" uid="uid://bclpvokyn22rq" path="res://scene/components/damage_component.tscn" id="4_1tcjo"]
+[ext_resource type="PackedScene" uid="uid://bitwqob65vm4g" path="res://scene/components/save_data_component.tscn" id="5_3jk5x"]
+[ext_resource type="Script" uid="uid://cspcpniscg5an" path="res://resources/bush_data_resource.gd" id="6_1tcjo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nn0hp"]
 atlas = ExtResource("1_aenal")
 region = Rect2(407, 25, 78, 59)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_euhmd"]
-radius = 20.129946
+radius = 16.43606
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qankg"]
 radius = 37.58821
+
+[sub_resource type="Resource" id="Resource_ynnan"]
+script = ExtResource("6_1tcjo")
+metadata/_custom_type_script = "uid://cspcpniscg5an"
 
 [node name="Bush" type="Sprite2D"]
 position = Vector2(-0.4458952, -5.864131)
@@ -24,16 +30,20 @@ script = ExtResource("2_nn0hp")
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(0, 10.877754)
+position = Vector2(-9.536743e-07, 7.251833)
 shape = SubResource("CircleShape2D_euhmd")
 
 [node name="HurtComponent" parent="." instance=ExtResource("3_3jk5x")]
 tool = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtComponent"]
-position = Vector2(1.0151594, 3.6259205)
+position = Vector2(1.0151598, -3.6259155)
 shape = SubResource("CircleShape2D_qankg")
 debug_color = Color(0.78248864, 0.23241031, 0.902805, 0.41960785)
 
 [node name="DamageComponent" parent="." instance=ExtResource("4_1tcjo")]
+position = Vector2(1.6476922, 3.1332684)
 max_damage = 2
+
+[node name="SaveDataComponent" parent="." instance=ExtResource("5_3jk5x")]
+save_data_resource = SubResource("Resource_ynnan")
