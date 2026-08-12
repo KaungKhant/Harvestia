@@ -50,6 +50,9 @@ func add_gold(amount: int) -> void:
 	QuestManager.add_gold_progress(amount)
 
 func spend_gold(amount: int) -> bool:
+	print("===== SPEND GOLD =====")
+	print("Amount requested: ", amount)
+	print("Gold before: ", gold)
 	if gold >= amount:
 		gold -= amount
 		gold_changed.emit(gold)

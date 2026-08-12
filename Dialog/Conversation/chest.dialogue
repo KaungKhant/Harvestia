@@ -61,7 +61,7 @@ Shopkeeper: ဘယ်မျိုးစေ့တွေ ဝယ်ချင်လ�
 
 - - Tomato Seeds (30 Gold each)
 	if SeedUnlockManager.is_seed_unlocked("tomato_seeds"):
-		Shopkeeper: Tomato Seeds are 30 Gold each.
+		Shopkeeper: Tomato Seeds တစ်ထုပ်ကို Gold ၃၀ ပါ။
 		set InventoryManager.current_shop.temp_item_type = "tomato_seeds"
 		set InventoryManager.current_shop.temp_price = 30
 		set InventoryManager.current_shop.temp_tool_enum = "PlantTomato"
@@ -73,7 +73,7 @@ Shopkeeper: ဘယ်မျိုးစေ့တွေ ဝယ်ချင်လ�
 
 - - Carrot Seeds (40 Gold each)
 	if SeedUnlockManager.is_seed_unlocked("carrot_seeds"):
-		Shopkeeper: Carrot Seeds are 40 Gold each.
+		Shopkeeper: Carrot Seeds တစ်ထုပ်ကို Gold ၄၀ ပါ။
 		set InventoryManager.current_shop.temp_item_type = "carrot_seeds"
 		set InventoryManager.current_shop.temp_price = 40
 		set InventoryManager.current_shop.temp_tool_enum = "PlantCarrot"
@@ -85,7 +85,7 @@ Shopkeeper: ဘယ်မျိုးစေ့တွေ ဝယ်ချင်လ�
 
 - - Pumpkin Seeds (50 Gold each)
 	if SeedUnlockManager.is_seed_unlocked("pumpkin_seeds"):
-		ShopkeeperPumpkin Seeds are 50 Gold each.
+		Shopkeeper: Pumpkin Seeds တစ်ထုပ်ကို Gold ၅၀ ပါ။
 		set InventoryManager.current_shop.temp_item_type = "pumpkin_seeds"
 		set InventoryManager.current_shop.temp_price = 50
 		set InventoryManager.current_shop.temp_tool_enum = "PlantPumpkin"
@@ -99,7 +99,7 @@ Shopkeeper: ဘယ်မျိုးစေ့တွေ ဝယ်ချင်လ�
 	=> start_shop
 
 ~ buy_qty_select
-Shopkeeper: How many would you like? (Current: {{InventoryManager.current_shop.temp_qty}}) | Total Cost: {{InventoryManager.current_shop.temp_qty * InventoryManager.current_shop.temp_price}} Gold
+Shopkeeper: ဘယ်နှစ်ခု ဝယ်ချင်လဲ။ (Current: {{InventoryManager.current_shop.temp_qty}}) | Total Cost: {{InventoryManager.current_shop.temp_qty * InventoryManager.current_shop.temp_price}} Gold
 - Add +1 Item
 	set InventoryManager.current_shop.temp_qty += 1
 	=> buy_qty_select
@@ -114,9 +114,9 @@ Shopkeeper: How many would you like? (Current: {{InventoryManager.current_shop.t
 	=> buy_qty_select
 - Confirm Purchase
 	if InventoryManager.current_shop.temp_qty > 0 and InventoryManager.current_shop.buy_seeds(InventoryManager.current_shop.temp_item_type, DataTypes.Tools[InventoryManager.current_shop.temp_tool_enum], InventoryManager.current_shop.temp_price, InventoryManager.current_shop.temp_qty):
-		Shopkeeper: Excellent! Added to your tool panel.
+		Shopkeeper: ကောင်းပြီ။ မျိုးစေ့တွေကို မင်းရဲ့ Inventory ထဲ ထည့်ပေးလိုက်ပြီ။
 	else:
-		Shopkeeper: Sorry, the transaction failed!
+		Shopkeeper: ဆောရီးပါ။ ဝယ်ယူမှု မအောင်မြင်ခဲ့ဘူး။
 	=> start_shop
 - Cancel / Go Back
 	=> buy_menu
@@ -190,7 +190,7 @@ Shopkeeper: အော်... နွားခြံနဲ့ ကြက်ခြံ
 	=> sell_menu
 
 ~ sell_qty_select
-Shopkeeper: How many do you want to sell? (Current: {{InventoryManager.current_shop.temp_qty}}) | Total Payout: {{InventoryManager.current_shop.temp_qty * InventoryManager.current_shop.temp_price}} Gold
+Shopkeeper: ဘယ်နှစ်ခု ရောင်းချင်လဲ။ (Current: {{InventoryManager.current_shop.temp_qty}}) | Total Payout: {{InventoryManager.current_shop.temp_qty * InventoryManager.current_shop.temp_price}} Gold
 - Add +1 Item
 	set InventoryManager.current_shop.temp_qty += 1
 	=> sell_qty_select
@@ -205,9 +205,9 @@ Shopkeeper: How many do you want to sell? (Current: {{InventoryManager.current_s
 	=> sell_qty_select
 - Confirm Sale
 	if InventoryManager.current_shop.temp_qty > 0 and InventoryManager.current_shop.sell_item(InventoryManager.current_shop.temp_item_type, InventoryManager.current_shop.temp_price, InventoryManager.current_shop.temp_qty):
-		Shopkeeper: Great trade! Here is your gold.
+		Shopkeeper: အရောင်းအဝယ် အဆင်ပြေတယ်။ ဒီမှာ မင်းရဲ့ Gold
 	else:
-		Shopkeeper: You don't have enough items in your inventory!
+		Shopkeeper: မင်းရဲ့ Inventory ထဲမှာ ရောင်းဖို့ပစ္စည်း မလုံလောက်သေးဘူး။
 	=> start_shop
 - Cancel / Go Back
 	if InventoryManager.current_shop.temp_prev_menu == "sell_resources":

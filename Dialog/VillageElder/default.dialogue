@@ -1,4 +1,6 @@
 ~ start
+if QuestManager.is_quest_completed("last_pumpkin"):
+    => after_pumpkin_harvest
 
 Village Elder: ကြိုဆိုပါတယ်... လူငယ်လေး။
 
@@ -25,5 +27,17 @@ Village Elder: ဒါပေမယ့်...
 Village Elder: ဒီအကြောင်းကို Uncle Rowan လည်း သိသင့်တယ်။
 
 Village Elder: သူ့ဆီ ပြန်သွားပြီး စကားပြောလိုက်ပါ။
+
+=> END
+
+~ after_pumpkin_harvest
+
+Village Elder: ပြန်လာပြီလား လူငယ်လေး။
+
+Village Elder: မင်းကြောင့် ဒီရွာက တဖြည်းဖြည်း ပြန်လည်အသက်ဝင်လာနေပြီ။
+
+Village Elder: မင်းရဲ့ ကြိုးစားမှုတွေကို မြင်ရတာ ဝမ်းသာတယ်။
+
+Village Elder: ဒီလိုပဲ ဆက်ပြီး ကြိုးစားသွားပါ။
 
 => END

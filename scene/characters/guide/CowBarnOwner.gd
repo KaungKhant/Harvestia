@@ -51,6 +51,13 @@ func _unhandled_input(event: InputEvent) -> void:
 			balloon.start(dialogue, "level_too_low")
 		else:
 			var label := QuestManager.get_dialogue_label()
+			print("===== COW BARN DEBUG =====")
+			print("Current Quest: ", QuestManager.current_quest.quest_id)
+			print("Quest Giver: ", QuestManager.current_quest.quest_giver)
+			print("Quest State: ", QuestManager.current_state)
+			print("Dialogue File: ", QuestManager.current_quest.dialogue_file)
+			print("Dialogue Label: ", label)
+			print("==========================")
 			balloon.start(dialogue, label)
 
 			# After the first conversation, make the quest ready to turn in.
