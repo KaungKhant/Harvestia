@@ -58,12 +58,29 @@ func _on_quest_started(quest: QuestData) -> void:
 func _on_homecoming_introduction_finished() -> void:
     print("HomecomingManager: Homecoming introduction finished.")
 
+    if donation_completed:
+        print("Homecoming already completed. Do not spawn Ending Rowan.")
+        return
+
+    if is_instance_valid(ending_rowan):
+        print("Ending Rowan already exists. Do not spawn again.")
+        return
+
     call_deferred("_spawn_ending_rowan")
-# -------------------------------------------------
-# Spawn Ending Rowan
-# -------------------------------------------------
 
 func _spawn_ending_rowan() -> void:
+    if donation_completed:
+        print("Homecoming already donated. STOP spawning Ending Rowan.")
+        return
+
+    print("================================")
+    print("Homecoming: spawn function called.")
+
+    if is_instance_valid(ending_rowan):
+        print("STOP: EndingRowan already exists.")
+        return
+
+    # ... rest of your existing code
     print("================================")
     print("Homecoming: spawn function called.")
 
@@ -260,11 +277,17 @@ func donate_materials() -> bool:
     if donation_completed:
         print("Homecoming: Donation already completed.")
         return false
-    
+
+    # Check everything BEFORE removing anything
     if !is_complete():
+        print("Homecoming: Not enough resources.")
         return false
 
-    # Remove crops and animal products
+    print("================================")
+    print("Homecoming: Starting donation...")
+    print("================================")
+
+    # Remove crops
     InventoryManager.remove_item_stack(
         "corn",
         required_resources["corn"]
@@ -285,6 +308,7 @@ func donate_materials() -> bool:
         required_resources["pumpkin"]
     )
 
+    # Remove animal products
     InventoryManager.remove_item_stack(
         "egg",
         required_resources["egg"]
@@ -306,22 +330,26 @@ func donate_materials() -> bool:
         required_resources["stone"]
     )
 
-    # Remove gold safely
+    # Remove gold
     if !PlayerProgressManager.spend_gold(
         required_resources["gold"]
     ):
+        print("ERROR: Failed to spend gold.")
         return false
 
-    # Remember that the final contribution has been made.
+    # IMPORTANT:
+    # Set this BEFORE emitting any signal.
     donation_completed = true
 
     print("================================")
     print("Homecoming resources donated.")
+    print("donation_completed = ", donation_completed)
     print("================================")
 
-    # Update QuestManager
+    # Update quest progress
     QuestManager.sync_progress_with_inventory()
-    
+
+    # Notify other systems
     donation_completed_signal.emit()
 
     return true

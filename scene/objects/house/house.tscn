@@ -4,10 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://8f7iwf72uuak" path="res://assets/game/questhouse2.png" id="2_sq7kr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_exnda"]
-size = Vector2(115, 117)
+size = Vector2(115, 123)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p42m7"]
-size = Vector2(36, 47)
+size = Vector2(36, 36)
 
 [node name="House" type="Node2D"]
 position = Vector2(51, -13)
@@ -24,7 +24,7 @@ region_rect = Rect2(395, 26, 358, 410)
 position = Vector2(227, 114)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(12.5, -7.5)
+position = Vector2(12.5, -4.5)
 shape = SubResource("RectangleShape2D_exnda")
 
 [node name="EnteredArea" type="Area2D" parent="."]
@@ -33,7 +33,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnteredArea"]
-position = Vector2(3, -13.5)
+position = Vector2(3, -19)
 shape = SubResource("RectangleShape2D_p42m7")
 debug_color = Color(0.87763214, 0.3236599, 0.29890978, 0.41960785)
 

@@ -858,7 +858,6 @@ position = Vector2(711, 257)
 position = Vector2(405, 108)
 
 [node name="GameNotification" parent="." instance=ExtResource("33_75ujd")]
-visible = false
 
 [node name="ChickenBox" parent="." instance=ExtResource("34_ta83y")]
 position = Vector2(609, 111)
