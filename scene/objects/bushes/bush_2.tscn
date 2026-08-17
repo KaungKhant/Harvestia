@@ -1,11 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://dwcsuac6r1xsk"]
+[gd_scene load_steps=10 format=3 uid="uid://dwcsuac6r1xsk"]
 
 [ext_resource type="Texture2D" uid="uid://bqxd5sggbmhft" path="res://assets/game/Objects/Bushe3.png" id="1_aenal"]
 [ext_resource type="Script" uid="uid://c2nphxykqex24" path="res://scene/objects/bushes/bush_1.gd" id="2_nn0hp"]
 [ext_resource type="PackedScene" uid="uid://dg8e005hj8y6k" path="res://scene/components/hurt_component.tscn" id="3_3jk5x"]
 [ext_resource type="PackedScene" uid="uid://bclpvokyn22rq" path="res://scene/components/damage_component.tscn" id="4_1tcjo"]
+[ext_resource type="Resource" uid="uid://cf5ydpsoaidey" path="res://resources/bush_data_resource.tres" id="4_3jk5x"]
 [ext_resource type="PackedScene" uid="uid://bitwqob65vm4g" path="res://scene/components/save_data_component.tscn" id="5_3jk5x"]
-[ext_resource type="Script" uid="uid://cspcpniscg5an" path="res://resources/bush_data_resource.gd" id="6_1tcjo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nn0hp"]
 atlas = ExtResource("1_aenal")
@@ -17,15 +17,14 @@ radius = 16.43606
 [sub_resource type="CircleShape2D" id="CircleShape2D_qankg"]
 radius = 37.58821
 
-[sub_resource type="Resource" id="Resource_ynnan"]
-script = ExtResource("6_1tcjo")
-metadata/_custom_type_script = "uid://cspcpniscg5an"
-
 [node name="Bush" type="Sprite2D"]
 position = Vector2(-0.4458952, -5.864131)
 scale = Vector2(0.27061805, 0.27579218)
 texture = SubResource("AtlasTexture_nn0hp")
 script = ExtResource("2_nn0hp")
+
+[node name="SaveDataComponent" parent="." instance=ExtResource("5_3jk5x")]
+save_data_resource = ExtResource("4_3jk5x")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
@@ -44,6 +43,3 @@ debug_color = Color(0.78248864, 0.23241031, 0.902805, 0.41960785)
 [node name="DamageComponent" parent="." instance=ExtResource("4_1tcjo")]
 position = Vector2(1.6476922, 3.1332684)
 max_damage = 2
-
-[node name="SaveDataComponent" parent="." instance=ExtResource("5_3jk5x")]
-save_data_resource = SubResource("Resource_ynnan")

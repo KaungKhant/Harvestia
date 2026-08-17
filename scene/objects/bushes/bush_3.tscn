@@ -23,6 +23,9 @@ scale = Vector2(0.30434784, 0.27639753)
 texture = SubResource("AtlasTexture_ygidn")
 script = ExtResource("2_ygidn")
 
+[node name="SaveDataComponent" parent="." instance=ExtResource("5_t74v8")]
+save_data_resource = ExtResource("6_3pwpd")
+
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(3.2857144, 0)
 
@@ -40,6 +43,3 @@ debug_color = Color(0.78248864, 0.23241031, 0.902805, 0.41960785)
 
 [node name="DamageComponent" parent="." instance=ExtResource("4_3pwpd")]
 max_damage = 2
-
-[node name="SaveDataComponent" parent="." instance=ExtResource("5_t74v8")]
-save_data_resource = ExtResource("6_3pwpd")

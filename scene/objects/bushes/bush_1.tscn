@@ -1,11 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://csetfn5b8e6nw"]
+[gd_scene load_steps=10 format=3 uid="uid://csetfn5b8e6nw"]
 
 [ext_resource type="Texture2D" uid="uid://bjtp1h5vwvxil" path="res://assets/game/Objects/Bushe1.png" id="1_03r1y"]
 [ext_resource type="Script" uid="uid://c2nphxykqex24" path="res://scene/objects/bushes/bush_1.gd" id="2_03r1y"]
+[ext_resource type="Resource" uid="uid://cf5ydpsoaidey" path="res://resources/bush_data_resource.tres" id="4_5pqc4"]
 [ext_resource type="PackedScene" uid="uid://dg8e005hj8y6k" path="res://scene/components/hurt_component.tscn" id="4_ugm71"]
 [ext_resource type="PackedScene" uid="uid://bitwqob65vm4g" path="res://scene/components/save_data_component.tscn" id="5_5pqc4"]
 [ext_resource type="PackedScene" uid="uid://bclpvokyn22rq" path="res://scene/components/damage_component.tscn" id="5_x3yj7"]
-[ext_resource type="Script" uid="uid://cspcpniscg5an" path="res://resources/bush_data_resource.gd" id="6_1tmrx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jjb06"]
 atlas = ExtResource("1_03r1y")
@@ -17,15 +17,14 @@ size = Vector2(28.972965, 15.3076935)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jjb06"]
 size = Vector2(61.56755, 42.46154)
 
-[sub_resource type="Resource" id="Resource_16iim"]
-script = ExtResource("6_1tmrx")
-metadata/_custom_type_script = "uid://cspcpniscg5an"
-
 [node name="Bush" type="Sprite2D"]
 position = Vector2(-0.25000203, -5.500001)
 scale = Vector2(0.27611947, 0.28260866)
 texture = SubResource("AtlasTexture_jjb06")
 script = ExtResource("2_03r1y")
+
+[node name="SaveDataComponent" parent="." instance=ExtResource("5_5pqc4")]
+save_data_resource = ExtResource("4_5pqc4")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
@@ -44,6 +43,3 @@ debug_color = Color(0.78248864, 0.23241031, 0.902805, 0.41960785)
 [node name="DamageComponent" parent="." instance=ExtResource("5_x3yj7")]
 position = Vector2(0.9054125, -1.7692276)
 max_damage = 2
-
-[node name="SaveDataComponent" parent="." instance=ExtResource("5_5pqc4")]
-save_data_resource = SubResource("Resource_16iim")
